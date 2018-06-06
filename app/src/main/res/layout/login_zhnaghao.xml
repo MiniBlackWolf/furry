@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toStartOf="@+id/passworld2"
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintStart_toEndOf="@+id/textView36"
+        app:layout_constraintTop_toBottomOf="@+id/imageView21"
+        app:srcCompat="@mipmap/dian" />
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="36dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="密码"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView19"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView39" />
+
+    <EditText
+        android:id="@+id/username2"
+        android:layout_width="306dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="用户名"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:theme="@style/MyEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView21"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/passworld2"
+        android:layout_width="306dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginTop="40dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="密码"
+        android:inputType="textPassword"
+        android:textColor="@android:color/background_light"
+        android:theme="@style/MyEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/username2" />
+
+    <Button
+        android:id="@+id/denglul2"
+        android:layout_width="243dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/denglustyle"
+        android:text="登陆"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passworld2" />
+
+    <View
+        android:id="@+id/view10"
+        android:layout_width="376dp"
+        android:layout_height="0.5dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/passworld2" />
+
+    <TextView
+        android:id="@+id/textView39"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="账号"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView21"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView21"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginEnd="6dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toStartOf="@+id/username2"
+        app:layout_constraintStart_toEndOf="@+id/textView39"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/dian" />
+
+    <View
+        android:id="@+id/view11"
+        android:layout_width="376dp"
+        android:layout_height="0.5dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/username2" />
+</android.support.constraint.ConstraintLayout>

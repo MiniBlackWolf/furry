@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ddddddd"
+        android:layout_width="411dp"
+        android:layout_height="57dp"
+        android:background="@color/hong"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/atlasfh"
+            android:layout_width="20dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/b2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:layout_weight="5"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="素材图集"
+            android:textColor="@android:color/black"
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fffffffff"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ddddddd">
+
+        <LinearLayout
+            android:id="@+id/cugenyun"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="收集中"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1"
+                android:background="@color/hong" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/culingping"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="已集齐"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/atlasrecycler"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fffffffff" />
+
+</android.support.constraint.ConstraintLayout>

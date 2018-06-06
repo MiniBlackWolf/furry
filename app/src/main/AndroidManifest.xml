@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.wolf">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".Utils.myapp"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.Loginpage">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER2" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".land.Xuandi">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER3" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".seed.seedActivity">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER5" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".cultivation.genyun">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER6" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".pick.pick">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER7" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".delivery.delivery">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER8" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.zhuche">
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER9" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.usersfarm"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER10" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".land.myland"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER11" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".seed.myseed"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER12" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".cultivation.mycultivation"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER13" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".atlas.AtlasActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER14" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".me.harvest.HarvestActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER15" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".me_order.OrderActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER16" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.LoginZhucheActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER17" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.LoginZhuche2Activity"
+        android:theme="@style/Anim_fade"
+        >
+        <intent-filter>
+            <category android:name="android.intent.category.LAUNCHER18" />
+        </intent-filter>
+    </activity>
+        <activity android:name=".burse.MyburseActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER19" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".invite.InviteActivity"
+            android:theme="@style/Anim_fade"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER20" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".userbean.MyinfoActivity"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER21" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation|screenSize"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.app.H5AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind"
+            android:windowSoftInputMode="adjustResize|stateHidden" >
+        </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>

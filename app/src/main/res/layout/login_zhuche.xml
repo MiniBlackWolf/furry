@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/loginbackground"
+    tools:layout_editor_absoluteY="25dp">
+
+    <View
+        android:id="@+id/view9"
+        android:layout_width="267dp"
+        android:layout_height="0.5dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="108dp"
+        android:layout_marginStart="16dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yanzhengma2" />
+
+    <EditText
+        android:id="@+id/yanzhengma2"
+        android:layout_width="258dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="验证码"
+        android:inputType="textPersonName"
+        android:textColor="@android:color/background_light"
+        android:theme="@style/MyEditText"
+        app:layout_constraintEnd_toStartOf="@+id/fasongyanzm"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <Button
+        android:id="@+id/fasongyanzm"
+        android:layout_width="94dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/zhuchestyle"
+        android:text="发送验证码"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/yanzhengma2"
+        app:layout_constraintTop_toBottomOf="@+id/phonenm2" />
+
+    <EditText
+        android:id="@+id/phonenm2"
+        android:layout_width="306dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="132dp"
+        android:background="@null"
+        android:ems="10"
+        android:hint="手机号"
+        android:inputType="textPersonName|phone"
+        android:textColor="@android:color/background_light"
+        android:theme="@style/MyEditText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageView18"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="48dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="132dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="+86"
+        android:textColor="@android:color/background_light"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="10dp"
+        android:layout_height="10dp"
+        android:layout_marginBottom="45dp"
+        android:background="@mipmap/dian"
+        app:layout_constraintBottom_toTopOf="@+id/yanzhengma2"
+        app:layout_constraintEnd_toStartOf="@+id/phonenm2"
+        app:layout_constraintStart_toEndOf="@+id/textView32" />
+
+    <View
+        android:id="@+id/view12"
+        android:layout_width="376dp"
+        android:layout_height="0.5dp"
+        android:background="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.485"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/phonenm2" />
+
+    <Button
+        android:id="@+id/xiayibu"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="177dp"
+        android:layout_marginLeft="146dp"
+        android:layout_marginRight="177dp"
+        android:layout_marginStart="146dp"
+        android:layout_marginTop="36dp"
+        android:background="@drawable/denglustyle"
+        android:text="下一步"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/yanzhengma2" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/zhuchefh"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:background="@mipmap/fh" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="           注册"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

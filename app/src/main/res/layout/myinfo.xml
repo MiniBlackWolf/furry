@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/background_light">
+
+    <LinearLayout
+        android:id="@+id/linearLayout30"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:background="@color/hong"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/myinfofh"
+            android:layout_width="13dp"
+            android:layout_height="15dp"
+            android:layout_marginLeft="20dp"
+            android:background="@mipmap/fh" />
+
+        <TextView
+            android:id="@+id/textView46"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_weight="1.5"
+            android:text="个人信息"
+            android:textColor="@android:color/background_light" />
+
+        <TextView
+            android:id="@+id/myinfosave"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="10dp"
+            android:gravity="right"
+            android:text="保存"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myinfoname"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/hui"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myinfohead">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="我的昵称"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/infoname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="皮皮虾" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            app:srcCompat="@mipmap/m12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/muinfosex"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/hui"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/myinfoname">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="我的性别"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/infosex"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="男" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            app:srcCompat="@mipmap/m12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myinfobr"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="2dp"
+        android:background="@color/hui"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/muinfosex">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="我的生日"
+            android:textColor="@android:color/background_dark" />
+
+        <TextView
+            android:id="@+id/infobr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2018-1-1" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            app:srcCompat="@mipmap/m12" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/myinfohead"
+        android:layout_width="0dp"
+        android:layout_height="61dp"
+        android:background="@color/hui"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout30">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:text="我的头像"
+            android:textColor="@android:color/background_dark" />
+
+        <ImageView
+            android:id="@+id/infohead"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            app:srcCompat="@mipmap/ic_launcher_round" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.2"
+            app:srcCompat="@mipmap/m12" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

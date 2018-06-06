@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/linearLayout25"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="56dp"
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout24">
+
+        <LinearLayout
+            android:id="@+id/mymoney"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="我的钱包"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:id="@+id/moneyv"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1"
+                android:background="@color/hong" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mypoint"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="我的积分"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:id="@+id/moneyv2"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout24"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:background="@color/hong"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bursefh"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/fh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:layout_weight="5"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="我的钱包"
+            android:textColor="@android:color/background_light" />
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/myburselayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout25">
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

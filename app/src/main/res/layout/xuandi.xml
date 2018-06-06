@@ -1,0 +1,920 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout8"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:layout_editor_absoluteY="25dp">
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="216dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/xuandifanhui"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/b2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="选地"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/buy"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="购买"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.989"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="总价"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/kuaishu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="32dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.903" />
+
+        <TextView
+            android:id="@+id/zhongjian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.129" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="411dp"
+        android:layout_height="217dp"
+        android:background="@mipmap/b1" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/xuanqu_2"
+                    app:layout_constraintEnd_toStartOf="@+id/jian"
+                    app:layout_constraintStart_toStartOf="@+id/jian"
+                    app:layout_constraintTop_toBottomOf="@+id/xuanqu_2">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.504">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout12"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.341">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout13"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.65">
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_3_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@mipmap/a" />
+
+                    <TextView
+                        android:id="@+id/textView16_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="区域价格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView17"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="区域规格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView18"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.219" />
+
+                    <TextView
+                        android:id="@+id/textView18"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="剩余选区"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout10"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.409" />
+
+                    <TextView
+                        android:id="@+id/jiage_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginStart="8dp"
+                        android:text="jiage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.428"
+                        app:layout_constraintStart_toStartOf="@+id/guige_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/guige_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginTop="20dp"
+                        android:text="guige"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/xuanqu_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:text="xuanqu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.4" />
+
+                    <TextView
+                        android:id="@+id/textView22"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="140dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="140dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="56dp"
+                        android:text="购买数量"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.473"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2"
+                        app:layout_constraintTop_toTopOf="@+id/textView16_2" />
+
+                    <Button
+                        android:id="@+id/jian"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jian"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.598"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout14"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.086"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.186">
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/tianjia"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.989"
+                        app:layout_constraintStart_toEndOf="@+id/jian"
+                        app:layout_constraintTop_toTopOf="@+id/jiage_2"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/shuliang"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.741"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </android.support.constraint.ConstraintLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView3"
+                android:layout_width="395dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/xuanqu_2"
+                    app:layout_constraintEnd_toStartOf="@+id/jian"
+                    app:layout_constraintStart_toStartOf="@+id/jian"
+                    app:layout_constraintTop_toBottomOf="@+id/xuanqu_2">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10_3"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.504">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout12_3"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.341">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout13_3"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.65">
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_3_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@mipmap/c" />
+
+                    <TextView
+                        android:id="@+id/textView16_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="区域价格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView17_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView17_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="区域规格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView18_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.214" />
+
+                    <TextView
+                        android:id="@+id/textView18_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="剩余选区"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView22_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.401" />
+
+                    <TextView
+                        android:id="@+id/jiage_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginStart="8dp"
+                        android:text="jiage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.428"
+                        app:layout_constraintStart_toStartOf="@+id/guige_2_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/guige_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginTop="20dp"
+                        android:text="guige"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/xuanqu_2_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:text="xuanqu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.4" />
+
+                    <TextView
+                        android:id="@+id/textView22_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="140dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="140dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="56dp"
+                        android:text="购买数量"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.473"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_3"
+                        app:layout_constraintTop_toTopOf="@+id/textView16_2_3" />
+
+                    <Button
+                        android:id="@+id/jian3"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jian"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.598"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout14_3"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.086"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_3"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.186">
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/tianjian3"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.989"
+                        app:layout_constraintStart_toEndOf="@+id/jian3"
+                        app:layout_constraintTop_toTopOf="@+id/jiage_2_3"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/shuliang3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.741"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/cardView2"
+                android:layout_width="0dp"
+                android:layout_height="127dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cardView">
+
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintBottom_toBottomOf="@+id/xuanqu_2"
+                    app:layout_constraintEnd_toStartOf="@+id/jian"
+                    app:layout_constraintStart_toStartOf="@+id/jian"
+                    app:layout_constraintTop_toBottomOf="@+id/xuanqu_2">
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout10_2"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.504">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout12_2"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.341">
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout13_2"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.064"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.65">
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/imageView_3_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@mipmap/b" />
+
+                    <TextView
+                        android:id="@+id/textView16_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginTop="4dp"
+                        android:text="区域价格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/linearLayout12_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView17_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="区域规格"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView18_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.222" />
+
+                    <TextView
+                        android:id="@+id/textView18_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginRight="8dp"
+                        android:text="剩余选区"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="@+id/textView22_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.416" />
+
+                    <TextView
+                        android:id="@+id/jiage_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="40dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="40dp"
+                        android:layout_marginStart="8dp"
+                        android:text="jiage"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.428"
+                        app:layout_constraintStart_toStartOf="@+id/guige_2_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/guige_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="28dp"
+                        android:layout_marginRight="28dp"
+                        android:layout_marginTop="20dp"
+                        android:text="guige"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.05" />
+
+                    <TextView
+                        android:id="@+id/xuanqu_2_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginRight="24dp"
+                        android:text="xuanqu"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.4" />
+
+                    <TextView
+                        android:id="@+id/textView22_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="140dp"
+                        android:layout_marginLeft="2dp"
+                        android:layout_marginRight="140dp"
+                        android:layout_marginStart="2dp"
+                        android:layout_marginTop="56dp"
+                        android:text="购买数量"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.473"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_2"
+                        app:layout_constraintTop_toTopOf="@+id/textView16_2_2" />
+
+                    <Button
+                        android:id="@+id/jian2"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jian"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.598"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <LinearLayout
+                        android:id="@+id/linearLayout14_2"
+                        android:layout_width="170dp"
+                        android:layout_height="1dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@color/black"
+                        android:orientation="vertical"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.086"
+                        app:layout_constraintStart_toEndOf="@+id/imageView_3_2_2"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.186">
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/tianjia2"
+                        android:layout_width="28dp"
+                        android:layout_height="21dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="36dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="36dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@mipmap/jia"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.989"
+                        app:layout_constraintStart_toEndOf="@+id/jian2"
+                        app:layout_constraintTop_toTopOf="@+id/jiage_2_2"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                    <TextView
+                        android:id="@+id/shuliang2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="8dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="8dp"
+                        android:text="0"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.741"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="1.0" />
+
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/loginbackground"
+    tools:layout_editor_absoluteY="25dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout4"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="76dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ii"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginTop="24dp"
+            android:background="@mipmap/dian"
+            app:layout_constraintEnd_toStartOf="@+id/zhucname"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView37"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/view13"
+            android:layout_width="376dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/background_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/zhucname" />
+
+        <TextView
+            android:id="@+id/textView37"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="昵称"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/zhucname"
+            android:layout_width="306dp"
+            android:layout_height="33dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="请输入昵称（3-15位）"
+            android:inputType="textPersonName"
+            android:maxLength="15"
+            android:textColor="@android:color/background_light"
+            android:theme="@style/MyEditText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView18"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginLeft="18dp"
+        android:layout_marginRight="17dp"
+        android:layout_marginStart="18dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout4">
+
+        <ImageView
+            android:id="@+id/image33"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="23dp"
+            android:background="@mipmap/dian"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/zhucpass"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/textView38"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:layout_width="376dp"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="2dp"
+            android:background="@android:color/background_light"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView38" />
+
+        <TextView
+            android:id="@+id/textView38"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="密码"
+            android:textColor="@android:color/background_light"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toStartOf="@+id/imageView18"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/zhucpass"
+            android:layout_width="306dp"
+            android:layout_height="33dp"
+            android:layout_marginBottom="2dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="请输入密码至少6位"
+            android:inputType="textPassword"
+            android:textColor="@android:color/background_light"
+            android:theme="@style/MyEditText"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imageView18"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:layout_width="383dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/zhuche2fh"
+            android:layout_width="20dp"
+            android:layout_height="25dp"
+            android:background="@mipmap/fh" />
+
+        <TextView
+            android:id="@+id/textView34"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:fontFamily="@font/source_sans_pro_semibold"
+            android:text="           注册"
+            android:textColor="@android:color/background_light"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/fin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/denglustyle"
+        android:text="完成"
+        android:textColor="@color/blue"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout5" />
+</android.support.constraint.ConstraintLayout>

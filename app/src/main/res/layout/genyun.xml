@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout18"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/linearLayout11"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:gravity="right"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/buy"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:background="@color/red"
+            android:gravity="center"
+            android:text="购买"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.989"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="总价"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/gkuaishu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="32dp"
+            android:text="TextView"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.903" />
+
+        <TextView
+            android:id="@+id/zhongjian"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginStart="8dp"
+            android:text="0"
+            android:textColor="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.129" />
+
+    </android.support.constraint.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout9"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="220dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/genyunfanhui"
+            android:layout_width="10dp"
+            android:layout_height="20dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/b2" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="耕耘"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="0dp"
+        android:layout_height="220dp"
+        android:background="@mipmap/x1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.686"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout9">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/bz"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@mipmap/x2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp">
+
+                <ImageView
+                    android:id="@+id/x1"
+                    android:layout_width="144dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/x3"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/x4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/x2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="8dp"
+                    android:text="菜鸟环保|播种套餐券"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="93dp"
+                    android:layout_marginStart="65dp"
+                    android:text="使用期限1月"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1"
+                    app:layout_constraintTop_toBottomOf="@+id/x2" />
+
+                <TextView
+                    android:id="@+id/x4"
+                    android:layout_width="219dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="播种套餐券包括蔬菜播种时必经的3个流程：耕地，播种和首次施肥"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/x5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="192dp"
+                    android:layout_marginStart="27dp"
+
+                    android:text="60元/5m²"
+                    android:textColor="@color/hong"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.103"
+                    app:layout_constraintStart_toEndOf="@+id/x1" />
+
+                <Button
+                    android:id="@+id/x6"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
+                    app:layout_constraintStart_toEndOf="@+id/x5" />
+
+                <Button
+                    android:id="@+id/x7"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x8" />
+
+                <TextView
+                    android:id="@+id/x8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/x6" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@mipmap/x2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp">
+
+                <ImageView
+                    android:id="@+id/x1_2"
+                    android:layout_width="144dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/x4"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/x4_2"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/x2_2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="8dp"
+                    android:text="菜鸟环保|灌溉券"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_2"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x3_2_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="93dp"
+                    android:layout_marginStart="65dp"
+                    android:text="使用期限1月"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_2"
+                    app:layout_constraintTop_toBottomOf="@+id/x2_2" />
+
+                <TextView
+                    android:id="@+id/x4_2"
+                    android:layout_width="219dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="保证作物正常生长，供给作物充分的水分，补给作物水分的技术措施"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/x5_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="192dp"
+                    android:layout_marginStart="27dp"
+                    android:text="60元/5m²"
+                    android:textColor="@color/hong"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/x1_2" />
+
+                <Button
+                    android:id="@+id/x6_2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
+                    app:layout_constraintStart_toEndOf="@+id/x5_2" />
+
+                <Button
+                    android:id="@+id/x7_2"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x8_2" />
+
+                <TextView
+                    android:id="@+id/x8_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/x6_2" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@mipmap/x2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp">
+
+                <ImageView
+                    android:id="@+id/x1_3"
+                    android:layout_width="144dp"
+                    android:layout_height="132dp"
+                    android:background="@mipmap/x5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/x4_3"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="1.0" />
+
+                <TextView
+                    android:id="@+id/x2_3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="8dp"
+                    android:text="菜鸟环保|施肥券"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_3"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x3_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="93dp"
+                    android:layout_marginStart="65dp"
+                    android:text="使用期限1月"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_3"
+                    app:layout_constraintTop_toBottomOf="@+id/x2_3" />
+
+                <TextView
+                    android:id="@+id/x4_3"
+                    android:layout_width="219dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="将肥料施于土壤中，保障作物充分的养分，提高作物品质"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/x5_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="192dp"
+                    android:layout_marginStart="27dp"
+                    android:text="60"
+                    android:textColor="@color/hong"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/x1_3" />
+
+                <Button
+                    android:id="@+id/x6_3"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
+                    app:layout_constraintStart_toEndOf="@+id/x5_3" />
+
+                <Button
+                    android:id="@+id/x7_3"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x8_3" />
+
+                <TextView
+                    android:id="@+id/x8_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/x6_3" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@mipmap/x2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp">
+
+                <ImageView
+                    android:id="@+id/x1_4"
+                    android:layout_width="144dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/x6"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/x4_4"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/x2_4"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="8dp"
+                    android:text="菜鸟环保|除草券"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_4"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x3_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="93dp"
+                    android:layout_marginStart="65dp"
+                    android:text="使用期限1月"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_4"
+                    app:layout_constraintTop_toBottomOf="@+id/x2_4" />
+
+                <TextView
+                    android:id="@+id/x4_4"
+                    android:layout_width="219dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="及时将生长在作物田间的杂草通过人工防除，为作物提供良好的生长环境。"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/x5_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="192dp"
+                    android:layout_marginStart="27dp"
+                    android:text="60"
+                    android:textColor="@color/hong"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/x1_4" />
+
+                <Button
+                    android:id="@+id/x6_4"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
+                    app:layout_constraintStart_toEndOf="@+id/x5_4" />
+
+                <Button
+                    android:id="@+id/x7_4"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x8_4" />
+
+                <TextView
+                    android:id="@+id/x8_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/x6_4" />
+            </android.support.constraint.ConstraintLayout>
+
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="395dp"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_weight="1"
+                android:background="@mipmap/x2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="1.0"
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="136dp">
+
+                <ImageView
+                    android:id="@+id/x1_5"
+                    android:layout_width="144dp"
+                    android:layout_height="0dp"
+                    android:background="@mipmap/x7"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/x4_5"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.0" />
+
+                <TextView
+                    android:id="@+id/x2_5"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="60dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="60dp"
+                    android:layout_marginStart="27dp"
+                    android:layout_marginTop="8dp"
+                    android:text="菜鸟环保|灭虫券"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Light.SearchResult.Subtitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_5"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/x3_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="80dp"
+                    android:layout_marginEnd="93dp"
+                    android:layout_marginLeft="65dp"
+                    android:layout_marginRight="93dp"
+                    android:layout_marginStart="65dp"
+                    android:text="使用期限1月"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x1_5"
+                    app:layout_constraintTop_toBottomOf="@+id/x2_5" />
+
+                <TextView
+                    android:id="@+id/x4_5"
+                    android:layout_width="219dp"
+                    android:layout_height="44dp"
+                    android:layout_marginBottom="36dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginStart="8dp"
+                    android:text="蔬菜在生长期间遭到虫害，灭虫可以减少蔬菜收到的虫害，保证其生长。"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.894"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <TextView
+                    android:id="@+id/x5_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="192dp"
+                    android:layout_marginLeft="27dp"
+                    android:layout_marginRight="192dp"
+                    android:layout_marginStart="27dp"
+                    android:text="60"
+                    android:textColor="@color/hong"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintStart_toEndOf="@+id/x1_5" />
+
+                <Button
+                    android:id="@+id/x6_5"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j2"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.375"
+                    app:layout_constraintStart_toEndOf="@+id/x5_5" />
+
+                <Button
+                    android:id="@+id/x7_5"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@mipmap/j1"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/x8_5" />
+
+                <TextView
+                    android:id="@+id/x8_5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="24dp"
+                    android:layout_marginStart="8dp"
+                    android:text="0"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintStart_toEndOf="@+id/x6_5" />
+            </android.support.constraint.ConstraintLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

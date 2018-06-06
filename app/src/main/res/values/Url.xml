@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="xufarm">http://wechat.cnepltd.com/farm/open/xufarm</string>
+    <string name="getseedinfo">http://wechat.cnepltd.com/farm/open/seed</string>
+    <string name="URL">http://www.imooc.com/api/teacher?type=4&amp;num=30</string>
+    <string name="Seeds">http://192.168.0.72:8080/net/seed/getSeedLimit</string>
+    <string name="URlitem">http://192.168.0.72:8080/net/seed/getSeedCount?pageItemSize=2</string>
+    <string name="Seedscount">http://192.168.0.72:8080/net/seed/getSeedCount</string>
+    <string name="Login">http://192.168.0.72:8080/net/userBase/login</string>
+    <string name="Users">http://192.168.0.72:8080/net/userBase/getUser</string>
+    <string name="Userinfo">http://192.168.0.72:8080/net/userBase/getUserInfo</string>
+    <string name="farmData">http://192.168.0.72:8080/net/seed/getFrame</string>
+    <string name="buyFrame">http://192.168.0.72:8080/net/seed/buyFrame</string>
+    <string name="getFarmCount">http://192.168.0.72:8080/net/seed/getFarmCount</string>
+    <string name="getFarmLimit">http://192.168.0.72:8080/net/seed/getFarmLimit</string>
+    <string name="buyseed">http://192.168.0.72:8080/net/seed/buySeed</string>
+    <string name="getUserFrame">http://192.168.0.72:8080//net/seed/getUserFrame</string>
+    <string name="getUserRemainSeed">http://192.168.0.72:8080/net/seed/getUserRemainSeed</string>
+    <string name="getTickets">http://192.168.0.72:8080/net/userBase/getTickets</string>
+    <string name="buyTickets">http://192.168.0.72:8080//net/userBase/buyTickets</string>
+    <string name="getUserOrder">http://192.168.0.72:8080/net/orderManage/getUserOrder</string>
+    <string name="getCloopen">http://192.168.0.72:8080/net/userBase/getCloopen</string>
+    <string name="register">http://192.168.0.72:8080/net/userBase/register</string>
+    <string name="getUserUseSeed">http://192.168.0.72:8080/net/seed/getUserUseSeed</string>
+    <string name="getOrderInfo">http://192.168.0.72:8080/net/alipay/getOrderInfo</string>
+    <string name="recommended">http://192.168.0.72:8080/net/userBase/recommended</string>
+    <string name="change">http://192.168.0.72:8080/net/userBase/change</string>
+</resources>

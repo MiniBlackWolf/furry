@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout16"
+    android:layout_width="match_parent"
+    android:layout_height="151dp"
+    tools:layout_editor_absoluteY="25dp">
+
+    <LinearLayout
+        android:layout_width="107dp"
+        android:layout_height="141dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.599"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/k1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/baicai" />
+
+        <TextView
+            android:id="@+id/k2"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+        <TextView
+            android:id="@+id/k5"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_weight="1"
+            android:text="TextView" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/k3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="价格" />
+
+            <Button
+                android:id="@+id/b1"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_weight="0.05"
+                android:background="@mipmap/j2" />
+
+            <TextView
+                android:id="@+id/k4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="0" />
+
+            <Button
+                android:id="@+id/b2"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.05"
+                android:background="@mipmap/j1" />
+        </LinearLayout>
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

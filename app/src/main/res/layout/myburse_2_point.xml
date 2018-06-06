@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui">
+
+    <LinearLayout
+        android:id="@+id/linearLayout26"
+        android:layout_width="0dp"
+        android:layout_height="51dp"
+        android:background="@android:color/background_light"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/pointfh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="0.05"
+            app:srcCompat="@mipmap/b2" />
+
+        <TextView
+            android:id="@+id/textView42"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="28dp"
+            android:layout_weight="1"
+            android:gravity="left"
+            android:text="如何获取积分" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="什么是菜鸟积分"
+        android:textColor="@color/hui4"
+        app:layout_constraintBottom_toTopOf="@+id/textView52"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout26"
+        app:layout_constraintVertical_bias="0.42000002" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="如何获得菜鸟积分"
+        android:textColor="@color/hui4"
+        app:layout_constraintBottom_toTopOf="@+id/textView53"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView52"
+        app:layout_constraintVertical_bias="0.35000002" />
+
+    <TextView
+        android:id="@+id/textView52"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@android:color/background_light"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="菜鸟积分是指用户通将“菜鸟农场”分享给好友，且好友成功注册后所得的积分，可将积分用于积分商城，兑换您心意的物品"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.205" />
+
+    <TextView
+        android:id="@+id/textView53"
+        android:layout_width="0dp"
+        android:layout_height="55dp"
+        android:background="@android:color/background_light"
+        android:paddingLeft="15dp"
+        android:paddingRight="15dp"
+        android:text="您每成功邀请一名好友注册“菜鸟农场”即可获得100积分，首次完善个人信息可获得20积分，首次将“菜鸟农场”分享到朋友圈获得50积分"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.42000002" />
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout7"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/loginbackground">
+
+    <LinearLayout
+        android:id="@+id/fffffffff"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="34dp"
+        android:background="#4c6fc2"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView24">
+
+        <LinearLayout
+            android:id="@+id/accountlogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:gravity="center"
+                android:text="账号登陆"
+                android:textColor="@android:color/background_light" />
+
+            <View
+                android:id="@+id/accountview"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="0.1"
+                android:background="@android:color/background_light" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/phonelogin"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="@font/source_sans_pro_semibold"
+                android:gravity="center"
+                android:text="手机快捷登陆"
+                android:textColor="@android:color/background_light" />
+
+            <View
+                android:id="@+id/phoneview"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_weight="0.1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/fanhui"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/l1" />
+
+    <Button
+        android:id="@+id/zhuche"
+        android:layout_width="55dp"
+        android:layout_height="25dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/zhuchestyle"
+        android:text="注册"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="68dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="欢迎来到菜鸟农场"
+        android:textColor="@android:color/background_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/source_sans_pro_semibold"
+        android:text="登陆获取更多服务"
+        android:textColor="@android:color/background_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/accountfragment"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fffffffff">
+
+    </android.support.constraint.ConstraintLayout>
+
+</android.support.constraint.ConstraintLayout>

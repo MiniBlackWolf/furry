@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout29"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/hui">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/mylandrecyclerview"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fffffffff" />
+
+    <LinearLayout
+        android:id="@+id/ddddddd"
+        android:layout_width="0dp"
+        android:layout_height="57dp"
+        android:background="@color/hong"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/mylandfhui"
+            android:layout_width="10dp"
+            android:layout_height="30dp"
+            android:layout_weight="1"
+            app:srcCompat="@mipmap/b2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="57dp"
+            android:layout_weight="5"
+            android:gravity="left|center"
+            android:paddingLeft="20dp"
+            android:text="我的土地"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/fffffffff"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:background="@android:color/background_light"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ddddddd">
+
+        <LinearLayout
+            android:id="@+id/used"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="使用中"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:id="@+id/view5"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1"
+                android:background="@color/hong" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/overdue"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView28"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="已过期"
+                android:textColor="@android:color/background_dark" />
+
+            <View
+                android:id="@+id/view7"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_weight="0.1" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/xuzu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="续租"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mylandrecyclerview" />
+
+</android.support.constraint.ConstraintLayout>
