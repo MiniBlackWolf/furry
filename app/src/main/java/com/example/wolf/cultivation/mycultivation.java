@@ -1,5 +1,6 @@
 package com.example.wolf.cultivation;
 
+import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -7,19 +8,30 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Spinner;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.adpater.Mycultivationadapter;
+import com.example.wolf.land.userland;
+import com.example.wolf.seed.seedbean;
+import com.example.wolf.seed.userseed;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,13 +55,16 @@ public class mycultivation extends AppCompatActivity {
     Getuserinfo getuserinfo = new Getuserinfo(mycultivation.this);
     @BindView(R.id.full)
     ConstraintLayout full;
+    int uid;
+    List<String> listseed;
+    int x;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mycultivation);
         ButterKnife.bind(this);
-
+        uid = new Getuserinfo(mycultivation.this).getuid();
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         xutils.get(getResources().getString(R.string.getTickets), map, new Xutils.XCallBack() {
@@ -66,6 +81,7 @@ public class mycultivation extends AppCompatActivity {
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (position) {
                             case 0: {
+                        new mycultivationdialog().show(getSupportFragmentManager(),"1");
 
                                 break;
                             }
@@ -94,6 +110,8 @@ public class mycultivation extends AppCompatActivity {
             }
         });
     }
+
+
 
     @OnClick(R.id.cufh)
     public void onViewClicked() {

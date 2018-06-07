@@ -32,6 +32,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
     private SharedPreferences mySharePerferences;
     private List<TextView> count = new ArrayList();
     private String url;
+    private List<String> listsusse = new ArrayList<>();
 
     public MyGridViewAdpterseed(Context context, List<ProdctBean> lists, Button buy, SharedPreferences mySharePerferences, String url, TextView allmoeny) {
         this.context = context;
@@ -144,7 +145,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                     map.put("uid", String.valueOf(uid));
                     map.put("sid", String.valueOf(lists.get(i).getSid()));
                     map.put("buycount", count.get(i + 1).getText().toString());
-                    Log.i("iiiiiiiiiiiii",count.get(i + 1).getText().toString());
+                    Log.i("iiiiiiiiiiiii", count.get(i + 1).getText().toString());
                     map.put("token", new Token().getToken(uid));
                     final int finalI = i;
                     xutils.get(url, map, new Xutils.XCallBack() {
@@ -152,18 +153,24 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                         public void onResponse(String result) {
                             Log.i("iiiiiiiiiiii", result);
                             String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
-                            if (su.equals("success")) {
-                                if (finalI == lists.size() - 1) {
+                            listsusse.add(su);
+                            if (listsusse.size() >= finalI) {
+                                for (int i = 0; i < listsusse.size(); i++) {
+                                    if (listsusse.get(i).equals("success")) {
+                                        Toast.makeText(context, "购买成功", Toast.LENGTH_LONG).show();
 
-                                    Toast.makeText(context, "购买成功", Toast.LENGTH_LONG).show();
+                                    }
+
+
                                 }
+
 
                             }
 
                         }
                     });
-                    if (lists.get(i).getCount() == 0&&Integer.valueOf(count.get(i + 1).getText().toString())>0) {
-                        Log.i("iiiiiiiii",lists.get(i).getCount()+count.get(i + 1).getText().toString());
+                    if (lists.get(i).getCount() == 0 && Integer.valueOf(count.get(i + 1).getText().toString()) > 0) {
+                        Log.i("iiiiiiiii", lists.get(i).getCount() + count.get(i + 1).getText().toString());
                         Toast.makeText(context, "购买失败，请检查网络或种子数量", Toast.LENGTH_LONG).show();
                         break;
 

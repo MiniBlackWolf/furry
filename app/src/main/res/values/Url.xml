@@ -25,4 +25,6 @@
     <string name="getOrderInfo">http://192.168.0.72:8080/net/alipay/getOrderInfo</string>
     <string name="recommended">http://192.168.0.72:8080/net/userBase/recommended</string>
     <string name="change">http://192.168.0.72:8080/net/userBase/change</string>
+    <string name="getSeedIdByName">http://192.168.0.72:8080/net/seed/getSeedIdByName</string>
+    <string name="sowing">http://192.168.0.72:8080/net/seed/sowing</string>
 </resources>
