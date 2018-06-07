@@ -2,19 +2,13 @@ package com.example.wolf.cultivation;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-<<<<<<< HEAD
 import android.support.constraint.ConstraintLayout;
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-<<<<<<< HEAD
 import android.view.LayoutInflater;
 import android.view.View;
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
@@ -47,11 +41,8 @@ public class mycultivation extends AppCompatActivity {
     RecyclerView curecyclerview;
     Xutils xutils = new Xutils();
     Getuserinfo getuserinfo = new Getuserinfo(mycultivation.this);
-<<<<<<< HEAD
     @BindView(R.id.full)
     ConstraintLayout full;
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +55,6 @@ public class mycultivation extends AppCompatActivity {
         xutils.get(getResources().getString(R.string.getTickets), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
-<<<<<<< HEAD
                 Log.i("iiiiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<usercultivation> usercultivation = gsonUtil.Gson(result, usercultivation.class);
@@ -99,14 +89,6 @@ public class mycultivation extends AppCompatActivity {
                         }
                     }
                 });
-=======
-                Log.i("iiiiiiiiiii",result);
-                GsonUtil gsonUtil=new GsonUtil();
-                List<usercultivation> usercultivation = gsonUtil.Gson(result, usercultivation.class);
-                Mycultivationadapter mycultivationadapter=new Mycultivationadapter(R.layout.mycultivationitem,usercultivation,mycultivation.this);
-                mycultivationadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-                mycultivationadapter.isFirstOnly(false);
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 curecyclerview.setLayoutManager(new LinearLayoutManager(mycultivation.this));
                 curecyclerview.setAdapter(mycultivationadapter);
             }

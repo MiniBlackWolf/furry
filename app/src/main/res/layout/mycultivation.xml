@@ -2,11 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-<<<<<<< HEAD
     android:id="@+id/full"
-=======
-    android:id="@+id/linearLayout31"
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 

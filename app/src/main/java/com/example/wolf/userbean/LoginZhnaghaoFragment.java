@@ -58,10 +58,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                         @Override
                         public void onResponse(String result) {
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-<<<<<<< HEAD
                             Log.i("iiiiiii",i+" ");
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                             if (i.equals("success")) {
                                 Map<String, String> idmap = new HashMap();
                                 idmap.put("userName", usernames);

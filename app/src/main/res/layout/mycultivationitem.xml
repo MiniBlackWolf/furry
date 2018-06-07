@@ -9,19 +9,11 @@
     tools:layout_editor_absoluteY="25dp">
 
     <android.support.constraint.ConstraintLayout
-<<<<<<< HEAD
         android:id="@+id/usecultivation"
         android:layout_width="379dp"
         android:layout_height="141dp"
         android:layout_marginTop="8dp"
         android:background="@drawable/ripple"
-=======
-        android:id="@+id/constraintLayout3"
-        android:layout_width="379dp"
-        android:layout_height="141dp"
-        android:layout_marginTop="8dp"
-        android:background="@mipmap/x2"
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -31,17 +23,10 @@
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
-<<<<<<< HEAD
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/x3" />
-=======
-            android:background="@mipmap/x3"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 
         <TextView
             android:id="@+id/cumoney"

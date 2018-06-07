@@ -41,8 +41,5 @@ dependencies {
     implementation 'com.google.zxing:core:3.3.0'
     implementation 'com.jph.takephoto:takephoto_library:4.0.3'
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 }

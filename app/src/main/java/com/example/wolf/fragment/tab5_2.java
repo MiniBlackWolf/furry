@@ -15,12 +15,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-<<<<<<< HEAD
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.RequestManager;
 import com.example.wolf.Utils.GlideCircleTransform;
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
@@ -53,23 +50,15 @@ public class tab5_2 extends Fragment {
     private LinearLayout m4_4;
     @ViewInject(R.id.m14_4)
     private LinearLayout m14_4;
-<<<<<<< HEAD
 
     //    @ViewInject(R.id.myinfo22)
 //    private ImageView myinfo2;
-=======
-    @ViewInject(R.id.myinfo2)
-    private ImageView myinfo2;
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = x.view().inject(tab5_2.this, inflater, container);
-<<<<<<< HEAD
         final RequestManager RequestManager = Glide.with(getActivity());
         final ImageView myinfo2 = view.findViewById(R.id.myinfo22);
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
         //注销方法
         zhuxiao.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +66,6 @@ public class tab5_2 extends Fragment {
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("zhuxiao", "zhuxiao");
                 startActivity(intent);
-<<<<<<< HEAD
                 SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
                 mySharePerferences.edit().clear().apply();
             }
@@ -87,17 +75,6 @@ public class tab5_2 extends Fragment {
         Xutils xutils = new Xutils();
         Map map = new HashMap();
         map.put("userName", userName);
-=======
-                SharedPreferences mySharePerferences =getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
-                mySharePerferences.edit().clear().apply();
-            }
-        });
-        SharedPreferences mySharePerferences =getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
-        String userName = mySharePerferences.getString("userName", "");
-        Xutils xutils=new Xutils();
-        Map map=new HashMap();
-        map.put("userName",userName);
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
         xutils.get(getResources().getString(R.string.Userinfo), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
@@ -107,7 +84,6 @@ public class tab5_2 extends Fragment {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-<<<<<<< HEAD
                 GsonUtil gsonUtil = new GsonUtil();
                 List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
                 name.setText(UserInfo.get(0).getName());
@@ -117,11 +93,6 @@ public class tab5_2 extends Fragment {
                         .placeholder(R.mipmap.load)
                         .transform(new GlideCircleTransform(getActivity()))
                         .into(myinfo2);
-=======
-                GsonUtil gsonUtil=new GsonUtil();
-                List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
-                name.setText(UserInfo.get(0).getName());
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
             }
         });
         m1.setOnClickListener(new View.OnClickListener() {
@@ -135,11 +106,7 @@ public class tab5_2 extends Fragment {
         m4_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
                 Intent intent = new Intent(getActivity(), MyburseActivity.class);
-=======
-                Intent intent=new Intent(getActivity(), MyburseActivity.class);
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 startActivity(intent);
             }
         });
@@ -147,18 +114,13 @@ public class tab5_2 extends Fragment {
         m14_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
                 Intent intent = new Intent(getActivity(), InviteActivity.class);
-=======
-                Intent intent=new Intent(getActivity(), InviteActivity.class);
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 startActivity(intent);
             }
         });
         myinfo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-<<<<<<< HEAD
                 Intent intent = new Intent(getActivity(), MyinfoActivity.class);
                 startActivity(intent);
             }
@@ -180,12 +142,6 @@ public class tab5_2 extends Fragment {
 //                Glide.with(getActivity()).load(UserInfo.get(0).getHeadimgurl()).placeholder(R.mipmap.load).transform(new GlideCircleTransform(getActivity())).into(myinfo2);
 //            }
 //        });
-=======
-                Intent intent=new Intent(getActivity(), MyinfoActivity.class);
-                startActivity(intent);
-            }
-        });
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
         return view;
     }
 }

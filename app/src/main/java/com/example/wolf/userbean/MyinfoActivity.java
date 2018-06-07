@@ -106,11 +106,7 @@ public class MyinfoActivity extends TakePhotoActivity {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
                 String format = simpleDateFormat.format(date);
                 infobr.setText(format);
-<<<<<<< HEAD
                 Log.i("iiiiiiiiii", UserInfo.get(0).getHeadimgurl());
-=======
-                Log.i("iiiiiiiiii",UserInfo.get(0).getHeadimgurl());
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 Glide.with(MyinfoActivity.this).load(UserInfo.get(0).getHeadimgurl()).placeholder(R.mipmap.load).transform(new GlideCircleTransform(MyinfoActivity.this)).into(infohead);
             }
         });
@@ -125,10 +121,6 @@ public class MyinfoActivity extends TakePhotoActivity {
                 break;
             case R.id.myinfosave:
                 Date date = null;
-<<<<<<< HEAD
-=======
-
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日");
                 try {
                     date = simpleDateFormat.parse(infobr.getText().toString());
@@ -148,7 +140,6 @@ public class MyinfoActivity extends TakePhotoActivity {
 
                     }
                 });
-<<<<<<< HEAD
 if(file!=null) {
     ImageCompressUtil.compressImage(MyinfoActivity.this, file.getAbsolutePath(), new ImageCompressUtil.ProcessImgCallBack() {
         @Override
@@ -168,28 +159,6 @@ if(file!=null) {
         }
     });
 }
-=======
-
-                ImageCompressUtil.compressImage(MyinfoActivity.this, file.getAbsolutePath(), new ImageCompressUtil.ProcessImgCallBack() {
-                    @Override
-                    public void compressSuccess(String imgPath) {
-                        File file2=new File(imgPath);
-                        Map<String, File> map = new HashMap<>();
-                        map.put("uploadFile", file2);
-                        Map<String, String> map2 = new HashMap<>();
-                        map2.put("type", "0");
-                        map2.put("uid", String.valueOf(new Getuserinfo(MyinfoActivity.this).getuid()));
-                        xutils.upLoadFile("http://192.168.0.72:8080/fileupload/general", map2, map, new Xutils.XCallBack() {
-                            @Override
-                            public void onResponse(String result) {
-                                Toast.makeText(MyinfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                    }
-                });
-
-
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 
                 break;
             case R.id.myinfohead:
@@ -199,27 +168,19 @@ if(file!=null) {
             //修改名字
             case R.id.myinfoname:
                 final EditText et = new EditText(this);
-<<<<<<< HEAD
                 et.setMaxLines(8);
-=======
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                 AlertDialog.Builder builder = new AlertDialog.Builder(this);
                 builder.setView(et);
                 builder.setTitle("修改名字");
                 builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-<<<<<<< HEAD
                         if (et.getText().toString().length() <= 0) {
                             Toast.makeText(MyinfoActivity.this, "请输入名字", Toast.LENGTH_SHORT).show();
                         }
                         else {
                             infoname.setText(et.getText().toString());
                         }
-=======
-                        Log.i("iiiiiiiiiii", et.getText().toString());
-                        infoname.setText(et.getText().toString());
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
                     }
                 });
                 builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
@@ -293,20 +254,11 @@ if(file!=null) {
         RequestManager glideRequest;
         file = new File(result.getImage().getOriginalPath());
 
-<<<<<<< HEAD
         if (file.length() <= 5242880) {
             glideRequest = Glide.with(this);
             glideRequest.load(file).transform(new GlideCircleTransform(this)).into(infohead);
         } else {
             Toast.makeText(MyinfoActivity.this, "只能选择5mb一下的图片", Toast.LENGTH_SHORT).show();
-=======
-       if(file.length()<=5242880){
-            glideRequest = Glide.with(this);
-            glideRequest.load(file).transform(new GlideCircleTransform(this)).into(infohead);
-        }
-        else{
-           Toast.makeText(MyinfoActivity.this,"只能选择5mb一下的图片",Toast.LENGTH_SHORT).show();
->>>>>>> 91c8bfaa1aeb1797c13192233f721f5ac854bc1f
 
         }
     }
