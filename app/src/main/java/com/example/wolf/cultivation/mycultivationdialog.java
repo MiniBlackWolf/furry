@@ -36,7 +36,7 @@ public class mycultivationdialog extends DialogFragment {
     Spinner spinnerseed;
     Spinner spinnerland;
     Button okseedandland;
-    Xutils xutils = new Xutils();
+//    Xutils xutils = new Xutils();
     int uid;
     List<String> listseed;
     int x = 0;
@@ -62,7 +62,7 @@ public class mycultivationdialog extends DialogFragment {
             public void onClick(View v) {
                 Map<String, String> map = new HashMap<>();
                 map.put("seedName", String.valueOf(spinnerseed.getSelectedItem()));
-                xutils.get(getResources().getString(R.string.getSeedIdByName), map, new Xutils.XCallBack() {
+                Xutils.getInstance().get(getResources().getString(R.string.getSeedIdByName), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
                         //种子sid
@@ -73,7 +73,7 @@ public class mycultivationdialog extends DialogFragment {
                         map.put("sid", i);
                         map.put("count", "1");
                         map.put("token", new Token().getToken(new Getuserinfo(getActivity()).getuid()));
-                        xutils.get(getResources().getString(R.string.sowing), map, new Xutils.XCallBack() {
+                        Xutils.getInstance().get(getResources().getString(R.string.sowing), map, new Xutils.XCallBack() {
                             @Override
                             public void onResponse(String result) {
                                 String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
@@ -95,7 +95,7 @@ public class mycultivationdialog extends DialogFragment {
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(uid));
         map.put("token", new Token().getToken(uid));
-        xutils.get(getResources().getString(R.string.getUserFrame), map, new Xutils.XCallBack() {
+        Xutils.getInstance().get(getResources().getString(R.string.getUserFrame), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
                 GsonUtil gsonUtil1 = new GsonUtil();
@@ -112,7 +112,7 @@ public class mycultivationdialog extends DialogFragment {
         map2.put("uid", String.valueOf(uid));
         map2.put("token", new Token().getToken(uid));
         map2.put("getMethod", "1");
-        xutils.get(getResources().getString(R.string.getUserRemainSeed), map2, new Xutils.XCallBack() {
+        Xutils.getInstance().get(getResources().getString(R.string.getUserRemainSeed), map2, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
                 GsonUtil gsonUtil1 = new GsonUtil();
@@ -125,7 +125,7 @@ public class mycultivationdialog extends DialogFragment {
                     Map<String, String> map = new HashMap<>();
                     for (x = 0; x < userseed.size(); x++) {
                         map.put("sid", String.valueOf(userseed.get(x).getSid()));
-                        xutils.get(getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
+                        Xutils.getInstance().get(getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
                             @Override
                             public void onResponse(String result) {
                                 c++;

@@ -20,6 +20,8 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.wolf.R;
+import com.example.wolf.Utils.Getuserinfo;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.delivery.delivery;
 import com.example.wolf.land.Xuandi;
 import com.example.wolf.cultivation.genyun;
@@ -47,52 +49,82 @@ public class tab2 extends Fragment {
     private ImageView s4;
     @ViewInject(R.id.s5)
     private ImageView s5;
-@ViewInject(R.id.videoView)
-private VideoView videoView;
+    @ViewInject(R.id.videoView)
+    private VideoView videoView;
+    int uid;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = x.view().inject(tab2.this, inflater, container);
+         uid = new Getuserinfo(getActivity()).getuid();
         slider(view);
         xuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Xuandi.class);
-                startActivity(intent);
+                if (uid==0) {
+                    ToastUtils.showToast(getActivity(),"请先登录");
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), Xuandi.class);
+                    startActivity(intent);
+
+                }
+
             }
         });
         s2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), seedActivity.class);
-                startActivity(intent);
+                if (uid==0) {
+                    ToastUtils.showToast(getActivity(),"请先登录");
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), seedActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         s3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), genyun.class);
-                startActivity(intent);
+                if (uid==0) {
+                    ToastUtils.showToast(getActivity(),"请先登录");
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), genyun.class);
+                    startActivity(intent);
+                }
             }
         });
         s4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), pick.class);
-                startActivity(intent);
+                if (uid==0) {
+                    ToastUtils.showToast(getActivity(),"请先登录");
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), pick.class);
+                    startActivity(intent);
+                }
             }
         });
         s5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), delivery.class);
-                startActivity(intent);
+                if (uid==0) {
+                    ToastUtils.showToast(getActivity(),"请先登录");
+                }
+                else {
+                    Intent intent = new Intent(getActivity(), delivery.class);
+                    startActivity(intent);
+                }
             }
         });
         MediaController mc = new MediaController(getActivity());
         mc.setVisibility(View.INVISIBLE);
         videoView.setMediaController(mc);
-        Uri uri=Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
+        Uri uri = Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
         videoView.setVideoURI(uri);
         videoView.setMediaController(new MediaController(getActivity()));
 
@@ -105,13 +137,13 @@ private VideoView videoView;
         HashMap<String, Integer> maps = new HashMap<>();
         maps.put("a1", R.mipmap.possss);
         maps.put("a2", R.mipmap.b1);
-        maps.put("a3",R.mipmap.b2_1);
-        maps.put("a4",R.mipmap.b2_2);
+        maps.put("a3", R.mipmap.b2_1);
+        maps.put("a4", R.mipmap.b2_2);
         for (String name : maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
-                   .description(name)
+                    .description(name)
                     .image(maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {
@@ -137,7 +169,7 @@ private VideoView videoView;
         // 设置TextView自定义动画
         mDemoSlider1.setCustomAnimation(new DescriptionAnimation());
 
-      //  mDemoSlider1.setCustomAnimation(new DescriptionAnimation()); // 多种效果，进入该类修改，参考效果github/daimajia/AndroidViewAnimations
+        //  mDemoSlider1.setCustomAnimation(new DescriptionAnimation()); // 多种效果，进入该类修改，参考效果github/daimajia/AndroidViewAnimations
         // 设置持续时间
         mDemoSlider1.setDuration(2000);
     }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wolf.R;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.seed.ProdctBean;
@@ -140,7 +141,6 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                 //用getint获取值
                 for (int i = 0; i < lists.size(); i++) {
                     int uid = mySharePerferences.getInt("uid", 0);
-                    Xutils xutils = new Xutils();
                     Map<String, String> map = new HashMap();
                     map.put("uid", String.valueOf(uid));
                     map.put("sid", String.valueOf(lists.get(i).getSid()));
@@ -148,7 +148,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                     Log.i("iiiiiiiiiiiii", count.get(i + 1).getText().toString());
                     map.put("token", new Token().getToken(uid));
                     final int finalI = i;
-                    xutils.get(url, map, new Xutils.XCallBack() {
+                    Xutils.getInstance().get(url, map, new Xutils.XCallBack() {
                         @Override
                         public void onResponse(String result) {
                             Log.i("iiiiiiiiiiii", result);
@@ -157,7 +157,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                             if (listsusse.size() >= finalI) {
                                 for (int i = 0; i < listsusse.size(); i++) {
                                     if (listsusse.get(i).equals("success")) {
-                                        Toast.makeText(context, "购买成功", Toast.LENGTH_LONG).show();
+                                        ToastUtils.showToast(context,"购买成功");
 
                                     }
 

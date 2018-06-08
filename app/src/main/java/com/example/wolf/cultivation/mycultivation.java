@@ -81,7 +81,7 @@ public class mycultivation extends AppCompatActivity {
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (position) {
                             case 0: {
-                        new mycultivationdialog().show(getSupportFragmentManager(),"1");
+                                new mycultivationdialog().show(getSupportFragmentManager(), "1");
 
                                 break;
                             }
@@ -110,7 +110,6 @@ public class mycultivation extends AppCompatActivity {
             }
         });
     }
-
 
 
     @OnClick(R.id.cufh)
