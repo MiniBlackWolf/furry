@@ -6,11 +6,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -22,9 +25,11 @@ import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.ToastUtils;
+import com.example.wolf.adpater.Myvideoadapter;
 import com.example.wolf.delivery.delivery;
 import com.example.wolf.land.Xuandi;
 import com.example.wolf.cultivation.genyun;
+import com.example.wolf.land.userland;
 import com.example.wolf.pick.pick;
 import com.example.wolf.seed.seedActivity;
 
@@ -33,7 +38,9 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 @ContentView(R.layout.tab2)
 public class tab2 extends Fragment {
@@ -51,21 +58,41 @@ public class tab2 extends Fragment {
     private ImageView s5;
     @ViewInject(R.id.videoView)
     private VideoView videoView;
+    @ViewInject(R.id.tab2videorecyclerview)
+    private RecyclerView tab2videorecyclerview;
+    List<userland> list=new ArrayList<>();
     int uid;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = x.view().inject(tab2.this, inflater, container);
-         uid = new Getuserinfo(getActivity()).getuid();
+        Myvideoadapter myvideoadapter=new Myvideoadapter(R.layout.videoitem,list,getActivity());
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
+        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        tab2videorecyclerview.setLayoutManager(linearLayoutManager);
+        uid = new Getuserinfo(getActivity()).getuid();
         slider(view);
+        addonclick();
+        MediaController mc = new MediaController(getActivity());
+        mc.setVisibility(View.INVISIBLE);
+        videoView.setMediaController(mc);
+        Uri uri = Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
+        videoView.setVideoURI(uri);
+        videoView.setMediaController(mc);
+
+        //mvdView.requestFocus();
+        videoView.start();
+        return view;
+    }
+
+    private void addonclick() {
         xuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid==0) {
-                    ToastUtils.showToast(getActivity(),"请先登录");
-                }
-                else {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
                     Intent intent = new Intent(getActivity(), Xuandi.class);
                     startActivity(intent);
 
@@ -76,10 +103,9 @@ public class tab2 extends Fragment {
         s2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid==0) {
-                    ToastUtils.showToast(getActivity(),"请先登录");
-                }
-                else {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
                     Intent intent = new Intent(getActivity(), seedActivity.class);
                     startActivity(intent);
                 }
@@ -88,10 +114,9 @@ public class tab2 extends Fragment {
         s3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid==0) {
-                    ToastUtils.showToast(getActivity(),"请先登录");
-                }
-                else {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
                     Intent intent = new Intent(getActivity(), genyun.class);
                     startActivity(intent);
                 }
@@ -100,10 +125,9 @@ public class tab2 extends Fragment {
         s4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid==0) {
-                    ToastUtils.showToast(getActivity(),"请先登录");
-                }
-                else {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
                     Intent intent = new Intent(getActivity(), pick.class);
                     startActivity(intent);
                 }
@@ -112,25 +136,14 @@ public class tab2 extends Fragment {
         s5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid==0) {
-                    ToastUtils.showToast(getActivity(),"请先登录");
-                }
-                else {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
                     Intent intent = new Intent(getActivity(), delivery.class);
                     startActivity(intent);
                 }
             }
         });
-        MediaController mc = new MediaController(getActivity());
-        mc.setVisibility(View.INVISIBLE);
-        videoView.setMediaController(mc);
-        Uri uri = Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
-        videoView.setVideoURI(uri);
-        videoView.setMediaController(new MediaController(getActivity()));
-
-        //mvdView.requestFocus();
-        videoView.start();
-        return view;
     }
 
     private void slider(View view) {
