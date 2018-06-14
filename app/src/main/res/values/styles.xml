@@ -19,7 +19,7 @@
         <!--是否在悬浮Activity之上  -->
         <item name="android:windowIsFloating">true</item>
         <!-- 标题 -->
-        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowNoTitle">false</item>
         <!--阴影  -->
         <item name="android:windowIsTranslucent">true</item><!--半透明-->
         <!--背景透明-->

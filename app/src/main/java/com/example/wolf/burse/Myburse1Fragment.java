@@ -105,7 +105,7 @@ public class Myburse1Fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
+    //    EnvUtils.setEnv(EnvUtils.EnvEnum.SANDBOX);
         View mRootView = inflater.inflate(R.layout.myburse_1, container, false);
         ButterKnife.bind(this, mRootView);
         Map<String, String> map = new HashMap<>();
@@ -138,7 +138,7 @@ public class Myburse1Fragment extends Fragment {
         Xutils xutils = new Xutils();
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
-        map.put("money", "10");
+        map.put("money", "0.01");
         map.put("subject", "皮皮虾");//商品名
         map.put("token", new Token().getToken(getuserinfo.getuid()));
         //获取订单信息

@@ -5,7 +5,10 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Display;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +18,7 @@ import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.wolf.R;
@@ -22,35 +26,50 @@ import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
+import com.example.wolf.adpater.mycultivationadapterseed;
 import com.example.wolf.land.userland;
-import com.example.wolf.seed.seedbean;
 import com.example.wolf.seed.userseed;
-import com.google.gson.Gson;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class mycultivationdialog extends DialogFragment {
-    Spinner spinnerseed;
+    //  Spinner spinnerseed;
     Spinner spinnerland;
     Button okseedandland;
-//    Xutils xutils = new Xutils();
+    RecyclerView mycultivationseed;
+    TextView mycultivationtotal;
+    TextView mycultivationcunt;
+    //    Xutils xutils = new Xutils();
     int uid;
-    List<String> listseed;
-    int x = 0;
-    int c = 0;
-    List<userseed> userseed;
     Dialog dialog;
+    Xutils xutils=new Xutils();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         uid = new Getuserinfo(getActivity()).getuid();
         View view = inflater.inflate(R.layout.mycultivationpopitem, container, false);
-        spinnerseed = view.findViewById(R.id.spinnerseed);
+        //    spinnerseed = view.findViewById(R.id.spinnerseed);
         spinnerland = view.findViewById(R.id.spinnerland);
+        mycultivationseed = view.findViewById(R.id.mycultivationseed);
+        mycultivationtotal = view.findViewById(R.id.mycultivationtotal);
+        mycultivationcunt = view.findViewById(R.id.mycultivationcunt);
         okseedandland = view.findViewById(R.id.okseedandland);
+        Map<String,String> map=new HashMap<>();
+        map.put("uid", String.valueOf(new Getuserinfo(getActivity()).getuid()));
+        map.put("token",new Token().getToken(new Getuserinfo(getActivity()).getuid()));
+        xutils.get(getActivity().getResources().getString(R.string.getUserRemainSeedWithoutDate), map, new Xutils.XCallBack() {
+            @Override
+            public void onResponse(String result) {
+                GsonUtil gsonUtil=new GsonUtil();
+                List userseed = gsonUtil.Gson(result,userseed.class);
+                mycultivationadapterseed mycultivationadapterseed=new mycultivationadapterseed(R.layout.mycultivationitem2,userseed,getActivity());
+                mycultivationseed.setLayoutManager(new LinearLayoutManager(getActivity()));
+                mycultivationseed.setAdapter(mycultivationadapterseed);
+            }
+        });
+
         addspinner();
         okseedandland();
         return view;
@@ -61,7 +80,7 @@ public class mycultivationdialog extends DialogFragment {
             @Override
             public void onClick(View v) {
                 Map<String, String> map = new HashMap<>();
-                map.put("seedName", String.valueOf(spinnerseed.getSelectedItem()));
+                //      map.put("seedName", String.valueOf(spinnerseed.getSelectedItem()));
                 Xutils.getInstance().get(getResources().getString(R.string.getSeedIdByName), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
@@ -77,8 +96,8 @@ public class mycultivationdialog extends DialogFragment {
                             @Override
                             public void onResponse(String result) {
                                 String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                                if(i.equals("success")){
-                                    Toast.makeText(getActivity(),"播种成功",Toast.LENGTH_SHORT).show();
+                                if (i.equals("success")) {
+                                    Toast.makeText(getActivity(), "播种成功", Toast.LENGTH_SHORT).show();
                                     dialog.dismiss();
                                 }
                             }
@@ -108,43 +127,43 @@ public class mycultivationdialog extends DialogFragment {
                 spinnerland.setAdapter(adapter);
             }
         });
-        Map<String, String> map2 = new HashMap<>();
-        map2.put("uid", String.valueOf(uid));
-        map2.put("token", new Token().getToken(uid));
-        map2.put("getMethod", "1");
-        Xutils.getInstance().get(getResources().getString(R.string.getUserRemainSeed), map2, new Xutils.XCallBack() {
-            @Override
-            public void onResponse(String result) {
-                GsonUtil gsonUtil1 = new GsonUtil();
-                userseed = gsonUtil1.Gson(result, userseed.class);
-                if (userseed.isEmpty()) {
-                    Toast.makeText(getActivity(),"请先购买种子",Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    listseed = new ArrayList<>();
-                    Map<String, String> map = new HashMap<>();
-                    for (x = 0; x < userseed.size(); x++) {
-                        map.put("sid", String.valueOf(userseed.get(x).getSid()));
-                        Xutils.getInstance().get(getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
-                            @Override
-                            public void onResponse(String result) {
-                                c++;
-                                GsonUtil gsonUtil2 = new GsonUtil();
-                                List<seedbean.SeedBean> SeedBean = gsonUtil2.Gson(result, seedbean.SeedBean.class);
-                                listseed.add(SeedBean.get(0).getSeedname());
-                                Log.i("iiiiiiii", x + "");
-                                if (c == userseed.size()) {
-                                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listseed);
-                                    spinnerseed.setAdapter(adapter);
-
-                                }
-                            }
-                        });
-                    }
-
-                }
-            }
-        });
+//        Map<String, String> map2 = new HashMap<>();
+//        map2.put("uid", String.valueOf(uid));
+//        map2.put("token", new Token().getToken(uid));
+//        map2.put("getMethod", "1");
+//        Xutils.getInstance().get(getResources().getString(R.string.getUserRemainSeed), map2, new Xutils.XCallBack() {
+//            @Override
+//            public void onResponse(String result) {
+//                GsonUtil gsonUtil1 = new GsonUtil();
+//                userseed = gsonUtil1.Gson(result, userseed.class);
+//                if (userseed.isEmpty()) {
+//                    Toast.makeText(getActivity(),"请先购买种子",Toast.LENGTH_SHORT).show();
+//                }
+//                else{
+//                    listseed = new ArrayList<>();
+//                    Map<String, String> map = new HashMap<>();
+//                    for (x = 0; x < userseed.size(); x++) {
+//                        map.put("sid", String.valueOf(userseed.get(x).getSid()));
+//                        Xutils.getInstance().get(getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
+//                            @Override
+//                            public void onResponse(String result) {
+//                                c++;
+//                                GsonUtil gsonUtil2 = new GsonUtil();
+//                                List<seedbean.SeedBean> SeedBean = gsonUtil2.Gson(result, seedbean.SeedBean.class);
+//                                listseed.add(SeedBean.get(0).getSeedname());
+//                                Log.i("iiiiiiii", x + "");
+//                                if (c == userseed.size()) {
+//                                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listseed);
+//                                    spinnerseed.setAdapter(adapter);
+//
+//                                }
+//                            }
+//                        });
+//                    }
+//
+//                }
+//            }
+//        });
 
     }
 
@@ -154,16 +173,19 @@ public class mycultivationdialog extends DialogFragment {
 
         // 不带style的构建的dialog宽度无法铺满屏幕
         //     Dialog dialog = new Dialog(getActivity());
+        View view = getLayoutInflater().inflate(R.layout.mycultivationpopitem,null);
+        view.setMinimumWidth(500);
         dialog = new Dialog(getActivity());
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.mycultivationpopitem);
+        dialog.setContentView(view);
         dialog.setCanceledOnTouchOutside(true);
 
         // 设置弹出框布局参数，宽度铺满全屏，底部。
         Window window = dialog.getWindow();
         WindowManager.LayoutParams wlp = window.getAttributes();
         wlp.gravity = Gravity.BOTTOM;
-        wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
+        wlp.width =WindowManager.LayoutParams.WRAP_CONTENT;
+        wlp.height=WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(wlp);
         window.setWindowAnimations(R.style.MyDialog);
 

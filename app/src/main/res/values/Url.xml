@@ -27,4 +27,5 @@
     <string name="change">http://192.168.0.72:8080/net/userBase/change</string>
     <string name="getSeedIdByName">http://192.168.0.72:8080/net/seed/getSeedIdByName</string>
     <string name="sowing">http://192.168.0.72:8080/net/seed/sowing</string>
+    <string name="getUserRemainSeedWithoutDate">http://192.168.0.72:8080/net/seed/getUserRemainSeedWithoutDate</string>
 </resources>
