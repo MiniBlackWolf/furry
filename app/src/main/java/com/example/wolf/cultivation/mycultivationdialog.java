@@ -1,6 +1,7 @@
 package com.example.wolf.cultivation;
 
 import android.app.Dialog;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -41,10 +42,11 @@ public class mycultivationdialog extends DialogFragment {
     RecyclerView mycultivationseed;
     TextView mycultivationtotal;
     TextView mycultivationcunt;
-    //    Xutils xutils = new Xutils();
     int uid;
     Dialog dialog;
     Xutils xutils=new Xutils();
+
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -123,8 +125,9 @@ public class mycultivationdialog extends DialogFragment {
                 for (int i = 0; i < userland.size(); i++) {
                     listland.add(userland.get(i).getFid());
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_spinner_item, listland);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem, listland);
                 spinnerland.setAdapter(adapter);
+
             }
         });
 //        Map<String, String> map2 = new HashMap<>();
@@ -173,19 +176,17 @@ public class mycultivationdialog extends DialogFragment {
 
         // 不带style的构建的dialog宽度无法铺满屏幕
         //     Dialog dialog = new Dialog(getActivity());
-        View view = getLayoutInflater().inflate(R.layout.mycultivationpopitem,null);
-        view.setMinimumWidth(500);
-        dialog = new Dialog(getActivity());
+        dialog = new Dialog(getActivity(),R.style.MyDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(view);
+        dialog.setContentView(R.layout.mycultivationpopitem);
         dialog.setCanceledOnTouchOutside(true);
 
         // 设置弹出框布局参数，宽度铺满全屏，底部。
         Window window = dialog.getWindow();
         WindowManager.LayoutParams wlp = window.getAttributes();
+        window.getDecorView().setPadding(0, 0, 0, 0);
         wlp.gravity = Gravity.BOTTOM;
-        wlp.width =WindowManager.LayoutParams.WRAP_CONTENT;
-        wlp.height=WindowManager.LayoutParams.WRAP_CONTENT;
+        wlp.width =wlp.MATCH_PARENT;
         window.setAttributes(wlp);
         window.setWindowAnimations(R.style.MyDialog);
 

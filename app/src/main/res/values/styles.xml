@@ -14,6 +14,7 @@
         <item name="colorControlActivated">#ffffff</item>
     </style>
     <style name="MyDialog" parent="@android:style/Theme.Holo.Dialog">
+
         <!-- 是否有边框 -->
         <item name="android:windowFrame">@null</item>
         <!--是否在悬浮Activity之上  -->
