@@ -1,5 +1,6 @@
 package com.example.wolf.Utils;
 
+import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +23,13 @@ public class Xutils {
     private volatile static Xutils instance;
     private Handler handler;
     private ImageOptions options;
+    private static Context context;
 
-    public Xutils() {
+    public Xutils(Context context) {
         handler = new Handler(Looper.getMainLooper());
-
+        this.context = context;
     }
+
     /**
      * 单例模式
      *
@@ -36,7 +39,7 @@ public class Xutils {
         if (instance == null) {
             synchronized (Xutils.class) {
                 if (instance == null) {
-                    instance = new Xutils();
+                    instance = new Xutils(context);
                 }
             }
         }
@@ -61,7 +64,6 @@ public class Xutils {
 
             @Override
             public void onSuccess(String result) {
-
                 onSuccessResponse(result, callBack);
             }
 

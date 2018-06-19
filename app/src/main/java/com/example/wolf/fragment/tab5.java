@@ -54,7 +54,7 @@ public class tab5 extends Fragment {
     private Button denglu;
     @ViewInject(R.id.zhuche2)
     private Button zhuche;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(getActivity());
 
     @Nullable
     @Override

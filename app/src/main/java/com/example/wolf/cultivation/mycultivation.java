@@ -51,7 +51,7 @@ public class mycultivation extends AppCompatActivity {
     LinearLayout culingping;
     @BindView(R.id.curecyclerview)
     RecyclerView curecyclerview;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(mycultivation.this);
     Getuserinfo getuserinfo = new Getuserinfo(mycultivation.this);
     @BindView(R.id.full)
     ConstraintLayout full;

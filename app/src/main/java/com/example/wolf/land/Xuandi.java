@@ -83,12 +83,12 @@ public class Xuandi extends AppCompatActivity {
     int sl;
     int couns;
     List<FarmData.SelectionBean> dddList;
-
+     Xutils xutils = new Xutils(Xuandi.this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
-        final Xutils xutils = new Xutils();
+
         //http get农场选地
         settext(xutils);
         //数量总价

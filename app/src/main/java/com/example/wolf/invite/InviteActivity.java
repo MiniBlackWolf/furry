@@ -51,15 +51,13 @@ public class InviteActivity extends Activity  {
     View view15;
     private int mLayoutHeight = 0;
     private boolean isOpen = true;
-
+    Xutils xutils = new Xutils(InviteActivity.this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.invite);
         ButterKnife.bind(this);
         invitetext.setAlpha(0f);
-
-        Xutils xutils = new Xutils();
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(new Getuserinfo(InviteActivity.this).getuid()));
         map.put("token", new Token().getToken(new Getuserinfo(InviteActivity.this).getuid()));

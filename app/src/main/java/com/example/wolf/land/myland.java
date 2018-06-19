@@ -51,13 +51,13 @@ public class myland extends AppCompatActivity {
     View view7;
     @BindView(R.id.xuzu)
     Button xuzu;
-
+    Xutils xutils = new Xutils(myland.this);
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myland);
         ButterKnife.bind(this);
-        Xutils xutils = new Xutils();
+
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         map.put("token", new Token().getToken(getuserinfo.getuid()));

@@ -45,7 +45,7 @@ public class PhoneloginFragment extends Fragment {
     private EditText phonenm;
     @ViewInject(R.id.yanzhengma)
     private EditText yanzhengma;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(getActivity());
     private String code = "";
     Random random = new Random();
     @Override

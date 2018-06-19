@@ -36,7 +36,7 @@ public class LoginZhnaghaoFragment extends Fragment {
     private EditText passworld;
     @ViewInject(R.id.denglul2)
     private Button denglu;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

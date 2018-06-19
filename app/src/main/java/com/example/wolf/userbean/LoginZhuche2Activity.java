@@ -3,6 +3,7 @@ package com.example.wolf.userbean;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginZhuche2Activity extends Activity {
+public class LoginZhuche2Activity extends AppCompatActivity {
 
 
     @BindView(R.id.zhucname)
@@ -31,7 +32,7 @@ public class LoginZhuche2Activity extends Activity {
     ImageView zhuche2fh;
     @BindView(R.id.fin)
     Button fin;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(LoginZhuche2Activity.this);
     String phonenm;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -73,7 +73,7 @@ public class MyinfoActivity extends TakePhotoActivity {
     ImageView infohead;
     @BindView(R.id.myinfohead)
     LinearLayout myinfohead;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(MyinfoActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

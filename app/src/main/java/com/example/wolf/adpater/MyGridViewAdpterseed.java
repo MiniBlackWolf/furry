@@ -35,6 +35,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
     private String url;
     private List<String> listsusse = new ArrayList<>();
 
+
     public MyGridViewAdpterseed(Context context, List<ProdctBean> lists, Button buy, SharedPreferences mySharePerferences, String url, TextView allmoeny) {
         this.context = context;
         this.lists = lists;
@@ -61,6 +62,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+
         ViewHolder holder;
         if (convertView == null) {
             holder = new ViewHolder();
@@ -136,6 +138,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Xutils xutils = new Xutils(context);
                 Log.i("iiiiiiiiiiiiiii", "iii");
 
                 //用getint获取值
@@ -148,7 +151,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                     Log.i("iiiiiiiiiiiii", count.get(i + 1).getText().toString());
                     map.put("token", new Token().getToken(uid));
                     final int finalI = i;
-                    Xutils.getInstance().get(url, map, new Xutils.XCallBack() {
+                    xutils.get(url, map, new Xutils.XCallBack() {
                         @Override
                         public void onResponse(String result) {
                             Log.i("iiiiiiiiiiii", result);
@@ -157,7 +160,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
                             if (listsusse.size() >= finalI) {
                                 for (int i = 0; i < listsusse.size(); i++) {
                                     if (listsusse.get(i).equals("success")) {
-                                        ToastUtils.showToast(context,"购买成功");
+                                        ToastUtils.showToast(context, "购买成功");
 
                                     }
 

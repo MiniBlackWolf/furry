@@ -42,7 +42,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder helper, final userland item) {
-        final Xutils xutils = new Xutils();
+        Xutils xutils=new Xutils(context);
         Map map = new HashMap();
         map.put("sid", item.getSfid());
         xutils.get(context.getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
@@ -89,6 +89,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
         xuzu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Xutils xutils=new Xutils(context);
                 for (int i = 0; i < list.size(); i++) {
                     int visibility = list2.get(i).getVisibility();
                     if (visibility == View.VISIBLE) {

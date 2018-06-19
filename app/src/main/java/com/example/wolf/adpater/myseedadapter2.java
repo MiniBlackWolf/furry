@@ -26,7 +26,7 @@ public class myseedadapter2 extends BaseQuickAdapter<userseed,BaseViewHolder>{
 
     @Override
     protected void convert(final BaseViewHolder helper, final userseed item) {
-        Xutils xutils=new Xutils();
+        Xutils xutils=new Xutils(context);
         Map<String,String> map=new HashMap<>();
         map.put("sid", String.valueOf(item.getSid()));
         xutils.get(context.getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {

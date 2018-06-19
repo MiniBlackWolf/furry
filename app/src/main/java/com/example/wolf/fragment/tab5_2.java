@@ -50,7 +50,7 @@ public class tab5_2 extends Fragment {
     private LinearLayout m4_4;
     @ViewInject(R.id.m14_4)
     private LinearLayout m14_4;
-
+    Xutils xutils = new Xutils(getActivity());
     //    @ViewInject(R.id.myinfo22)
 //    private ImageView myinfo2;
     @Nullable
@@ -72,7 +72,6 @@ public class tab5_2 extends Fragment {
         });
         SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
         String userName = mySharePerferences.getString("userName", "");
-        Xutils xutils = new Xutils();
         Map map = new HashMap();
         map.put("userName", userName);
         xutils.get(getResources().getString(R.string.Userinfo), map, new Xutils.XCallBack() {

@@ -45,7 +45,7 @@ public class myseed extends AppCompatActivity {
     View overduev;
     @BindView(R.id.overdue)
     LinearLayout overdue;
-    private Xutils xutils = new Xutils();
+    private Xutils xutils = new Xutils(myseed.this);
     private Getuserinfo getuserinfo = new Getuserinfo(myseed.this);
     private List<seedbean> userseed;
     Myseedadapter myseedadapter;

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -23,7 +24,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class LoginZhucheActivity extends Activity {
+public class LoginZhucheActivity extends AppCompatActivity {
 
     @BindView(R.id.yanzhengma2)
     EditText yanzhengma2;
@@ -35,7 +36,7 @@ public class LoginZhucheActivity extends Activity {
     Button fasongyanzm;
     private String code = "";
     Random random = new Random();
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(LoginZhucheActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     @ViewInject(R.id.wod)
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(MainActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -18,9 +18,8 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/mycultivationseed"
-            android:layout_width="344dp"
-            android:layout_height="132dp"
-            android:layout_marginBottom="8dp"
+            android:layout_width="0dp"
+            android:layout_height="140dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout34"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -32,9 +31,11 @@
             android:id="@+id/textView51"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
             android:layout_marginTop="124dp"
             android:text="选择使用土地"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerland"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
@@ -44,16 +45,20 @@
             android:id="@+id/spinnerland"
             android:layout_width="193dp"
             android:layout_height="39dp"
+            android:layout_marginBottom="17dp"
             android:layout_marginTop="160dp"
             android:background="@drawable/videobuttonck"
+            app:layout_constraintBottom_toTopOf="@+id/textView54"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.48"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView6"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
+            android:layout_marginBottom="14dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -62,25 +67,24 @@
             android:text="(所有耕耘券使用面积不会剩余保存，请最大化使用)"
             android:textColor="@color/crop__selector_pressed"
             android:textSize="9sp"
+            app:layout_constraintBottom_toTopOf="@+id/spinnerland"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.942"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView56"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
+            android:layout_height="20dp"
             android:text="菜鸟环保|播种套餐券"
             android:textColor="@android:color/background_dark"
+            app:layout_constraintBottom_toTopOf="@+id/textView7"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintHorizontal_bias="0.73"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/linearLayout34"
@@ -140,41 +144,101 @@
             android:id="@+id/textView54"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="11dp"
             android:layout_marginTop="216dp"
             android:text="选择播种蔬菜"
             android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@+id/mycultivationseed"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="使用数量"
+            android:textColor="@android:color/background_dark"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.56"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.56" />
+
+        <TextView
+            android:id="@+id/textView55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="(请确保您播种蔬菜面积总和不超过当前播种面积)"
+            android:textColor="@color/crop__selector_pressed"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@+id/mycultivationseed"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/textView54"
+            app:layout_constraintTop_toBottomOf="@+id/spinnerland"
+            app:layout_constraintVertical_bias="0.64" />
+
+        <ImageView
+            android:id="@+id/mycultivationpopjia"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.050000012"
+            app:srcCompat="@mipmap/j1" />
+
+        <ImageView
+            android:id="@+id/mycultivationpopjian"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="56dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toStartOf="@+id/mycultivationpopjia"
+            app:layout_constraintHorizontal_bias="0.28"
+            app:layout_constraintStart_toEndOf="@+id/textView7"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.050000012"
+            app:srcCompat="@mipmap/j2" />
+
+        <TextView
+            android:id="@+id/mycultivationpopcount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="60dp"
-            android:text="使用数量"
-            android:textColor="@android:color/background_dark"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.631"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="56dp"
+            android:text="0"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toStartOf="@+id/mycultivationpopjia"
+            app:layout_constraintStart_toEndOf="@+id/mycultivationpopjian"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.06999999" />
 
     </android.support.constraint.ConstraintLayout>
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
         android:layout_marginBottom="8dp"
+        android:background="@drawable/img_border"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.078"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@mipmap/x3" />
+        app:srcCompat="@mipmap/cu6" />
 
 </android.support.constraint.ConstraintLayout>

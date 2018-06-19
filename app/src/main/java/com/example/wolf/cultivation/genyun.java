@@ -82,7 +82,7 @@ public class genyun extends AppCompatActivity {
     private TextView kuaishu;
     @ViewInject(R.id.bz)
     private ConstraintLayout constraintLayout;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(genyun.this);
     int add = 0;
     int add2 = 0;
     int add3 = 0;

@@ -14,7 +14,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.wolf.R;
-import com.example.wolf.Utils.Xutils;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -23,7 +22,7 @@ import butterknife.OnClick;
 
 public class Loginpage extends AppCompatActivity {
 
-    Xutils xutils = new Xutils();
+    //Xutils xutils = new Xutils(Loginpage.this);
     @BindView(R.id.accountview)
     View accountview;
     @BindView(R.id.accountlogin)

@@ -39,13 +39,13 @@ import butterknife.OnClick;
 @ContentView(R.layout.myburse_1)
 public class Myburse1Fragment extends Fragment {
 
-    Xutils xutils = new Xutils();
     private static final int SDK_PAY_FLAG = 1;
     private static final int SDK_AUTH_FLAG = 2;
     @BindView(R.id.moneyss)
     TextView moneyss;
     @BindView(R.id.pay)
     Button pay;
+    Xutils xutils=new Xutils(getActivity());
     @SuppressLint("HandlerLeak")
     private Handler mHandler = new Handler() {
         @SuppressWarnings("unused")
@@ -135,7 +135,6 @@ public class Myburse1Fragment extends Fragment {
 
         Getuserinfo getuserinfo = new Getuserinfo(getActivity());
         //支付方法
-        Xutils xutils = new Xutils();
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         map.put("money", "0.01");

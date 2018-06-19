@@ -35,7 +35,7 @@ public class Myburse2Fragment extends Fragment {
     private TextView point;
     @ViewInject(R.id.getpoint)
     private TextView getpoint;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(getActivity());
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,9 +63,9 @@ public class Myburse2Fragment extends Fragment {
             public void onClick(View v) {
                 FragmentManager supportFragmentManager = getActivity().getSupportFragmentManager();
                 FragmentTransaction fragmentTransaction = supportFragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.myburselayout,new Myburse2PointFragment());
+                fragmentTransaction.replace(R.id.myburselayout, new Myburse2PointFragment());
                 fragmentTransaction.commit();
-        }
+            }
 
         });
 

@@ -27,7 +27,7 @@ public class OrderActivity extends AppCompatActivity {
 
     @BindView(R.id.orderrecyclerview)
     RecyclerView orderrecyclerview;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(OrderActivity.this);
     Getuserinfo getuserinfo = new Getuserinfo(OrderActivity.this);
 
     @Override

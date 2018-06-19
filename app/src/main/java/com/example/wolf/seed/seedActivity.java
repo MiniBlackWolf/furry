@@ -70,7 +70,7 @@ public class seedActivity extends AppCompatActivity {
     private TextView seedzhongjian;
     @ViewInject(R.id.seedbuy)
     private Button seedbuy;
-    Xutils xutils = new Xutils();
+    Xutils xutils = new Xutils(seedActivity.this);
     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     Map<String, Object> map;
     private ImageView[] ivPoints;//小圆点图片的集合
