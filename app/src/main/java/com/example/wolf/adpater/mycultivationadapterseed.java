@@ -18,8 +18,10 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
+import com.example.wolf.cultivation.mycultivationdialog;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.seed.userseed;
 
@@ -89,7 +91,11 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
                         public void onResponse(String result) {
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                             if (i.equals("success")) {
-                                Toast.makeText(context, "播种成功！", Toast.LENGTH_SHORT).show();
+                                ToastUtils.showToast(context,"播种成功！");
+                            }
+                            else{
+
+                                ToastUtils.showToast(context,"播种失败！");
                             }
 
                         }

@@ -71,7 +71,7 @@ public class Xutils {
             public void onError(Throwable ex, boolean isOnCallback) {
                 ex.printStackTrace();
                 Log.i("iiiiiiiiiiiii", "异步get onError");
-
+                ToastUtils.showToast(context,"网络不小心走丢了？");
             }
 
             @Override
@@ -112,6 +112,7 @@ public class Xutils {
             @Override
             public void onError(Throwable ex, boolean isOnCallback) {
                 Log.i("iiiiiiiiiiiii", "异步post onError");
+                ToastUtils.showToast(context,"网络不小心走丢了？");
             }
 
             @Override

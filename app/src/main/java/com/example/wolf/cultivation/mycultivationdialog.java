@@ -18,11 +18,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -31,9 +29,9 @@ import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
-import com.example.wolf.Utils.jianli;
 import com.example.wolf.adpater.mycultivationadapterseed;
 import com.example.wolf.land.userland;
 import com.example.wolf.seed.userseed;
@@ -63,15 +61,7 @@ public class mycultivationdialog extends DialogFragment {
     int Fcount;
     int add2;
     LinearLayoutManager linearLayoutManager;
-    @SuppressLint("HandlerLeak")
-    Handler handler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            List<View> list= (List) msg.obj;
-            Log.i("iiiiiii",list.size()+"");
-        }
-    };
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -90,12 +80,14 @@ public class mycultivationdialog extends DialogFragment {
         mycultivationpopjia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (add < 0) {
-                    mycultivationpopcount.setText("0");
-                    add = 0;
+                Bundle bundle = getArguments();
+                int counts = bundle.getInt("count");
+                if (add >= counts) {
+                     ToastUtils.showToast(getActivity(),"券不足请购买");
                 } else {
                     add += 1;
                     mycultivationpopcount.setText(add + "");
+                    mycultivationcunt.setText("共"+add+"件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount.getText()));
                     Fcount = count * 5;
 
@@ -111,6 +103,7 @@ public class mycultivationdialog extends DialogFragment {
                 } else {
                     add -= 1;
                     mycultivationpopcount.setText(add + "");
+                    mycultivationcunt.setText("共"+add+"件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount.getText()));
                     Fcount = count * 5;
                     setseed();
@@ -131,7 +124,7 @@ public class mycultivationdialog extends DialogFragment {
                 //  Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<userseed> userseed = gsonUtil.Gson(result, com.example.wolf.seed.userseed.class);
-                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(),okseedandland,spinnerland,Integer.valueOf(mycultivationpopcount.getText().toString()));
+                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()));
                 mycultivationadapterseed.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -139,7 +132,7 @@ public class mycultivationdialog extends DialogFragment {
                         TextView mycultivationitem2count = (TextView) mycultivationadapterseed.getViewByPosition(mycultivationseed, position, R.id.mycultivationitem2count);
                         Button mycultivationitem2button = (Button) mycultivationadapterseed.getViewByPosition(mycultivationseed, position, R.id.mycultivationitem2button);
                         int count = mycultivationadapterseed.getItem(position).getBuycount();
-                        Log.i("iiiiiiiiiii", position+"");
+                        Log.i("iiiiiiiiiii", position + "");
                         if (mycultivationitem2count != null) {
                             switch (view.getId()) {
                                 case R.id.mycultivationitem2jia: {
@@ -150,6 +143,7 @@ public class mycultivationdialog extends DialogFragment {
                                         } else {
                                             add2 += 1;
                                             total++;
+                                            mycultivationtotal.setText("合计：蔬菜"+total+"种"+total+"㎡");
                                             mycultivationitem2count.setText(add2 + "");
 
                                         }
@@ -160,13 +154,14 @@ public class mycultivationdialog extends DialogFragment {
                                     break;
                                 }
                                 case R.id.mycultivationitem2jian: {
-
+                                    add2 = Integer.valueOf(mycultivationitem2count.getText().toString());
                                     if (add2 <= 0) {
                                         mycultivationitem2count.setText("0");
                                         add2 = 0;
                                     } else {
                                         add2 -= 1;
                                         total--;
+                                        mycultivationtotal.setText("合计：蔬菜"+total+"种"+total+"㎡");
                                         mycultivationitem2count.setText(add2 + "");
                                     }
                                     break;
@@ -184,7 +179,6 @@ public class mycultivationdialog extends DialogFragment {
             }
         });
     }
-
 
 
     private void addspinner() {
@@ -239,15 +233,16 @@ public class mycultivationdialog extends DialogFragment {
     }
 
     private void init(View view) {
-        spinnerland = view.findViewById(R.id.spinnerland);
+        spinnerland = view.findViewById(R.id.spinnerland2);
         mycultivationseed = view.findViewById(R.id.mycultivationseed);
         mycultivationtotal = view.findViewById(R.id.mycultivationtotal);
         mycultivationcunt = view.findViewById(R.id.mycultivationcunt);
-        okseedandland = view.findViewById(R.id.okseedandland);
-        mycultivationpopjia = view.findViewById(R.id.mycultivationpopjia);
-        mycultivationpopjian = view.findViewById(R.id.mycultivationpopjian);
+        okseedandland = view.findViewById(R.id.okseedandland2);
+        mycultivationpopjia = view.findViewById(R.id.mycultivationpopjia2);
+        mycultivationpopjian = view.findViewById(R.id.mycultivationpopjian2);
         mycultivationpopcount = view.findViewById(R.id.mycultivationpopcount);
         arrows = view.findViewById(R.id.arrows);
         linearLayoutManager = new LinearLayoutManager(getActivity());
+
     }
 }

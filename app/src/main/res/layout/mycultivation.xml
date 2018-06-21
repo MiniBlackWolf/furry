@@ -7,62 +7,6 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:id="@+id/fffffffff"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="@android:color/background_light"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ddddddd">
-
-        <LinearLayout
-            android:id="@+id/cugenyun"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="耕耘券"
-                android:textColor="@android:color/background_dark" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0.1"
-                android:background="@color/hong" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/culingping"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="礼品券"
-                android:textColor="@android:color/background_dark" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0.1" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/ddddddd"
         android:layout_width="411dp"
         android:layout_height="57dp"
@@ -95,9 +39,8 @@
         android:id="@+id/curecyclerview"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginBottom="9dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fffffffff" />
+        app:layout_constraintTop_toBottomOf="@+id/ddddddd" />
 </android.support.constraint.ConstraintLayout>

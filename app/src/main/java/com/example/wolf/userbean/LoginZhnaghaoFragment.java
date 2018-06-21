@@ -3,6 +3,7 @@ package com.example.wolf.userbean;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -17,7 +18,11 @@ import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.ZloadingDiaLog;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
+import com.zyao89.view.zloading.ZLoadingDialog;
+import com.zyao89.view.zloading.ZLoadingView;
+import com.zyao89.view.zloading.Z_TYPE;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -40,16 +45,18 @@ public class LoginZhnaghaoFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = x.view().inject(LoginZhnaghaoFragment.this, inflater, null);
+        final View view = x.view().inject(LoginZhnaghaoFragment.this, inflater, null);
         username.setHintTextColor(getResources().getColor(R.color.hui2));
         passworld.setHintTextColor(getResources().getColor(R.color.hui2));
         denglu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                final ZLoadingDialog dialog = new ZloadingDiaLog(getActivity()).show();
                 final String usernames = username.getText().toString();
                 final String passworlds = passworld.getText().toString();
                 if (usernames.equals("") || passworlds.equals("")) {
                     Toast.makeText(getActivity(), "请输入用户名或密码", Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
                 } else {
                     Map map = new HashMap();
                     map.put("userName", usernames);
@@ -58,7 +65,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                         @Override
                         public void onResponse(String result) {
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                            Log.i("iiiiiii",i+" ");
+                            Log.i("iiiiiii", i + " ");
                             if (i.equals("success")) {
                                 Map<String, String> idmap = new HashMap();
                                 idmap.put("userName", usernames);
@@ -88,7 +95,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                                         //提交数据
                                         editor.apply();
                                         //提示成功
-                                        Toast.makeText(getActivity(), "数据成功写入" + UserInfo.get(0).getUid(), Toast.LENGTH_SHORT).show();
+                                        // Toast.makeText(getActivity(), "数据成功写入" + UserInfo.get(0).getUid(), Toast.LENGTH_SHORT).show();
                                         Toast.makeText(getActivity(), "登陆成功", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getActivity(), MainActivity.class);
                                         intent.putExtra("success", "success");
@@ -100,6 +107,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                             }
                             if (i.equals("fail")) {
                                 Toast.makeText(getActivity(), "账号或密码错误", Toast.LENGTH_LONG).show();
+                                dialog.dismiss();
                             }
                         }
                     });
