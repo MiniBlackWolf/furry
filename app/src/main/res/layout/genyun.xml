@@ -200,12 +200,13 @@
 
                 <TextView
                     android:id="@+id/x4"
-                    android:layout_width="219dp"
+                    android:layout_width="165dp"
                     android:layout_height="44dp"
                     android:layout_marginBottom="36dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="播种套餐券包括蔬菜播种时必经的3个流程：耕地，播种和首次施肥"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.894"
@@ -213,49 +214,42 @@
 
                 <TextView
                     android:id="@+id/x5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="105dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="192dp"
-                    android:layout_marginStart="27dp"
+                    android:layout_marginBottom="4dp"
 
                     android:text="60元/5m²"
                     android:textColor="@color/hong"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.103"
+                    app:layout_constraintHorizontal_bias="0.02"
                     app:layout_constraintStart_toEndOf="@+id/x1" />
 
                 <Button
                     android:id="@+id/x6"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
                     android:background="@mipmap/j2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.375"
-                    app:layout_constraintStart_toEndOf="@+id/x5" />
+                    app:layout_constraintHorizontal_bias="0.81"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/x4"
+                    app:layout_constraintVertical_bias="0.52" />
 
                 <Button
                     android:id="@+id/x7"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@mipmap/j1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/x8" />
+                    app:layout_constraintHorizontal_bias="0.63"
+                    app:layout_constraintStart_toEndOf="@+id/x8"
+                    app:layout_constraintTop_toBottomOf="@+id/x4" />
 
                 <TextView
                     android:id="@+id/x8"
@@ -269,7 +263,7 @@
                     android:text="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.29"
+                    app:layout_constraintHorizontal_bias="0.24"
                     app:layout_constraintStart_toEndOf="@+id/x6" />
             </android.support.constraint.ConstraintLayout>
 
@@ -337,12 +331,13 @@
 
                 <TextView
                     android:id="@+id/x4_2"
-                    android:layout_width="219dp"
+                    android:layout_width="164dp"
                     android:layout_height="44dp"
                     android:layout_marginBottom="36dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="保证作物正常生长，供给作物充分的水分，补给作物水分的技术措施"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.894"
@@ -350,19 +345,16 @@
 
                 <TextView
                     android:id="@+id/x5_2"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="192dp"
-                    android:layout_marginStart="27dp"
                     android:text="60元/5m²"
                     android:textColor="@color/hong"
-                    android:textSize="24sp"
+                    android:textSize="20sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.1"
-                    app:layout_constraintStart_toEndOf="@+id/x1_2" />
+                    app:layout_constraintHorizontal_bias="0.01"
+                    app:layout_constraintStart_toEndOf="@+id/x1_2"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_2" />
 
                 <Button
                     android:id="@+id/x6_2"
@@ -373,11 +365,13 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@mipmap/j2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.375"
-                    app:layout_constraintStart_toEndOf="@+id/x5_2" />
+                    app:layout_constraintHorizontal_bias="0.84"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_2" />
 
                 <Button
                     android:id="@+id/x7_2"
@@ -388,25 +382,23 @@
                     android:layout_marginLeft="8dp"
                     android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@mipmap/j1"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/x8_2" />
+                    app:layout_constraintStart_toEndOf="@+id/x8_2"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_2" />
 
                 <TextView
                     android:id="@+id/x8_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginStart="8dp"
                     android:text="0"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.29"
-                    app:layout_constraintStart_toEndOf="@+id/x6_2" />
+                    app:layout_constraintHorizontal_bias="0.21"
+                    app:layout_constraintStart_toEndOf="@+id/x6_2"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_2" />
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
@@ -473,12 +465,13 @@
 
                 <TextView
                     android:id="@+id/x4_3"
-                    android:layout_width="219dp"
+                    android:layout_width="164dp"
                     android:layout_height="44dp"
                     android:layout_marginBottom="36dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="将肥料施于土壤中，保障作物充分的养分，提高作物品质"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.894"
@@ -486,18 +479,14 @@
 
                 <TextView
                     android:id="@+id/x5_3"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="192dp"
-                    android:layout_marginStart="27dp"
                     android:text="60"
                     android:textColor="@color/hong"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/x1_3" />
 
                 <Button
@@ -512,8 +501,8 @@
                     android:background="@mipmap/j2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.375"
-                    app:layout_constraintStart_toEndOf="@+id/x5_3" />
+                    app:layout_constraintHorizontal_bias="0.82"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
                     android:id="@+id/x7_3"
@@ -609,12 +598,13 @@
 
                 <TextView
                     android:id="@+id/x4_4"
-                    android:layout_width="219dp"
+                    android:layout_width="166dp"
                     android:layout_height="44dp"
                     android:layout_marginBottom="36dp"
                     android:layout_marginLeft="8dp"
                     android:layout_marginStart="8dp"
                     android:text="及时将生长在作物田间的杂草通过人工防除，为作物提供良好的生长环境。"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.894"
@@ -622,12 +612,8 @@
 
                 <TextView
                     android:id="@+id/x5_4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="192dp"
-                    android:layout_marginStart="27dp"
                     android:text="60"
                     android:textColor="@color/hong"
                     android:textSize="24sp"
@@ -648,8 +634,8 @@
                     android:background="@mipmap/j2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.375"
-                    app:layout_constraintStart_toEndOf="@+id/x5_4" />
+                    app:layout_constraintHorizontal_bias="0.83"
+                    app:layout_constraintStart_toStartOf="parent" />
 
                 <Button
                     android:id="@+id/x7_4"
@@ -745,31 +731,27 @@
 
                 <TextView
                     android:id="@+id/x4_5"
-                    android:layout_width="219dp"
+                    android:layout_width="187dp"
                     android:layout_height="44dp"
-                    android:layout_marginBottom="36dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
                     android:text="蔬菜在生长期间遭到虫害，灭虫可以减少蔬菜收到的虫害，保证其生长。"
+                    android:textSize="10sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.894"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintHorizontal_bias="0.7"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/x3_5"
+                    app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
                     android:id="@+id/x5_5"
-                    android:layout_width="wrap_content"
+                    android:layout_width="110dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="192dp"
-                    android:layout_marginLeft="27dp"
-                    android:layout_marginRight="192dp"
-                    android:layout_marginStart="27dp"
                     android:text="60"
                     android:textColor="@color/hong"
                     android:textSize="24sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.1"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@+id/x1_5" />
 
                 <Button
@@ -777,44 +759,41 @@
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
                     android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
                     android:background="@mipmap/j2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.375"
-                    app:layout_constraintStart_toEndOf="@+id/x5_5" />
+                    app:layout_constraintHorizontal_bias="0.64"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_5" />
 
                 <Button
                     android:id="@+id/x7_5"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:background="@mipmap/j1"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/x8_5" />
+                    app:layout_constraintStart_toEndOf="@+id/x8_5"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_5" />
 
                 <TextView
                     android:id="@+id/x8_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="24dp"
-                    android:layout_marginStart="8dp"
+                    android:layout_marginLeft="16dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:text="0"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.29"
-                    app:layout_constraintStart_toEndOf="@+id/x6_5" />
+                    app:layout_constraintStart_toEndOf="@+id/x6_5"
+                    app:layout_constraintTop_toBottomOf="@+id/x4_5" />
             </android.support.constraint.ConstraintLayout>
         </LinearLayout>
     </ScrollView>

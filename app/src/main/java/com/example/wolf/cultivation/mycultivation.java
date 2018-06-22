@@ -134,7 +134,6 @@ public class mycultivation extends AppCompatActivity {
     @OnClick(R.id.cufh)
     public void onViewClicked() {
         finish();
-        ButterKnife.bind(this);
         overridePendingTransition(0, 0);
     }
 }

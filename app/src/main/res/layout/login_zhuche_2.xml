@@ -160,8 +160,9 @@
 
         <ImageView
             android:id="@+id/zhuche2fh"
-            android:layout_width="20dp"
-            android:layout_height="25dp"
+            android:layout_width="15dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="30dp"
             android:background="@mipmap/fh" />
 
         <TextView

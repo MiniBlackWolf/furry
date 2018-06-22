@@ -10,7 +10,7 @@
     <LinearLayout
         android:id="@+id/linearLayout6"
         android:layout_width="0dp"
-        android:layout_height="80dp"
+        android:layout_height="70dp"
         android:background="#f5f5f5"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,35 +27,35 @@
 
             <ImageView
                 android:id="@+id/p1"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/p1_2" />
 
             <ImageView
                 android:id="@+id/p2"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/p2" />
 
             <ImageView
                 android:id="@+id/p3"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/p3" />
 
             <ImageView
                 android:id="@+id/p4"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/p4" />
 
             <ImageView
                 android:id="@+id/p5"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 app:srcCompat="@mipmap/p5" />
@@ -71,8 +71,8 @@
 
             <TextView
                 android:id="@+id/luyou"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="旅游"
@@ -80,8 +80,8 @@
 
             <TextView
                 android:id="@+id/nongchang"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="有机农场"
@@ -89,8 +89,8 @@
 
             <TextView
                 android:id="@+id/yanglao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="养老"
@@ -98,8 +98,8 @@
 
             <TextView
                 android:id="@+id/nengyuan"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="新能源"
@@ -107,8 +107,8 @@
 
             <TextView
                 android:id="@+id/wod"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="我的"

@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class ProdctBean {
     private int sid;
-    private Integer image;
+    private String image;
     private String name;
     private String jiage;
     private String shuliang;
@@ -53,11 +53,11 @@ public class ProdctBean {
         this.count = count;
     }
 
-    public Integer getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(Integer image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

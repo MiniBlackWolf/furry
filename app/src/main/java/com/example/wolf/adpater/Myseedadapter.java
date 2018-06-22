@@ -26,8 +26,11 @@ public class Myseedadapter extends BaseQuickAdapter<seedbean, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder helper, final seedbean item) {
-        helper.setText(R.id.myseedcounts, item.getSeed().getCount() + "/㎡");
-        helper.setText(R.id.myseedname, item.getSeed().getSeedname() + "");
+        if(item.getSeed()!=null) {
+            helper.setText(R.id.myseedcounts, item.getSeed().getCount() + "/㎡");
+            helper.setText(R.id.myseedname, item.getSeed().getSeedname() + "");
+        }
+
     }
 
 

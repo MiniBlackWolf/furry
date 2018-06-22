@@ -3,7 +3,6 @@ package com.example.wolf.userbean;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.View;
@@ -18,11 +17,9 @@ import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
-import com.example.wolf.Utils.ZloadingDiaLog;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.zyao89.view.zloading.ZLoadingDialog;
-import com.zyao89.view.zloading.ZLoadingView;
-import com.zyao89.view.zloading.Z_TYPE;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -51,7 +48,7 @@ public class LoginZhnaghaoFragment extends Fragment {
         denglu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final ZLoadingDialog dialog = new ZloadingDiaLog(getActivity()).show();
+                final ZLoadingDialog dialog = new ZloadingDiaLogkt(getActivity()).show();
                 final String usernames = username.getText().toString();
                 final String passworlds = passworld.getText().toString();
                 if (usernames.equals("") || passworlds.equals("")) {

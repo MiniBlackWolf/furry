@@ -35,8 +35,11 @@ public class myseedadapter2 extends BaseQuickAdapter<userseed,BaseViewHolder>{
                 Log.i("iiiiiiiiii",result);
                 GsonUtil gsonUtil=new GsonUtil();
                 List<seedbean.SeedBean> gson = gsonUtil.Gson(result, seedbean.SeedBean.class);
-                helper.setText(R.id.myseedcounts, item.getBuycount() + "/㎡");
-                helper.setText(R.id.myseedname, gson.get(0).getSeedname() + "");
+                if(gson.get(0).getSeedname()!=null) {
+                    helper.setText(R.id.myseedcounts, item.getBuycount() + "/㎡");
+                    helper.setText(R.id.myseedname, gson.get(0).getSeedname() + "");
+                }
+
             }
         });
 

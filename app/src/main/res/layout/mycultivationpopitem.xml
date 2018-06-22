@@ -227,8 +227,8 @@
 
         <ImageView
             android:id="@+id/arrows"
-            android:layout_width="15dp"
-            android:layout_height="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             app:layout_constraintBottom_toTopOf="@+id/textView55"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.71"

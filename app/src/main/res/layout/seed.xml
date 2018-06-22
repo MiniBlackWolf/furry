@@ -5,15 +5,24 @@
     android:id="@+id/linearLayout15"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="5dp"
-    android:paddingRight="5dp">
+    android:background="@color/cardview_light_background">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@mipmap/q1"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.56"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/linearLayout11"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:gravity="right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,18 +76,6 @@
             app:layout_constraintVertical_bias="0.129" />
 
     </android.support.constraint.ConstraintLayout>
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="404dp"
-        android:layout_height="0dp"
-        android:background="@mipmap/q1"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.428"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
     <LinearLayout
         android:id="@+id/linearLayout9"
@@ -154,121 +151,121 @@
 
             <Button
                 android:id="@+id/y3"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="3月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y4"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="4月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y5"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="5月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y6"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="6月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y7"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="7月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y8"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="8月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y9"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="9月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y10"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="10月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y11"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="11月"
                 android:textColor="#666666" />
 
             <Button
                 android:id="@+id/y12"
-                android:onClick="doclick"
                 android:layout_width="69dp"
                 android:layout_height="30dp"
                 android:layout_marginRight="17dp"
                 android:layout_weight="1"
                 android:background="@mipmap/y1234"
                 android:gravity="center"
+                android:onClick="doclick"
                 android:text="12月"
                 android:textColor="#666666" />
 
@@ -280,7 +277,6 @@
         android:id="@+id/points"
         android:layout_width="112dp"
         android:layout_height="19dp"
-        android:layout_alignParentBottom="true"
         android:layout_marginBottom="16dp"
         android:gravity="center"
         android:orientation="horizontal"
@@ -288,13 +284,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/seedgridview"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout11"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView" />
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView"
+        app:layout_constraintVertical_bias="0.0" />
 
 </android.support.constraint.ConstraintLayout>

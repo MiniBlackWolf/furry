@@ -7,10 +7,10 @@ import android.graphics.Color;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 
-public class ZloadingDiaLog {
+public class ZloadingDiaLogkt {
     private Context context;
 
-    public ZloadingDiaLog(Context context) {
+    public ZloadingDiaLogkt(Context context) {
         this.context = context;
     }
 

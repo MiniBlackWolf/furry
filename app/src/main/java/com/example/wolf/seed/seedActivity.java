@@ -6,23 +6,23 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Xutils;
-import com.example.wolf.adpater.MyGridViewAdpterseed;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
+import com.example.wolf.adpater.Seedadapter;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -37,7 +37,7 @@ import java.util.Map;
 @ContentView(R.layout.seed)
 public class seedActivity extends AppCompatActivity {
     @ViewInject(R.id.seedgridview)
-    private GridView gridView;
+    private RecyclerView seedgridview;
     @ViewInject(R.id.points)
     private LinearLayout group;
     @ViewInject(R.id.y1)
@@ -227,6 +227,8 @@ public class seedActivity extends AppCompatActivity {
 
     //改变数据方法
     private void setgridview(final int month) {
+        final ZloadingDiaLogkt zloadingDiaLogkt =new ZloadingDiaLogkt(seedActivity.this);
+        final ZLoadingDialog show = zloadingDiaLogkt.show();
         xutils.get(getResources().getString(R.string.Seedscount), new HashMap<String, String>(), new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
@@ -263,13 +265,12 @@ public class seedActivity extends AppCompatActivity {
 
                                 }
                                 List<ProdctBean> listDatas = new ArrayList<>();
-                                Log.i("iiiiiiiiiiiiiiiii", yue.toString());
                                 //循环加数据到listDatas《prodctBean》
                                 for (int i = 0; i < yue.size(); i++)
 
                                 {
                                     ProdctBean prodctBean = new ProdctBean();
-                                    prodctBean.setImage(R.mipmap.ic_launcher);
+                                    prodctBean.setImage(yue.get(i).getFileurl());
                                     prodctBean.setName(yue.get(i).getSeedname());
                                     prodctBean.setJiage(String.valueOf(yue.get(i).getMoney()));
                                     prodctBean.setCount(yue.get(i).getCount());
@@ -279,8 +280,13 @@ public class seedActivity extends AppCompatActivity {
 
                                 }
                                 SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
-                                gridView.setNumColumns(3);
-                                gridView.setAdapter(new MyGridViewAdpterseed(seedActivity.this,listDatas,seedbuy,mySharePerferences, getResources().getString(R.string.buyseed),seedzhongjian));
+                                Seedadapter seedadapter = new Seedadapter(R.layout.seeditem, listDatas, seedActivity.this, seedzhongjian, seedbuy, show);
+                                GridLayoutManager gridLayoutManager = new GridLayoutManager(seedActivity.this, 3);
+                                seedgridview.setLayoutManager(gridLayoutManager);
+                                seedgridview.setAdapter(seedadapter);
+                                seedadapter.bindToRecyclerView(seedgridview);
+                                seedadapter.setEmptyView(R.layout.loading);
+                                seedadapter.notifyDataSetChanged();
 
                             }
                         }

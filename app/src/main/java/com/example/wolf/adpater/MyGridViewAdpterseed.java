@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.wolf.R;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
@@ -78,7 +79,7 @@ public class MyGridViewAdpterseed extends BaseAdapter {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        holder.k1.setImageResource(lists.get(position).getImage());
+        Glide.with(context).load(lists.get(position).getImage()).placeholder(R.mipmap.loading2).into(holder.k1);
         holder.k2.setText(lists.get(position).getName());
         holder.k3.setText("￥" + lists.get(position).getJiage());
         holder.k5.setText("剩余数量" + lists.get(position).getCount());

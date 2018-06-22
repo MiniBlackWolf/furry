@@ -21,14 +21,16 @@
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
-                android:layout_width="wrap_content"
-                android:layout_height="0dp"
+                android:layout_width="0dp"
+                android:layout_height="150dp"
                 android:layout_marginBottom="16dp"
                 app:auto_cycle="true"
                 app:indicator_visibility="visible"
                 app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:pager_animation="Accordion"
                 app:pager_animation_span="1100">
 
@@ -58,11 +60,11 @@
                 android:layout_height="99dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:layout_marginTop="176dp"
+                android:layout_marginTop="156dp"
                 android:gravity="center"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.666"
+                app:layout_constraintHorizontal_bias="0.366"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 

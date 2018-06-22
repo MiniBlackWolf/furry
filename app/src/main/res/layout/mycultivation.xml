@@ -23,7 +23,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/b2" />
+            app:srcCompat="@mipmap/fh" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -32,7 +32,7 @@
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="我的农场"
-            android:textColor="@android:color/black" />
+            android:textColor="@color/cardview_light_background" />
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
