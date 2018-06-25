@@ -2,6 +2,7 @@ package com.example.wolf.cultivation;
 
 import android.animation.ObjectAnimator;
 import android.app.Dialog;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
@@ -44,10 +45,7 @@ public class mycultivationdialog2 extends DialogFragment {
     int add;
     int Fcount;
     Xutils xutils = new Xutils(getActivity());
-    int i1;
-    int i2;
-    int i3;
-    int i4;
+
 
     @Nullable
     @Override
@@ -66,27 +64,23 @@ public class mycultivationdialog2 extends DialogFragment {
         int type = bundle.getInt("type");
         switch (type) {
             case 1: {
-                mycultivationpopname.setText("菜鸟环保|灭虫券");
-                mycultivationpopimage.setImageResource(R.mipmap.cu2);
-                i4=4;
+                mycultivationpopname.setText("菜鸟环保|灌溉券");
+                mycultivationpopimage.setImageResource(R.mipmap.cu4);
                 break;
             }
             case 2: {
                 mycultivationpopname.setText("菜鸟环保|施肥券");
                 mycultivationpopimage.setImageResource(R.mipmap.cu5);
-                i2=2;
                 break;
             }
             case 3: {
                 mycultivationpopname.setText("菜鸟环保|除草券");
                 mycultivationpopimage.setImageResource(R.mipmap.cu3);
-                i3=3;
                 break;
             }
             case 4: {
-                mycultivationpopname.setText("菜鸟环保|灌溉券");
-                mycultivationpopimage.setImageResource(R.mipmap.cu4);
-                i1=1;
+                mycultivationpopname.setText("菜鸟环保|灭虫券");
+                mycultivationpopimage.setImageResource(R.mipmap.cu2);
                 break;
             }
         }
@@ -191,6 +185,7 @@ public class mycultivationdialog2 extends DialogFragment {
         mycultivationcunt = view.findViewById(R.id.mycultivationcunt);
     }
 
+    @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         Dialog dialog = new Dialog(getActivity(), R.style.MyDialog);
@@ -204,7 +199,7 @@ public class mycultivationdialog2 extends DialogFragment {
         WindowManager.LayoutParams wlp = window.getAttributes();
         window.getDecorView().setPadding(0, 0, 0, 0);
         wlp.gravity = Gravity.BOTTOM;
-        wlp.width = wlp.MATCH_PARENT;
+        wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
         window.setAttributes(wlp);
         window.setWindowAnimations(R.style.MyDialog);
         return dialog;

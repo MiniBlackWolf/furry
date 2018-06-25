@@ -29,4 +29,5 @@
     <string name="sowing">http://www.cnepltd.com/net/seed/sowing</string>
     <string name="getUserRemainSeedWithoutDate">http://www.cnepltd.com/net/seed/getUserRemainSeedWithoutDate</string>
     <string name="useTicket">http://www.cnepltd.com//net/userBase/useTicket</string>
+    <string name="general">http://www.cnepltd.com/fileupload/general</string>
 </resources>

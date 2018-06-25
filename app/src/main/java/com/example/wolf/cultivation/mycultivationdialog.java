@@ -225,7 +225,7 @@ public class mycultivationdialog extends DialogFragment {
         WindowManager.LayoutParams wlp = window.getAttributes();
         window.getDecorView().setPadding(0, 0, 0, 0);
         wlp.gravity = Gravity.BOTTOM;
-        wlp.width = wlp.MATCH_PARENT;
+        wlp.width = WindowManager.LayoutParams.MATCH_PARENT;
         window.setAttributes(wlp);
         window.setWindowAnimations(R.style.MyDialog);
 

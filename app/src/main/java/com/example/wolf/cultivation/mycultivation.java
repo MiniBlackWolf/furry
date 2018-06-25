@@ -32,6 +32,8 @@ import com.example.wolf.seed.userseed;
 
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -56,6 +58,12 @@ public class mycultivation extends AppCompatActivity {
     int x;
 
     @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mycultivation);
@@ -66,9 +74,20 @@ public class mycultivation extends AppCompatActivity {
         xutils.get(getResources().getString(R.string.getTickets), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
-                Log.i("iiiiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 final List<usercultivation> usercultivation = gsonUtil.Gson(result, usercultivation.class);
+                Collections.sort(usercultivation, new Comparator<com.example.wolf.cultivation.usercultivation>() {
+                    @Override
+                    public int compare(usercultivation t1, usercultivation t2) {
+                        if (t1.getTid() > t2.getTid()) {
+                            return 1;
+                        } else {
+                            return -1;
+
+                        }
+                    }
+                });
+                Log.i("iiiiiiii",usercultivation.toString());
                 Mycultivationadapter mycultivationadapter = new Mycultivationadapter(R.layout.mycultivationitem, usercultivation, mycultivation.this);
                 mycultivationadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mycultivationadapter.isFirstOnly(false);
@@ -77,47 +96,47 @@ public class mycultivation extends AppCompatActivity {
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         switch (position) {
                             case 0: {
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("count",usercultivation.get(0).getCount());
-                                mycultivationdialog mycultivationdialog2=new mycultivationdialog();
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("count", usercultivation.get(0).getCount());
+                                mycultivationdialog mycultivationdialog2 = new mycultivationdialog();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "0");
                                 break;
                             }
                             case 1: {
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("type",1);
-                                bundle.putInt("count",usercultivation.get(1).getCount());
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("type", 1);
+                                bundle.putInt("count", usercultivation.get(1).getCount());
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
-                                mycultivationdialog2.show(getSupportFragmentManager(),"4");
+                                mycultivationdialog2.show(getSupportFragmentManager(), "1");
                                 break;
                             }
                             case 2: {
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("type",2);
-                                bundle.putInt("count",usercultivation.get(2).getCount());
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("type", 2);
+                                bundle.putInt("count", usercultivation.get(2).getCount());
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
-                                mycultivationdialog2.show(getSupportFragmentManager(),"2");
+                                mycultivationdialog2.show(getSupportFragmentManager(), "2");
                                 break;
                             }
                             case 3: {
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("type",3);
-                                bundle.putInt("count",usercultivation.get(3).getCount());
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("type", 3);
+                                bundle.putInt("count", usercultivation.get(3).getCount());
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
-                                mycultivationdialog2.show(getSupportFragmentManager(),"3");
+                                mycultivationdialog2.show(getSupportFragmentManager(), "3");
                                 break;
                             }
                             case 4: {
-                                Bundle bundle=new Bundle();
-                                bundle.putInt("type",4);
-                                bundle.putInt("count",usercultivation.get(4).getCount());
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("type", 4);
+                                bundle.putInt("count", usercultivation.get(4).getCount());
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
-                                mycultivationdialog2.show(getSupportFragmentManager(),"1");
+                                mycultivationdialog2.show(getSupportFragmentManager(), "4");
                                 break;
                             }
 

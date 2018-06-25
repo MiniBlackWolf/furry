@@ -140,25 +140,25 @@ public class MyinfoActivity extends TakePhotoActivity {
 
                     }
                 });
-if(file!=null) {
-    ImageCompressUtil.compressImage(MyinfoActivity.this, file.getAbsolutePath(), new ImageCompressUtil.ProcessImgCallBack() {
-        @Override
-        public void compressSuccess(String imgPath) {
-            File file2 = new File(imgPath);
-            Map<String, File> map = new HashMap<>();
-            map.put("uploadFile", file2);
-            Map<String, String> map2 = new HashMap<>();
-            map2.put("type", "0");
-            map2.put("uid", String.valueOf(new Getuserinfo(MyinfoActivity.this).getuid()));
-            xutils.upLoadFile("http://192.168.0.72:8080/fileupload/general", map2, map, new Xutils.XCallBack() {
-                @Override
-                public void onResponse(String result) {
-                    Toast.makeText(MyinfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                if (file != null) {
+                    ImageCompressUtil.compressImage(MyinfoActivity.this, file.getAbsolutePath(), new ImageCompressUtil.ProcessImgCallBack() {
+                        @Override
+                        public void compressSuccess(String imgPath) {
+                            File file2 = new File(imgPath);
+                            Map<String, File> map = new HashMap<>();
+                            map.put("uploadFile", file2);
+                            Map<String, String> map2 = new HashMap<>();
+                            map2.put("type", "0");
+                            map2.put("uid", String.valueOf(new Getuserinfo(MyinfoActivity.this).getuid()));
+                            xutils.upLoadFile(getResources().getString(R.string.general), map2, map, new Xutils.XCallBack() {
+                                @Override
+                                public void onResponse(String result) {
+                                    Toast.makeText(MyinfoActivity.this, "修改成功", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        }
+                    });
                 }
-            });
-        }
-    });
-}
 
                 break;
             case R.id.myinfohead:
@@ -177,8 +177,7 @@ if(file!=null) {
                     public void onClick(DialogInterface dialog, int which) {
                         if (et.getText().toString().length() <= 0) {
                             Toast.makeText(MyinfoActivity.this, "请输入名字", Toast.LENGTH_SHORT).show();
-                        }
-                        else {
+                        } else {
                             infoname.setText(et.getText().toString());
                         }
                     }
