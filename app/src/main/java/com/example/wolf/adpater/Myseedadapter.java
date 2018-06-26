@@ -2,7 +2,9 @@ package com.example.wolf.adpater;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.R;
@@ -11,6 +13,7 @@ import com.example.wolf.Utils.Xutils;
 import com.example.wolf.seed.Seed;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.seed.userseed;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import java.util.HashMap;
 import java.util.List;
@@ -18,19 +21,22 @@ import java.util.Map;
 
 public class Myseedadapter extends BaseQuickAdapter<seedbean, BaseViewHolder> {
     private Context context;
+    private ZLoadingDialog zDialog;
 
-    public Myseedadapter(int layoutResId, @Nullable List<seedbean> data, Context context) {
+    public Myseedadapter(int layoutResId, @Nullable List<seedbean> data, Context context, ZLoadingDialog zLoadingDialog) {
         super(layoutResId, data);
         this.context = context;
+        this.zDialog = zLoadingDialog;
     }
 
     @Override
     protected void convert(final BaseViewHolder helper, final seedbean item) {
-        if(item.getSeed()!=null) {
+        if (item.getSeed() != null) {
             helper.setText(R.id.myseedcounts, item.getSeed().getCount() + "/㎡");
             helper.setText(R.id.myseedname, item.getSeed().getSeedname() + "");
+            Glide.with(context).load(item.getSeed().getFileurl()).placeholder(R.mipmap.loading2).into((ImageView) helper.getView(R.id.myseedimage));
         }
-
+        zDialog.dismiss();
     }
 
 

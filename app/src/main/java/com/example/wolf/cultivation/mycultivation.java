@@ -1,6 +1,5 @@
 package com.example.wolf.cultivation;
 
-import android.app.Dialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -8,30 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
-import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.adpater.Mycultivationadapter;
-import com.example.wolf.land.userland;
-import com.example.wolf.seed.seedbean;
-import com.example.wolf.seed.userseed;
 
-
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -56,11 +42,13 @@ public class mycultivation extends AppCompatActivity {
     int uid;
     List<String> listseed;
     int x;
+    @BindView(R.id.smdmy)
+    TextView smdmy;
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
 
     @Override
@@ -76,6 +64,10 @@ public class mycultivation extends AppCompatActivity {
             public void onResponse(String result) {
                 GsonUtil gsonUtil = new GsonUtil();
                 final List<usercultivation> usercultivation = gsonUtil.Gson(result, usercultivation.class);
+                if (usercultivation == null) {
+                    smdmy.setVisibility(View.VISIBLE);
+                    return;
+                }
                 Collections.sort(usercultivation, new Comparator<com.example.wolf.cultivation.usercultivation>() {
                     @Override
                     public int compare(usercultivation t1, usercultivation t2) {
@@ -87,7 +79,7 @@ public class mycultivation extends AppCompatActivity {
                         }
                     }
                 });
-                Log.i("iiiiiiii",usercultivation.toString());
+                Log.i("iiiiiiii", usercultivation.toString());
                 Mycultivationadapter mycultivationadapter = new Mycultivationadapter(R.layout.mycultivationitem, usercultivation, mycultivation.this);
                 mycultivationadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mycultivationadapter.isFirstOnly(false);

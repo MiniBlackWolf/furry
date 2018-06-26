@@ -15,9 +15,11 @@ import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.adpater.Myseedadapter;
 import com.example.wolf.adpater.myseedadapter2;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import java.util.HashMap;
 import java.util.List;
@@ -49,11 +51,14 @@ public class myseed extends AppCompatActivity {
     private Getuserinfo getuserinfo = new Getuserinfo(myseed.this);
     private List<seedbean> userseed;
     Myseedadapter myseedadapter;
+    private ZLoadingDialog show;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myseed);
         ButterKnife.bind(this);
+        ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(myseed.this);
+        show = zloadingDiaLogkt.show();
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         map.put("token", new Token().getToken(getuserinfo.getuid()));
@@ -63,14 +68,14 @@ public class myseed extends AppCompatActivity {
                 Log.i("iiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 userseed = gsonUtil.Gson(result, seedbean.class);
-                setadapter(userseed);
+                setadapter(userseed,show);
             }
 
         });
     }
 
-    private void setadapter(List<seedbean> list) {
-        myseedadapter = new Myseedadapter(R.layout.myseeditem, list, myseed.this);
+    private void setadapter(List<seedbean> list,ZLoadingDialog show) {
+        myseedadapter = new Myseedadapter(R.layout.myseeditem, list, myseed.this,show);
         myseedadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         myseedadapter.isFirstOnly(false);
         myseedrecycler.setLayoutManager(new GridLayoutManager(myseed.this, 2));
@@ -91,7 +96,7 @@ public class myseed extends AppCompatActivity {
         overduev.setBackgroundColor(getResources().getColor(R.color.toum));
         switch (view.getId()) {
             case R.id.use:
-                setadapter(userseed);
+                setadapter(userseed,show);
                 usev.setBackgroundColor(getResources().getColor(R.color.hong));
                 break;
             case R.id.nouse:
@@ -102,6 +107,7 @@ public class myseed extends AppCompatActivity {
                 xutils.get(getResources().getString(R.string.getUserRemainSeed), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
+                        Log.i("iiiiiiiiiii",result);
                         GsonUtil gsonUtil=new GsonUtil();
                         List<userseed> userseed = gsonUtil.Gson(result, userseed.class);
                         myseedadapter2 myseedadapter2=new myseedadapter2(R.layout.myseeditem,userseed,myseed.this);

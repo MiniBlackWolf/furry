@@ -1,5 +1,6 @@
 package com.example.wolf.adpater;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Message;
@@ -38,13 +39,15 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
     Xutils xutils = new Xutils(context);
     List<TextView> list = new ArrayList<>();
     List<userseed> list2 = new ArrayList<>();
+    private Dialog dialog;
 
-    public mycultivationadapterseed(int layoutResId, @Nullable List<userseed> data, Context context, Button okseedandland, Spinner spinnerland, int mycultivationpopcount) {
+    public mycultivationadapterseed(int layoutResId, @Nullable List<userseed> data, Context context, Button okseedandland, Spinner spinnerland, int mycultivationpopcount,Dialog dialog) {
         super(layoutResId, data);
         this.context = context;
         this.okseedandland = okseedandland;
         this.spinnerland = spinnerland;
         this.mycultivationpopcount = mycultivationpopcount;
+        this.dialog=dialog;
     }
 
     @Override
@@ -92,10 +95,12 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                             if (i.equals("success")) {
                                 ToastUtils.showToast(context,"播种成功！");
+                                dialog.dismiss();
                             }
                             else{
 
                                 ToastUtils.showToast(context,"播种失败！");
+                                dialog.dismiss();
                             }
 
                         }

@@ -124,7 +124,7 @@ public class mycultivationdialog extends DialogFragment {
                 //  Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<userseed> userseed = gsonUtil.Gson(result, com.example.wolf.seed.userseed.class);
-                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()));
+                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()),dialog);
                 mycultivationadapterseed.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {

@@ -45,7 +45,7 @@ public class mycultivationdialog2 extends DialogFragment {
     int add;
     int Fcount;
     Xutils xutils = new Xutils(getActivity());
-
+    Dialog dialog;
 
     @Nullable
     @Override
@@ -102,9 +102,11 @@ public class mycultivationdialog2 extends DialogFragment {
                         String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                         if (i.equals("success")) {
                             ToastUtils.showToast(getActivity(), "使用成功！");
+                            dialog.dismiss();
                         } else {
 
                             ToastUtils.showToast(getActivity(), "使用失败！");
+                            dialog.dismiss();
                         }
                     }
                 });
@@ -188,7 +190,7 @@ public class mycultivationdialog2 extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity(), R.style.MyDialog);
+         dialog = new Dialog(getActivity(), R.style.MyDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.mycultivationpopitem);
         dialog.setCanceledOnTouchOutside(true);
