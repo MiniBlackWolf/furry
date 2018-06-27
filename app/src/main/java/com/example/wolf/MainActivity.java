@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.fragment.tab1;
 import com.example.wolf.fragment.tab2;
@@ -103,13 +104,19 @@ public class MainActivity extends AppCompatActivity {
                         fragmentlist.remove(4);
                         fragmentlist.add(tab5_2);
                         fragmentPagerAdapter.notifyDataSetChanged();
-                        Toast.makeText(MainActivity.this,"欢迎回来"+name,Toast.LENGTH_SHORT).show();
+                        ToastUtils.showToast(MainActivity.this,"欢迎回来");
 
                     }
                 }
             }
-        });
-        //  Log.i("iiiiiiiiiiiiiiiiii",name);
+        });/*
+        种子转跳！！2Page
+        */
+
+        int se = getIntent().getIntExtra("seed",0);
+        if(se==2){
+            viewPager.setCurrentItem(1);
+        }
         //登陆
         String s = getIntent().getStringExtra("success");
         String z = getIntent().getStringExtra("zhuxiao");

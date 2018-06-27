@@ -16,4 +16,9 @@ public class delivery extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         x.view().inject(this);
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
 }

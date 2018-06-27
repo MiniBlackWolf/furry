@@ -92,7 +92,11 @@ public class InviteActivity extends Activity  {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
     @OnClick({R.id.more, R.id.invitefh})
     public void onViewClicked(View view) {
         switch (view.getId()) {

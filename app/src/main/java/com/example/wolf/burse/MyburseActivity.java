@@ -40,7 +40,11 @@ public class MyburseActivity extends AppCompatActivity {
         fragmentTransaction.hide(f2);
         fragmentTransaction.commit();
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
     @OnClick({R.id.mymoney, R.id.mypoint,R.id.bursefh})
     public void onViewClicked(View view) {
         moneyv.setBackgroundColor(getResources().getColor(R.color.toum));

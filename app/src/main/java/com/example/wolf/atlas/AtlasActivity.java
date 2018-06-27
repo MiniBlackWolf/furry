@@ -32,6 +32,12 @@ public class AtlasActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
+
     @OnClick(R.id.atlasfh)
     public void onViewClicked() {
         finish();

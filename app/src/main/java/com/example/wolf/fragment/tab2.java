@@ -80,7 +80,7 @@ public class tab2 extends Fragment {
         Uri uri = Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
         videoView.setVideoURI(uri);
         videoView.setMediaController(mc);
-
+        videoView.setFocusable(false);
         //mvdView.requestFocus();
         videoView.start();
         return view;

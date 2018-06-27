@@ -17,7 +17,9 @@
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            >
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
@@ -197,11 +199,12 @@
             <android.support.constraint.ConstraintLayout
                 android:layout_width="0dp"
                 android:layout_height="300dp"
-                android:layout_marginTop="88dp"
+                android:layout_marginTop="252dp"
+                android:focusable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                app:layout_constraintTop_toTopOf="parent">
 
                 <VideoView
                     android:id="@+id/videoView"

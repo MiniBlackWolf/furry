@@ -90,7 +90,11 @@ public class myland extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,0);
+    }
     @OnClick({R.id.used, R.id.overdue, R.id.mylandfhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
