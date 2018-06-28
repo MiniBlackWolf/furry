@@ -1,5 +1,6 @@
 package com.example.wolf.land;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -14,9 +15,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.cultivation.genyun;
@@ -25,6 +28,7 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,20 +40,14 @@ public class Xuandi extends AppCompatActivity {
     private TextView jiage_2;
     @ViewInject(R.id.guige_2)
     private TextView guige_2;
-    @ViewInject(R.id.xuanqu_2)
-    private TextView xuanqu_2;
     @ViewInject(R.id.jiage_2_2)
     private TextView jiage_2_2;
     @ViewInject(R.id.guige_2_2)
     private TextView guige_2_2;
-    @ViewInject(R.id.xuanqu_2_2)
-    private TextView xuanqu_2_2;
     @ViewInject(R.id.jiage_2_3)
     private TextView jiage_2_3;
     @ViewInject(R.id.guige_2_3)
     private TextView guige_2_3;
-    @ViewInject(R.id.xuanqu_2_3)
-    private TextView xuanqu_2_3;
     @ViewInject(R.id.tianjia)
     private Button tianjia;
     @ViewInject(R.id.tianjia2)
@@ -81,9 +79,9 @@ public class Xuandi extends AppCompatActivity {
     int t3;
     double moeny;
     int sl;
-    int couns;
     List<FarmData.SelectionBean> dddList;
-     Xutils xutils = new Xutils(Xuandi.this);
+    Xutils xutils = new Xutils(Xuandi.this);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -108,19 +106,17 @@ public class Xuandi extends AppCompatActivity {
 
     private void buy(final Xutils xutils) {
         buy.setOnClickListener(new OnClickListener() {
-            List<Map<String, String>> list;
-            List<Map<String, String>> list2;
             Map<String, String> FarmCountmap;
 
             @Override
             public void onClick(View v) {
 
-                getland("A", "9999", t1);
-                getland("B", "9999", t2);
-                getland("c", "9999", t3);
+                getland("A", "9999", t1, jiage_2);
+                getland("B", "9999", t2, jiage_2_2);
+                getland("c", "9999", t3, jiage_2_3);
             }
 
-            private void getland(final String land, final String pageItemSize, final int count) {
+            private void getland(final String land, final String pageItemSize, final int count, final TextView jiage) {
                 FarmCountmap = new HashMap<String, String>();
                 FarmCountmap.put("pageItemSize", pageItemSize);
                 FarmCountmap.put("type", land);
@@ -128,7 +124,7 @@ public class Xuandi extends AppCompatActivity {
                     @Override
                     public void onResponse(final String result) {
                         String s = result.substring(result.lastIndexOf("}") - 1, result.lastIndexOf("}"));
-                        Map<String, String> FarmLimitmap = new HashMap();
+                        Map<String, String> FarmLimitmap = new HashMap<>();
                         for (int i = 1; i <= Integer.valueOf(s); i++) {
                             FarmLimitmap.put("currentPage", String.valueOf(i));
                             FarmLimitmap.put("pageItemSize", pageItemSize);
@@ -144,18 +140,19 @@ public class Xuandi extends AppCompatActivity {
                                             listd.add(Farm.get(i).getFid());
                                         }
                                     }
-                                    Log.i("iiiiiiiiii",listd.size()+";"+count);
+                                    Log.i("iiiiiiiiii", listd.size() + ";" + count);
                                     if (count > listd.size()) {
                                         Toast.makeText(Xuandi.this, "购买失败,土地数量不够", Toast.LENGTH_SHORT).show();
+                                        return;
 
                                     }
-                                    if(count<=listd.size()){
+                                    if (count <= listd.size()) {
                                         SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
                                         int name = mySharePerferences.getInt("uid", 0);
                                         if (count != 0) {
                                             if (listd.size() != 0) {
                                                 for (int i = 0; i < count; i++) {
-                                                    Map<String, String> map = new HashMap<String, String>();
+                                                    Map<String, String> map = new HashMap<>();
                                                     map.put("uid", String.valueOf(name));
                                                     map.put("fid", listd.get(i));
                                                     map.put("year", "1");
@@ -168,7 +165,25 @@ public class Xuandi extends AppCompatActivity {
                                                             String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
                                                             Log.i("iiiiiiiiiiiiiiiii", s);
                                                             if (s.equals("success")) {
-                                                                Toast.makeText(Xuandi.this, "购买成功", Toast.LENGTH_SHORT).show();
+                                                                BigDecimal big1 = new BigDecimal(count);
+                                                                BigDecimal big2 = new BigDecimal(jiage.getText().toString());
+                                                                float seedmoney = big1.multiply(big2).floatValue();
+                                                                Map<String, String> map = new HashMap<>();
+                                                                map.put("uid", String.valueOf(new Getuserinfo(Xuandi.this).getuid()));
+                                                                map.put("money", "-" + seedmoney);
+                                                                map.put("token", new Token().getToken(new Getuserinfo(Xuandi.this).getuid()));
+                                                                xutils.get(getResources().getString(R.string.clientMoney), map, new Xutils.XCallBack() {
+                                                                    @Override
+                                                                    public void onResponse(String result) {
+                                                                        String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
+                                                                        if (su.equals("success")) {
+                                                                            ToastUtils.showToast(Xuandi.this, "购买成功");
+                                                                            Intent intent = new Intent(Xuandi.this, MainActivity.class);
+                                                                            intent.putExtra("seed", 2);
+                                                                            startActivity(intent);
+                                                                        }
+                                                                    }
+                                                                });
 
                                                             }
                                                             if (s.equals("fail")) {
@@ -325,6 +340,7 @@ public class Xuandi extends AppCompatActivity {
 
     private void settext(Xutils xutils) {
         xutils.get(getResources().getString(R.string.farmData), new HashMap<String, String>(), new Xutils.XCallBack() {
+            @SuppressLint("SetTextI18n")
             @Override
             public void onResponse(String result) {
                 Log.i("iiiiiiiiiiiiiiiii", result);
@@ -334,14 +350,14 @@ public class Xuandi extends AppCompatActivity {
 
 
                 //选地1
-                jiage_2.setText(String.valueOf(dddList.get(0).getMoney()));
-                guige_2.setText(String.valueOf(dddList.get(0).getM()));
+                jiage_2.setText(String.valueOf(dddList.get(0).getMoney()) + "元");
+                guige_2.setText(String.valueOf(dddList.get(0).getM()) + "/㎡");
                 //选地2
-                jiage_2_2.setText(String.valueOf(dddList.get(1).getMoney()));
-                guige_2_2.setText(String.valueOf(dddList.get(1).getM()));
+                jiage_2_2.setText(String.valueOf(dddList.get(1).getMoney()) + "元");
+                guige_2_2.setText(String.valueOf(dddList.get(1).getM()) + "/㎡");
                 //选地3
-                jiage_2_3.setText(String.valueOf(dddList.get(2).getMoney()));
-                guige_2_3.setText(String.valueOf(dddList.get(2).getM()));
+                jiage_2_3.setText(String.valueOf(dddList.get(2).getMoney()) + "元");
+                guige_2_3.setText(String.valueOf(dddList.get(2).getM()) + "/㎡");
                 Log.i("iiiiiiiiiiiiiiiii", String.valueOf(dddList.get(0).getM()));
             }
 

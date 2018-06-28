@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.fragment.tab1;
@@ -67,9 +68,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         x.view().inject(MainActivity.this);
         getfragment();
-        denglu();
-
-
+            denglu();
 //        //注册方法
 //        Map maps = new HashMap();
 //        maps.put("userName", "qqqq");
@@ -86,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
     private void denglu() {
 
         //实例化SharedPreferences对象
-        SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
+        final SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
         //用getString获取值
-        final String name = mySharePerferences.getString("userName", "");
+        String name = mySharePerferences.getString("userName", "");
         String password = mySharePerferences.getString("password", "");
         Map<String, String> map = new HashMap();
         map.put("userName", name);
@@ -104,7 +103,12 @@ public class MainActivity extends AppCompatActivity {
                         fragmentlist.remove(4);
                         fragmentlist.add(tab5_2);
                         fragmentPagerAdapter.notifyDataSetChanged();
-                        ToastUtils.showToast(MainActivity.this,"欢迎回来");
+                        if (mySharePerferences.getBoolean("loginstatus",false)) {
+                            ToastUtils.showToast(MainActivity.this,"欢迎回来");
+                            SharedPreferences.Editor edit = mySharePerferences.edit();
+                            edit.putBoolean("loginstatus",true);
+                            edit.apply();
+                        }
 
                     }
                 }

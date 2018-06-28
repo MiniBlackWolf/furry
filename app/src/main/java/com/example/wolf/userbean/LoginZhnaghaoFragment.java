@@ -88,7 +88,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                                         editor.putInt("uid", UserInfo.get(0).getUid());
                                         editor.putString("userName", usernames);
                                         editor.putString("password", passworlds);
-
+                                        editor.putBoolean("loginstatus",true);
                                         //提交数据
                                         editor.apply();
                                         //提示成功

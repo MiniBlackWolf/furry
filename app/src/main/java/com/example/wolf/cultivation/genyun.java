@@ -16,15 +16,19 @@ import android.widget.Toast;
 
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
+import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.land.FarmData;
+import com.example.wolf.land.Xuandi;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -105,13 +109,13 @@ public class genyun extends AppCompatActivity {
         xutils.get(getResources().getString(R.string.farmData), new HashMap<String, String>(), new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
-                GsonUtil gsonUtil=new GsonUtil();
+                GsonUtil gsonUtil = new GsonUtil();
                 FarmData getfarmjson = gsonUtil.getfarmjson(result);
-                money.setText(getfarmjson.getCultivating().getSowing()+"元/5m²");
-                money_2.setText(getfarmjson.getCultivating().getWatering()+"元/5m²");
-                money_3.setText(getfarmjson.getCultivating().getFertilizer()+"元/5m²");
-                money_4.setText(getfarmjson.getCultivating().getWeeding()+"元/5m²");
-                money_5.setText(getfarmjson.getCultivating().getExterminator()+"元/5m²");
+                money.setText(getfarmjson.getCultivating().getSowing() + "元/5m²");
+                money_2.setText(getfarmjson.getCultivating().getWatering() + "元/5m²");
+                money_3.setText(getfarmjson.getCultivating().getFertilizer() + "元/5m²");
+                money_4.setText(getfarmjson.getCultivating().getWeeding() + "元/5m²");
+                money_5.setText(getfarmjson.getCultivating().getExterminator() + "元/5m²");
 
             }
         });
@@ -149,7 +153,7 @@ public class genyun extends AppCompatActivity {
                 SharedPreferences mSharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
                 int uid = mSharedPreferences.getInt("uid", 0);
                 for (int i = 0; i < 5; i++) {
-                    Map<String, String> map = new HashMap();
+                    Map<String, String> map = new HashMap<>();
                     map.put("uid", String.valueOf(uid));
                     map.put("tid", String.valueOf(i));
                     map.put("count", getcount(addlist.get(i)));
@@ -162,12 +166,26 @@ public class genyun extends AppCompatActivity {
                             String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
                             Log.i("iiiiiiiiiiiiiiiii", s);
                             if (s.equals("success") && finalI == 4) {
-                                Toast.makeText(genyun.this, "购买成功", Toast.LENGTH_SHORT).show();
+                                Map<String, String> map = new HashMap<>();
+                                map.put("uid", String.valueOf(new Getuserinfo(genyun.this).getuid()));
+                                map.put("money", "-" + zhongjian.getText().toString());
+                                map.put("token", new Token().getToken(new Getuserinfo(genyun.this).getuid()));
+                                xutils.get(getResources().getString(R.string.clientMoney), map, new Xutils.XCallBack() {
+                                    @Override
+                                    public void onResponse(String result) {
+                                        String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
+                                        if (su.equals("success")) {
+                                            ToastUtils.showToast(genyun.this, "购买成功");
+                                            Intent intent = new Intent(genyun.this, MainActivity.class);
+                                            intent.putExtra("seed", 2);
+                                            startActivity(intent);
+                                        }
+                                    }
+                                });
 
                             }
                             if (s.equals("fail")) {
                                 Toast.makeText(genyun.this, "购买失败", Toast.LENGTH_SHORT).show();
-
                             }
                         }
                     });
@@ -205,7 +223,7 @@ public class genyun extends AppCompatActivity {
         public void onClick(View v) {
 
 
-            if (adds <=0) {
+            if (adds <= 0) {
                 vs.setText("0");
                 adds = 0;
             } else {
@@ -225,14 +243,14 @@ public class genyun extends AppCompatActivity {
                 public void onClick(View v) {
 
 
-                    if (adds <0) {
+                    if (adds < 0) {
                         vs.setText("0");
                         adds = 0;
                     } else {
                         adds += 1;
                         toatalcount++;
                         vs.setText(adds + "");
-                        double m = Double.valueOf(moen.getText().toString().substring(0,  moen.getText().toString().lastIndexOf("元")));
+                        double m = Double.valueOf(moen.getText().toString().substring(0, moen.getText().toString().lastIndexOf("元")));
                         total += m;
                         zhongjian.setText(total + "");
                         kuaishu.setText(toatalcount + "");
