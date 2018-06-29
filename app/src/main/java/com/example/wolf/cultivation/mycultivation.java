@@ -23,6 +23,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -62,6 +64,12 @@ public class mycultivation extends AppCompatActivity {
         xutils.get(getResources().getString(R.string.getTickets), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
+                Log.i("iiiiiiiiii", result);
+                Pattern compile = Pattern.compile("fail");
+                Matcher matcher = compile.matcher(result);
+                if (matcher.find()) {
+                    return;
+                }
                 GsonUtil gsonUtil = new GsonUtil();
                 final List<usercultivation> usercultivation = gsonUtil.Gson(result, usercultivation.class);
                 if (usercultivation == null) {

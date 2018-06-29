@@ -25,6 +25,7 @@ import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.burse.MyburseActivity;
 import com.example.wolf.invite.InviteActivity;
+import com.example.wolf.strategy.StrategyActivity;
 import com.example.wolf.userbean.MyinfoActivity;
 import com.example.wolf.userbean.UserInfo;
 import com.example.wolf.userbean.usersfarm;
@@ -50,7 +51,10 @@ public class tab5_2 extends Fragment {
     private LinearLayout m4_4;
     @ViewInject(R.id.m14_4)
     private LinearLayout m14_4;
+    @ViewInject(R.id.m7_4)
+    private LinearLayout m7_4;
     Xutils xutils = new Xutils(getActivity());
+
     //    @ViewInject(R.id.myinfo22)
 //    private ImageView myinfo2;
     @Nullable
@@ -117,6 +121,15 @@ public class tab5_2 extends Fragment {
                 startActivity(intent);
             }
         });
+        //种植攻略
+        m7_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), StrategyActivity.class);
+                startActivity(intent);
+            }
+        });
+        //修改我的信息
         myinfo2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,6 +137,7 @@ public class tab5_2 extends Fragment {
                 startActivity(intent);
             }
         });
+
 //        Map<String, String> map2 = new HashMap<>();
 //        map.put("userName", new Getuserinfo(getActivity()).getusername());
 //        xutils.get(getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {

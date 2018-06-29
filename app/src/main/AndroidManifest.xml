@@ -139,6 +139,12 @@
                 <category android:name="android.intent.category.LAUNCHER21" />
             </intent-filter>
         </activity>
+        <activity android:name=".strategy.StrategyActivity"
+            >
+            <intent-filter>
+                <category android:name="android.intent.category.LAUNCHER22" />
+            </intent-filter>
+        </activity>
         <activity
             android:name="com.alipay.sdk.app.H5PayActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize"
