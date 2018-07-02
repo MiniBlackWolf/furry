@@ -1,11 +1,14 @@
 package com.example.wolf.fragment;
 
 
+
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +16,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.MediaController;
 import android.widget.VideoView;
 
@@ -26,9 +28,9 @@ import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.adpater.Myvideoadapter;
+import com.example.wolf.cultivation.genyun;
 import com.example.wolf.delivery.delivery;
 import com.example.wolf.land.Xuandi;
-import com.example.wolf.cultivation.genyun;
 import com.example.wolf.land.userland;
 import com.example.wolf.pick.pick;
 import com.example.wolf.seed.seedActivity;
@@ -56,13 +58,15 @@ public class tab2 extends Fragment {
     private ImageView s4;
     @ViewInject(R.id.s5)
     private ImageView s5;
+    @ViewInject(R.id.s6)
+    private ImageView s6;
     @ViewInject(R.id.videoView)
     private VideoView videoView;
     @ViewInject(R.id.tab2videorecyclerview)
     private RecyclerView tab2videorecyclerview;
     List<userland> list=new ArrayList<>();
     int uid;
-
+    AlertDialog alertDialog;
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -119,6 +123,7 @@ public class tab2 extends Fragment {
                 } else {
                     Intent intent = new Intent(getActivity(), genyun.class);
                     startActivity(intent);
+
                 }
             }
         });
@@ -141,6 +146,32 @@ public class tab2 extends Fragment {
                 } else {
                     Intent intent = new Intent(getActivity(), delivery.class);
                     startActivity(intent);
+                }
+            }
+        });
+        s6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (uid == 0) {
+                    ToastUtils.showToast(getActivity(), "请先登录");
+                } else {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                    builder.setTitle("警告！");
+                    builder.setMessage("此功能正在建设中！");
+                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            alertDialog.dismiss();
+                        }
+                    });
+                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            alertDialog.dismiss();
+                        }
+                    });
+                     alertDialog = builder.create();
+                    alertDialog.show();
                 }
             }
         });

@@ -51,6 +51,7 @@ public class mycultivation extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         overridePendingTransition(0, 0);
+
     }
 
     @Override
@@ -139,6 +140,16 @@ public class mycultivation extends AppCompatActivity {
                                 mycultivationdialog2.show(getSupportFragmentManager(), "4");
                                 break;
                             }
+                            case 5: {
+                                Bundle bundle = new Bundle();
+                                bundle.putInt("type", 5);
+                                bundle.putInt("count", usercultivation.get(5).getCount());
+                                mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
+                                mycultivationdialog2.setArguments(bundle);
+                                mycultivationdialog2.show(getSupportFragmentManager(), "5");
+                                break;
+                            }
+
 
                         }
                     }

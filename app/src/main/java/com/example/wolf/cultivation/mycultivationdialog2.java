@@ -69,7 +69,7 @@ public class mycultivationdialog2 extends DialogFragment {
                 break;
             }
             case 2: {
-                mycultivationpopname.setText("菜鸟环保|施肥券");
+                mycultivationpopname.setText("菜鸟环保|农家肥券");
                 mycultivationpopimage.setImageResource(R.mipmap.cu5);
                 break;
             }
@@ -83,6 +83,12 @@ public class mycultivationdialog2 extends DialogFragment {
                 mycultivationpopimage.setImageResource(R.mipmap.cu2);
                 break;
             }
+            case 5: {
+                mycultivationpopname.setText("菜鸟环保|有机肥券");
+                mycultivationpopimage.setImageResource(R.mipmap.cu5);
+                break;
+            }
+
         }
 
     }
@@ -91,6 +97,11 @@ public class mycultivationdialog2 extends DialogFragment {
         okseedandland2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (spinnerland2.getSelectedItem().equals("没有选择土地")) {
+                     ToastUtils.showToast(getActivity(),"请选择土地!");
+                    return;
+
+                }
                 Map<String, String> map = new HashMap<>();
                 map.put("uid", String.valueOf(new Getuserinfo(getActivity()).getuid()));
                 map.put("tid", String.valueOf(getTag()));
@@ -127,11 +138,12 @@ public class mycultivationdialog2 extends DialogFragment {
                 GsonUtil gsonUtil1 = new GsonUtil();
                 List<userland> userland = gsonUtil1.Gson(result, userland.class);
                 List<String> listland = new ArrayList<>();
+                listland.add("没有选择土地");
                 for (int i = 0; i < userland.size(); i++) {
                     String landinfo = userland.get(i).getFid() + "-剩余" + userland.get(i).getRemainm() + "㎡";
                     listland.add(landinfo);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(getActivity(), R.layout.spinneritem, listland);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(), R.layout.spinneritem, listland);
                 spinnerland2.setAdapter(adapter);
                 ObjectAnimator.ofFloat(arrows2, "rotation", 0f, 180f).setDuration(1000).start();
 
@@ -147,11 +159,11 @@ public class mycultivationdialog2 extends DialogFragment {
                 Bundle bundle = getArguments();
                 int counts = bundle.getInt("count");
                 if (add >= counts) {
-                    ToastUtils.showToast(getActivity(),"券不足请购买");
+                    ToastUtils.showToast(getActivity(), "券不足请购买");
                 } else {
                     add += 1;
                     mycultivationpopcount2.setText(add + "");
-                    mycultivationcunt.setText("共"+add+"件");
+                    mycultivationcunt.setText("共" + add + "件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount2.getText()));
                     Fcount = count * 5;
 
@@ -167,7 +179,7 @@ public class mycultivationdialog2 extends DialogFragment {
                 } else {
                     add -= 1;
                     mycultivationpopcount2.setText(add + "");
-                    mycultivationcunt.setText("共"+add+"件");
+                    mycultivationcunt.setText("共" + add + "件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount2.getText()));
                     Fcount = count * 5;
                 }
@@ -190,7 +202,7 @@ public class mycultivationdialog2 extends DialogFragment {
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-         dialog = new Dialog(getActivity(), R.style.MyDialog);
+        dialog = new Dialog(getActivity(), R.style.MyDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.mycultivationpopitem);
         dialog.setCanceledOnTouchOutside(true);

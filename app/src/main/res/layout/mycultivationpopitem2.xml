@@ -32,7 +32,7 @@
 
         <Spinner
             android:id="@+id/spinnerland2"
-            android:layout_width="193dp"
+            android:layout_width="180dp"
             android:layout_height="39dp"
             android:layout_marginTop="160dp"
             android:background="@drawable/videobuttonck"
@@ -186,16 +186,16 @@
 
         <ImageView
             android:id="@+id/arrows2"
-            android:layout_width="20dp"
-            android:layout_height="15dp"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
             android:layout_marginBottom="8dp"
             android:layout_marginTop="8dp"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout34"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.71"
+            app:layout_constraintHorizontal_bias="0.676"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView6"
-            app:layout_constraintVertical_bias="0.43"
+            app:layout_constraintVertical_bias="0.437"
             app:srcCompat="@mipmap/spnner" />
 
     </android.support.constraint.ConstraintLayout>

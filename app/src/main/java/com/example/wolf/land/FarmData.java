@@ -65,6 +65,15 @@ public class FarmData {
         private double fertilizer;
         private double watering;
         private double exterminator;
+        private double organic;
+
+        public double getOrganic() {
+            return organic;
+        }
+
+        public void setOrganic(double organic) {
+            this.organic = organic;
+        }
 
         public double getSowing() {
             return sowing;

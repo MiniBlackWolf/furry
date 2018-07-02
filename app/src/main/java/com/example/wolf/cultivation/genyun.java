@@ -22,13 +22,11 @@ import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.land.FarmData;
-import com.example.wolf.land.Xuandi;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +44,7 @@ public class genyun extends AppCompatActivity {
     private Button jian_2;
     @ViewInject(R.id.x7_2)
     private Button jia_2;
-    @ViewInject(R.id.x6_3)
+    @ViewInject(R.id.x6_3_2)
     private Button jian_3;
     @ViewInject(R.id.x7_3)
     private Button jia_3;
@@ -74,6 +72,8 @@ public class genyun extends AppCompatActivity {
     private TextView money_2;
     @ViewInject(R.id.x5_3)
     private TextView money_3;
+    @ViewInject(R.id.x5_3_2)
+    private TextView money_3_2;
     @ViewInject(R.id.x5_4)
     private TextView money_4;
     @ViewInject(R.id.x5_5)
@@ -86,12 +86,19 @@ public class genyun extends AppCompatActivity {
     private TextView kuaishu;
     @ViewInject(R.id.bz)
     private ConstraintLayout constraintLayout;
+    @ViewInject(R.id.x6_3_2)
+    private Button jian6;
+    @ViewInject(R.id.x7_3_2)
+    private Button jia6;
+    @ViewInject(R.id.x8_3_2)
+    private TextView shul_6;
     Xutils xutils = new Xutils(genyun.this);
     int add = 0;
     int add2 = 0;
     int add3 = 0;
     int add4 = 0;
     int add5 = 0;
+    int add6 = 0;
     double total = 0;
     int toatalcount;
     List<TextView> addlist;
@@ -109,11 +116,13 @@ public class genyun extends AppCompatActivity {
         xutils.get(getResources().getString(R.string.farmData), new HashMap<String, String>(), new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
+                Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 FarmData getfarmjson = gsonUtil.getfarmjson(result);
                 money.setText(getfarmjson.getCultivating().getSowing() + "元/5m²");
                 money_2.setText(getfarmjson.getCultivating().getWatering() + "元/5m²");
                 money_3.setText(getfarmjson.getCultivating().getFertilizer() + "元/5m²");
+                money_3_2.setText(getfarmjson.getCultivating().getOrganic() + "元/5m²");
                 money_4.setText(getfarmjson.getCultivating().getWeeding() + "元/5m²");
                 money_5.setText(getfarmjson.getCultivating().getExterminator() + "元/5m²");
 
@@ -128,12 +137,14 @@ public class genyun extends AppCompatActivity {
         jianli g3 = new jianli(shul_3, money_3, add3);
         jianli g4 = new jianli(shul_4, money_4, add4);
         jianli g5 = new jianli(shul_5, money_5, add5);
+        jianli g6 = new jianli(shul_6, money_3_2, add6);
         addlist = new ArrayList<>();
         addlist.add(shul);
         addlist.add(shul_2);
         addlist.add(shul_3);
         addlist.add(shul_4);
         addlist.add(shul_5);
+        addlist.add(shul_6);
         jia.setOnClickListener(g1.jiali());
         jian.setOnClickListener(g1);
         jia_2.setOnClickListener(g2.jiali());
@@ -144,6 +155,8 @@ public class genyun extends AppCompatActivity {
         jian_4.setOnClickListener(g4);
         jia_5.setOnClickListener(g5.jiali());
         jian_5.setOnClickListener(g5);
+        jia6.setOnClickListener(g6.jiali());
+        jian6.setOnClickListener(g6);
     }
 
     private void buy() {
@@ -152,7 +165,7 @@ public class genyun extends AppCompatActivity {
             public void onClick(View v) {
                 SharedPreferences mSharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
                 int uid = mSharedPreferences.getInt("uid", 0);
-                for (int i = 0; i < 5; i++) {
+                for (int i = 0; i < 6; i++) {
                     Map<String, String> map = new HashMap<>();
                     map.put("uid", String.valueOf(uid));
                     map.put("tid", String.valueOf(i));
@@ -165,7 +178,7 @@ public class genyun extends AppCompatActivity {
                         public void onResponse(String result) {
                             String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
                             Log.i("iiiiiiiiiiiiiiiii", s);
-                            if (s.equals("success") && finalI == 4) {
+                            if (s.equals("success") && finalI == 5) {
                                 Map<String, String> map = new HashMap<>();
                                 map.put("uid", String.valueOf(new Getuserinfo(genyun.this).getuid()));
                                 map.put("money", "-" + zhongjian.getText().toString());
@@ -195,8 +208,6 @@ public class genyun extends AppCompatActivity {
     }
 
     public String getcount(TextView vd) {
-
-
         return vd.getText().toString();
     }
 

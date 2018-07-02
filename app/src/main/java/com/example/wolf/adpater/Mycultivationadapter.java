@@ -37,7 +37,7 @@ public class Mycultivationadapter extends BaseQuickAdapter<usercultivation, Base
             }
             case 2: {
                 helper.setImageResource(R.id.cultivationimage,R.mipmap.x5);
-                helper.setText(R.id.cuname,"菜鸟环保|施肥券");
+                helper.setText(R.id.cuname,"菜鸟环保|农家肥券");
                 helper.setText(R.id.cujianshao,"将肥料施于土壤中，保障作物充分的养分，提高作物品质");
                 helper.setText(R.id.cucount,item.getCount()+"张");
                 break;
@@ -55,6 +55,14 @@ public class Mycultivationadapter extends BaseQuickAdapter<usercultivation, Base
                 helper.setText(R.id.cujianshao,"蔬菜在生长期间遭到虫害，灭虫可以减少蔬菜收到的虫害，保证其生长");
                 helper.setText(R.id.cucount,item.getCount()+"张");
                 break;
+            }
+            case 5:{
+                helper.setImageResource(R.id.cultivationimage,R.mipmap.x3);
+                helper.setText(R.id.cuname,"菜鸟环保|有机肥券");
+                helper.setText(R.id.cujianshao,"蔬菜在生长期间遭到虫害，灭虫可以减少蔬菜收到的虫害，保证其生长");
+                helper.setText(R.id.cucount,item.getCount()+"张");
+
+
             }
         }
 

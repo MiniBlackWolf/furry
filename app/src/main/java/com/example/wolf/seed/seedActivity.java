@@ -98,8 +98,9 @@ public class seedActivity extends AppCompatActivity {
         //根据日期改变种子数据
         List<ProdctBean> listDatas = new ArrayList<>();
         Calendar cal = Calendar.getInstance();
-        final int month = (cal.get(Calendar.MONTH));
+        final int month = cal.get(Calendar.MONTH);
         setgridview(month,listDatas);
+        seedadapter.notifyDataSetChanged();
         List<Button> list = new ArrayList();
         list.add(y1);
         list.add(y2);

@@ -17,7 +17,7 @@
     <string name="getUserFrame">http://www.cnepltd.com//net/seed/getUserFrame</string>
     <string name="getUserRemainSeed">http://www.cnepltd.com/net/seed/getUserRemainSeed</string>
     <string name="getTickets">http://www.cnepltd.com/net/userBase/getTickets</string>
-    <string name="buyTickets">http://www.cnepltd.com//net/userBase/buyTickets</string>
+    <string name="buyTickets">http://www.cnepltd.com/net/userBase/buyTickets</string>
     <string name="getUserOrder">http://www.cnepltd.com/net/orderManage/getUserOrder</string>
     <string name="getCloopen">http://www.cnepltd.com/net/userBase/getCloopen</string>
     <string name="register">http://www.cnepltd.com/net/userBase/register</string>
