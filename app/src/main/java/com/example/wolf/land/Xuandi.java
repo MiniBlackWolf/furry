@@ -33,6 +33,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @ContentView(R.layout.xuandi)
 public class Xuandi extends AppCompatActivity {
@@ -165,8 +167,10 @@ public class Xuandi extends AppCompatActivity {
                                                             String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
                                                             Log.i("iiiiiiiiiiiiiiiii", s);
                                                             if (s.equals("success")) {
+                                                                String s1 = jiage.getText().toString();
+                                                                String s2 = s1.substring(0, s1.indexOf("元"));
                                                                 BigDecimal big1 = new BigDecimal(count);
-                                                                BigDecimal big2 = new BigDecimal(jiage.getText().toString());
+                                                                BigDecimal big2 = new BigDecimal(s2);
                                                                 float seedmoney = big1.multiply(big2).floatValue();
                                                                 Map<String, String> map = new HashMap<>();
                                                                 map.put("uid", String.valueOf(new Getuserinfo(Xuandi.this).getuid()));

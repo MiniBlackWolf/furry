@@ -52,6 +52,7 @@ public class myland extends AppCompatActivity {
     @BindView(R.id.xuzu)
     Button xuzu;
     Xutils xutils = new Xutils(myland.this);
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,11 +78,17 @@ public class myland extends AppCompatActivity {
                     }
                 }
                 mylandrecyclerview.setLayoutManager(new LinearLayoutManager(myland.this));
-                mylandadapter = new Mylandadapter(R.layout.mylinditem, userland, myland.this,xuzu);
+                mylandadapter = new Mylandadapter(R.layout.mylinditem, userland, myland.this, xuzu);
                 mylandadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mylandadapter.bindToRecyclerView(mylandrecyclerview);
                 mylandadapter.setEmptyView(R.layout.loading);
                 mylandadapter.isFirstOnly(false);
+                mylandadapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @Override
+                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+                      new mylandDiaLog().show(getSupportFragmentManager(),"1");
+                    }
+                });
                 mylandrecyclerview.setAdapter(mylandadapter);
                 mylandadapter.notifyDataSetChanged();
 
@@ -90,17 +97,19 @@ public class myland extends AppCompatActivity {
 
 
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
+
     @OnClick({R.id.used, R.id.overdue, R.id.mylandfhui})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.used:
                 mylandrecyclerview.setLayoutManager(new LinearLayoutManager(myland.this));
-                mylandadapter = new Mylandadapter(R.layout.mylinditem, userland, myland.this,xuzu);
+                mylandadapter = new Mylandadapter(R.layout.mylinditem, userland, myland.this, xuzu);
                 mylandrecyclerview.setAdapter(mylandadapter);
                 mylandadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mylandadapter.isFirstOnly(false);
@@ -110,7 +119,7 @@ public class myland extends AppCompatActivity {
                 break;
             case R.id.overdue:
                 mylandrecyclerview.setLayoutManager(new LinearLayoutManager(myland.this));
-                mylandadapter = new Mylandadapter(R.layout.mylinditem, overduelist, myland.this,xuzu);
+                mylandadapter = new Mylandadapter(R.layout.mylinditem, overduelist, myland.this, xuzu);
 //                Log.i("iiiiiiiiiiii", overduelist.get(0).getValidityperiod() + "");
                 mylandrecyclerview.setAdapter(mylandadapter);
                 mylandadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);

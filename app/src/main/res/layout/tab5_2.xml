@@ -91,14 +91,14 @@
                         app:srcCompat="@mipmap/m2" />
 
                     <ImageView
-                        android:id="@+id/imageView15"
+                        android:id="@+id/m2_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         app:srcCompat="@mipmap/m3" />
 
                     <ImageView
-                        android:id="@+id/imageView16"
+                        android:id="@+id/m3_3"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -165,7 +165,7 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="20dp"
-                android:text="TextView"
+                android:text="Loading..."
                 app:layout_constraintEnd_toEndOf="@+id/imageView12"
                 app:layout_constraintStart_toStartOf="@+id/imageView12"
                 app:layout_constraintTop_toBottomOf="@+id/myinfo22" />

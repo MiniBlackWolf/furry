@@ -69,7 +69,7 @@
             android:id="@+id/textView60"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="张"
+            android:text="块"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/buy"
             app:layout_constraintStart_toStartOf="parent"
@@ -117,20 +117,20 @@
 
         <TextView
             android:id="@+id/kuaishu"
-            android:layout_width="wrap_content"
+            android:layout_width="19dp"
             android:layout_height="wrap_content"
             android:text="0"
             android:textColor="@color/hong"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.29"
+            app:layout_constraintHorizontal_bias="0.279"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.76" />
+            app:layout_constraintVertical_bias="0.774" />
 
         <TextView
             android:id="@+id/zhongjian"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
@@ -140,10 +140,10 @@
             android:textColor="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.276"
+            app:layout_constraintHorizontal_bias="0.194"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.129" />
+            app:layout_constraintVertical_bias="0.060000002" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -1,8 +1,10 @@
 package com.example.wolf.adpater;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.AndroidException;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,13 +44,13 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder helper, final userland item) {
-        Xutils xutils=new Xutils(context);
+        Xutils xutils = new Xutils(context);
         Map map = new HashMap();
         map.put("sid", item.getSfid());
         xutils.get(context.getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
-                Log.i("iiiiiiiiiiiiiiiii",result+";"+ item.getSfid());
+                Log.i("iiiiiiiiiiiiiiiii", result + ";" + item.getSfid());
                 GsonUtil gsonUtil = new GsonUtil();
                 List<Seed> gson = gsonUtil.Gson(result, Seed.class);
                 String fid = item.getFid().substring(0, 1);
@@ -64,7 +66,14 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.mianji, "10/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.a_a);
                     helper.setText(R.id.fid, item.getFid());
-                    helper.setText(R.id.sid, result.equals("[{}]") ? "空" : gson.get(0).getSeedname());
+                    if (result.equals("[{}]")) {
+                        helper.setText(R.id.sid, "空");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+                    } else {
+                        helper.setText(R.id.sid, "点击查看详情");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                        helper.addOnClickListener(R.id.sid);
+                    }
                     helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
 
 
@@ -73,14 +82,28 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.mianji, "15/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.b_b);
                     helper.setText(R.id.fid, item.getFid());
-                    helper.setText(R.id.sid, result.equals("[{}]") ? "空" : gson.get(0).getSeedname());
+                    if (result.equals("[{}]")) {
+                        helper.setText(R.id.sid, "空");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+                    } else {
+                        helper.setText(R.id.sid, "点击查看详情");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                        helper.addOnClickListener(R.id.sid);
+                    }
                     helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
                 }
                 if (fid.equals("C")) {
                     helper.setText(R.id.mianji, "20/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.c_c);
                     helper.setText(R.id.fid, item.getFid());
-                    helper.setText(R.id.sid, result.equals("[{}]") ? "空" : gson.get(0).getSeedname());
+                    if (result.equals("[{}]")) {
+                        helper.setText(R.id.sid, "空");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+                    } else {
+                        helper.setText(R.id.sid, "点击查看详情");
+                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                        helper.addOnClickListener(R.id.sid);
+                    }
                     helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
                 }
 
@@ -89,7 +112,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
         xuzu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Xutils xutils=new Xutils(context);
+                Xutils xutils = new Xutils(context);
                 for (int i = 0; i < list.size(); i++) {
                     int visibility = list2.get(i).getVisibility();
                     if (visibility == View.VISIBLE) {
@@ -102,7 +125,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                             public void onResponse(String result) {
                                 String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
                                 if (s.equals("success")) {
-                                    Toast.makeText(context,"续租成功",Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(context, "续租成功", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

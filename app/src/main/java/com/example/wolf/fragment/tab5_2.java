@@ -1,11 +1,13 @@
 package com.example.wolf.fragment;
 
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,13 +49,24 @@ public class tab5_2 extends Fragment {
     private TextView name;
     @ViewInject(R.id.m1_3)
     private ImageView m1;
+    @ViewInject(R.id.m2_3)
+    private ImageView m2;
+    @ViewInject(R.id.m3_3)
+    private ImageView m3;
     @ViewInject(R.id.m4_4)
     private LinearLayout m4_4;
     @ViewInject(R.id.m14_4)
     private LinearLayout m14_4;
     @ViewInject(R.id.m7_4)
     private LinearLayout m7_4;
+    @ViewInject(R.id.m5_4)
+    private LinearLayout m5_4;
+    @ViewInject(R.id.m6_4)
+    private LinearLayout m6_4;
+    @ViewInject(R.id.m13_4)
+    private LinearLayout m13_4;
     Xutils xutils = new Xutils(getActivity());
+    private AlertDialog alertDialog;
 
     //    @ViewInject(R.id.myinfo22)
 //    private ImageView myinfo2;
@@ -137,7 +150,41 @@ public class tab5_2 extends Fragment {
                 startActivity(intent);
             }
         });
-
+        //光伏理财
+        m2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putoff();
+            }
+        });
+        //旅游产品
+        m3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putoff();
+            }
+        });
+        //我的物流
+        m5_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putoff();
+            }
+        });
+        //积分商城
+        m6_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putoff();
+            }
+        });
+        //联系客服
+        m13_4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                putoff();
+            }
+        });
 //        Map<String, String> map2 = new HashMap<>();
 //        map.put("userName", new Getuserinfo(getActivity()).getusername());
 //        xutils.get(getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
@@ -156,5 +203,25 @@ public class tab5_2 extends Fragment {
 //            }
 //        });
         return view;
+    }
+
+    private void putoff() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        builder.setTitle("警告！");
+        builder.setMessage("此功能正在建设中");
+        builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                alertDialog.dismiss();
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                alertDialog.dismiss();
+            }
+        });
+        alertDialog = builder.create();
+        alertDialog.show();
     }
 }
