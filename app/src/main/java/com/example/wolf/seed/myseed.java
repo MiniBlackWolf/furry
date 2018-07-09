@@ -2,6 +2,7 @@ package com.example.wolf.seed;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,10 +32,7 @@ import butterknife.OnClick;
 
 
 public class myseed extends AppCompatActivity {
-    @BindView(R.id.seedfh)
-    ImageView seedfh;
-    @BindView(R.id.myseedrecycler)
-    RecyclerView myseedrecycler;
+
     @BindView(R.id.usev)
     View usev;
     @BindView(R.id.use)
@@ -43,15 +41,22 @@ public class myseed extends AppCompatActivity {
     View nouserv;
     @BindView(R.id.nouse)
     LinearLayout nouse;
-    @BindView(R.id.overduev)
-    View overduev;
-    @BindView(R.id.overdue)
-    LinearLayout overdue;
+    @BindView(R.id.fffffffff)
+    LinearLayout fffffffff;
+    @BindView(R.id.seedfh)
+    ImageView seedfh;
+    @BindView(R.id.ddddddd)
+    LinearLayout ddddddd;
+    @BindView(R.id.myseedrecycler)
+    RecyclerView myseedrecycler;
+    @BindView(R.id.linearLayout32)
+    ConstraintLayout linearLayout32;
     private Xutils xutils = new Xutils(myseed.this);
     private Getuserinfo getuserinfo = new Getuserinfo(myseed.this);
-    private List<seedbean> userseed;
+    private List<myseedbean> userseed;
     Myseedadapter myseedadapter;
     private ZLoadingDialog show;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,23 +64,23 @@ public class myseed extends AppCompatActivity {
         ButterKnife.bind(this);
         ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(myseed.this);
         show = zloadingDiaLogkt.show();
+        show.dismiss();
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
-        map.put("token", new Token().getToken(getuserinfo.getuid()));
-        xutils.get(getResources().getString(R.string.getUserUseSeed), map, new Xutils.XCallBack() {
+        xutils.get(getResources().getString(R.string.getuserseed), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
                 Log.i("iiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
-                userseed = gsonUtil.Gson(result, seedbean.class);
-                setadapter(userseed,show);
+                userseed = gsonUtil.Gson(result, myseedbean.class);
+                setadapter(userseed, show);
             }
 
         });
     }
 
-    private void setadapter(List<seedbean> list,ZLoadingDialog show) {
-        myseedadapter = new Myseedadapter(R.layout.myseeditem, list, myseed.this,show);
+    private void setadapter(List<myseedbean> list, ZLoadingDialog show) {
+        myseedadapter = new Myseedadapter(R.layout.myseeditem, list, myseed.this, show);
         myseedadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         myseedadapter.isFirstOnly(false);
         myseedrecycler.setLayoutManager(new GridLayoutManager(myseed.this, 2));
@@ -89,28 +94,25 @@ public class myseed extends AppCompatActivity {
         overridePendingTransition(0, 0);
     }
 
-    @OnClick({R.id.use, R.id.nouse, R.id.overdue})
+    @OnClick({R.id.use, R.id.nouse })
     public void onViewClicked(View view) {
         usev.setBackgroundColor(getResources().getColor(R.color.toum));
         nouserv.setBackgroundColor(getResources().getColor(R.color.toum));
-        overduev.setBackgroundColor(getResources().getColor(R.color.toum));
         switch (view.getId()) {
             case R.id.use:
-                setadapter(userseed,show);
+                setadapter(userseed, show);
                 usev.setBackgroundColor(getResources().getColor(R.color.hong));
                 break;
             case R.id.nouse:
-                Map<String,String> map=new HashMap();
+                Map<String, String> map = new HashMap<>();
                 map.put("uid", String.valueOf(getuserinfo.getuid()));
-                map.put("token",new Token().getToken(getuserinfo.getuid()));
-                map.put("getMethod","1");
-                xutils.get(getResources().getString(R.string.getUserRemainSeed), map, new Xutils.XCallBack() {
+                xutils.get(getResources().getString(R.string.getnouseseed), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
-                        Log.i("iiiiiiiiiii",result);
-                        GsonUtil gsonUtil=new GsonUtil();
+                        Log.i("iiiiiiiiiii", result);
+                        GsonUtil gsonUtil = new GsonUtil();
                         List<userseed> userseed = gsonUtil.Gson(result, userseed.class);
-                        myseedadapter2 myseedadapter2=new myseedadapter2(R.layout.myseeditem,userseed,myseed.this);
+                        myseedadapter2 myseedadapter2 = new myseedadapter2(R.layout.myseeditem, userseed, myseed.this);
                         myseedadapter2.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                         myseedadapter2.isFirstOnly(false);
                         myseedrecycler.setLayoutManager(new GridLayoutManager(myseed.this, 2));
@@ -120,26 +122,8 @@ public class myseed extends AppCompatActivity {
                 });
                 nouserv.setBackgroundColor(getResources().getColor(R.color.hong));
                 break;
-            case R.id.overdue:
-                Map<String,String> map2=new HashMap();
-                map2.put("uid", String.valueOf(getuserinfo.getuid()));
-                map2.put("token",new Token().getToken(getuserinfo.getuid()));
-                map2.put("getMethod","2");
-                xutils.get(getResources().getString(R.string.getUserRemainSeed), map2, new Xutils.XCallBack() {
-                    @Override
-                    public void onResponse(String result) {
-                        GsonUtil gsonUtil=new GsonUtil();
-                        List<userseed> userseed = gsonUtil.Gson(result, userseed.class);
-                        myseedadapter2 myseedadapter2=new myseedadapter2(R.layout.myseeditem,userseed,myseed.this);
-                        myseedadapter2.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-                        myseedadapter2.isFirstOnly(false);
-                        myseedrecycler.setLayoutManager(new GridLayoutManager(myseed.this, 2));
-                        myseedrecycler.setAdapter(myseedadapter2);
-                        myseedadapter2.notifyDataSetChanged();
-                    }
-                });
-                overduev.setBackgroundColor(getResources().getColor(R.color.hong));
-                break;
+
+
         }
     }
 }

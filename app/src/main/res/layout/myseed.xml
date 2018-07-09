@@ -63,28 +63,6 @@
                 android:layout_weight="0.1" />
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/overdue"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="已过期"
-                android:textColor="@android:color/background_dark" />
-
-            <View
-                android:id="@+id/overduev"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0.1" />
-        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout

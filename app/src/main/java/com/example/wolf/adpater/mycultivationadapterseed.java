@@ -60,7 +60,7 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
             public void onResponse(String result) {
                 GsonUtil gsonUtil = new GsonUtil();
                 List<seedbean.SeedBean> SeedBean = gsonUtil.Gson(result, seedbean.SeedBean.class);
-                helper.setText(R.id.mycultivationitem2button, SeedBean.get(0).getSeedname() + "-剩余" + item.getBuycount() + "㎡");
+                helper.setText(R.id.mycultivationitem2button, SeedBean.get(0).getSeedname() + "-剩余" + item.getBuyCount() + "㎡");
 
             }
         });

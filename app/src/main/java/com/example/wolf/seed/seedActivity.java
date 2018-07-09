@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,6 +29,8 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -78,10 +81,13 @@ public class seedActivity extends AppCompatActivity {
     private int mPageSize = 8; //每页显示的最大的数量
     private List<View> viewPagerList;//GridView作为一个View对象添加到ViewPager集合中
     private Seedadapter seedadapter;
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(seedActivity.this);
+        montesetlist();
         seedxuandifanhui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,8 +95,9 @@ public class seedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        montesetlist();
 
+
+        ;
 
     }
 
@@ -98,10 +105,9 @@ public class seedActivity extends AppCompatActivity {
         //根据日期改变种子数据
         List<ProdctBean> listDatas = new ArrayList<>();
         Calendar cal = Calendar.getInstance();
-        final int month = cal.get(Calendar.MONTH);
-        setgridview(month,listDatas);
-        seedadapter.notifyDataSetChanged();
-        List<Button> list = new ArrayList();
+        int month = cal.get(Calendar.MONTH) + 1;
+        setgridview(month, listDatas);
+        List<Button> list = new ArrayList<>();
         list.add(y1);
         list.add(y2);
         list.add(y3);
@@ -152,84 +158,84 @@ public class seedActivity extends AppCompatActivity {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y1.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y1.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(1,listDatas);
+                setgridview(1, listDatas);
                 break;
             }
             case R.id.y2: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y2.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y2.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(2,listDatas);
+                setgridview(2, listDatas);
                 break;
             }
             case R.id.y3: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y3.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y3.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(3,listDatas);
+                setgridview(3, listDatas);
                 break;
             }
             case R.id.y4: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y4.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y4.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(4,listDatas);
+                setgridview(4, listDatas);
                 break;
             }
             case R.id.y5: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y5.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y5.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(5,listDatas);
+                setgridview(5, listDatas);
                 break;
             }
             case R.id.y6: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y6.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y6.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(6,listDatas);
+                setgridview(6, listDatas);
                 break;
             }
             case R.id.y7: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y7.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y7.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(7,listDatas);
+                setgridview(7, listDatas);
                 break;
             }
             case R.id.y8: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y8.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y8.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(8,listDatas);
+                setgridview(8, listDatas);
                 break;
             }
             case R.id.y9: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y9.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y9.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(9,listDatas);
+                setgridview(9, listDatas);
                 break;
             }
             case R.id.y10: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y10.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y10.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(10,listDatas);
+                setgridview(10, listDatas);
                 break;
             }
             case R.id.y11: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y11.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y11.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(11,listDatas);
+                setgridview(11, listDatas);
                 break;
             }
             case R.id.y12: {
                 List<ProdctBean> listDatas = new ArrayList<>();
                 y12.setBackground(getResources().getDrawable(R.mipmap.y123));
                 y12.setTextColor(Color.parseColor("#ffffff"));
-                setgridview(12,listDatas);
+                setgridview(12, listDatas);
                 break;
             }
 
@@ -240,8 +246,8 @@ public class seedActivity extends AppCompatActivity {
     }
 
     //改变数据方法
-    private void setgridview(final int month, final List<ProdctBean> listDatas) {
-        final ZloadingDiaLogkt zloadingDiaLogkt =new ZloadingDiaLogkt(seedActivity.this);
+    public void setgridview(final int month, final List<ProdctBean> listDatas) {
+        final ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(seedActivity.this);
         final ZLoadingDialog show = zloadingDiaLogkt.show();
         xutils.get(getResources().getString(R.string.Seedscount), new HashMap<String, String>(), new Xutils.XCallBack() {
             @Override
@@ -256,7 +262,7 @@ public class seedActivity extends AppCompatActivity {
                     xutils.get(getResources().getString(R.string.Seeds), map, new Xutils.XCallBack() {
                         @Override
                         public void onResponse(String result) {
-                            Log.i("iiiiiiii",result);
+                            Log.i("iiiiiiii", result);
                             //解析数据到gson
                             GsonUtil gsonUtil = new GsonUtil();
                             List<Seed> seedlist = gsonUtil.Gson(result, Seed.class);
@@ -295,17 +301,19 @@ public class seedActivity extends AppCompatActivity {
                                     listDatas.add(prodctBean);
 
                                 }
-                               // if( Integer.valueOf(s)==finalD) {
-                                    SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
-                                    seedadapter = new Seedadapter(R.layout.seeditem, listDatas, seedActivity.this, seedzhongjian, seedbuy, show);
-                                    Log.i("iiiiiiiiiiii", String.valueOf(listDatas.size()));
-                                    GridLayoutManager gridLayoutManager = new GridLayoutManager(seedActivity.this, 3);
-                                    seedgridview.setLayoutManager(gridLayoutManager);
-                                    seedgridview.setAdapter(seedadapter);
-                                    seedadapter.bindToRecyclerView(seedgridview);
-                                    seedadapter.setEmptyView(R.layout.loading);
+                                // if( Integer.valueOf(s)==finalD) {
+                                SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
+                                Seedadapter seedadapter = new Seedadapter(R.layout.seeditem, listDatas, seedActivity.this, seedzhongjian, seedbuy, show);
+                                Log.i("iiiiiiiiiiii", String.valueOf(listDatas.size()));
+                                GridLayoutManager gridLayoutManager = new GridLayoutManager(seedActivity.this, 3);
+                                seedgridview.setLayoutManager(gridLayoutManager);
+                                seedgridview.setAdapter(seedadapter);
+                                seedadapter.bindToRecyclerView(seedgridview);
+                                seedadapter.setEmptyView(R.layout.loading);
+                                seedadapter.notifyDataSetChanged();
 
-                              //  }
+
+                                //  }
                             }
                         }
                     });

@@ -83,11 +83,11 @@ public class mycultivationdialog extends DialogFragment {
                 Bundle bundle = getArguments();
                 int counts = bundle.getInt("count");
                 if (add >= counts) {
-                     ToastUtils.showToast(getActivity(),"券不足请购买");
+                    ToastUtils.showToast(getActivity(), "券不足请购买");
                 } else {
                     add += 1;
                     mycultivationpopcount.setText(add + "");
-                    mycultivationcunt.setText("共"+add+"件");
+                    mycultivationcunt.setText("共" + add + "件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount.getText()));
                     Fcount = count * 5;
 
@@ -103,7 +103,7 @@ public class mycultivationdialog extends DialogFragment {
                 } else {
                     add -= 1;
                     mycultivationpopcount.setText(add + "");
-                    mycultivationcunt.setText("共"+add+"件");
+                    mycultivationcunt.setText("共" + add + "件");
                     int count = Integer.valueOf(String.valueOf(mycultivationpopcount.getText()));
                     Fcount = count * 5;
                     setseed();
@@ -124,14 +124,14 @@ public class mycultivationdialog extends DialogFragment {
                 //  Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<userseed> userseed = gsonUtil.Gson(result, com.example.wolf.seed.userseed.class);
-                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()),dialog);
+                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()), dialog);
                 mycultivationadapterseed.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
                         TextView mycultivationitem2count = (TextView) mycultivationadapterseed.getViewByPosition(mycultivationseed, position, R.id.mycultivationitem2count);
                         Button mycultivationitem2button = (Button) mycultivationadapterseed.getViewByPosition(mycultivationseed, position, R.id.mycultivationitem2button);
-                        int count = mycultivationadapterseed.getItem(position).getBuycount();
+                        int count = mycultivationadapterseed.getItem(position).getBuyCount();
                         Log.i("iiiiiiiiiii", position + "");
                         if (mycultivationitem2count != null) {
                             switch (view.getId()) {
@@ -143,7 +143,7 @@ public class mycultivationdialog extends DialogFragment {
                                         } else {
                                             add2 += 1;
                                             total++;
-                                            mycultivationtotal.setText("合计：蔬菜"+total+"种"+total+"㎡");
+                                            mycultivationtotal.setText("合计：蔬菜" + total + "种" + total + "㎡");
                                             mycultivationitem2count.setText(add2 + "");
 
                                         }
@@ -161,7 +161,7 @@ public class mycultivationdialog extends DialogFragment {
                                     } else {
                                         add2 -= 1;
                                         total--;
-                                        mycultivationtotal.setText("合计：蔬菜"+total+"种"+total+"㎡");
+                                        mycultivationtotal.setText("合计：蔬菜" + total + "种" + total + "㎡");
                                         mycultivationitem2count.setText(add2 + "");
                                     }
                                     break;
