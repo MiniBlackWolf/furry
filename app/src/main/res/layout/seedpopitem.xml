@@ -3,17 +3,16 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/linearLayout23"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:layout_editor_absoluteY="25dp"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
     android:background="@drawable/popup_window"
-    >
+    tools:layout_editor_absoluteY="25dp">
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="0dp"
+        android:id="@+id/popimage"
+        android:layout_width="300dp"
         android:layout_height="214dp"
-        android:background="@mipmap/baicai"
+        android:background="@color/doum"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -56,7 +55,7 @@
         android:layout_marginTop="68dp"
         android:background="@color/red"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+        app:layout_constraintTop_toBottomOf="@+id/popimage" />
 
     <TextView
         android:id="@+id/popdescription"
@@ -64,11 +63,9 @@
         android:layout_height="150dp"
         android:layout_marginTop="8dp"
         android:text="TextView"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/view6"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/view6" />
 
 </android.support.constraint.ConstraintLayout>

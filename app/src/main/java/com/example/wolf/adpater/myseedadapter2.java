@@ -3,7 +3,9 @@ package com.example.wolf.adpater;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
+import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.R;
@@ -40,11 +42,10 @@ public class myseedadapter2 extends BaseQuickAdapter<userseed,BaseViewHolder>{
                 GsonUtil gsonUtil=new GsonUtil();
                 List<seedbean.SeedBean> gson = gsonUtil.Gson(result, seedbean.SeedBean.class);
                 if(gson.get(0).getSeedname()!=null) {
-
                         helper.setText(R.id.myseedcounts, item.getBuyCount() + "/㎡");
                         helper.setText(R.id.myseedname, gson.get(0).getSeedname() + "");
                         helper.setText(R.id.myseeddate,item.getBuydate().substring(0,item.getBuydate().indexOf(" ")));
-
+                    Glide.with(context).load(gson.get(0).getFileurl()).placeholder(R.mipmap.loading2).into((ImageView) helper.getView(R.id.myseedimage));
 
 
                 }

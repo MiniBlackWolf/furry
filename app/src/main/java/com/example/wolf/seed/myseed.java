@@ -22,6 +22,7 @@ import com.example.wolf.adpater.Myseedadapter;
 import com.example.wolf.adpater.myseedadapter2;
 import com.zyao89.view.zloading.ZLoadingDialog;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,10 +54,9 @@ public class myseed extends AppCompatActivity {
     ConstraintLayout linearLayout32;
     private Xutils xutils = new Xutils(myseed.this);
     private Getuserinfo getuserinfo = new Getuserinfo(myseed.this);
-    private List<myseedbean> userseed;
+    private List<myseedbean2> userseed;
     Myseedadapter myseedadapter;
     private ZLoadingDialog show;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,22 +65,22 @@ public class myseed extends AppCompatActivity {
         ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(myseed.this);
         show = zloadingDiaLogkt.show();
         show.dismiss();
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         xutils.get(getResources().getString(R.string.getuserseed), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
                 Log.i("iiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
-                userseed = gsonUtil.Gson(result, myseedbean.class);
+                userseed = gsonUtil.Gson(result, myseedbean2.class);
                 setadapter(userseed, show);
             }
 
         });
     }
 
-    private void setadapter(List<myseedbean> list, ZLoadingDialog show) {
-        myseedadapter = new Myseedadapter(R.layout.myseeditem, list, myseed.this, show);
+    private void setadapter(List<myseedbean2> list, ZLoadingDialog show) {
+        myseedadapter = new Myseedadapter(R.layout.myseeditem2, list, myseed.this, show);
         myseedadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
         myseedadapter.isFirstOnly(false);
         myseedrecycler.setLayoutManager(new GridLayoutManager(myseed.this, 2));

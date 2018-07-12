@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
@@ -120,8 +121,8 @@ public class seedActivity extends AppCompatActivity {
         list.add(y10);
         list.add(y11);
         list.add(y12);
-        list.get(month).setBackground(getResources().getDrawable(R.mipmap.y123));
-        list.get(month).setTextColor(Color.parseColor("#ffffff"));
+        list.get(month-1).setBackground(getResources().getDrawable(R.mipmap.y123));
+        list.get(month-1).setTextColor(Color.parseColor("#ffffff"));
         y1.setBackground(getResources().getDrawable(R.mipmap.y1234));
         y1.setTextColor(Color.parseColor("#666666"));
 
@@ -304,6 +305,13 @@ public class seedActivity extends AppCompatActivity {
                                 // if( Integer.valueOf(s)==finalD) {
                                 SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
                                 Seedadapter seedadapter = new Seedadapter(R.layout.seeditem, listDatas, seedActivity.this, seedzhongjian, seedbuy, show);
+                                seedadapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                                    @Override
+                                    public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
+
+                                        new seedpop(getLayoutInflater(), (ImageView) findViewById(view.getId()),listDatas.get(position),seedActivity.this).setPopupWindow();
+                                    }
+                                });
                                 Log.i("iiiiiiiiiiii", String.valueOf(listDatas.size()));
                                 GridLayoutManager gridLayoutManager = new GridLayoutManager(seedActivity.this, 3);
                                 seedgridview.setLayoutManager(gridLayoutManager);

@@ -1,7 +1,7 @@
 package com.example.wolf.seed;
 
+import android.net.Uri;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Map;

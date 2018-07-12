@@ -64,7 +64,9 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
         buymoney.add(item.getJiage());
         jiaorjian(helper, item);
         buy(item, buymoney);
+        helper.addOnClickListener(R.id.k1);
         zloadingDiaLog.dismiss();
+
     }
 
     private void jiaorjian(final BaseViewHolder helper, final ProdctBean item) {
