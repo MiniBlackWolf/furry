@@ -1,5 +1,9 @@
 package com.example.wolf.seed;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -74,6 +78,10 @@ public class seedActivity extends AppCompatActivity {
     private TextView seedzhongjian;
     @ViewInject(R.id.seedbuy)
     private Button seedbuy;
+    @ViewInject(R.id.q2)
+    private ImageView q2;
+    @ViewInject(R.id.q3)
+    private ImageView q3;
     Xutils xutils = new Xutils(seedActivity.this);
     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     Map<String, Object> map;
@@ -82,7 +90,7 @@ public class seedActivity extends AppCompatActivity {
     private int mPageSize = 8; //每页显示的最大的数量
     private List<View> viewPagerList;//GridView作为一个View对象添加到ViewPager集合中
     private Seedadapter seedadapter;
-
+    boolean Visibility=true;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,9 +104,43 @@ public class seedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        q3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Visibility) {
+                    q2.setVisibility(View.VISIBLE);
+                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(q2, "scaleX", 0f,1f);
+                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(q2, "scaleY", 0f,1f);
+                    ObjectAnimator translationX = ObjectAnimator.ofFloat(q2, "translationX", -200f);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(scaleX,translationX,scaleY);
+                    animatorSet.setDuration(500);
+                    animatorSet.start();
+                    Visibility=false;
+                } else {
+                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(q2, "scaleX", 1f,0f);
+                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(q2, "scaleY", 1f,0f);
+                    ObjectAnimator translationX = ObjectAnimator.ofFloat(q2, "translationX", 200f);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(scaleX,translationX,scaleY);
+                    animatorSet.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation, boolean isReverse) {
 
+                        }
 
-        ;
+                        @Override
+                        public void onAnimationEnd(Animator animation, boolean isReverse) {
+                            q2.setVisibility(View.GONE);
+                        }
+                    });
+                    animatorSet.setDuration(500);
+                    animatorSet.start();
+                    Visibility=true;
+
+                }
+            }
+        });
 
     }
 
@@ -121,8 +163,8 @@ public class seedActivity extends AppCompatActivity {
         list.add(y10);
         list.add(y11);
         list.add(y12);
-        list.get(month-1).setBackground(getResources().getDrawable(R.mipmap.y123));
-        list.get(month-1).setTextColor(Color.parseColor("#ffffff"));
+        list.get(month - 1).setBackground(getResources().getDrawable(R.mipmap.y123));
+        list.get(month - 1).setTextColor(Color.parseColor("#ffffff"));
         y1.setBackground(getResources().getDrawable(R.mipmap.y1234));
         y1.setTextColor(Color.parseColor("#666666"));
 
@@ -309,7 +351,7 @@ public class seedActivity extends AppCompatActivity {
                                     @Override
                                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
-                                        new seedpop(getLayoutInflater(), (ImageView) findViewById(view.getId()),listDatas.get(position),seedActivity.this).setPopupWindow();
+                                        new seedpop(getLayoutInflater(), (ImageView) findViewById(view.getId()), listDatas.get(position), seedActivity.this).setPopupWindow();
                                     }
                                 });
                                 Log.i("iiiiiiiiiiii", String.valueOf(listDatas.size()));
