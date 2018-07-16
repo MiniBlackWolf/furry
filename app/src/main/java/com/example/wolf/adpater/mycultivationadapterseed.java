@@ -88,12 +88,11 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
                     map.put("sid", String.valueOf(sid));
                     map.put("count",list.get(i).getText().toString());
                     map.put("voucher", String.valueOf(mycultivationpopcount));
-                    map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
+      //              map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
                     xutils.get(context.getResources().getString(R.string.sowing), map, new Xutils.XCallBack() {
                         @Override
                         public void onResponse(String result) {
-                            String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                            if (i.equals("success")) {
+                            if (result.equals("success")) {
                                 ToastUtils.showToast(context,"播种成功！");
                                 dialog.dismiss();
                             }

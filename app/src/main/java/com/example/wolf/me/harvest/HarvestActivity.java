@@ -24,7 +24,11 @@ public class HarvestActivity extends AppCompatActivity {
 
 
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0, 0);
+    }
     @OnClick(R.id.hafh)
     public void onViewClicked() {
         finish();

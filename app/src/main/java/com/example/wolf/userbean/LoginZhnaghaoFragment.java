@@ -55,7 +55,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                     Toast.makeText(getActivity(), "请输入用户名或密码", Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 } else {
-                    Map map = new HashMap();
+                    Map<String,String> map = new HashMap<>();
                     map.put("userName", usernames);
                     map.put("password", passworlds);
                     xutils.post(getResources().getString(R.string.Login), map, new Xutils.XCallBack() {
@@ -64,7 +64,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                             Log.i("iiiiiii", i + " ");
                             if (i.equals("success")) {
-                                Map<String, String> idmap = new HashMap();
+                                Map<String, String> idmap = new HashMap<>();
                                 idmap.put("userName", usernames);
                                 xutils.get(getResources().getString(R.string.Userinfo), idmap, new Xutils.XCallBack() {
                                     @Override

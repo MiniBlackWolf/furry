@@ -20,10 +20,10 @@ import java.util.Map;
 
 public class Xutils {
 
-    private volatile static Xutils instance;
+  //  private volatile static Xutils instance;
     private Handler handler;
     private ImageOptions options;
-    private static Context context;
+    private  Context context;
 
     public Xutils(Context context) {
         handler = new Handler(Looper.getMainLooper());
@@ -35,16 +35,16 @@ public class Xutils {
      *
      * @return
      */
-    public static Xutils getInstance() {
-        if (instance == null) {
-            synchronized (Xutils.class) {
-                if (instance == null) {
-                    instance = new Xutils(context);
-                }
-            }
-        }
-        return instance;
-    }
+//    public static Xutils getInstance() {
+//        if (instance == null) {
+//            synchronized (Xutils.class) {
+//                if (instance == null) {
+//                    instance = new Xutils(context);
+//                }
+//            }
+//        }
+//        return instance;
+//    }
 
     /**
      * 异步get请求

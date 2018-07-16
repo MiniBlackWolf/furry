@@ -185,7 +185,7 @@ public class mycultivationdialog extends DialogFragment {
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(uid));
         map.put("token", new Token().getToken(uid));
-        Xutils.getInstance().get(getResources().getString(R.string.getUserFrame), map, new Xutils.XCallBack() {
+        xutils.get(getResources().getString(R.string.getUserFrame), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
 

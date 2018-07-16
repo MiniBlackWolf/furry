@@ -44,15 +44,8 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
 
     @Override
     protected void convert(final BaseViewHolder helper, final userland item) {
-        Xutils xutils = new Xutils(context);
-        Map map = new HashMap();
-        map.put("sid", item.getSfid());
-        xutils.get(context.getResources().getString(R.string.getseedinfo), map, new Xutils.XCallBack() {
-            @Override
-            public void onResponse(String result) {
-                Log.i("iiiiiiiiiiiiiiiii", result + ";" + item.getSfid());
-                GsonUtil gsonUtil = new GsonUtil();
-                List<Seed> gson = gsonUtil.Gson(result, Seed.class);
+
+
                 String fid = item.getFid().substring(0, 1);
                 long s = (item.getValidityperiod() - System.currentTimeMillis()) / (1000 * 3600 * 24);
                 if (s < 0) {
@@ -66,11 +59,11 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.mianji, "10/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.a_a);
                     helper.setText(R.id.fid, item.getFid());
-                    if (result.equals("[{}]")) {
+                    if (item.getSfid()==null) {
                         helper.setText(R.id.sid, "空");
                         helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
                     } else {
-                        helper.setText(R.id.sid, "点击查看详情");
+                        helper.setText(R.id.sid, "查看详情");
                         helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
                         helper.addOnClickListener(R.id.sid);
                     }
@@ -82,7 +75,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.mianji, "15/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.b_b);
                     helper.setText(R.id.fid, item.getFid());
-                    if (result.equals("[{}]")) {
+                    if (item.getSfid()==null) {
                         helper.setText(R.id.sid, "空");
                         helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
                     } else {
@@ -96,7 +89,7 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.mianji, "20/m²");
                     helper.setImageResource(R.id.tud, R.mipmap.c_c);
                     helper.setText(R.id.fid, item.getFid());
-                    if (result.equals("[{}]")) {
+                    if (item.getSfid()==null) {
                         helper.setText(R.id.sid, "空");
                         helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
                     } else {
@@ -107,8 +100,8 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
                     helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
                 }
 
-            }
-        });
+
+
         xuzu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

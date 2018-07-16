@@ -3,17 +3,15 @@ package com.example.wolf;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.fragment.tab1;
@@ -61,25 +59,15 @@ public class MainActivity extends AppCompatActivity {
     @ViewInject(R.id.wod)
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
-    Xutils xutils = new Xutils(MainActivity.this);
+    Xutils xutils = new Xutils(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        x.view().inject(MainActivity.this);
+        x.view().inject(this);
         getfragment();
             denglu();
-//        //注册方法
-//        Map maps = new HashMap();
-//        maps.put("userName", "qqqq");
-//        maps.put("password", "123456");
-//        Xutils xutils = new Xutils();
-//        xutils.post("http://203p75796g.iok.la:43975/net/userBase/register", maps, new Xutils.XCallBack() {
-//            @Override
-//            public void onResponse(String result) {
-//                Log.i("iiiiiiiiiiiii", "注册" + result);
-//            }
-//        });
+
     }
 
     private void denglu() {

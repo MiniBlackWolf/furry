@@ -29,7 +29,11 @@ public class OrderActivity extends AppCompatActivity {
     RecyclerView orderrecyclerview;
     Xutils xutils = new Xutils(OrderActivity.this);
     Getuserinfo getuserinfo = new Getuserinfo(OrderActivity.this);
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0, 0);
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

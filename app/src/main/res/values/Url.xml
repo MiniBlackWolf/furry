@@ -26,7 +26,7 @@
     <string name="recommended">http://www.cnepltd.com/net/userBase/recommended</string>
     <string name="change">http://www.cnepltd.com/net/userBase/change</string>
     <string name="getSeedIdByName">http://www.cnepltd.com/net/seed/getSeedIdByName</string>
-    <string name="sowing">http://www.cnepltd.com/net/seed/sowing</string>
+    <string name="sowing">http://192.168.0.72:8080/user/sowing</string>
     <string name="getUserRemainSeedWithoutDate">http://cnnc.cnepltd.com/user/getUserRemainSeedWithoutDate</string>
     <string name="useTicket">http://www.cnepltd.com//net/userBase/useTicket</string>
     <string name="general">http://www.cnepltd.com/fileupload/general</string>

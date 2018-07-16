@@ -215,12 +215,7 @@ public class tab5_2 extends Fragment {
                 alertDialog.dismiss();
             }
         });
-        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                alertDialog.dismiss();
-            }
-        });
+
         alertDialog = builder.create();
         alertDialog.show();
     }

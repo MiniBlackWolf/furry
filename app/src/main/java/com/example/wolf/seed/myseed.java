@@ -93,7 +93,11 @@ public class myseed extends AppCompatActivity {
         finish();
         overridePendingTransition(0, 0);
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0, 0);
+    }
     @OnClick({R.id.use, R.id.nouse })
     public void onViewClicked(View view) {
         usev.setBackgroundColor(getResources().getColor(R.color.toum));
