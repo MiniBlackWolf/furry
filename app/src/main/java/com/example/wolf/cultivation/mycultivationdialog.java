@@ -71,7 +71,7 @@ public class mycultivationdialog extends DialogFragment {
         setcucount();
         setseed();
         addspinner();
-//        okseedandland();
+       //okseedandland();
 
         return view;
     }
@@ -124,7 +124,7 @@ public class mycultivationdialog extends DialogFragment {
                 //  Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<userseed> userseed = gsonUtil.Gson(result, com.example.wolf.seed.userseed.class);
-                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, Integer.valueOf(mycultivationpopcount.getText().toString()), dialog);
+                mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, mycultivationpopcount, dialog);
                 mycultivationadapterseed.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
@@ -237,7 +237,7 @@ public class mycultivationdialog extends DialogFragment {
         mycultivationseed = view.findViewById(R.id.mycultivationseed);
         mycultivationtotal = view.findViewById(R.id.mycultivationtotal);
         mycultivationcunt = view.findViewById(R.id.mycultivationcunt);
-        okseedandland = view.findViewById(R.id.okseedandland2);
+        okseedandland = view.findViewById(R.id.okseedandland);
         mycultivationpopjia = view.findViewById(R.id.mycultivationpopjia2);
         mycultivationpopjian = view.findViewById(R.id.mycultivationpopjian2);
         mycultivationpopcount = view.findViewById(R.id.mycultivationpopcount);

@@ -2,6 +2,7 @@ package com.example.wolf.land;
 
 
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
@@ -86,7 +88,8 @@ public class myland extends AppCompatActivity {
                 mylandadapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                      new mylandDiaLog().show(getSupportFragmentManager(),"1");
+                        TextView fid = (TextView) mylandadapter.getViewByPosition(mylandrecyclerview, position, R.id.fid);
+                        new mylandDiaLog().show(getSupportFragmentManager(),fid.getText().toString());
                     }
                 });
                 mylandrecyclerview.setAdapter(mylandadapter);

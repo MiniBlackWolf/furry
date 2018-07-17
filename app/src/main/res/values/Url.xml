@@ -21,7 +21,7 @@
     <string name="getUserOrder">http://www.cnepltd.com/net/orderManage/getUserOrder</string>
     <string name="getCloopen">http://www.cnepltd.com/net/userBase/getCloopen</string>
     <string name="register">http://www.cnepltd.com/net/userBase/register</string>
-    <string name="getuserseed">http://cnnc.cnepltd.com/user/useseed</string>
+    <string name="getuserseed">http://192.168.0.72:8080/user/useseed</string>
     <string name="getOrderInfo">http://www.cnepltd.com/net/alipay/getOrderInfo</string>
     <string name="recommended">http://www.cnepltd.com/net/userBase/recommended</string>
     <string name="change">http://www.cnepltd.com/net/userBase/change</string>
@@ -31,4 +31,5 @@
     <string name="useTicket">http://www.cnepltd.com//net/userBase/useTicket</string>
     <string name="general">http://www.cnepltd.com/fileupload/general</string>
     <string name="clientMoney">http://www.cnepltd.com/net/userBase/clientMoney</string>
+    <string name="shovel">http://192.168.0.72:8080/user/shovel</string>
 </resources>

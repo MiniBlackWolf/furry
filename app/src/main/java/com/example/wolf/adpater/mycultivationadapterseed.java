@@ -35,13 +35,13 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
     private Context context;
     private Button okseedandland;
     private Spinner spinnerland;
-    private int mycultivationpopcount;
+    private TextView mycultivationpopcount;
     Xutils xutils = new Xutils(context);
     List<TextView> list = new ArrayList<>();
     List<userseed> list2 = new ArrayList<>();
     private Dialog dialog;
 
-    public mycultivationadapterseed(int layoutResId, @Nullable List<userseed> data, Context context, Button okseedandland, Spinner spinnerland, int mycultivationpopcount,Dialog dialog) {
+    public mycultivationadapterseed(int layoutResId, @Nullable List<userseed> data, Context context, Button okseedandland, Spinner spinnerland, TextView mycultivationpopcount,Dialog dialog) {
         super(layoutResId, data);
         this.context = context;
         this.okseedandland = okseedandland;
@@ -77,9 +77,10 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
         okseedandland.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mycultivationpopcount.getText().toString();
                 for (int i = 0; i < list.size(); i++) {
                     if(Integer.valueOf(list.get(i).getText().toString())<=0){
-                        break;
+                        continue;
                     }
                     int sid = list2.get(i).getSid();
                     Map<String, String> map = new HashMap<>();
@@ -87,7 +88,7 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
                     map.put("fid", spinnerland.getSelectedItem().toString().substring(0, spinnerland.getSelectedItem().toString().indexOf("-")));
                     map.put("sid", String.valueOf(sid));
                     map.put("count",list.get(i).getText().toString());
-                    map.put("voucher", String.valueOf(mycultivationpopcount));
+                    map.put("voucher", mycultivationpopcount.getText().toString());
       //              map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
                     xutils.get(context.getResources().getString(R.string.sowing), map, new Xutils.XCallBack() {
                         @Override
