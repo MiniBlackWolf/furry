@@ -62,7 +62,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                         @Override
                         public void onResponse(String result) {
                             String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                            Log.i("iiiiiii", i + " ");
+                          //  Log.i("iiiiiii", i + " ");
                             if (i.equals("success")) {
                                 Map<String, String> idmap = new HashMap<>();
                                 idmap.put("userName", usernames);
@@ -76,7 +76,7 @@ public class LoginZhnaghaoFragment extends Fragment {
                                         } catch (UnsupportedEncodingException e) {
                                             e.printStackTrace();
                                         }
-                                        Log.i("iiiiiiiiiiiiiiiiiiiii", userinfo);
+                                   //     Log.i("iiiiiiiiiiiiiiiiiiiii", userinfo);
                                         GsonUtil gsonUtil = new GsonUtil();
                                         List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
 

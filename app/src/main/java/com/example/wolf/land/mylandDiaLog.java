@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -31,6 +32,7 @@ import java.util.Map;
 public class mylandDiaLog extends DialogFragment {
     Xutils xutils = new Xutils(getActivity());
     RecyclerView Shovelview;
+    Button Shovelbutton;
 
     @NonNull
     @Override
@@ -55,15 +57,16 @@ public class mylandDiaLog extends DialogFragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.mylanddialoglayout, container, false);
          Shovelview = view.findViewById(R.id.Shovelview);
+        Shovelbutton  =view.findViewById(R.id.Shovelbutton);
         Map<String,String> map=new HashMap<>();
         map.put("uid", String.valueOf(new Getuserinfo(getActivity()).getuid()));
         map.put("fid",getTag());
-        xutils.get(getResources().getString(R.string.shovel), map, new Xutils.XCallBack() {
+        xutils.get(getResources().getString(R.string.shovelview), map, new Xutils.XCallBack() {
             @Override
             public void onResponse(String result) {
                 GsonUtil gsonUtil=new GsonUtil();
                 List<userseedandland> userseedandland = gsonUtil.Gson(result, userseedandland.class);
-                MylandShoveladapter mylandShoveladapter=new MylandShoveladapter(R.layout.mylanddialogitem,userseedandland,getActivity());
+                MylandShoveladapter mylandShoveladapter=new MylandShoveladapter(R.layout.mylanddialogitem,userseedandland,getActivity(),Shovelbutton);
                 mylandShoveladapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mylandShoveladapter.isFirstOnly(false);
                 mylandShoveladapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
@@ -83,6 +86,8 @@ public class mylandDiaLog extends DialogFragment {
                 Shovelview.setAdapter(mylandShoveladapter);
                 mylandShoveladapter.bindToRecyclerView(Shovelview);
                 mylandShoveladapter.setEmptyView(R.layout.loading);
+
+
          //       Log.i("iiiiiiiiiiii",result);
             }
         });

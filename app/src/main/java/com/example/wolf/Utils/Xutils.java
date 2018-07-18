@@ -58,6 +58,7 @@ public class Xutils {
         if (maps != null && !maps.isEmpty()) {
             for (Map.Entry<String, String> entry : maps.entrySet()) {
                 params.addQueryStringParameter(entry.getKey(), entry.getValue());
+
             }
         }
         x.http().get(params, new Callback.CommonCallback<String>() {
