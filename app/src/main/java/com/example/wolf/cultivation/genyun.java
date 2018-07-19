@@ -1,5 +1,6 @@
 package com.example.wolf.cultivation;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -22,6 +23,7 @@ import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.land.FarmData;
+import com.example.wolf.land.Farminfo;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -113,18 +115,45 @@ public class genyun extends AppCompatActivity {
         init();
         //购买
         buy();
-        xutils.get(getResources().getString(R.string.farmData), new HashMap<String, String>(), new Xutils.XCallBack() {
+        xutils.get(getResources().getString(R.string.getcultivation), new HashMap<String, String>(), new Xutils.XCallBack() {
+            @SuppressLint("SetTextI18n")
+            @SuppressWarnings("unchecked")
             @Override
             public void onResponse(String result) {
                 Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
-                FarmData getfarmjson = gsonUtil.getfarmjson(result);
-                money.setText(getfarmjson.getCultivating().getSowing() + "元/5m²");
-                money_2.setText(getfarmjson.getCultivating().getWatering() + "元/5m²");
-                money_3.setText(getfarmjson.getCultivating().getFertilizer() + "元/5m²");
-                money_3_2.setText(getfarmjson.getCultivating().getOrganic() + "元/5m²");
-                money_4.setText(getfarmjson.getCultivating().getWeeding() + "元/5m²");
-                money_5.setText(getfarmjson.getCultivating().getExterminator() + "元/5m²");
+                List<Farminfo> Farminfo = gsonUtil.Gson(result, Farminfo.class);
+                for(Farminfo farminfo:Farminfo){
+                    switch (farminfo.getType())
+                    {
+                        case "0":
+                            money.setText(farminfo.getPrice() + "元/5m²");
+                            break;
+                        case "1":
+                            money_2.setText(farminfo.getPrice()  + "元/5m²");
+                            break;
+                        case "2":
+                            money_3.setText(farminfo.getPrice()  + "元/5m²");
+                            break;
+                        case "3":
+                            money_3_2.setText(farminfo.getPrice() + "元/5m²");
+                            break;
+                        case "4":
+                            money_4.setText(farminfo.getPrice()  + "元/5m²");
+                            break;
+                        case "5":
+                            money_5.setText(farminfo.getPrice()  + "元/5m²");
+                            break;
+
+                    }
+
+                }
+
+
+
+
+
+
 
             }
         });

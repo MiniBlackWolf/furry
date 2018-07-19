@@ -1,6 +1,7 @@
 package com.example.wolf.adpater;
 
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -34,16 +35,18 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
     private Context context;
     private Button Shovelbutton;
     private Xutils xutils;
+    private Dialog dialog;
     private Set<ImageView> chanzhi = new HashSet<>();
     private Set<userseedandland> max = new HashSet<>();
     private List<ImageView> chanzhi2 = new ArrayList<>();
     private List<userseedandland> max2 = new ArrayList<>();
 
-    public MylandShoveladapter(int layoutResId, @Nullable List<userseedandland> data, Context context, Button Shovelbutton) {
+    public MylandShoveladapter(int layoutResId, @Nullable List<userseedandland> data, Context context, Button Shovelbutton,Dialog dialog) {
         super(layoutResId, data);
         this.context = context;
         this.Shovelbutton = Shovelbutton;
         this.xutils = new Xutils(context);
+        this.dialog=dialog;
     }
 
     @Override
@@ -101,7 +104,7 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
 
                                 } else {
                                     Map<String, String> map = new HashMap<>();
-                                    map.put("allmoney",finalCount*2+"");
+                                    map.put("price",finalCount*2+"");
                                     map.put("swoingdate", String.valueOf(max2.get(finalI).getSwoingdate()));
                                     map.put("sid", String.valueOf(max2.get(finalI).getSid()));
                                     map.put("sfid", max2.get(finalI).getSfid());
@@ -121,6 +124,7 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                                                         String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                                                         if (i.equals("success")) {
                                                             ToastUtils.showToast(context, "铲除成功!");
+                                                            dialog.dismiss();
                                                         }
                                                     }
                                                 });

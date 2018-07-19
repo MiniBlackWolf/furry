@@ -33,11 +33,12 @@ public class mylandDiaLog extends DialogFragment {
     Xutils xutils = new Xutils(getActivity());
     RecyclerView Shovelview;
     Button Shovelbutton;
+    Dialog dialog;
 
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        Dialog dialog = new Dialog(getActivity(),R.style.MyDialog);
+         dialog = new Dialog(getActivity(),R.style.MyDialog);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(R.layout.mylanddialoglayout);
         dialog.setCanceledOnTouchOutside(true);
@@ -66,7 +67,7 @@ public class mylandDiaLog extends DialogFragment {
             public void onResponse(String result) {
                 GsonUtil gsonUtil=new GsonUtil();
                 List<userseedandland> userseedandland = gsonUtil.Gson(result, userseedandland.class);
-                MylandShoveladapter mylandShoveladapter=new MylandShoveladapter(R.layout.mylanddialogitem,userseedandland,getActivity(),Shovelbutton);
+                MylandShoveladapter mylandShoveladapter=new MylandShoveladapter(R.layout.mylanddialogitem,userseedandland,getActivity(),Shovelbutton,dialog);
                 mylandShoveladapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 mylandShoveladapter.isFirstOnly(false);
                 mylandShoveladapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {

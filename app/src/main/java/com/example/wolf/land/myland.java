@@ -60,7 +60,6 @@ public class myland extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.myland);
         ButterKnife.bind(this);
-
         Map<String, String> map = new HashMap();
         map.put("uid", String.valueOf(getuserinfo.getuid()));
         map.put("token", new Token().getToken(getuserinfo.getuid()));
@@ -111,6 +110,7 @@ public class myland extends AppCompatActivity {
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.used:
+                xuzu.setVisibility(View.GONE);
                 mylandrecyclerview.setLayoutManager(new LinearLayoutManager(myland.this));
                 mylandadapter = new Mylandadapter(R.layout.mylinditem, userland, myland.this, xuzu);
                 mylandrecyclerview.setAdapter(mylandadapter);
@@ -121,6 +121,7 @@ public class myland extends AppCompatActivity {
                 view7.setBackground(getResources().getDrawable(R.color.w));
                 break;
             case R.id.overdue:
+                xuzu.setVisibility(View.VISIBLE);
                 mylandrecyclerview.setLayoutManager(new LinearLayoutManager(myland.this));
                 mylandadapter = new Mylandadapter(R.layout.mylinditem, overduelist, myland.this, xuzu);
 //                Log.i("iiiiiiiiiiii", overduelist.get(0).getValidityperiod() + "");
