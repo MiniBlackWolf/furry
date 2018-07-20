@@ -16,6 +16,7 @@ public class ZloadingDiaLogkt {
 
     public ZLoadingDialog show() {
         ZLoadingDialog dialog = new ZLoadingDialog(context);
+        dialog.setCancelable(false);
         dialog.setLoadingBuilder(Z_TYPE.STAR_LOADING)//设置类型
                 .setLoadingColor(Color.parseColor("#FF6A92F1"))//颜色
                 .setHintText("Loading...")
@@ -24,6 +25,7 @@ public class ZloadingDiaLogkt {
                 .setDurationTime(0.5) // 设置动画时间百分比 - 0.5倍
                 .setDialogBackgroundColor(Color.parseColor("#00FFFFFF")) // 设置背景色，默认白色
                 .show();
+
         return dialog;
     }
 }

@@ -2,36 +2,260 @@ package com.example.wolf.adpater;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.R;
+import com.example.wolf.Utils.Getuserinfo;
+import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.ToastUtils;
+import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.land.Farminfo;
+import com.example.wolf.land.Userfarm;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
     private Context context;
+    private Button buy;
+    private Xutils xutils;
+    private Set<TextView> sl1 = new LinkedHashSet<>();
+    private  Set<TextView> sl2 = new LinkedHashSet<>();
+    private Set<TextView> sl3 = new LinkedHashSet<>();
+    private List<TextView> sls1;
+    private  List<TextView> sls2;
+    private List<TextView> sls3;
+    private  List<Userfarm> u1 = new ArrayList<>();
+    private  List<Userfarm> u2 = new ArrayList<>();
+    private  List<Userfarm> u3 = new ArrayList<>();
+    private  List<Farminfo> data;
+    private  List<Userfarm> g10m = new ArrayList<>();
+    private  List<Userfarm> g15m = new ArrayList<>();
+    private  List<Userfarm> g20m = new ArrayList<>();
+    private  List<Userfarm> g10m2 = new ArrayList<>();
+    private  List<Userfarm> g15m2 = new ArrayList<>();
+    private  List<Userfarm> g20m2 = new ArrayList<>();
+    private  List<Userfarm> g10m3 = new ArrayList<>();
+    private  List<Userfarm> g15m3 = new ArrayList<>();
+    private List<Userfarm> g20m3 = new ArrayList<>();
 
-    public xuandiadapter(int layoutResId, @Nullable List<Farminfo> data, Context context) {
+    public xuandiadapter(int layoutResId, @Nullable List<Farminfo> data, Context context, Button buy) {
         super(layoutResId, data);
+        this.data = data;
         this.context = context;
+        this.buy = buy;
+        xutils = new Xutils(context);
     }
 
 
     @Override
     protected void convert(BaseViewHolder helper, Farminfo item) {
-        if (item.getType().equals("a")) {
-            helper.setText(R.id.jiage_1, "¥" + item.getPrice());
-            helper.setImageResource(R.id.imageland,R.mipmap.a1);
-        } else if (item.getType().equals("b")) {
-            helper.setText(R.id.jiage_2, "¥" + item.getPrice());
-            helper.setImageResource(R.id.imageland,R.mipmap.a2);
-        } else if (item.getType().equals("c")) {
-            helper.setText(R.id.jiage_3, "¥" + item.getPrice());
-            helper.setImageResource(R.id.imageland,R.mipmap.a3);
+        helper.addOnClickListener(R.id.jia);
+        helper.addOnClickListener(R.id.jia2);
+        helper.addOnClickListener(R.id.jia3);
+        helper.addOnClickListener(R.id.jian);
+        helper.addOnClickListener(R.id.jian2);
+        helper.addOnClickListener(R.id.jian3);
+        sl1.add((TextView) helper.getView(R.id.shuliang));
+        sl2.add((TextView) helper.getView(R.id.shuliang2));
+        sl3.add((TextView) helper.getView(R.id.shuliang3));
+        switch (item.getType()) {
+            case "a":
+                helper.setText(R.id.jiage_1, "¥" + data.get(0).getPrice());
+                helper.setText(R.id.jiage_2, "¥" + data.get(1).getPrice());
+                helper.setText(R.id.jiage_3, "¥" + data.get(2).getPrice());
+                helper.setImageResource(R.id.imageland, R.mipmap.a1);
+                break;
+            case "b":
+                helper.setText(R.id.jiage_1, "¥" + data.get(0).getPrice());
+                helper.setText(R.id.jiage_2, "¥" + data.get(1).getPrice());
+                helper.setText(R.id.jiage_3, "¥" + data.get(2).getPrice());
+                helper.setImageResource(R.id.imageland, R.mipmap.a2);
+                break;
+            case "c":
+                helper.setText(R.id.jiage_1, "¥" + data.get(0).getPrice());
+                helper.setText(R.id.jiage_2, "¥" + data.get(1).getPrice());
+                helper.setText(R.id.jiage_3, "¥" + data.get(2).getPrice());
+                helper.setImageResource(R.id.imageland, R.mipmap.a3);
+                break;
         }
 
+        buy.setOnClickListener(new View.OnClickListener() {
+            @SuppressWarnings("unchecked")
+            @Override
+            public void onClick(View view) {
+                sls1 = new ArrayList<>(sl1);
+                sls2 = new ArrayList<>(sl2);
+                sls3 = new ArrayList<>(sl3);
+                for (TextView textView1:sls1){ Log.i("iiiiiiiii","1:"+textView1.getText().toString());}
+                for (TextView textView2:sls2){ Log.i("iiiiiiiii","2:"+textView2.getText().toString());}
+                for (TextView textView3:sls3){ Log.i("iiiiiiiii","3:"+textView3.getText().toString());}
+                xutils.get(context.getResources().getString(R.string.getAllfarm), new HashMap<String, String>(), new Xutils.XCallBack() {
+                    @Override
+                    public void onResponse(String result) {
+                        GsonUtil gsonUtil = new GsonUtil();
+                        List<Userfarm> Userfarms = gsonUtil.Gson(result, Userfarm.class);
+                        for (Userfarm Userfarm : Userfarms) {
+                            String Fidtop = Userfarm.getFid().substring(0, 1);
+                            switch (Fidtop) {
+                                case "A":
+                                    u1.add(Userfarm);
+                                    break;
+                                case "B":
+                                    u2.add(Userfarm);
+                                    break;
+                                case "C":
+                                    u3.add(Userfarm);
+                                    break;
+                            }
 
+
+                        }
+                        getlangenre(u1);
+                        getlangenre2(u2);
+                        getlangenre3(u3);
+                        for (int i = 0; i < sls1.size(); i++) {
+                            String s1 = sls1.get(i).getText().toString();
+                            String s2 = sls2.get(i).getText().toString();
+                            String s3 = sls3.get(i).getText().toString();
+                            if(i==0){
+                                if (buyland(g10m, g15m, g20m, i, s1, s2, s3)) break;
+                            }
+                           if(i==1){
+
+                               if (buyland(g10m2, g15m2, g20m2, i, s1, s2, s3)) break;
+                           }
+                            if(i==2){
+                                if (buyland(g10m3, g15m3, g20m3, i, s1, s2, s3)) break;
+                            }
+
+
+
+                        }
+
+                    }
+                });
+            }
+
+            private boolean buyland(List<Userfarm> g1, List<Userfarm> g2, List<Userfarm> g3, int i, String s1, String s2, String s3) {
+                if (g1.size() < Integer.valueOf(s1)) {
+                    ToastUtils.showToast(context, "土地数量不足！");
+                    return true;
+                }
+                if (g2.size() < Integer.valueOf(s2)) {
+                    ToastUtils.showToast(context, "土地数量不足！");
+                    return true;
+                }
+                if (g3.size() < Integer.valueOf(s3)) {
+                    ToastUtils.showToast(context, "土地数量不足！");
+                    return true;
+                }
+                if (!s1.equals("0")) {
+
+                    for (int a = 0; a < Integer.valueOf(s1); a++) {
+                        buyfarm(g1.get(i).getFid());
+
+                    }
+
+                } else if (!s2.equals("0")) {
+
+                    for (int a = 0; a < Integer.valueOf(s2); a++) {
+                        buyfarm(g2.get(i).getFid());
+
+                    }
+
+                } else if (!s3.equals("0")) {
+
+                    for (int a = 0; a < Integer.valueOf(s3); a++) {
+                        buyfarm(g3.get(i).getFid());
+                    }
+
+                }
+                return false;
+            }
+
+            private void getlangenre( List<Userfarm> u) {
+                for (Userfarm g : u) {
+                    switch (g.getGenre()) {
+                        case 1:
+                            g10m.add(g);
+                            break;
+                        case 2:
+                            g15m.add(g);
+                            break;
+                        case 3:
+                            g20m.add(g);
+                            break;
+                    }
+                }
+            }
+            private void getlangenre2( List<Userfarm> u) {
+                for (Userfarm g : u) {
+                    switch (g.getGenre()) {
+                        case 1:
+                            g10m2.add(g);
+                            break;
+                        case 2:
+                            g15m2.add(g);
+                            break;
+                        case 3:
+                            g20m2.add(g);
+                            break;
+                    }
+                }
+            }
+            private void getlangenre3( List<Userfarm> u) {
+                for (Userfarm g : u) {
+                    switch (g.getGenre()) {
+                        case 1:
+                            g10m3.add(g);
+                            break;
+                        case 2:
+                            g15m3.add(g);
+                            break;
+                        case 3:
+                            g20m3.add(g);
+                            break;
+                    }
+                }
+            }
+
+            private void buyfarm(String fid) {
+                Map<String, String> map = new HashMap<>();
+                map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
+                map.put("fid", fid);
+                map.put("year", "1");
+                map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
+                xutils.get(context.getResources().getString(R.string.buyFrame), map, new Xutils.XCallBack() {
+                    @Override
+                    public void onResponse(String result) {
+                        Pattern compile = Pattern.compile("success");
+                        Matcher matcher = compile.matcher(result);
+                        if (matcher.find()) {
+                            ToastUtils.showToast(context, "购买成功！");
+
+                        }
+
+                    }
+                });
+            }
+        });
     }
+
+
 }

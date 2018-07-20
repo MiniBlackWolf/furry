@@ -11,7 +11,7 @@ public class Getuserinfo {
         this.context = context;
     }
 
-    public int getuid() {
+    public Integer getuid() {
         SharedPreferences mySharePerferences = context.getSharedPreferences("user", Activity.MODE_PRIVATE);
         //用getString获取值
         int uid = mySharePerferences.getInt("uid", 0);
