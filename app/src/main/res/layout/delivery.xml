@@ -119,7 +119,7 @@
                 app:layout_constraintStart_toStartOf="parent" />
 
             <LinearLayout
-                android:id="@+id/linearLayout20"
+                android:id="@+id/pick2"
                 android:layout_width="128dp"
                 android:layout_height="35dp"
                 android:layout_marginBottom="8dp"

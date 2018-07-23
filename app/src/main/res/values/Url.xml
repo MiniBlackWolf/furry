@@ -10,7 +10,7 @@
     <string name="Users">http://www.cnepltd.com/net/userBase/getUser</string>
     <string name="Userinfo">http://www.cnepltd.com/net/userBase/getUserInfo</string>
     <string name="farmData">http://www.cnepltd.com/net/seed/getFrame</string>
-    <string name="buyFrame">http://www.cnepltd.com/net/seed/buyFrame</string>
+  <!--  <string name="buyFrame">http://www.cnepltd.com/net/seed/buyFrame</string>-->
     <string name="getFarmCount">http://www.cnepltd.com/net/seed/getFarmCount</string>
     <string name="getFarmLimit">http://www.cnepltd.com/net/seed/getFarmLimit</string>
     <string name="buyseed">http://www.cnepltd.com/net/seed/buySeed</string>
@@ -36,4 +36,5 @@
     <string name="getlandinfo">http://192.168.0.72:8080/user/getlandinfo</string>
     <string name="getcultivation">http://192.168.0.72:8080/user/getcultivation</string>
     <string name="getAllfarm">http://192.168.0.72:8080/user/getAllfarm</string>
+    <string name="buyfarm">http://192.168.0.72:8080/user/buyfarm</string>
 </resources>

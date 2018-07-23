@@ -80,11 +80,12 @@ public class tab5_2 extends Fragment {
         zhuxiao.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
+                mySharePerferences.edit().clear().apply();
                 Intent intent = new Intent(getActivity(), MainActivity.class);
                 intent.putExtra("zhuxiao", "zhuxiao");
                 startActivity(intent);
-                SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
-                mySharePerferences.edit().clear().apply();
+
             }
         });
         SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);

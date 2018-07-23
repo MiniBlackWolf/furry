@@ -1,6 +1,7 @@
 package com.example.wolf.adpater;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.util.Log;
 import android.view.View;
@@ -11,14 +12,17 @@ import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.land.Farminfo;
 import com.example.wolf.land.Userfarm;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -53,13 +57,15 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
     private  List<Userfarm> g10m3 = new ArrayList<>();
     private  List<Userfarm> g15m3 = new ArrayList<>();
     private List<Userfarm> g20m3 = new ArrayList<>();
-
+    ZloadingDiaLogkt zloadingDiaLogkt;
+    ZLoadingDialog show;
     public xuandiadapter(int layoutResId, @Nullable List<Farminfo> data, Context context, Button buy) {
         super(layoutResId, data);
         this.data = data;
         this.context = context;
         this.buy = buy;
         xutils = new Xutils(context);
+        zloadingDiaLogkt=new ZloadingDiaLogkt(context);
     }
 
 
@@ -99,6 +105,7 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
             @SuppressWarnings("unchecked")
             @Override
             public void onClick(View view) {
+                 show = zloadingDiaLogkt.show();
                 sls1 = new ArrayList<>(sl1);
                 sls2 = new ArrayList<>(sl2);
                 sls3 = new ArrayList<>(sl3);
@@ -134,19 +141,22 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                             String s2 = sls2.get(i).getText().toString();
                             String s3 = sls3.get(i).getText().toString();
                             if(i==0){
-                                if (buyland(g10m, g15m, g20m, i, s1, s2, s3)) break;
+                                if (buyland(g10m, g15m, g20m, i, s1, s2, s3)) return;
                             }
                            if(i==1){
 
-                               if (buyland(g10m2, g15m2, g20m2, i, s1, s2, s3)) break;
+                               if (buyland(g10m2, g15m2, g20m2, i, s1, s2, s3)) return;
                            }
                             if(i==2){
-                                if (buyland(g10m3, g15m3, g20m3, i, s1, s2, s3)) break;
+                                if (buyland(g10m3, g15m3, g20m3, i, s1, s2, s3)) return;
                             }
 
 
 
                         }
+                        Intent intent=new Intent(context, MainActivity.class);
+                        intent.putExtra("seed",2);
+                        context.startActivity(intent);
 
                     }
                 });
@@ -154,35 +164,79 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
 
             private boolean buyland(List<Userfarm> g1, List<Userfarm> g2, List<Userfarm> g3, int i, String s1, String s2, String s3) {
                 if (g1.size() < Integer.valueOf(s1)) {
-                    ToastUtils.showToast(context, "土地数量不足！");
+                    switch (i){
+                        case 0:
+                            ToastUtils.showToast(context, "A地10㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 1:
+                            ToastUtils.showToast(context, "B地10㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 2:
+                            ToastUtils.showToast(context, "C地10㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+
+                    }
                     return true;
                 }
                 if (g2.size() < Integer.valueOf(s2)) {
-                    ToastUtils.showToast(context, "土地数量不足！");
+                    switch (i){
+                        case 0:
+                            ToastUtils.showToast(context, "A地15㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 1:
+                            ToastUtils.showToast(context, "B地15㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 2:
+                            ToastUtils.showToast(context, "C地15㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+
+                    };
                     return true;
                 }
                 if (g3.size() < Integer.valueOf(s3)) {
-                    ToastUtils.showToast(context, "土地数量不足！");
+                    switch (i){
+                        case 0:
+                            ToastUtils.showToast(context, "A地20㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 1:
+                            ToastUtils.showToast(context, "B地20㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+                        case 2:
+                            ToastUtils.showToast(context, "C地20㎡土地数量不足！，购买失败！");
+                            show.dismiss();
+                            break;
+
+                    }
                     return true;
                 }
                 if (!s1.equals("0")) {
 
                     for (int a = 0; a < Integer.valueOf(s1); a++) {
-                        buyfarm(g1.get(i).getFid());
+                        buyfarm(g1.get(a).getFid(),120.00);
 
                     }
 
-                } else if (!s2.equals("0")) {
+                }
+                if (!s2.equals("0")) {
 
                     for (int a = 0; a < Integer.valueOf(s2); a++) {
-                        buyfarm(g2.get(i).getFid());
+                        buyfarm(g2.get(a).getFid(),180.00);
 
                     }
 
-                } else if (!s3.equals("0")) {
+                }
+                if (!s3.equals("0")) {
 
                     for (int a = 0; a < Integer.valueOf(s3); a++) {
-                        buyfarm(g3.get(i).getFid());
+                        buyfarm(g3.get(a).getFid(),240.00);
                     }
 
                 }
@@ -235,20 +289,29 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                 }
             }
 
-            private void buyfarm(String fid) {
-                Map<String, String> map = new HashMap<>();
+            private void buyfarm(String fid, final double price) {
+                final Map<String, String> map = new HashMap<>();
                 map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
                 map.put("fid", fid);
-                map.put("year", "1");
-                map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
-                xutils.get(context.getResources().getString(R.string.buyFrame), map, new Xutils.XCallBack() {
+                map.put("price", String.valueOf(price));
+            //    map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
+                xutils.post(context.getResources().getString(R.string.buyfarm), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
                         Pattern compile = Pattern.compile("success");
                         Matcher matcher = compile.matcher(result);
                         if (matcher.find()) {
-                            ToastUtils.showToast(context, "购买成功！");
-
+                                Map<String, String> map2 = new HashMap<>();
+                                map2.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
+                                map2.put("money", String.valueOf(-price));
+                                map2.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
+                                xutils.get(context.getResources().getString(R.string.clientMoney), map2, new Xutils.XCallBack() {
+                                    @Override
+                                    public void onResponse(String result) {
+                                            ToastUtils.showToast(context, "购买成功！");
+                                            show.dismiss();
+                                    }
+                                });
                         }
 
                     }

@@ -7,7 +7,7 @@ import android.graphics.Color;
 import com.zyao89.view.zloading.ZLoadingDialog;
 import com.zyao89.view.zloading.Z_TYPE;
 
-public class ZloadingDiaLogkt {
+public class ZloadingDiaLogkt  {
     private Context context;
 
     public ZloadingDiaLogkt(Context context) {
@@ -16,8 +16,9 @@ public class ZloadingDiaLogkt {
 
     public ZLoadingDialog show() {
         ZLoadingDialog dialog = new ZLoadingDialog(context);
-        dialog.setCancelable(false);
+
         dialog.setLoadingBuilder(Z_TYPE.STAR_LOADING)//设置类型
+                .setCanceledOnTouchOutside(false)
                 .setLoadingColor(Color.parseColor("#FF6A92F1"))//颜色
                 .setHintText("Loading...")
                 .setHintTextSize(16) // 设置字体大小 dp

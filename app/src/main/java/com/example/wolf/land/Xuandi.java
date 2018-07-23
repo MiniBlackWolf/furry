@@ -1,5 +1,9 @@
 package com.example.wolf.land;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +31,6 @@ import org.xutils.view.annotation.ContentView;
 import java.util.HashMap;
 import java.util.List;
 
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -44,12 +47,53 @@ public class Xuandi extends AppCompatActivity {
     TextView zhongjian;
     @BindView(R.id.xuandirecyclerview)
     RecyclerView xuandirecyclerview;
-
+    @BindView(R.id.q)
+    ImageView q;
+    @BindView(R.id.q4)
+    ImageView q4;
+    boolean Visibility=true;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xuandi);
         ButterKnife.bind(Xuandi.this);
+        q.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Visibility) {
+                    q4.setVisibility(View.VISIBLE);
+                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(q4, "scaleX", 0f, 1f);
+                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(q4, "scaleY", 0f, 1f);
+                    ObjectAnimator translationX = ObjectAnimator.ofFloat(q4, "translationX", -200f);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(scaleX, translationX, scaleY);
+                    animatorSet.setDuration(500);
+                    animatorSet.start();
+                    Visibility = false;
+                } else {
+                    ObjectAnimator scaleX = ObjectAnimator.ofFloat(q4, "scaleX", 1f, 0f);
+                    ObjectAnimator scaleY = ObjectAnimator.ofFloat(q4, "scaleY", 1f, 0f);
+                    ObjectAnimator translationX = ObjectAnimator.ofFloat(q4, "translationX", 200f);
+                    AnimatorSet animatorSet = new AnimatorSet();
+                    animatorSet.playTogether(scaleX, translationX, scaleY);
+                    animatorSet.addListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation, boolean isReverse) {
+
+                        }
+
+                        @Override
+                        public void onAnimationEnd(Animator animation, boolean isReverse) {
+                            q4.setVisibility(View.GONE);
+                        }
+                    });
+                    animatorSet.setDuration(500);
+                    animatorSet.start();
+                    Visibility = true;
+
+                }
+            }
+        });
         ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(Xuandi.this);
         final ZLoadingDialog ZLoadingDialog = zloadingDiaLogkt.show();
         xutils.get(getResources().getString(R.string.getlandinfo), new HashMap<String, String>(), new Xutils.XCallBack() {
@@ -58,7 +102,7 @@ public class Xuandi extends AppCompatActivity {
             public void onResponse(String result) {
                 GsonUtil gsonUtil = new GsonUtil();
                 List<Farminfo> Farminfo = gsonUtil.Gson(result, Farminfo.class);
-                 xuandiadapter xuandiadapter = new xuandiadapter(R.layout.xuandiitem, Farminfo, Xuandi.this,buy);
+                xuandiadapter xuandiadapter = new xuandiadapter(R.layout.xuandiitem, Farminfo, Xuandi.this, buy);
                 xuandiadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 xuandiadapter.isFirstOnly(false);
                 xuandirecyclerview.setLayoutManager(new LinearLayoutManager(Xuandi.this));
@@ -71,52 +115,52 @@ public class Xuandi extends AppCompatActivity {
                         TextView shuliang = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang);
                         TextView shuliang2 = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang2);
                         TextView shuliang3 = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang3);
-                        switch (view.getId()){
+                        switch (view.getId()) {
 
                             case R.id.jia:
                                 String s = shuliang.getText().toString();
                                 Integer sl1 = Integer.valueOf(s);
                                 sl1++;
-                                shuliang.setText(sl1+"");
+                                shuliang.setText(sl1 + "");
                                 break;
                             case R.id.jia2:
                                 String s2 = shuliang2.getText().toString();
                                 Integer sl2 = Integer.valueOf(s2);
                                 sl2++;
-                                shuliang2.setText(sl2+"");
+                                shuliang2.setText(sl2 + "");
                                 break;
                             case R.id.jia3:
                                 String s3 = shuliang3.getText().toString();
                                 Integer sl3 = Integer.valueOf(s3);
                                 sl3++;
-                                shuliang3.setText(sl3+"");
+                                shuliang3.setText(sl3 + "");
                                 break;
                             case R.id.jian:
                                 String ss = shuliang.getText().toString();
                                 Integer ssl = Integer.valueOf(ss);
                                 ssl--;
-                                if(ssl<=0){
-                                    ssl=0;
+                                if (ssl <= 0) {
+                                    ssl = 0;
                                 }
-                                shuliang.setText(ssl+"");
+                                shuliang.setText(ssl + "");
                                 break;
                             case R.id.jian2:
                                 String ss2 = shuliang2.getText().toString();
                                 Integer ssl2 = Integer.valueOf(ss2);
                                 ssl2--;
-                                if(ssl2<=0){
-                                    ssl2=0;
+                                if (ssl2 <= 0) {
+                                    ssl2 = 0;
                                 }
-                                shuliang2.setText(ssl2+"");
+                                shuliang2.setText(ssl2 + "");
                                 break;
                             case R.id.jian3:
                                 String ss3 = shuliang2.getText().toString();
                                 Integer ssl3 = Integer.valueOf(ss3);
                                 ssl3--;
-                                if(ssl3<=0){
-                                    ssl3=0;
+                                if (ssl3 <= 0) {
+                                    ssl3 = 0;
                                 }
-                                shuliang3.setText(ssl3+"");
+                                shuliang3.setText(ssl3 + "");
                                 break;
 
                         }
@@ -126,8 +170,6 @@ public class Xuandi extends AppCompatActivity {
                 ZLoadingDialog.dismiss();
             }
         });
-
-
 
 
         xuandifanhui.setOnClickListener(new OnClickListener() {
