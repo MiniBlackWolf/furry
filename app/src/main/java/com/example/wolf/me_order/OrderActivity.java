@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
@@ -39,22 +40,27 @@ public class OrderActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.order);
         ButterKnife.bind(this);
-        Map<String, String> map = new HashMap();
-        map.put("uid", String.valueOf(getuserinfo.getuid()));
-        map.put("token", new Token().getToken(getuserinfo.getuid()));
-        xutils.get(getResources().getString(R.string.getUserOrder), map, new Xutils.XCallBack() {
+        Map<String,String> map=new HashMap<>();
+        map.put("userid",getuserinfo.getuid()+"");
+        xutils.post(getResources().getString(R.string.order), map, new Xutils.XCallBack() {
+            @SuppressWarnings("unchecked")
             @Override
             public void onResponse(String result) {
+                Log.i("iiiiiiiiii",result);
                 GsonUtil gsonUtil=new GsonUtil();
-                List orderbean = gsonUtil.Gson(result, orderbean.class);
-                Myorderadapter myorderadapter = new Myorderadapter(R.layout.orderitem, orderbean, OrderActivity.this);
+                List<orderbean> orderbean = gsonUtil.Gson(result, orderbean.class);
+                Myorderadapter myorderadapter=new Myorderadapter(R.layout.orderitem,orderbean,OrderActivity.this);
                 myorderadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
-                myorderadapter.isFirstOnly(false);
+                myorderadapter.isFirstOnly(true);
                 orderrecyclerview.setLayoutManager(new LinearLayoutManager(OrderActivity.this));
                 orderrecyclerview.setAdapter(myorderadapter);
+                myorderadapter.bindToRecyclerView(orderrecyclerview);
+                myorderadapter.setEmptyView(R.layout.loading);
 
             }
         });
+
+
 
     }
 

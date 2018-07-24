@@ -1,92 +1,237 @@
 package com.example.wolf.me_order;
 
+import java.util.List;
+
 public class orderbean {
 
 
     /**
-     * oid : 3
-     * uid : 2
-     * oiid : 316b79be9f43430792dc86b25035204220180515165246
-     * name : A0001
-     * type : 2
-     * status : 2
-     * orderdate : 1526374366000
-     * description : null
+     * pid : 1
+     * goodsname : 购买耕耘券
+     * goodstype : 1
+     * price : 5.00
+     * userid : 2
+     * buytime : 1531810000
+     * out_order : null
+     * timesa : 2018.07.17
+     * item : [{"id":1,"payid":1,"manyid":"1","itemtype":"1","counts":2,"unitprice":"2.50","shijian":"2018.07.17","name":"菜鸟环保|灌溉券","imgurl":"/static/farm/images/gengyun/x4.png","description":"保证作物正常生长，供给作物以充足的水分，补充作物所需水分的技术措施。"}]
+     * zong : 1
+     * typename : 耕耘券
+     * typeimg : /farm/images/quan.png
      */
 
-    private int oid;
-    private int uid;
-    private String oiid;
-    private String name;
-    private int type;
-    private int status;
-    private long orderdate;
-    private Object description;
+    private int pid;
+    private String goodsname;
+    private int goodstype;
+    private String price;
+    private int userid;
+    private int buytime;
+    private Object out_order;
+    private String timesa;
+    private int zong;
+    private String typename;
+    private String typeimg;
+    private List<ItemBean> item;
 
-    public orderbean() {
+    public int getPid() {
+        return pid;
     }
 
-    public int getOid() {
-        return oid;
+    public void setPid(int pid) {
+        this.pid = pid;
     }
 
-    public void setOid(int oid) {
-        this.oid = oid;
+    public String getGoodsname() {
+        return goodsname;
     }
 
-    public int getUid() {
-        return uid;
+    public void setGoodsname(String goodsname) {
+        this.goodsname = goodsname;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public int getGoodstype() {
+        return goodstype;
     }
 
-    public String getOiid() {
-        return oiid;
+    public void setGoodstype(int goodstype) {
+        this.goodstype = goodstype;
     }
 
-    public void setOiid(String oiid) {
-        this.oiid = oiid;
+    public String getPrice() {
+        return price;
     }
 
-    public String getName() {
-        return name;
+    public void setPrice(String price) {
+        this.price = price;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getUserid() {
+        return userid;
     }
 
-    public int getType() {
-        return type;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
-    public void setType(int type) {
-        this.type = type;
+    public int getBuytime() {
+        return buytime;
     }
 
-    public int getStatus() {
-        return status;
+    public void setBuytime(int buytime) {
+        this.buytime = buytime;
     }
 
-    public void setStatus(int status) {
-        this.status = status;
+    public Object getOut_order() {
+        return out_order;
     }
 
-    public long getOrderdate() {
-        return orderdate;
+    public void setOut_order(Object out_order) {
+        this.out_order = out_order;
     }
 
-    public void setOrderdate(long orderdate) {
-        this.orderdate = orderdate;
+    public String getTimesa() {
+        return timesa;
     }
 
-    public Object getDescription() {
-        return description;
+    public void setTimesa(String timesa) {
+        this.timesa = timesa;
     }
 
-    public void setDescription(Object description) {
-        this.description = description;
+    public int getZong() {
+        return zong;
+    }
+
+    public void setZong(int zong) {
+        this.zong = zong;
+    }
+
+    public String getTypename() {
+        return typename;
+    }
+
+    public void setTypename(String typename) {
+        this.typename = typename;
+    }
+
+    public String getTypeimg() {
+        return typeimg;
+    }
+
+    public void setTypeimg(String typeimg) {
+        this.typeimg = typeimg;
+    }
+
+    public List<ItemBean> getItem() {
+        return item;
+    }
+
+    public void setItem(List<ItemBean> item) {
+        this.item = item;
+    }
+
+    public static class ItemBean {
+        /**
+         * id : 1
+         * payid : 1
+         * manyid : 1
+         * itemtype : 1
+         * counts : 2
+         * unitprice : 2.50
+         * shijian : 2018.07.17
+         * name : 菜鸟环保|灌溉券
+         * imgurl : /static/farm/images/gengyun/x4.png
+         * description : 保证作物正常生长，供给作物以充足的水分，补充作物所需水分的技术措施。
+         */
+
+        private int id;
+        private int payid;
+        private String manyid;
+        private String itemtype;
+        private int counts;
+        private String unitprice;
+        private String shijian;
+        private String name;
+        private String imgurl;
+        private String description;
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getPayid() {
+            return payid;
+        }
+
+        public void setPayid(int payid) {
+            this.payid = payid;
+        }
+
+        public String getManyid() {
+            return manyid;
+        }
+
+        public void setManyid(String manyid) {
+            this.manyid = manyid;
+        }
+
+        public String getItemtype() {
+            return itemtype;
+        }
+
+        public void setItemtype(String itemtype) {
+            this.itemtype = itemtype;
+        }
+
+        public int getCounts() {
+            return counts;
+        }
+
+        public void setCounts(int counts) {
+            this.counts = counts;
+        }
+
+        public String getUnitprice() {
+            return unitprice;
+        }
+
+        public void setUnitprice(String unitprice) {
+            this.unitprice = unitprice;
+        }
+
+        public String getShijian() {
+            return shijian;
+        }
+
+        public void setShijian(String shijian) {
+            this.shijian = shijian;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getImgurl() {
+            return imgurl;
+        }
+
+        public void setImgurl(String imgurl) {
+            this.imgurl = imgurl;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
     }
 }

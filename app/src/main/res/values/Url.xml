@@ -37,4 +37,7 @@
     <string name="getcultivation">http://192.168.0.72:8080/user/getcultivation</string>
     <string name="getAllfarm">http://192.168.0.72:8080/user/getAllfarm</string>
     <string name="buyfarm">http://192.168.0.72:8080/user/buyfarm</string>
+    <string name="harvest">http://192.168.0.72:8080/user/harvest</string>
+    <string name="order">http://wecn.cnepltd.com/farm/open/order</string>
+    <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
 </resources>
