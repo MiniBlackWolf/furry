@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/hui">
 
     <LinearLayout
+        android:id="@+id/linearLayout10"
         android:layout_width="0dp"
         android:layout_height="57dp"
-        android:background="@color/hong"
+        android:background="@color/multiple_image_select_primaryDark"
         android:gravity="center"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -17,19 +19,35 @@
 
         <ImageView
             android:id="@+id/strategyfh"
-            android:layout_width="10dp"
-            android:layout_height="30dp"
+            android:layout_width="5dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="10dp"
             android:layout_weight="1"
-            app:srcCompat="@mipmap/fh" />
+            android:background="@mipmap/fh" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="57dp"
-            android:layout_weight="5"
+            android:layout_weight="20"
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="种植攻略"
             android:textColor="@color/cardview_light_background" />
 
     </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/strategy"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout10" />
+
 </android.support.constraint.ConstraintLayout>

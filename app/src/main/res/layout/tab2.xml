@@ -12,14 +12,31 @@
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:focusable="false"
-            >
+            android:layout_height="match_parent"
+            android:focusable="false">
+
+            <TextView
+                android:id="@+id/textView48"
+                android:layout_width="56dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="260dp"
+                android:text="种植攻略"
+                android:textColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.013"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <com.daimajia.slider.library.SliderLayout
                 android:id="@+id/slider"
@@ -196,50 +213,85 @@
 
             </LinearLayout>
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="0dp"
-                android:layout_height="300dp"
-                android:layout_marginTop="252dp"
-                android:focusable="false"
+            <android.support.v7.widget.CardView
+                android:id="@+id/tab2cardview"
+                android:layout_width="340dp"
+                android:layout_height="212dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="32dp"
+                android:foreground="@drawable/card_foreground"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
+                app:layout_constraintVertical_bias="1.0"
 
-                <VideoView
-                    android:id="@+id/videoView"
-                    android:layout_width="0dp"
-                    android:layout_height="150dp"
-                    android:focusable="false"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="1.0" />
+                >
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <android.support.constraint.ConstraintLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="我的农场"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.052"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    android:background="@android:color/background_light">
 
-                <android.support.v7.widget.RecyclerView
-                    android:id="@+id/tab2videorecyclerview"
-                    android:layout_width="0dp"
-                    android:layout_height="50dp"
-                    app:layout_constraintBottom_toTopOf="@+id/videoView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    <ImageView
+                        android:id="@+id/imageView15"
+                        android:layout_width="348dp"
+                        android:layout_height="120dp"
+                        android:background="@mipmap/g1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            </android.support.constraint.ConstraintLayout>
+                    <TextView
+                        android:id="@+id/textView43"
+                        android:layout_width="0dp"
+                        android:layout_height="27dp"
+                        android:layout_marginBottom="8dp"
+                        android:gravity="left|center"
+                        android:text="菜鸟农场|科学蔬菜种植攻略"
+                        android:textColor="@android:color/background_dark"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/imageView15"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <TextView
+                        android:id="@+id/textView47"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:text="蔬菜从播种、出芽、灌溉、成熟到收获的这种过程，是一种陶冶情操、放松心情、分享收获 、回味中国数千年的农耕和农耕文化的情怀。 那么，如何用科学的方法种出无公害、纯天然的放心菜呢，一起学习菜鸟农场科学蔬菜种植攻略"
+                        android:textSize="12sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView43"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/imageView26"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="8dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintVertical_bias="0.045"
+                        app:srcCompat="@mipmap/gl" />
+                </android.support.constraint.ConstraintLayout>
+            </android.support.v7.widget.CardView>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

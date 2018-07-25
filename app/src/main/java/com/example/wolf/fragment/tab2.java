@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,6 +35,7 @@ import com.example.wolf.land.Xuandi;
 import com.example.wolf.land.userland;
 import com.example.wolf.pick.pick;
 import com.example.wolf.seed.seedActivity;
+import com.example.wolf.strategy.StrategyActivity;
 
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
@@ -60,10 +62,8 @@ public class tab2 extends Fragment {
     private ImageView s5;
     @ViewInject(R.id.s6)
     private ImageView s6;
-    @ViewInject(R.id.videoView)
-    private VideoView videoView;
-    @ViewInject(R.id.tab2videorecyclerview)
-    private RecyclerView tab2videorecyclerview;
+    @ViewInject(R.id.tab2cardview)
+    CardView tab2cardview;
     List<userland> list=new ArrayList<>();
     int uid;
     AlertDialog alertDialog;
@@ -74,19 +74,18 @@ public class tab2 extends Fragment {
         Myvideoadapter myvideoadapter=new Myvideoadapter(R.layout.videoitem,list,getActivity());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
-        tab2videorecyclerview.setLayoutManager(linearLayoutManager);
         uid = new Getuserinfo(getActivity()).getuid();
         slider(view);
         addonclick();
         MediaController mc = new MediaController(getActivity());
         mc.setVisibility(View.INVISIBLE);
-        videoView.setMediaController(mc);
-        Uri uri = Uri.parse("http://hls.open.ys7.com/openlive/8e169582568e42aeaef8aa9581f34b03.m3u8");
-        videoView.setVideoURI(uri);
-        videoView.setMediaController(mc);
-        videoView.setFocusable(false);
-        //mvdView.requestFocus();
-        videoView.start();
+        tab2cardview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent=new Intent(getActivity(), StrategyActivity.class);
+                startActivity(intent);
+            }
+        });
         return view;
     }
 
@@ -179,15 +178,15 @@ public class tab2 extends Fragment {
 
     private void slider(View view) {
         HashMap<String, Integer> maps = new HashMap<>();
-        maps.put("a1", R.mipmap.possss);
-        maps.put("a2", R.mipmap.b1);
-        maps.put("a3", R.mipmap.b2_1);
-        maps.put("a4", R.mipmap.b2_2);
+        maps.put("", R.mipmap.possss);
+        maps.put(" ", R.mipmap.b1);
+        maps.put("  ", R.mipmap.b2_1);
+        maps.put("   ", R.mipmap.b2_2);
         for (String name : maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
-                    .description(name)
+                //    .description(name)
                     .image(maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {

@@ -27,6 +27,7 @@ import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.burse.MyburseActivity;
 import com.example.wolf.invite.InviteActivity;
+import com.example.wolf.pointshop.PointshopActivity;
 import com.example.wolf.strategy.StrategyActivity;
 import com.example.wolf.userbean.MyinfoActivity;
 import com.example.wolf.userbean.UserInfo;
@@ -176,7 +177,8 @@ public class tab5_2 extends Fragment {
         m6_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putoff();
+               Intent intent=new Intent(getActivity(),PointshopActivity.class);
+               startActivity(intent);
             }
         });
         //联系客服

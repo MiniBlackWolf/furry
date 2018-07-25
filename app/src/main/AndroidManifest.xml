@@ -141,8 +141,12 @@
         </activity>
         <activity android:name=".strategy.StrategyActivity"
             >
+        </activity>
+        <activity android:name=".pointshop.PointshopActivity"
+            android:theme="@style/Anim_fade"
+            >
             <intent-filter>
-                <category android:name="android.intent.category.LAUNCHER22" />
+                <category android:name="android.intent.category.LAUNCHER23" />
             </intent-filter>
         </activity>
         <activity

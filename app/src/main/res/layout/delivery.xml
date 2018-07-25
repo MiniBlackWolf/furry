@@ -201,13 +201,5 @@
                 app:layout_constraintStart_toStartOf="parent" />
         </android.support.constraint.ConstraintLayout>
 
-        <android.support.v4.view.ViewPager
-            android:id="@+id/viewPager2"
-            android:layout_width="0dp"
-            android:layout_height="312dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
     </android.support.constraint.ConstraintLayout>
 </android.support.constraint.ConstraintLayout>
