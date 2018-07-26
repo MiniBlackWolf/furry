@@ -3,11 +3,9 @@ package com.example.wolf.adpater;
 import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -22,11 +20,11 @@ import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.land.Farminfo;
 import com.example.wolf.land.Userfarm;
+import com.example.wolf.land.xuandibean;
 import com.zyao89.view.zloading.ZLoadingDialog;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
@@ -59,6 +57,12 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
     private List<Userfarm> g20m3 = new ArrayList<>();
     ZloadingDiaLogkt zloadingDiaLogkt;
     ZLoadingDialog show;
+    double ALLprice;
+    double a1;
+    double a2;
+    double a3;
+    List<xuandibean> xuandibean=new ArrayList<>();
+    List<xuandibean.payitem> payitem=new ArrayList<>();
     public xuandiadapter(int layoutResId, @Nullable List<Farminfo> data, Context context, Button buy) {
         super(layoutResId, data);
         this.data = data;
@@ -109,9 +113,6 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                 sls1 = new ArrayList<>(sl1);
                 sls2 = new ArrayList<>(sl2);
                 sls3 = new ArrayList<>(sl3);
-                for (TextView textView1:sls1){ Log.i("iiiiiiiii","1:"+textView1.getText().toString());}
-                for (TextView textView2:sls2){ Log.i("iiiiiiiii","2:"+textView2.getText().toString());}
-                for (TextView textView3:sls3){ Log.i("iiiiiiiii","3:"+textView3.getText().toString());}
                 xutils.get(context.getResources().getString(R.string.getAllfarm), new HashMap<String, String>(), new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
@@ -140,7 +141,31 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                             String s1 = sls1.get(i).getText().toString();
                             String s2 = sls2.get(i).getText().toString();
                             String s3 = sls3.get(i).getText().toString();
+                            switch (i) {
+                                case 0:
+                                    a1 = (Integer.valueOf(s1) * 120) + (Integer.valueOf(s2) * 180) + (Integer.valueOf(s3) * 240);
+                                    break;
+                                case 1:
+                                    a2 = (Integer.valueOf(s1) * 120) + (Integer.valueOf(s2) * 180) + (Integer.valueOf(s3) * 240);
+                                    break;
+                                case 2:
+                                    a3 = (Integer.valueOf(s1) * 120) + (Integer.valueOf(s2) * 180) + (Integer.valueOf(s3) * 240);
+                                    break;
+                            }
+                        }
+                        ALLprice=a1+a2+a3;
+                        for (int i = 0; i < sls1.size(); i++) {
+                            String s1 = sls1.get(i).getText().toString();
+                            String s2 = sls2.get(i).getText().toString();
+                            String s3 = sls3.get(i).getText().toString();
+                            switch (i){
+                                case 0: a1=(Integer.valueOf(s1)*120)+(Integer.valueOf(s2)*180)+(Integer.valueOf(s3)*240);break;
+                                case 1: a2=(Integer.valueOf(s1)*120)+(Integer.valueOf(s2)*180)+(Integer.valueOf(s3)*240);break;
+                                case 2: a3=(Integer.valueOf(s1)*120)+(Integer.valueOf(s2)*180)+(Integer.valueOf(s3)*240);break;
+                            }
+
                             if(i==0){
+
                                 if (buyland(g10m, g15m, g20m, i, s1, s2, s3)) return;
                             }
                            if(i==1){
@@ -148,12 +173,14 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                                if (buyland(g10m2, g15m2, g20m2, i, s1, s2, s3)) return;
                            }
                             if(i==2){
+
                                 if (buyland(g10m3, g15m3, g20m3, i, s1, s2, s3)) return;
                             }
 
 
 
                         }
+
                         Intent intent=new Intent(context, MainActivity.class);
                         intent.putExtra("seed",2);
                         context.startActivity(intent);
