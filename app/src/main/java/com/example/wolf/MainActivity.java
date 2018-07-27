@@ -77,7 +77,7 @@ public class MainActivity extends AppCompatActivity {
         //用getString获取值
         String name = mySharePerferences.getString("userName", "");
         String password = mySharePerferences.getString("password", "");
-        Map<String, String> map = new HashMap();
+        Map<String, String> map = new HashMap<>();
         map.put("userName", name);
         map.put("password", password);
         //本地验证登陆

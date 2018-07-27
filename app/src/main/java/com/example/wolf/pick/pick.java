@@ -158,7 +158,6 @@ public class pick extends AppCompatActivity {
                 pickrecyclerview.setAdapter(pickadapter);
                 pickadapter.bindToRecyclerView(pickrecyclerview);
                 pickadapter.setEmptyView(R.layout.loading);
-                ;
                 ObjectAnimator2();
                 break;
             case R.id.pick1:

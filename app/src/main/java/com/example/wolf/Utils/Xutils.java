@@ -30,6 +30,10 @@ public class Xutils {
         this.context = context;
     }
 
+    public Xutils() {
+
+    }
+
     /**
      * 单例模式
      *

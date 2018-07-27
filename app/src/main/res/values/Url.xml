@@ -13,7 +13,7 @@
   <!--  <string name="buyFrame">http://www.cnepltd.com/net/seed/buyFrame</string>-->
     <string name="getFarmCount">http://www.cnepltd.com/net/seed/getFarmCount</string>
     <string name="getFarmLimit">http://www.cnepltd.com/net/seed/getFarmLimit</string>
-    <string name="buyseed">http://www.cnepltd.com/net/seed/buySeed</string>
+    <string name="buyseed">http://192.168.0.72:8080/user/buyseed</string>
     <string name="getUserFrame">http://www.cnepltd.com//net/seed/getUserFrame</string>
     <string name="getnouseseed">http://cnnc.cnepltd.com/user/nouserseed</string>
     <string name="getTickets">http://www.cnepltd.com/net/userBase/getTickets</string>

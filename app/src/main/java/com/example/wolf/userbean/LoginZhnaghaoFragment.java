@@ -79,7 +79,6 @@ public class LoginZhnaghaoFragment extends Fragment {
                                    //     Log.i("iiiiiiiiiiiiiiiiiiiii", userinfo);
                                         GsonUtil gsonUtil = new GsonUtil();
                                         List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
-
                                         //实例化SharedPreferences对象,参数1是存储文件的名称，参数2是文件的打开方式，当文件不存在时，直接创建，如果存在，则直接使用
                                         SharedPreferences mySharePreferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
                                         //实例化SharedPreferences.Editor对象

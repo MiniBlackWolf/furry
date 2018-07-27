@@ -29,4 +29,5 @@ public class Getuserinfo {
         String password = mySharePerferences.getString("password", "");
         return password;
     }
+
 }

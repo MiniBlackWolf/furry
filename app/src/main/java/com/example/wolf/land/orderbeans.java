@@ -3,7 +3,7 @@ package com.example.wolf.land;
 import java.io.Serializable;
 import java.util.List;
 
-public class xuandibean implements Serializable {
+public class orderbeans implements Serializable {
 
 
     private Integer pid;
@@ -78,7 +78,7 @@ public class xuandibean implements Serializable {
     public void setPayitem(List<payitem> payitem) {
         this.payitem = payitem;
     }
-    public  class payitem implements Serializable
+    public static class payitem implements Serializable
     {
 
         private Integer id;
@@ -91,6 +91,7 @@ public class xuandibean implements Serializable {
         public payitem()
         {
         }
+
 
         public Integer getId()
         {

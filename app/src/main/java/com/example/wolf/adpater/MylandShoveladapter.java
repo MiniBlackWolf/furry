@@ -15,13 +15,21 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.OrderUtils;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
+import com.example.wolf.land.orderbeans;
 import com.example.wolf.land.userseedandland;
+import com.example.wolf.seed.Seedfarm;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.userbean.UserInfo;
+import com.google.gson.Gson;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
@@ -40,13 +48,16 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
     private Set<userseedandland> max = new HashSet<>();
     private List<ImageView> chanzhi2 = new ArrayList<>();
     private List<userseedandland> max2 = new ArrayList<>();
-
-    public MylandShoveladapter(int layoutResId, @Nullable List<userseedandland> data, Context context, Button Shovelbutton,Dialog dialog) {
+    List<String> fids = new ArrayList<>();
+    List<String> sfids = new ArrayList<>();
+    List<orderbeans.payitem> payitem=new ArrayList<>();
+    List<Long> swoingdates=new ArrayList<>();
+    public MylandShoveladapter(int layoutResId, @Nullable List<userseedandland> data, Context context, Button Shovelbutton, Dialog dialog) {
         super(layoutResId, data);
         this.context = context;
         this.Shovelbutton = Shovelbutton;
         this.xutils = new Xutils(context);
-        this.dialog=dialog;
+        this.dialog = dialog;
     }
 
     @Override
@@ -103,39 +114,11 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                                     ToastUtils.showToast(context, "金额不足请充值");
 
                                 } else {
-                                    Map<String, String> map = new HashMap<>();
-                                    map.put("price",finalCount*2+"");
-                                    map.put("swoingdate", String.valueOf(max2.get(finalI).getSwoingdate()));
-                                    map.put("sid", String.valueOf(max2.get(finalI).getSid()));
-                                    map.put("sfid", max2.get(finalI).getSfid());
-                                    map.put("fid", max2.get(finalI).getFid());
-                                    map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
-                                    xutils.get(context.getResources().getString(R.string.shovel), map, new Xutils.XCallBack() {
-                                        @Override
-                                        public void onResponse(String result) {
-                                            if (result.equals("success")) {
-                                                Map<String, String> map = new HashMap<>();
-                                                map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
-                                                map.put("money", "-2");
-                                                map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
-                                                xutils.get(context.getResources().getString(R.string.clientMoney), map, new Xutils.XCallBack() {
-                                                    @Override
-                                                    public void onResponse(String result) {
-                                                        String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                                                        if (i.equals("success")) {
-                                                            ToastUtils.showToast(context, "铲除成功!");
-                                                            dialog.dismiss();
-                                                        }
-                                                    }
-                                                });
-                                            } else {
-                                                ToastUtils.showToast(context, "铲除失败!");
-
-                                            }
-                                        }
-                                    });
-
-
+                                    orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(max2.get(finalI).getSid()), "-1", finalCount, 10.0);
+                                    payitem.add(addpayitem);
+                                    fids.add(max2.get(finalI).getFid());
+                                    sfids.add(max2.get(finalI).getSfid());
+                                    swoingdates.add(max2.get(finalI).getSwoingdate());
                                 }
 
                             }
@@ -144,6 +127,45 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                     }
 
                 }
+                orderbeans orderbeans = OrderUtils.addorder("锄种子", 4, count * 2, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
+                Gson gson=new Gson();
+                String s = gson.toJson(orderbeans);
+                RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.shovel));
+                requestParams.setBodyContent(s);
+                requestParams.setAsJsonContent(true);
+                requestParams.addParameter("fid",fids);
+                requestParams.addParameter("sfid",sfids);
+                requestParams.addParameter("swoingdate",swoingdates);
+                x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
+                    @Override
+                    public void onSuccess(String result) {
+                        if(result.equals("success")){
+                            ToastUtils.showToast(context,"铲除成功！");
+                            dialog.dismiss();
+                        }
+                        else {
+                            ToastUtils.showToast(context,"铲除失败,请检查网络或数量！");
+                            dialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException cex) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
+
 
             }
         });

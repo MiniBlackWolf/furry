@@ -16,35 +16,55 @@ import com.chad.library.adapter.base.BaseViewHolder;
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
+import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.OrderUtils;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
+import com.example.wolf.Utils.encryption_algorithm.algorithm;
+import com.example.wolf.land.orderbeans;
 import com.example.wolf.seed.ProdctBean;
+import com.example.wolf.userbean.UserInfo;
+import com.google.gson.Gson;
 import com.zyao89.view.zloading.ZLoadingDialog;
 
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
+
+import java.io.UnsupportedEncodingException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
     private Context context;
     private BigDecimal moeny = new BigDecimal(0);
     private TextView allmoeny;
     private Button buy;
-    private List<TextView> count = new ArrayList<>();
+    private Set<TextView> count = new LinkedHashSet<>();
     private List<String> listsusse = new ArrayList<>();
-    private List<Integer> sid = new ArrayList<>();
+    private Set<Integer> sid = new LinkedHashSet<>();
     private ZLoadingDialog zloadingDiaLog;
-    private List<String> buymoney = new ArrayList<>();
+    private Set<String> buymoney = new LinkedHashSet<>();
+    private List<String> buymoneys=new ArrayList<>();
+    private List<TextView> counts;
+    private List<Integer> sids;
+    Xutils xutils;
     int l;
+    double allmoney;
+    private List<orderbeans.payitem> payitem = new ArrayList<>();
 
     public Seedadapter(int layoutResId, @Nullable List<ProdctBean> data, Context context, TextView allmoeny, Button buy, ZLoadingDialog zloadingDiaLog) {
         super(layoutResId, data);
         this.context = context;
         this.allmoeny = allmoeny;
         this.buy = buy;
+        xutils = new Xutils(context);
         this.zloadingDiaLog = zloadingDiaLog;
         if (data.size() == 0) {
             zloadingDiaLog.dismiss();
@@ -61,13 +81,92 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
         helper.setText(R.id.k5, "剩余数量" + item.getCount());
         count.add((TextView) helper.getView(R.id.k4));
         sid.add(item.getSid());
-        buymoney.add(item.getJiage());
+        buymoneys.add(item.getJiage());
         jiaorjian(helper, item);
-        buy(item, buymoney);
         helper.addOnClickListener(R.id.k1);
         zloadingDiaLog.dismiss();
 
+        buy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sids = new ArrayList<>(sid);
+                counts = new ArrayList<>(count);
+         //       buymoneys = new ArrayList<>(buymoney);
+                //用getint获取值
+                for (int i = 0; i < counts.size(); i++) {
+                    if (!counts.get(i).getText().toString().equals("0")) {
+                        orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(sids.get(i)), "-1", Integer.valueOf(counts.get(i).getText().toString()), Double.valueOf(buymoneys.get(i)));
+                        payitem.add(addpayitem);
+                        allmoney += Double.valueOf(buymoneys.get(i));
+                    }
+
+                }
+                Map<String, String> map2 = new HashMap<>();
+                map2.put("userName", new Getuserinfo(context).getusername());
+                xutils.get(context.getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public void onResponse(String result) {
+                        String userinfo = null;
+                        try {
+                            userinfo = new String(algorithm.encryptDecode(result.getBytes("iso8859-1")), "utf-8");
+
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        GsonUtil gsonUtil = new GsonUtil();
+                        List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
+                        if (UserInfo.get(0).getMoney() >= allmoney) {
+                            orderbeans orderbeans = OrderUtils.addorder("购买种子", 2, allmoney, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
+                            Gson gson = new Gson();
+                            String s = gson.toJson(orderbeans);
+                            RequestParams requestParams = new RequestParams(context.getResources().getString(R.string.buyseed));
+                            requestParams.setBodyContent(s);
+                            requestParams.setAsJsonContent(true);
+                            x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
+
+                                @Override
+                                public void onSuccess(String result) {
+                                    if (result.equals("success")) {
+                                        ToastUtils.showToast(context, "购买成功！");
+                                    } else {
+                                        ToastUtils.showToast(context, "购买失败，请检查网络和数量！");
+                                    }
+                                }
+
+                                @Override
+                                public void onError(Throwable ex, boolean isOnCallback) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(CancelledException cex) {
+
+                                }
+
+                                @Override
+                                public void onFinished() {
+
+                                }
+                            });
+
+                        }
+                        else {
+
+                            ToastUtils.showToast(context,"余额不足！");
+                        }
+                    }
+                });
+
+
+            }
+
+
+        });
+
     }
+
 
     private void jiaorjian(final BaseViewHolder helper, final ProdctBean item) {
 
@@ -105,67 +204,6 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
         });
     }
 
-    public void buy(final ProdctBean item, final List<String> buymoney) {
-        buy.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final Xutils xutils = new Xutils(context);
-
-
-                //用getint获取值
-                for (int i = 0; i < count.size(); i++) {
-                    Map<String, String> map = new HashMap<>();
-                    map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
-                    map.put("sid", String.valueOf(sid.get(i)));
-                    map.put("buycount", count.get(i).getText().toString());
-                    map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
-                    final int finalI1 = i;
-                    xutils.get(context.getResources().getString(R.string.buyseed), map, new Xutils.XCallBack() {
-                        @Override
-                        public void onResponse(String result) {
-                            Log.i("iiiiiiiiiiii", result);
-                            String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
-                            if (su.equals("success")) {
-                                if (Integer.valueOf(count.get(finalI1).getText().toString()) != 0) {
-                                    BigDecimal big1=new BigDecimal(count.get(finalI1).getText().toString());
-                                    BigDecimal big2=new BigDecimal(buymoney.get(finalI1));
-                                    float seedmoney=big1.multiply(big2).floatValue();
-                                    Map<String, String> map = new HashMap<>();
-                                    map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
-                                    map.put("money", "-"+seedmoney );
-                                    map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
-                                    xutils.get(context.getResources().getString(R.string.clientMoney), map, new Xutils.XCallBack() {
-                                        @Override
-                                        public void onResponse(String result) {
-                                            String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
-                                            if (su.equals("success")) {
-                                                ToastUtils.showToast(context, "购买成功");
-                                                Intent intent=new Intent(context, MainActivity.class);
-                                                intent.putExtra("seed",2);
-                                                context.startActivity(intent);
-                                            }
-                                        }
-                                    });
-                                }
-                            }
-                        }
-                    });
-                    if (item.getCount() == 0 && Integer.valueOf(count.get(i).getText().toString()) > 0) {
-                        Log.i("iiiiiiiii", item.getCount() + count.get(i).getText().toString());
-                        Toast.makeText(context, "购买失败，请检查网络或种子数量", Toast.LENGTH_LONG).show();
-                        break;
-
-
-                    }
-
-                }
-
-            }
-
-
-        });
-
-    }
 //    holder.k1 = convertView.findViewById(R.id.k1);
 //    holder.k2 = convertView.findViewById(R.id.k2);
 //    holder.k3 = convertView.findViewById(R.id.k3);
