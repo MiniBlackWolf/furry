@@ -19,16 +19,24 @@ import com.example.wolf.MainActivity;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
+import com.example.wolf.Utils.OrderUtils;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.land.FarmData;
 import com.example.wolf.land.Farminfo;
+import com.example.wolf.land.orderbeans;
+import com.example.wolf.userbean.UserInfo;
+import com.google.gson.Gson;
 
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -104,6 +112,9 @@ public class genyun extends AppCompatActivity {
     double total = 0;
     int toatalcount;
     List<TextView> addlist;
+    List<Double> price=new ArrayList<>();
+    List<orderbeans.payitem> payitems=new ArrayList<>();
+    double allprice;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -124,6 +135,7 @@ public class genyun extends AppCompatActivity {
                 GsonUtil gsonUtil = new GsonUtil();
                 List<Farminfo> Farminfo = gsonUtil.Gson(result, Farminfo.class);
                 for(Farminfo farminfo:Farminfo){
+                    price.add(farminfo.getPrice());
                     switch (farminfo.getType())
                     {
                         case "0":
@@ -192,46 +204,76 @@ public class genyun extends AppCompatActivity {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences mSharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
-                int uid = mSharedPreferences.getInt("uid", 0);
-                for (int i = 0; i < 6; i++) {
-                    Map<String, String> map = new HashMap<>();
-                    map.put("uid", String.valueOf(uid));
-                    map.put("tid", String.valueOf(i));
-                    map.put("count", getcount(addlist.get(i)));
-                    map.put("token", new Token().getToken(uid));
-                    Log.i("iiiiiiiiiiiiiiiii", getcount(addlist.get(i)) + "");
-                    final int finalI = i;
-                    xutils.get(getResources().getString(R.string.buyTickets), map, new Xutils.XCallBack() {
-                        @Override
-                        public void onResponse(String result) {
-                            String s = result.substring(result.indexOf(":") + 2, result.lastIndexOf("\""));
-                            Log.i("iiiiiiiiiiiiiiiii", s);
-                            if (s.equals("success") && finalI == 5) {
-                                Map<String, String> map = new HashMap<>();
-                                map.put("uid", String.valueOf(new Getuserinfo(genyun.this).getuid()));
-                                map.put("money", "-" + zhongjian.getText().toString());
-                                map.put("token", new Token().getToken(new Getuserinfo(genyun.this).getuid()));
-                                xutils.get(getResources().getString(R.string.clientMoney), map, new Xutils.XCallBack() {
-                                    @Override
-                                    public void onResponse(String result) {
-                                        String su = result.substring(result.lastIndexOf("\"") - 7, result.lastIndexOf("\""));
-                                        if (su.equals("success")) {
-                                            ToastUtils.showToast(genyun.this, "购买成功");
-                                            Intent intent = new Intent(genyun.this, MainActivity.class);
-                                            intent.putExtra("seed", 2);
-                                            startActivity(intent);
-                                        }
-                                    }
-                                });
-
-                            }
-                            if (s.equals("fail")) {
-                                Toast.makeText(genyun.this, "购买失败", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+                Integer uids = new Getuserinfo(genyun.this).getuid();
+                if (uids == 0) {
+                    ToastUtils.showToast(genyun.this, "请先登录");
+                    return;
                 }
+                SharedPreferences mSharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
+                final int uid = mSharedPreferences.getInt("uid", 0);
+                for (int i = 0; i < 6; i++) {
+                    if(Integer.valueOf(addlist.get(i).getText().toString())!=0){
+                        orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(i), String.valueOf(i), Integer.valueOf(addlist.get(i).getText().toString()), price.get(i));
+                        payitems.add(addpayitem);
+                        allprice+=Integer.valueOf(addlist.get(i).getText().toString())*price.get(i);
+                    }
+
+                }
+                Map<String, String> map2 = new HashMap<>();
+                map2.put("userName", new Getuserinfo(genyun.this).getusername());
+                xutils.get(getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
+                    @SuppressWarnings("unchecked")
+                    @Override
+                    public void onResponse(String result) {
+                        String userinfo = null;
+                        try {
+                            userinfo = new String(algorithm.encryptDecode(result.getBytes("iso8859-1")), "utf-8");
+
+                        } catch (UnsupportedEncodingException e) {
+                            e.printStackTrace();
+                        }
+                        GsonUtil gsonUtil = new GsonUtil();
+                        List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
+                        if(UserInfo.get(0).getMoney()>=allprice){
+                            orderbeans orderbeans = OrderUtils.addorder("购买耕耘券", 1, allprice, uid, System.currentTimeMillis() / 1000, payitems);
+                            Gson gson=new Gson();
+                            String s = gson.toJson(orderbeans);
+                            RequestParams requestParams=new RequestParams(getResources().getString(R.string.buyticket));
+                            requestParams.setBodyContent(s);
+                            requestParams.setAsJsonContent(true);
+                            x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
+                                @Override
+                                public void onSuccess(String result) {
+                                    if(result.equals("success")){
+                                        ToastUtils.showToast(genyun.this,"购买成功!");
+                                    }
+                                    else {
+                                        ToastUtils.showToast(genyun.this,"购买失败!");
+
+                                    }
+                                }
+                                @Override
+                                public void onError(Throwable ex, boolean isOnCallback) {
+
+                                }
+
+                                @Override
+                                public void onCancelled(CancelledException cex) {
+
+                                }
+
+                                @Override
+                                public void onFinished() {
+
+                                }
+                            });
+                        }else {
+                            ToastUtils.showToast(genyun.this,"余额不足,请充值!");
+                        }
+                    }
+                });
+
             }
         });
     }

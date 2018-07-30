@@ -1,7 +1,6 @@
 package com.example.wolf.fragment;
 
 
-
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -64,14 +63,15 @@ public class tab2 extends Fragment {
     private ImageView s6;
     @ViewInject(R.id.tab2cardview)
     CardView tab2cardview;
-    List<userland> list=new ArrayList<>();
+    List<userland> list = new ArrayList<>();
     int uid;
     AlertDialog alertDialog;
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = x.view().inject(tab2.this, inflater, container);
-        Myvideoadapter myvideoadapter=new Myvideoadapter(R.layout.videoitem,list,getActivity());
+        Myvideoadapter myvideoadapter = new Myvideoadapter(R.layout.videoitem, list, getActivity());
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
         uid = new Getuserinfo(getActivity()).getuid();
@@ -82,7 +82,7 @@ public class tab2 extends Fragment {
         tab2cardview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getActivity(), StrategyActivity.class);
+                Intent intent = new Intent(getActivity(), StrategyActivity.class);
                 startActivity(intent);
             }
         });
@@ -93,37 +93,30 @@ public class tab2 extends Fragment {
         xuan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid == 0) {
-                    ToastUtils.showToast(getActivity(), "请先登录");
-                } else {
-                    Intent intent = new Intent(getActivity(), Xuandi.class);
-                    startActivity(intent);
 
-                }
+                Intent intent = new Intent(getActivity(), Xuandi.class);
+                startActivity(intent);
+
 
             }
         });
         s2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid == 0) {
-                    ToastUtils.showToast(getActivity(), "请先登录");
-                } else {
-                    Intent intent = new Intent(getActivity(), seedActivity.class);
-                    startActivity(intent);
-                }
+
+                Intent intent = new Intent(getActivity(), seedActivity.class);
+                startActivity(intent);
+
             }
         });
         s3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (uid == 0) {
-                    ToastUtils.showToast(getActivity(), "请先登录");
-                } else {
-                    Intent intent = new Intent(getActivity(), genyun.class);
-                    startActivity(intent);
 
-                }
+                Intent intent = new Intent(getActivity(), genyun.class);
+                startActivity(intent);
+
+
             }
         });
         s4.setOnClickListener(new View.OnClickListener() {
@@ -135,6 +128,7 @@ public class tab2 extends Fragment {
                     Intent intent = new Intent(getActivity(), pick.class);
                     startActivity(intent);
                 }
+
             }
         });
         s5.setOnClickListener(new View.OnClickListener() {
@@ -146,33 +140,34 @@ public class tab2 extends Fragment {
                     Intent intent = new Intent(getActivity(), delivery.class);
                     startActivity(intent);
                 }
+
             }
+
+
         });
         s6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (uid == 0) {
-                    ToastUtils.showToast(getActivity(), "请先登录");
-                } else {
-                    AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-                    builder.setTitle("警告！");
-                    builder.setMessage("此功能正在建设中！");
-                    builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.dismiss();
-                        }
-                    });
-                    builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialogInterface, int i) {
-                            alertDialog.dismiss();
-                        }
-                    });
-                     alertDialog = builder.create();
-                    alertDialog.show();
-                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+                builder.setTitle("警告！");
+                builder.setMessage("此功能正在建设中！");
+                builder.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();
+                    }
+                });
+                builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        alertDialog.dismiss();
+                    }
+                });
+                alertDialog = builder.create();
+                alertDialog.show();
             }
+
         });
     }
 
@@ -186,7 +181,7 @@ public class tab2 extends Fragment {
             TextSliderView textSliderView = new TextSliderView(getActivity());
             // initialize a SliderLayout
             textSliderView
-                //    .description(name)
+                    //    .description(name)
                     .image(maps.get(name))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(new BaseSliderView.OnSliderClickListener() {

@@ -42,20 +42,12 @@ public class MainActivity extends AppCompatActivity {
     private ImageView p1;
     @ViewInject(R.id.p2)
     private ImageView p2;
-    @ViewInject(R.id.p3)
-    private ImageView p3;
-    @ViewInject(R.id.p4)
-    private ImageView p4;
     @ViewInject(R.id.p5)
     private ImageView p5;
     @ViewInject(R.id.luyou)
     private TextView luyou;
     @ViewInject(R.id.nongchang)
     private TextView nongchang;
-    @ViewInject(R.id.yanglao)
-    private TextView yanglao;
-    @ViewInject(R.id.nengyuan)
-    private TextView nengyuan;
     @ViewInject(R.id.wod)
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
@@ -88,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                     String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                     if (i.equals("success")) {
                         tab5_2 tab5_2 = new tab5_2();
-                        fragmentlist.remove(4);
+                        fragmentlist.remove(2);
                         fragmentlist.add(tab5_2);
                         fragmentPagerAdapter.notifyDataSetChanged();
                         if (mySharePerferences.getBoolean("loginstatus",false)) {
@@ -115,10 +107,10 @@ public class MainActivity extends AppCompatActivity {
         if (s != null) {
             if (s.equals("success")) {
                 tab5_2 tab5_2 = new tab5_2();
-                fragmentlist.remove(4);
+                fragmentlist.remove(2);
                 fragmentlist.add(tab5_2);
                 fragmentPagerAdapter.notifyDataSetChanged();
-                viewPager.setCurrentItem(4);
+                viewPager.setCurrentItem(2);
 
             }
         }
@@ -126,10 +118,10 @@ public class MainActivity extends AppCompatActivity {
         if (z != null) {
             if (z.equals("zhuxiao")) {
                 tab5 tab5 = new tab5();
-                fragmentlist.remove(4);
+                fragmentlist.remove(2);
                 fragmentlist.add(tab5);
                 fragmentPagerAdapter.notifyDataSetChanged();
-                viewPager.setCurrentItem(4);
+                viewPager.setCurrentItem(2);
 
             }
         }
@@ -144,8 +136,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentlist = new ArrayList<>();
         fragmentlist.add(tab1);
         fragmentlist.add(tab2);
-        fragmentlist.add(tab3);
-        fragmentlist.add(tab4);
+//        fragmentlist.add(tab3);
+//        fragmentlist.add(tab4);
         fragmentlist.add(tab5);
         fragmentPagerAdapter = new FragmentStatePagerAdapter(getSupportFragmentManager()) {
             @Override
@@ -180,13 +172,9 @@ public class MainActivity extends AppCompatActivity {
             public void onPageSelected(int position) {
                 p1.setImageResource(R.mipmap.p1);
                 p2.setImageResource(R.mipmap.p2);
-                p3.setImageResource(R.mipmap.p3);
-                p4.setImageResource(R.mipmap.p4);
                 p5.setImageResource(R.mipmap.p5);
                 luyou.setTextColor(getResources().getColor(R.color.black));
                 nongchang.setTextColor(getResources().getColor(R.color.black));
-                yanglao.setTextColor(getResources().getColor(R.color.black));
-                nengyuan.setTextColor(getResources().getColor(R.color.black));
                 wod.setTextColor(getResources().getColor(R.color.black));
                 switch (position) {
                     case 0: {
@@ -201,20 +189,8 @@ public class MainActivity extends AppCompatActivity {
                         nongchang.setTextColor(getResources().getColor(R.color.hong));
                         break;
                     }
+
                     case 2: {
-
-                        p3.setImageResource(R.mipmap.p3_3);
-                        yanglao.setTextColor(getResources().getColor(R.color.hong));
-                        break;
-                    }
-                    case 3: {
-
-                        p4.setImageResource(R.mipmap.p4_4);
-                        nengyuan.setTextColor(getResources().getColor(R.color.hong));
-                        break;
-
-                    }
-                    case 4: {
                         p5.setImageResource(R.mipmap.p5_5);
                         wod.setTextColor(getResources().getColor(R.color.hong));
                         break;
@@ -244,14 +220,6 @@ public class MainActivity extends AppCompatActivity {
                         viewPager.setCurrentItem(1);
                         break;
                     }
-                    case R.id.p3: {
-                        viewPager.setCurrentItem(2);
-                        break;
-                    }
-                    case R.id.p4: {
-                        viewPager.setCurrentItem(3);
-                        break;
-                    }
                     case R.id.p5: {
                         viewPager.setCurrentItem(4);
                         break;
@@ -266,16 +234,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     }
-                    case R.id.yanglao: {
-                        viewPager.setCurrentItem(2);
-                        break;
-
-                    }
-                    case R.id.nengyuan: {
-                        viewPager.setCurrentItem(3);
-                        break;
-
-                    }
                     case R.id.wod: {
                         viewPager.setCurrentItem(4);
                         break;
@@ -287,13 +245,9 @@ public class MainActivity extends AppCompatActivity {
         };
         p1.setOnClickListener(onClickListener);
         p2.setOnClickListener(onClickListener);
-        p3.setOnClickListener(onClickListener);
-        p4.setOnClickListener(onClickListener);
         p5.setOnClickListener(onClickListener);
         luyou.setOnClickListener(onClickListener);
         nongchang.setOnClickListener(onClickListener);
-        yanglao.setOnClickListener(onClickListener);
-        nengyuan.setOnClickListener(onClickListener);
         wod.setOnClickListener(onClickListener);
 
     }

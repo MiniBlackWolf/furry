@@ -119,6 +119,11 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
             @SuppressWarnings("unchecked")
             @Override
             public void onClick(View view) {
+                Integer uid = new Getuserinfo(context).getuid();
+                if (uid == 0) {
+                    ToastUtils.showToast(context, "请先登录");
+                    return;
+                }
                 show = zloadingDiaLogkt.show();
                 sls1 = new ArrayList<>(sl1);
                 sls2 = new ArrayList<>(sl2);

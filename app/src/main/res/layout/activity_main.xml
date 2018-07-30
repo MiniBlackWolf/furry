@@ -40,20 +40,6 @@
                 app:srcCompat="@mipmap/p2" />
 
             <ImageView
-                android:id="@+id/p3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/p3" />
-
-            <ImageView
-                android:id="@+id/p4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@mipmap/p4" />
-
-            <ImageView
                 android:id="@+id/p5"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -75,7 +61,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="旅游"
+                android:text=" 夏令营"
                 android:textColor="@color/hong" />
 
             <TextView
@@ -86,24 +72,6 @@
                 android:gravity="center"
                 android:text="有机农场"
                 android:textColor="@color/black" />
-
-            <TextView
-                android:id="@+id/yanglao"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="养老"
-                android:textColor="#333333" />
-
-            <TextView
-                android:id="@+id/nengyuan"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="新能源"
-                android:textColor="#333333" />
 
             <TextView
                 android:id="@+id/wod"

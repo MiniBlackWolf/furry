@@ -48,12 +48,6 @@ public class tab5_2 extends Fragment {
     private Button zhuxiao;
     @ViewInject(R.id.name)
     private TextView name;
-    @ViewInject(R.id.m1_3)
-    private ImageView m1;
-    @ViewInject(R.id.m2_3)
-    private ImageView m2;
-    @ViewInject(R.id.m3_3)
-    private ImageView m3;
     @ViewInject(R.id.m4_4)
     private LinearLayout m4_4;
     @ViewInject(R.id.m14_4)
@@ -66,6 +60,8 @@ public class tab5_2 extends Fragment {
     private LinearLayout m6_4;
     @ViewInject(R.id.m13_4)
     private LinearLayout m13_4;
+    @ViewInject(R.id.b)
+    private LinearLayout b;
     Xutils xutils = new Xutils(getActivity());
     private AlertDialog alertDialog;
 
@@ -91,7 +87,7 @@ public class tab5_2 extends Fragment {
         });
         SharedPreferences mySharePerferences = getActivity().getSharedPreferences("user", Activity.MODE_PRIVATE);
         String userName = mySharePerferences.getString("userName", "");
-        Map map = new HashMap();
+        Map<String,String> map = new HashMap<>();
         map.put("userName", userName);
         xutils.get(getResources().getString(R.string.Userinfo), map, new Xutils.XCallBack() {
             @Override
@@ -113,7 +109,7 @@ public class tab5_2 extends Fragment {
                         .into(myinfo2);
             }
         });
-        m1.setOnClickListener(new View.OnClickListener() {
+        b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), usersfarm.class);
@@ -152,20 +148,6 @@ public class tab5_2 extends Fragment {
                 startActivity(intent);
             }
         });
-        //光伏理财
-        m2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                putoff();
-            }
-        });
-        //旅游产品
-        m3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                putoff();
-            }
-        });
         //我的物流
         m5_4.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,8 +159,8 @@ public class tab5_2 extends Fragment {
         m6_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               Intent intent=new Intent(getActivity(),PointshopActivity.class);
-               startActivity(intent);
+                Intent intent = new Intent(getActivity(), PointshopActivity.class);
+                startActivity(intent);
             }
         });
         //联系客服

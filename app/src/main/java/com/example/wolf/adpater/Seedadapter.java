@@ -89,6 +89,11 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Integer uid = new Getuserinfo(context).getuid();
+                if (uid == 0) {
+                    ToastUtils.showToast(context, "请先登录");
+                    return;
+                }
                 sids = new ArrayList<>(sid);
                 counts = new ArrayList<>(count);
          //       buymoneys = new ArrayList<>(buymoney);
