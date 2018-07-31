@@ -22,6 +22,22 @@
             android:layout_height="match_parent"
             android:focusable="false">
 
+            <cn.jzvd.JZVideoPlayerStandard
+                android:id="@+id/videoview"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="28dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tab2cardview" />
+
             <TextView
                 android:id="@+id/textView48"
                 android:layout_width="56dp"
@@ -217,17 +233,14 @@
                 android:id="@+id/tab2cardview"
                 android:layout_width="340dp"
                 android:layout_height="212dp"
-                android:layout_marginBottom="16dp"
                 android:layout_marginTop="32dp"
                 android:foreground="@drawable/card_foreground"
                 app:cardCornerRadius="10dp"
                 app:cardElevation="8dp"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.512"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/linearLayout4"
-                app:layout_constraintVertical_bias="1.0"
 
                 >
 
@@ -292,6 +305,24 @@
                         app:srcCompat="@mipmap/gl" />
                 </android.support.constraint.ConstraintLayout>
             </android.support.v7.widget.CardView>
+
+            <TextView
+                android:id="@+id/textView49"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:layout_marginEnd="310dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="310dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="菜鸟农场监控设备"
+                android:textColor="@android:color/background_dark"
+                app:layout_constraintBottom_toTopOf="@+id/videoview"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tab2cardview" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

@@ -26,6 +26,7 @@ import com.example.wolf.R;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.burse.MyburseActivity;
+import com.example.wolf.chat.ChatitemActivity;
 import com.example.wolf.invite.InviteActivity;
 import com.example.wolf.pointshop.PointshopActivity;
 import com.example.wolf.strategy.StrategyActivity;
@@ -167,7 +168,8 @@ public class tab5_2 extends Fragment {
         m13_4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                putoff();
+               Intent intent=new Intent(getActivity(),ChatitemActivity.class);
+               startActivity(intent);
             }
         });
 //        Map<String, String> map2 = new HashMap<>();

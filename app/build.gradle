@@ -54,5 +54,7 @@ dependencies {
     implementation 'com.zyao89:zloading:1.1.2'
 //    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
     implementation 'com.just.agentweb:agentweb:4.0.2'
+    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-with-mta:+'
+    implementation 'cn.jzvd:jiaozivideoplayer:6.2.12'
 
 }

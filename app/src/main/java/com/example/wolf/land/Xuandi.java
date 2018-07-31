@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -52,6 +53,7 @@ public class Xuandi extends AppCompatActivity {
     @BindView(R.id.q4)
     ImageView q4;
     boolean Visibility=true;
+    AlertDialog aldia;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -161,6 +163,36 @@ public class Xuandi extends AppCompatActivity {
                                     ssl3 = 0;
                                 }
                                 shuliang3.setText(ssl3 + "");
+                                break;
+
+                        }
+                    }
+                });
+                xuandiadapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
+                    @SuppressLint("SetTextI18n")
+                    @Override
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        View views = getLayoutInflater().inflate(R.layout.xuandiinfoitem, null);
+                        ImageView xuandiinfoimage=views.findViewById(R.id.xuandiinfoimage);
+                        TextView xuandiinfotext = views.findViewById(R.id.xuandiinfotext);
+                        AlertDialog.Builder alertDialog=new AlertDialog.Builder(Xuandi.this);
+                        alertDialog.setView(R.layout.xuandiinfoitem);
+                        xuandiinfotext.setText("菜鸟农场的土地是以科学化管理为标准、“先废弃后开垦”为原则所培育的有机土地。现将土地分为多种规格，你可以根据自己的需求选择不同规格的土地进行种植。");
+                        switch (position){
+                            case 0:
+                                xuandiinfoimage.setImageResource(R.mipmap.aa1);
+                                alertDialog.setView(views);
+                                aldia = alertDialog.show();
+                                break;
+                            case 1:
+                                xuandiinfoimage.setImageResource(R.mipmap.aa2);
+                                alertDialog.setView(views);
+                                aldia = alertDialog.show();
+                                break;
+                            case 2:
+                                xuandiinfoimage.setImageResource(R.mipmap.aa3);
+                                alertDialog.setView(views);
+                                aldia = alertDialog.show();
                                 break;
 
                         }

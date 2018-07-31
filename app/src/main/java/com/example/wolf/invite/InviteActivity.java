@@ -6,12 +6,15 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.util.Util;
 import com.example.wolf.R;
 import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
@@ -20,7 +23,13 @@ import com.example.wolf.Utils.ZXingUtils;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.userbean.UserInfo;
+import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
+import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.openapi.IWXAPI;
+import com.tencent.mm.opensdk.openapi.WXAPIFactory;
 
+import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.List;
@@ -30,7 +39,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-public class InviteActivity extends Activity  {
+public class InviteActivity extends Activity {
 
 
     @BindView(R.id.more)
@@ -49,14 +58,20 @@ public class InviteActivity extends Activity  {
     TextView invitepople;
     @BindView(R.id.view15)
     View view15;
-    private int mLayoutHeight = 0;
     private boolean isOpen = true;
     Xutils xutils = new Xutils(InviteActivity.this);
+    private static final String APP_ID = "wx3f51244684511ee8";
+    private IWXAPI api;
+    Bitmap bitmap;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.invite);
         ButterKnife.bind(this);
+        //微信app注册
+        api= WXAPIFactory.createWXAPI(InviteActivity.this,APP_ID,true);
+        api.registerApp(APP_ID);
+        //----
         invitetext.setAlpha(0f);
         Map<String, String> map = new HashMap<>();
         map.put("uid", String.valueOf(new Getuserinfo(InviteActivity.this).getuid()));
@@ -66,12 +81,12 @@ public class InviteActivity extends Activity  {
             public void onResponse(String result) {
                 String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                 Log.i("iiiiiiiii", i);
-                Bitmap bitmap = ZXingUtils.createQRImage(i, weima.getWidth(), weima.getHeight());
+                bitmap = ZXingUtils.createQRImage(i, weima.getWidth(), weima.getHeight());
                 weima.setImageBitmap(bitmap);
             }
         });
         Map<String, String> map2 = new HashMap<>();
-        map.put("userName",new Getuserinfo(InviteActivity.this).getusername() );
+        map.put("userName", new Getuserinfo(InviteActivity.this).getusername());
         xutils.get(getResources().getString(R.string.Userinfo), map, new Xutils.XCallBack() {
             @SuppressLint("SetTextI18n")
             @Override
@@ -83,21 +98,23 @@ public class InviteActivity extends Activity  {
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
-                Log.i("iiiiiiiii",result);
+                Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
                 invitescore.setText(UserInfo.get(0).getScore() + "分");
-                invitepople.setText(UserInfo.get(0).getPeople()+"人");
+                invitepople.setText(UserInfo.get(0).getPeople() + "人");
 
             }
         });
     }
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
     }
-    @OnClick({R.id.more, R.id.invitefh})
+
+    @OnClick({R.id.more, R.id.invitefh, R.id.QQ, R.id.wex, R.id.wexfd})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.more:
@@ -142,6 +159,7 @@ public class InviteActivity extends Activity  {
 
                         }
                     });
+
                     isOpen = true;
                 }
 
@@ -151,9 +169,59 @@ public class InviteActivity extends Activity  {
                 finish();
                 overridePendingTransition(0, 0);
                 break;
+            case R.id.QQ:
+                break;
+            case R.id.wex:
+                WXImageObject wxImageObject=new WXImageObject(bitmap);
+                WXMediaMessage wxMediaMessage=new WXMediaMessage();
+                wxMediaMessage.mediaObject=wxImageObject;
+                Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, true);
+                bitmap.recycle();
+                wxMediaMessage.thumbData =bmpToByteArray(scaledBitmap,true);
+                SendMessageToWX.Req req=new SendMessageToWX.Req();
+                req.transaction= buildTransaction("img");
+                req.message=wxMediaMessage;
+                req.scene = SendMessageToWX.Req.WXSceneSession;
+                api.sendReq(req);
+                break;
+            case R.id.wexfd:
+                break;
         }
     }
+    public static byte[] bmpToByteArray(final Bitmap bmp, final boolean needRecycle) {
+        int i;
+        int j;
+        if (bmp.getHeight() > bmp.getWidth()) {
+            i = bmp.getWidth();
+            j = bmp.getWidth();
+        } else {
+            i = bmp.getHeight();
+            j = bmp.getHeight();
+        }
 
+        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
+        Canvas localCanvas = new Canvas(localBitmap);
 
-
+        while (true) {
+            localCanvas.drawBitmap(bmp, new Rect(0, 0, i, j), new Rect(0, 0,i, j), null);
+            if (needRecycle)
+                bmp.recycle();
+            ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+            localBitmap.compress(Bitmap.CompressFormat.JPEG, 100,
+                    localByteArrayOutputStream);
+            localBitmap.recycle();
+            byte[] arrayOfByte = localByteArrayOutputStream.toByteArray();
+            try {
+                localByteArrayOutputStream.close();
+                return arrayOfByte;
+            } catch (Exception e) {
+                //F.out(e);
+            }
+            i = bmp.getHeight();
+            j = bmp.getHeight();
+        }
+    }
+    private String buildTransaction(final String type) {
+        return (type == null) ? String.valueOf(System.currentTimeMillis()) : type + System.currentTimeMillis();
+    }
 }

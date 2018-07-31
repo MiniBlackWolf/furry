@@ -45,6 +45,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import cn.jzvd.JZVideoPlayerStandard;
+
 @ContentView(R.layout.tab2)
 public class tab2 extends Fragment {
     @ViewInject(R.id.slider)
@@ -86,6 +88,12 @@ public class tab2 extends Fragment {
                 startActivity(intent);
             }
         });
+        JZVideoPlayerStandard jzVideoPlayerStandard = view.findViewById(R.id.videoview);
+        jzVideoPlayerStandard.setUp("http://hls.open.ys7.com/openlive/fcc87f428e3e4017a74267dd30273dfe.hd.m3u8",
+                JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,
+                "菜鸟农场监控设备");
+        jzVideoPlayerStandard.thumbImageView.setImageResource(R.mipmap.vimg);
+        jzVideoPlayerStandard.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
         return view;
     }
 
