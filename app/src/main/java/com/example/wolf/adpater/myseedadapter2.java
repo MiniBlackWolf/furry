@@ -44,7 +44,7 @@ public class myseedadapter2 extends BaseQuickAdapter<userseed,BaseViewHolder>{
                 if(gson.get(0).getSeedname()!=null) {
                         helper.setText(R.id.myseedcounts, item.getBuyCount() + "/㎡");
                         helper.setText(R.id.myseedname, gson.get(0).getSeedname() + "");
-                        helper.setText(R.id.myseeddate,item.getBuydate().substring(0,item.getBuydate().indexOf(" ")));
+                        helper.setText(R.id.myseeddate,item.getBuydate().substring(0,item.getBuydate().indexOf("T")));
                     Glide.with(context).load(gson.get(0).getFileurl()).placeholder(R.mipmap.loading2).into((ImageView) helper.getView(R.id.myseedimage));
 
 

@@ -39,9 +39,9 @@ public class ChatitemActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatlayout);
         ButterKnife.bind(this);
-        Msg m = new Msg("噼噼啪啪铺", 1);
-        Msg m2 = new Msg("事实上大师", 0);
-        msg1.add(m);
+     //   Msg m = new Msg("噼噼啪啪铺", 1);
+        Msg m2 = new Msg("菜鸟环保客服竭诚为您服务", 0);
+     //   msg1.add(m);
         msg1.add(m2);
          chatadapter = new chatadapter(msg1,ChatitemActivity.this);
         chatrecyclerview.setLayoutManager(new LinearLayoutManager(ChatitemActivity.this));
