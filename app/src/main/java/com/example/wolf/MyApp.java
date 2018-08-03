@@ -2,6 +2,8 @@ package com.example.wolf;
 
 import android.app.Application;
 
+import com.zhangke.websocket.WebSocketSetting;
+
 import org.xutils.BuildConfig;
 import org.xutils.x;
 

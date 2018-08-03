@@ -6,14 +6,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.wolf.MainActivity;
 import com.example.wolf.R;
@@ -21,10 +19,8 @@ import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.OrderUtils;
 import com.example.wolf.Utils.ToastUtils;
-import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
-import com.example.wolf.land.FarmData;
 import com.example.wolf.land.Farminfo;
 import com.example.wolf.land.orderbeans;
 import com.example.wolf.userbean.UserInfo;
@@ -37,6 +33,7 @@ import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
 import java.io.UnsupportedEncodingException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -54,7 +51,7 @@ public class genyun extends AppCompatActivity {
     private Button jian_2;
     @ViewInject(R.id.x7_2)
     private Button jia_2;
-    @ViewInject(R.id.x6_3_2)
+    @ViewInject(R.id.x6_3_2_1)
     private Button jian_3;
     @ViewInject(R.id.x7_3)
     private Button jia_3;
@@ -94,9 +91,7 @@ public class genyun extends AppCompatActivity {
     private Button buy;
     @ViewInject(R.id.gkuaishu)
     private TextView kuaishu;
-    @ViewInject(R.id.bz)
-    private ConstraintLayout constraintLayout;
-    @ViewInject(R.id.x6_3_2)
+    @ViewInject(R.id.x6_3_2_2)
     private Button jian6;
     @ViewInject(R.id.x7_3_2)
     private Button jia6;
@@ -112,9 +107,10 @@ public class genyun extends AppCompatActivity {
     double total = 0;
     int toatalcount;
     List<TextView> addlist;
-    List<Double> price=new ArrayList<>();
-    List<orderbeans.payitem> payitems=new ArrayList<>();
+    List<Double> price = new ArrayList<>();
+    List<orderbeans.payitem> payitems = new ArrayList<>();
     double allprice;
+    double off = 1.0;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -134,37 +130,31 @@ public class genyun extends AppCompatActivity {
                 Log.i("iiiiiiiii", result);
                 GsonUtil gsonUtil = new GsonUtil();
                 List<Farminfo> Farminfo = gsonUtil.Gson(result, Farminfo.class);
-                for(Farminfo farminfo:Farminfo){
+                for (Farminfo farminfo : Farminfo) {
                     price.add(farminfo.getPrice());
-                    switch (farminfo.getType())
-                    {
+                    switch (farminfo.getType()) {
                         case "0":
                             money.setText(farminfo.getPrice() + "元/5m²");
                             break;
                         case "1":
-                            money_2.setText(farminfo.getPrice()  + "元/5m²");
+                            money_2.setText(farminfo.getPrice() + "元/5m²");
                             break;
                         case "2":
-                            money_3.setText(farminfo.getPrice()  + "元/5m²");
+                            money_3.setText(farminfo.getPrice() + "元/5m²");
                             break;
                         case "3":
                             money_3_2.setText(farminfo.getPrice() + "元/5m²");
                             break;
                         case "4":
-                            money_4.setText(farminfo.getPrice()  + "元/5m²");
+                            money_4.setText(farminfo.getPrice() + "元/5m²");
                             break;
                         case "5":
-                            money_5.setText(farminfo.getPrice()  + "元/5m²");
+                            money_5.setText(farminfo.getPrice() + "元/5m²");
                             break;
 
                     }
 
                 }
-
-
-
-
-
 
 
             }
@@ -212,10 +202,10 @@ public class genyun extends AppCompatActivity {
                 SharedPreferences mSharedPreferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
                 final int uid = mSharedPreferences.getInt("uid", 0);
                 for (int i = 0; i < 6; i++) {
-                    if(Integer.valueOf(addlist.get(i).getText().toString())!=0){
+                    if (Integer.valueOf(addlist.get(i).getText().toString()) != 0) {
                         orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(i), String.valueOf(i), Integer.valueOf(addlist.get(i).getText().toString()), price.get(i));
                         payitems.add(addpayitem);
-                        allprice+=Integer.valueOf(addlist.get(i).getText().toString())*price.get(i);
+                        allprice += Integer.valueOf(addlist.get(i).getText().toString()) * price.get(i);
                     }
 
                 }
@@ -234,25 +224,25 @@ public class genyun extends AppCompatActivity {
                         }
                         GsonUtil gsonUtil = new GsonUtil();
                         List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
-                        if(UserInfo.get(0).getMoney()>=allprice){
+                        if (UserInfo.get(0).getMoney() >= allprice) {
                             orderbeans orderbeans = OrderUtils.addorder("购买耕耘券", 1, allprice, uid, System.currentTimeMillis() / 1000, payitems);
-                            Gson gson=new Gson();
+                            Gson gson = new Gson();
                             String s = gson.toJson(orderbeans);
-                            RequestParams requestParams=new RequestParams(getResources().getString(R.string.buyticket));
+                            RequestParams requestParams = new RequestParams(getResources().getString(R.string.buyticket));
                             requestParams.setBodyContent(s);
                             requestParams.setAsJsonContent(true);
                             x.http().post(requestParams, new Callback.CommonCallback<String>() {
 
                                 @Override
                                 public void onSuccess(String result) {
-                                    if(result.equals("success")){
-                                        ToastUtils.showToast(genyun.this,"购买成功!");
-                                    }
-                                    else {
-                                        ToastUtils.showToast(genyun.this,"购买失败!");
+                                    if (result.equals("success")) {
+                                        ToastUtils.showToast(genyun.this, "购买成功!");
+                                    } else {
+                                        ToastUtils.showToast(genyun.this, "购买失败!");
 
                                     }
                                 }
+
                                 @Override
                                 public void onError(Throwable ex, boolean isOnCallback) {
 
@@ -268,8 +258,8 @@ public class genyun extends AppCompatActivity {
 
                                 }
                             });
-                        }else {
-                            ToastUtils.showToast(genyun.this,"余额不足,请充值!");
+                        } else {
+                            ToastUtils.showToast(genyun.this, "余额不足,请充值!");
                         }
                     }
                 });
@@ -282,12 +272,13 @@ public class genyun extends AppCompatActivity {
         return vd.getText().toString();
     }
 
+    @SuppressLint("SetTextI18n")
     private class jianli implements View.OnClickListener {
         private TextView vs;
         private TextView moen;
         private int adds;
 
-        public jianli(TextView vs, TextView moen, int adds) {
+        private jianli(TextView vs, TextView moen, int adds) {
             this.vs = vs;
             this.moen = moen;
             this.adds = adds;
@@ -301,6 +292,7 @@ public class genyun extends AppCompatActivity {
             this.adds = adds;
         }
 
+
         @Override
         public void onClick(View v) {
 
@@ -313,7 +305,18 @@ public class genyun extends AppCompatActivity {
                 toatalcount--;
                 vs.setText(adds + "");
                 double m = Double.valueOf(moen.getText().toString().substring(0, moen.getText().toString().lastIndexOf("元")));
-                total -= m;
+                if (adds >= 4) {
+                    BigDecimal bigDecimal= BigDecimal.valueOf(off);
+                    if (bigDecimal.equals(new BigDecimal(1.0))) {
+                        bigDecimal =  BigDecimal.valueOf(1.0);
+                    }
+                    BigDecimal bigDecimal1 =  BigDecimal.valueOf(m);
+                    BigDecimal multiply = bigDecimal1.multiply(bigDecimal);
+                    m=multiply.doubleValue();
+                    BigDecimal add = bigDecimal.add(BigDecimal.valueOf(0.05));
+                    off=add.doubleValue();
+                }
+                total=(new BigDecimal(total).subtract(new BigDecimal(m))).doubleValue();
                 zhongjian.setText(total + "");
                 kuaishu.setText(toatalcount + "");
             }
@@ -333,7 +336,16 @@ public class genyun extends AppCompatActivity {
                         toatalcount++;
                         vs.setText(adds + "");
                         double m = Double.valueOf(moen.getText().toString().substring(0, moen.getText().toString().lastIndexOf("元")));
-                        total += m;
+                        if (adds > 4) {
+                            BigDecimal bigDecimal =  BigDecimal.valueOf(off);
+                            BigDecimal add = bigDecimal.subtract(BigDecimal.valueOf(0.05));
+                            off=add.doubleValue();
+                            BigDecimal bigDecimal1 = BigDecimal.valueOf (m);
+                            BigDecimal multiply = bigDecimal1.multiply(add);
+                            m =multiply.doubleValue() ;
+                        }
+                        total=(new BigDecimal(total).add(new BigDecimal(m))).doubleValue();
+//                        total += m;
                         zhongjian.setText(total + "");
                         kuaishu.setText(toatalcount + "");
                     }

@@ -156,6 +156,8 @@
         </activity>
         <activity android:name=".chat.ChatitemActivity"
             android:theme="@style/Anim_fade"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
             >
             <intent-filter>
                 <category android:name="android.intent.category.LAUNCHER24" />
@@ -175,7 +177,8 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
-
+        <service android:name="com.zhangke.websocket.WebSocketService"/>
+        <receiver android:name="com.zhangke.websocket.NetworkChangedReceiver"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

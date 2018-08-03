@@ -520,7 +520,7 @@
                     app:layout_constraintStart_toEndOf="@+id/x1_3" />
 
                 <Button
-                    android:id="@+id/x6_3_2"
+                    android:id="@+id/x6_3_2_1"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginBottom="8dp"
@@ -562,7 +562,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.35"
-                    app:layout_constraintStart_toEndOf="@+id/x6_3_2" />
+                    app:layout_constraintStart_toEndOf="@+id/x6_3_2_1" />
             </android.support.constraint.ConstraintLayout>
 
             <android.support.constraint.ConstraintLayout
@@ -889,7 +889,7 @@
                     app:layout_constraintStart_toEndOf="@+id/x1_3" />
 
                 <Button
-                    android:id="@+id/x6_3_2"
+                    android:id="@+id/x6_3_2_2"
                     android:layout_width="16dp"
                     android:layout_height="16dp"
                     android:layout_marginBottom="8dp"
@@ -931,7 +931,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.35"
-                    app:layout_constraintStart_toEndOf="@+id/x6_3_2" />
+                    app:layout_constraintStart_toEndOf="@+id/x6_3_2_1" />
             </android.support.constraint.ConstraintLayout>
 
         </LinearLayout>

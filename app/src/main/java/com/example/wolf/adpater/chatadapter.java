@@ -5,6 +5,8 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -29,14 +31,19 @@ public class chatadapter extends BaseMultiItemQuickAdapter<Msg, BaseViewHolder> 
 
     @Override
     protected void convert(BaseViewHolder helper, Msg item) {
-
         switch (helper.getItemViewType()) {
             case Msg.TYPE_RECEIVED:
                 helper.setText(R.id.chatmsg,item.getContent()+"");
+                TextView chatmsg=helper.getView(R.id.chatmsg);
+                ImageView chatimags=helper.getView(R.id.chatimags);
+                chatimags.getLayoutParams().height=chatmsg.getHeight();
                 break;
             case Msg.TYPE_SENT:
                 helper.setText(R.id.chatname,new Getuserinfo(context).getusername());
                 helper.setText(R.id.chatmsg,item.getContent()+"");
+                TextView chatmsgs=helper.getView(R.id.chatmsg);
+                ImageView chatimagss=helper.getView(R.id.chatimags);
+                chatimagss.getLayoutParams().height=chatmsgs.getHeight();
                 break;
         }
 
