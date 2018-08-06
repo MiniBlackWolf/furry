@@ -7,17 +7,13 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
-import com.example.wolf.fragment.tab1;
 import com.example.wolf.fragment.tab2;
-import com.example.wolf.fragment.tab3;
-import com.example.wolf.fragment.tab4;
 import com.example.wolf.fragment.tab5;
 import com.example.wolf.fragment.tab5_2;
 
@@ -38,14 +34,10 @@ public class MainActivity extends AppCompatActivity {
     private List<Fragment> fragmentlist;
     @ViewInject(R.id.viewPager)
     private ViewPager viewPager;
-    @ViewInject(R.id.p1)
-    private ImageView p1;
     @ViewInject(R.id.p2)
     private ImageView p2;
     @ViewInject(R.id.p5)
     private ImageView p5;
-    @ViewInject(R.id.luyou)
-    private TextView luyou;
     @ViewInject(R.id.nongchang)
     private TextView nongchang;
     @ViewInject(R.id.wod)
@@ -80,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
                     if (i.equals("success")) {
                         tab5_2 tab5_2 = new tab5_2();
-                        fragmentlist.remove(2);
+                        fragmentlist.remove(1);
                         fragmentlist.add(tab5_2);
                         fragmentPagerAdapter.notifyDataSetChanged();
                         if (mySharePerferences.getBoolean("loginstatus",false)) {
@@ -99,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
         int se = getIntent().getIntExtra("seed",0);
         if(se==2){
-            viewPager.setCurrentItem(1);
+            viewPager.setCurrentItem(0);
         }
         //登陆
         String s = getIntent().getStringExtra("success");
@@ -107,10 +99,10 @@ public class MainActivity extends AppCompatActivity {
         if (s != null) {
             if (s.equals("success")) {
                 tab5_2 tab5_2 = new tab5_2();
-                fragmentlist.remove(2);
+                fragmentlist.remove(1);
                 fragmentlist.add(tab5_2);
                 fragmentPagerAdapter.notifyDataSetChanged();
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(1);
 
             }
         }
@@ -118,23 +110,23 @@ public class MainActivity extends AppCompatActivity {
         if (z != null) {
             if (z.equals("zhuxiao")) {
                 tab5 tab5 = new tab5();
-                fragmentlist.remove(2);
+                fragmentlist.remove(1);
                 fragmentlist.add(tab5);
                 fragmentPagerAdapter.notifyDataSetChanged();
-                viewPager.setCurrentItem(2);
+                viewPager.setCurrentItem(1);
 
             }
         }
     }
 
     private void getfragment() {
-        tab1 tab1 = new tab1();
+   //     tab1 tab1 = new tab1();
         tab2 tab2 = new tab2();
-        tab3 tab3 = new tab3();
-        tab4 tab4 = new tab4();
+ //       tab3 tab3 = new tab3();
+ //       tab4 tab4 = new tab4();
         tab5 tab5 = new tab5();
         fragmentlist = new ArrayList<>();
-        fragmentlist.add(tab1);
+ //       fragmentlist.add(tab1);
         fragmentlist.add(tab2);
 //        fragmentlist.add(tab3);
 //        fragmentlist.add(tab4);
@@ -170,27 +162,20 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onPageSelected(int position) {
-                p1.setImageResource(R.mipmap.p1);
                 p2.setImageResource(R.mipmap.p2);
                 p5.setImageResource(R.mipmap.p5);
-                luyou.setTextColor(getResources().getColor(R.color.black));
                 nongchang.setTextColor(getResources().getColor(R.color.black));
                 wod.setTextColor(getResources().getColor(R.color.black));
                 switch (position) {
-                    case 0: {
-                        p1.setImageResource(R.mipmap.p1_2);
-                        luyou.setTextColor(getResources().getColor(R.color.hong));
-                        break;
 
-                    }
-                    case 1: {
+                    case 0: {
                         p2.setImageResource(R.mipmap.p2_2);
 
                         nongchang.setTextColor(getResources().getColor(R.color.hong));
                         break;
                     }
 
-                    case 2: {
+                    case 1: {
                         p5.setImageResource(R.mipmap.p5_5);
                         wod.setTextColor(getResources().getColor(R.color.hong));
                         break;
@@ -212,30 +197,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 switch (v.getId()) {
-                    case R.id.p1: {
-                        viewPager.setCurrentItem(0);
-                        break;
-                    }
                     case R.id.p2: {
-                        viewPager.setCurrentItem(1);
+                        viewPager.setCurrentItem(0);
                         break;
                     }
                     case R.id.p5: {
-                        viewPager.setCurrentItem(4);
-                        break;
-                    }
-                    case R.id.luyou: {
-                        viewPager.setCurrentItem(0);
-                        break;
-
-                    }
-                    case R.id.nongchang: {
                         viewPager.setCurrentItem(1);
+                        break;
+                    }
+
+                    case R.id.nongchang: {
+                        viewPager.setCurrentItem(0);
                         break;
 
                     }
                     case R.id.wod: {
-                        viewPager.setCurrentItem(4);
+                        viewPager.setCurrentItem(1);
                         break;
 
                     }
@@ -243,10 +220,8 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-        p1.setOnClickListener(onClickListener);
         p2.setOnClickListener(onClickListener);
         p5.setOnClickListener(onClickListener);
-        luyou.setOnClickListener(onClickListener);
         nongchang.setOnClickListener(onClickListener);
         wod.setOnClickListener(onClickListener);
 

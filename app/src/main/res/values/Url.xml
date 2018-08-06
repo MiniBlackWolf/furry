@@ -40,6 +40,6 @@
     <string name="harvest">http://cnnc.cnepltd.com/user/harvest</string>
     <string name="order">http://wecn.cnepltd.com/farm/open/order</string>
     <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
-    <string name="buyticket">http://cnnc.cnepltd.com/user/buyticket</string>
+    <string name="buyticket">http://192.168.0.72:8080/user/buyticket</string>
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
 </resources>

@@ -4,19 +4,22 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Looper;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -34,8 +37,6 @@ import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -82,6 +83,8 @@ public class seedActivity extends AppCompatActivity {
     private ImageView q2;
     @ViewInject(R.id.q3)
     private ImageView q3;
+    @ViewInject(R.id.horizontalScrollView)
+    private HorizontalScrollView horizontalScrollView;
     Xutils xutils = new Xutils(seedActivity.this);
     List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
     Map<String, Object> map;
@@ -91,7 +94,10 @@ public class seedActivity extends AppCompatActivity {
     private List<View> viewPagerList;//GridView作为一个View对象添加到ViewPager集合中
     private Seedadapter seedadapter;
     boolean Visibility=true;
-
+    private boolean isRiskMove;
+    private int mRiskLastX;
+    private int mRiskLastY;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -104,10 +110,52 @@ public class seedActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+        q3.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int x = (int) motionEvent.getRawX();
+                int y = (int) motionEvent.getRawY();
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        isRiskMove = true;
+                        //计算距离上次移动了多远
+                        int deltaX = x - mRiskLastX;
+                        int deltaY = y - mRiskLastY;
+                        int translationX = (int) (q3.getTranslationX() + deltaX);
+                        int translationY = (int) (q3.getTranslationY() + deltaY);
+                        //使mFloatRiskBtn根据手指滑动平移
+                        q3.setTranslationX(translationX);
+                        q3.setTranslationY(translationY);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        //平移回到该view水平方向的初始点
+                        q3.setTranslationX(0);
+                        //判断什么情况下需要回到原点
+//                        if(q.getY()<0 || q.getY()>(q.getMeasuredHeight()-q.getMeasuredHeight())) {
+//                            q.setTranslationY(0);
+//                        }
+                        break;
+                    default:
+                        break;
+                }
+                //记录上次手指离开时的位置
+                mRiskLastX = x;
+                mRiskLastY = y;
+                return false;
+            }
+        });
         q3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(isRiskMove){
+                    isRiskMove=false;
+                    return;
+                }
                 if (Visibility) {
+                    q2.setY(q3.getY());
                     q2.setVisibility(View.VISIBLE);
                     ObjectAnimator scaleX = ObjectAnimator.ofFloat(q2, "scaleX", 0f,1f);
                     ObjectAnimator scaleY = ObjectAnimator.ofFloat(q2, "scaleY", 0f,1f);
@@ -148,8 +196,14 @@ public class seedActivity extends AppCompatActivity {
         //根据日期改变种子数据
         List<ProdctBean> listDatas = new ArrayList<>();
         Calendar cal = Calendar.getInstance();
-        int month = cal.get(Calendar.MONTH) + 1;
+        final int month = cal.get(Calendar.MONTH) + 1;
         setgridview(month, listDatas);
+       new  Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                horizontalScrollView.scrollTo(month*100*2-600,0);
+            }
+        });
         List<Button> list = new ArrayList<>();
         list.add(y1);
         list.add(y2);

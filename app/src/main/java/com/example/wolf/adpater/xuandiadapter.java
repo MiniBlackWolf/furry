@@ -1,12 +1,15 @@
 package com.example.wolf.adpater;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
@@ -20,6 +23,7 @@ import com.example.wolf.Utils.Xutils;
 import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
+import com.example.wolf.cultivation.genyun;
 import com.example.wolf.land.Farminfo;
 import com.example.wolf.land.Userfarm;
 import com.example.wolf.land.orderbeans;
@@ -73,6 +77,7 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
     List<orderbeans> orderbeans = new ArrayList<>();
     List<orderbeans.payitem> payitems = new ArrayList<>();
 
+
     public xuandiadapter(int layoutResId, @Nullable List<Farminfo> data, Context context, Button buy) {
         super(layoutResId, data);
         this.data = data;
@@ -85,6 +90,7 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
 
     @Override
     protected void convert(BaseViewHolder helper, Farminfo item) {
+        helper.addOnClickListener(R.id.imageland);
         helper.addOnClickListener(R.id.jia);
         helper.addOnClickListener(R.id.jia2);
         helper.addOnClickListener(R.id.jia3);
@@ -188,6 +194,11 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
 
 
                         }
+                        if (ALLprice == 0) {
+                            Toast.makeText(context, "请选择土地", Toast.LENGTH_SHORT).show();
+                            show.dismiss();
+                            return;
+                        }
                         Map<String, String> map2 = new HashMap<>();
                         map2.put("userName", new Getuserinfo(context).getusername());
                         xutils.get(context.getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
@@ -203,15 +214,31 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                                 }
                                 GsonUtil gsonUtil = new GsonUtil();
                                 List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
-                                if(UserInfo.get(0).getMoney()>=ALLprice){
-                                    buyfarm();
-                                    Intent intent = new Intent(context, MainActivity.class);
-                                    intent.putExtra("seed", 2);
-                                    context.startActivity(intent);
-                                }
-                                else {
+                                if (UserInfo.get(0).getMoney() >= ALLprice) {
+                                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                                    alertDialog.setTitle("购买提醒");
+                                    alertDialog.setMessage("您确定要购买吗？");
+                                    alertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            buyfarm();
+                                            Intent intent = new Intent(context, MainActivity.class);
+                                            intent.putExtra("seed", 2);
+                                            context.startActivity(intent);
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                                    alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                            dialogInterface.dismiss();
+                                        }
+                                    });
+                                    alertDialog.show();
 
-                                    ToastUtils.showToast(context,"金额不足!");
+                                } else {
+
+                                    ToastUtils.showToast(context, "金额不足!");
                                 }
                             }
                         });
@@ -378,17 +405,22 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
                 xuandibean.setBuytime(System.currentTimeMillis() / 1000);
                 xuandibean.setPayitem(payitems);
                 Gson gson = new Gson();
-                String s = gson.toJson(xuandibean);
+                final String s = gson.toJson(xuandibean);
                 Log.i("iiiiiiiii", s);
-                RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.buyfarm));
+                RequestParams requestParams = new RequestParams(context.getResources().getString(R.string.buyfarm));
                 requestParams.setBodyContent(s);
                 requestParams.setAsJsonContent(true);
                 x.http().post(requestParams, new Callback.CommonCallback<String>() {
-
                     @Override
                     public void onSuccess(String result) {
-                        if(result.equals("success")){
-                            ToastUtils.showToast(context,"购买成功!");
+                        if (result.equals("success")) {
+                            Toast.makeText(context, "购买成功,详细的交易信息可在个人中心-我的农场-交易记录查看", Toast.LENGTH_LONG).show();
+                            show.dismiss();
+                            Intent intent = new Intent(context, MainActivity.class);
+                            context.startActivity(intent);
+                        } else {
+                            Toast.makeText(context, "购买失败", Toast.LENGTH_LONG).show();
+                            show.dismiss();
                         }
 
                     }
@@ -408,6 +440,8 @@ public class xuandiadapter extends BaseQuickAdapter<Farminfo, BaseViewHolder> {
 
                     }
                 });
+
+
 //                final Map<String, String> map = new HashMap<>();
 //                map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
 //                map.put("fid", fid);

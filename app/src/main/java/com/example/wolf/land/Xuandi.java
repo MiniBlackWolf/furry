@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -52,17 +53,65 @@ public class Xuandi extends AppCompatActivity {
     ImageView q;
     @BindView(R.id.q4)
     ImageView q4;
-    boolean Visibility=true;
+    boolean Visibility = true;
     AlertDialog aldia;
+    double allmoney;
+    int allcount;
+    private boolean isRiskMove;
+    private int mRiskLastX;
+    private int mRiskLastY;
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.xuandi);
         ButterKnife.bind(Xuandi.this);
+        q.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                int x = (int) motionEvent.getRawX();
+                int y = (int) motionEvent.getRawY();
+                switch (motionEvent.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        isRiskMove = true;
+                        //计算距离上次移动了多远
+                        int deltaX = x - mRiskLastX;
+                        int deltaY = y - mRiskLastY;
+                        int translationX = (int) (q.getTranslationX() + deltaX);
+                        int translationY = (int) (q.getTranslationY() + deltaY);
+                        //使mFloatRiskBtn根据手指滑动平移
+                        q.setTranslationX(translationX);
+                        q.setTranslationY(translationY);
+                        break;
+                    case MotionEvent.ACTION_UP:
+                        //平移回到该view水平方向的初始点
+                        q.setTranslationX(0);
+                        //判断什么情况下需要回到原点
+//                        if(q.getY()<0 || q.getY()>(q.getMeasuredHeight()-q.getMeasuredHeight())) {
+//                            q.setTranslationY(0);
+//                        }
+                        break;
+                    default:
+                        break;
+                }
+                //记录上次手指离开时的位置
+                mRiskLastX = x;
+                mRiskLastY = y;
+                return false;
+            }
+        });
         q.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(isRiskMove){
+                    isRiskMove=false;
+                    return;
+                }
                 if (Visibility) {
+                    q4.setY(q.getY());
                     q4.setVisibility(View.VISIBLE);
                     ObjectAnimator scaleX = ObjectAnimator.ofFloat(q4, "scaleX", 0f, 1f);
                     ObjectAnimator scaleY = ObjectAnimator.ofFloat(q4, "scaleY", 0f, 1f);
@@ -96,6 +145,7 @@ public class Xuandi extends AppCompatActivity {
                 }
             }
         });
+
         ZloadingDiaLogkt zloadingDiaLogkt = new ZloadingDiaLogkt(Xuandi.this);
         final ZLoadingDialog ZLoadingDialog = zloadingDiaLogkt.show();
         xutils.get(getResources().getString(R.string.getlandinfo), new HashMap<String, String>(), new Xutils.XCallBack() {
@@ -123,97 +173,125 @@ public class Xuandi extends AppCompatActivity {
                                 String s = shuliang.getText().toString();
                                 Integer sl1 = Integer.valueOf(s);
                                 sl1++;
+                                allmoney += 120;
+                                allcount++;
+                                zhongjian.setText(allmoney + "");
+                                kuaishu.setText(allcount + "");
                                 shuliang.setText(sl1 + "");
                                 break;
                             case R.id.jia2:
                                 String s2 = shuliang2.getText().toString();
                                 Integer sl2 = Integer.valueOf(s2);
                                 sl2++;
+                                allcount++;
+                                allmoney += 180;
+                                zhongjian.setText(allmoney + "");
+                                kuaishu.setText(allcount + "");
                                 shuliang2.setText(sl2 + "");
                                 break;
                             case R.id.jia3:
                                 String s3 = shuliang3.getText().toString();
                                 Integer sl3 = Integer.valueOf(s3);
                                 sl3++;
+                                allmoney += 240;
+                                allcount++;
+                                zhongjian.setText(allmoney + "");
+                                kuaishu.setText(allcount + "");
                                 shuliang3.setText(sl3 + "");
                                 break;
                             case R.id.jian:
                                 String ss = shuliang.getText().toString();
                                 Integer ssl = Integer.valueOf(ss);
                                 ssl--;
-                                if (ssl <= 0) {
+                                if (ssl < 0) {
                                     ssl = 0;
+                                    shuliang.setText(ssl + "");
+                                } else {
+                                    allmoney -= 120;
+                                    allcount--;
+                                    shuliang.setText(ssl + "");
+                                    zhongjian.setText(allmoney + "");
+                                    kuaishu.setText(allcount + "");
+
                                 }
-                                shuliang.setText(ssl + "");
+
+
                                 break;
                             case R.id.jian2:
                                 String ss2 = shuliang2.getText().toString();
                                 Integer ssl2 = Integer.valueOf(ss2);
                                 ssl2--;
-                                if (ssl2 <= 0) {
+                                if (ssl2 < 0) {
                                     ssl2 = 0;
+                                    shuliang2.setText(ssl2 + "");
+                                } else {
+                                    allmoney -= 180;
+                                    allcount--;
+                                    shuliang2.setText(ssl2 + "");
+                                    zhongjian.setText(allmoney + "");
+                                    kuaishu.setText(allcount + "");
+
                                 }
-                                shuliang2.setText(ssl2 + "");
                                 break;
                             case R.id.jian3:
-                                String ss3 = shuliang2.getText().toString();
+                                String ss3 = shuliang3.getText().toString();
                                 Integer ssl3 = Integer.valueOf(ss3);
                                 ssl3--;
-                                if (ssl3 <= 0) {
+                                if (ssl3 < 0) {
                                     ssl3 = 0;
+                                    shuliang3.setText(ssl3 + "");
+                                } else {
+                                    allmoney -= 240;
+                                    allcount--;
+                                    shuliang3.setText(ssl3 + "");
+                                    zhongjian.setText(allmoney + "");
+                                    kuaishu.setText(allcount + "");
                                 }
-                                shuliang3.setText(ssl3 + "");
+                                break;
+                            case R.id.imageland:
+                                View views = getLayoutInflater().inflate(R.layout.xuandiinfoitem, null);
+                                ImageView xuandiinfoimage = views.findViewById(R.id.xuandiinfoimage);
+                                TextView xuandiinfotext = views.findViewById(R.id.xuandiinfotext);
+                                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Xuandi.this);
+                                alertDialog.setView(views);
+                                xuandiinfotext.setText("菜鸟农场的土地是以科学化管理为标准、“先废弃后开垦”为原则所培育的有机土地。现将土地分为多种规格，你可以根据自己的需求选择不同规格的土地进行种植。");
+                                switch (position) {
+                                    case 0:
+                                        xuandiinfoimage.setImageResource(R.mipmap.aa1);
+                                        alertDialog.setView(views);
+                                        aldia = alertDialog.show();
+                                        break;
+                                    case 1:
+                                        xuandiinfoimage.setImageResource(R.mipmap.aa2);
+                                        alertDialog.setView(views);
+                                        aldia = alertDialog.show();
+                                        break;
+                                    case 2:
+                                        xuandiinfoimage.setImageResource(R.mipmap.aa3);
+                                        alertDialog.setView(views);
+                                        aldia = alertDialog.show();
+                                        break;
+
+                                }
                                 break;
 
                         }
+
                     }
                 });
-                xuandiadapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
-                    @SuppressLint("SetTextI18n")
-                    @Override
-                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        View views = getLayoutInflater().inflate(R.layout.xuandiinfoitem, null);
-                        ImageView xuandiinfoimage=views.findViewById(R.id.xuandiinfoimage);
-                        TextView xuandiinfotext = views.findViewById(R.id.xuandiinfotext);
-                        AlertDialog.Builder alertDialog=new AlertDialog.Builder(Xuandi.this);
-                        alertDialog.setView(R.layout.xuandiinfoitem);
-                        xuandiinfotext.setText("菜鸟农场的土地是以科学化管理为标准、“先废弃后开垦”为原则所培育的有机土地。现将土地分为多种规格，你可以根据自己的需求选择不同规格的土地进行种植。");
-                        switch (position){
-                            case 0:
-                                xuandiinfoimage.setImageResource(R.mipmap.aa1);
-                                alertDialog.setView(views);
-                                aldia = alertDialog.show();
-                                break;
-                            case 1:
-                                xuandiinfoimage.setImageResource(R.mipmap.aa2);
-                                alertDialog.setView(views);
-                                aldia = alertDialog.show();
-                                break;
-                            case 2:
-                                xuandiinfoimage.setImageResource(R.mipmap.aa3);
-                                alertDialog.setView(views);
-                                aldia = alertDialog.show();
-                                break;
 
-                        }
+                xuandifanhui.setOnClickListener(new OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(Xuandi.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 });
 
                 ZLoadingDialog.dismiss();
             }
+
+
         });
-
-
-        xuandifanhui.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Xuandi.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
     }
-
-
 }

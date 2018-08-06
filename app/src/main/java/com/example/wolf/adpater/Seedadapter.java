@@ -1,8 +1,10 @@
 package com.example.wolf.adpater;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -89,6 +91,7 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
         buy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Integer uid = new Getuserinfo(context).getuid();
                 if (uid == 0) {
                     ToastUtils.showToast(context, "请先登录");
@@ -106,63 +109,82 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
                     }
 
                 }
-                Map<String, String> map2 = new HashMap<>();
-                map2.put("userName", new Getuserinfo(context).getusername());
-                xutils.get(context.getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
-                    @SuppressWarnings("unchecked")
+                AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
+                alertDialog.setTitle("购买提醒");
+                alertDialog.setMessage("您确定要购买吗？");
+                alertDialog.setPositiveButton("确定", new DialogInterface.OnClickListener() {
                     @Override
-                    public void onResponse(String result) {
-                        String userinfo = null;
-                        try {
-                            userinfo = new String(algorithm.encryptDecode(result.getBytes("iso8859-1")), "utf-8");
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Map<String, String> map2 = new HashMap<>();
+                        map2.put("userName", new Getuserinfo(context).getusername());
+                        xutils.get(context.getResources().getString(R.string.Userinfo), map2, new Xutils.XCallBack() {
+                            @SuppressWarnings("unchecked")
+                            @Override
+                            public void onResponse(String result) {
+                                String userinfo = null;
+                                try {
+                                    userinfo = new String(algorithm.encryptDecode(result.getBytes("iso8859-1")), "utf-8");
 
-                        } catch (UnsupportedEncodingException e) {
-                            e.printStackTrace();
-                        }
-                        GsonUtil gsonUtil = new GsonUtil();
-                        List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
-                        if (UserInfo.get(0).getMoney() >= allmoney) {
-                            orderbeans orderbeans = OrderUtils.addorder("购买种子", 2, allmoney, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
-                            Gson gson = new Gson();
-                            String s = gson.toJson(orderbeans);
-                            RequestParams requestParams = new RequestParams(context.getResources().getString(R.string.buyseed));
-                            requestParams.setBodyContent(s);
-                            requestParams.setAsJsonContent(true);
-                            x.http().post(requestParams, new Callback.CommonCallback<String>() {
-
-
-                                @Override
-                                public void onSuccess(String result) {
-                                    if (result.equals("success")) {
-                                        ToastUtils.showToast(context, "购买成功！");
-                                    } else {
-                                        ToastUtils.showToast(context, "购买失败，请检查网络和数量！");
-                                    }
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
                                 }
+                                GsonUtil gsonUtil = new GsonUtil();
+                                List<UserInfo> UserInfo = gsonUtil.Gson(userinfo, UserInfo.class);
+                                if (UserInfo.get(0).getMoney() >= allmoney) {
+                                    orderbeans orderbeans = OrderUtils.addorder("购买种子", 2, allmoney, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
+                                    Gson gson = new Gson();
+                                    String s = gson.toJson(orderbeans);
+                                    RequestParams requestParams = new RequestParams(context.getResources().getString(R.string.buyseed));
+                                    requestParams.setBodyContent(s);
+                                    requestParams.setAsJsonContent(true);
+                                    x.http().post(requestParams, new Callback.CommonCallback<String>() {
 
-                                @Override
-                                public void onError(Throwable ex, boolean isOnCallback) {
+
+                                        @Override
+                                        public void onSuccess(String result) {
+                                            if (result.equals("success")) {
+                                                Toast.makeText(context, "购买成功,详细的交易信息可在个人中心-我的农场-交易记录查看", Toast.LENGTH_LONG).show();
+                                                Intent intent = new Intent(context, MainActivity.class);
+                                                context.startActivity(intent);
+                                            } else {
+                                                Toast.makeText(context, "购买失败", Toast.LENGTH_LONG).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onError(Throwable ex, boolean isOnCallback) {
+
+                                        }
+
+                                        @Override
+                                        public void onCancelled(CancelledException cex) {
+
+                                        }
+
+                                        @Override
+                                        public void onFinished() {
+
+                                        }
+                                    });
 
                                 }
+                                else {
 
-                                @Override
-                                public void onCancelled(CancelledException cex) {
-
+                                    ToastUtils.showToast(context,"余额不足！");
                                 }
+                            }
+                        });
 
-                                @Override
-                                public void onFinished() {
-
-                                }
-                            });
-
-                        }
-                        else {
-
-                            ToastUtils.showToast(context,"余额不足！");
-                        }
+                        dialogInterface.dismiss();
                     }
                 });
+                alertDialog.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+                alertDialog.show();
 
 
             }

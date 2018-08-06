@@ -60,7 +60,7 @@ public class InviteActivity extends Activity {
     View view15;
     private boolean isOpen = true;
     Xutils xutils = new Xutils(InviteActivity.this);
-    private static final String APP_ID = "wx3f51244684511ee8";
+    private static final String APP_ID = "wx3743a302c699ab6b";
     private IWXAPI api;
     Bitmap bitmap;
     @Override
@@ -183,6 +183,7 @@ public class InviteActivity extends Activity {
                 req.message=wxMediaMessage;
                 req.scene = SendMessageToWX.Req.WXSceneSession;
                 api.sendReq(req);
+
                 break;
             case R.id.wexfd:
                 break;

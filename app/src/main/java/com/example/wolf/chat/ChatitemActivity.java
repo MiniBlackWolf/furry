@@ -1,6 +1,6 @@
 package com.example.wolf.chat;
 
-import android.app.Activity;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,10 +12,9 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.example.wolf.R;
+import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.adpater.chatadapter;
-import com.example.wolf.delivery.delivery;
-import com.example.wolf.fragment.tab3;
 import com.google.gson.Gson;
 import com.zhangke.websocket.AbsWebSocketActivity;
 import com.zhangke.websocket.ErrorResponse;
@@ -53,7 +52,7 @@ public class ChatitemActivity extends AbsWebSocketActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chatlayout);
         ButterKnife.bind(this);
-        WebSocketSetting.setConnectUrl("ws://192.168.0.101:8080/Backstage/ws.do");//必选
+        WebSocketSetting.setConnectUrl("ws://192.168.0.103:8080/Backstage/ws.do");//必选
         //   WebSocketSetting.setResponseProcessDelivery(new AppResponseDispatcher());
         WebSocketSetting.setReconnectWithNetworkChanged(true);
         startService(new Intent(ChatitemActivity.this, WebSocketService.class));
@@ -88,8 +87,8 @@ public class ChatitemActivity extends AbsWebSocketActivity {
                 chatrecyclerview.smoothScrollToPosition(chatadapter.getItemCount() - 1);
                 Gson gson = new Gson();
                 Message message = new Message();
-                message.setFrom("1");
-                message.setFromName("cw");
+                message.setFrom(String.valueOf(new Getuserinfo(ChatitemActivity.this).getuid()));
+                message.setFromName(new Getuserinfo(ChatitemActivity.this).getusername());
                 message.setTo("root");
                 message.setText(chateditText.getText().toString());
                 message.setDate(new Date(System.currentTimeMillis()/1000));
@@ -123,12 +122,15 @@ public class ChatitemActivity extends AbsWebSocketActivity {
         switch (error.getErrorCode()) {
             case 1:
                 error.setDescription("网络错误");
+                ToastUtils.showToast(ChatitemActivity.this,"网络错误");
                 break;
             case 2:
                 error.setDescription("网络错误");
+                ToastUtils.showToast(ChatitemActivity.this,"网络错误");
                 break;
             case 3:
                 error.setDescription("网络错误");
+                ToastUtils.showToast(ChatitemActivity.this,"网络错误");
                 break;
             case 11:
                 error.setDescription("数据格式异常");
