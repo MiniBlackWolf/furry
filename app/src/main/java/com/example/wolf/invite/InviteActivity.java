@@ -6,6 +6,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
 import android.os.Bundle;
@@ -24,10 +25,12 @@ import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.userbean.UserInfo;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
-import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
+import com.tencent.mm.opensdk.modelmsg.WXTextObject;
+import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
 import com.tencent.mm.opensdk.openapi.IWXAPI;
 import com.tencent.mm.opensdk.openapi.WXAPIFactory;
+
 
 import java.io.ByteArrayOutputStream;
 import java.io.UnsupportedEncodingException;
@@ -63,14 +66,17 @@ public class InviteActivity extends Activity {
     private static final String APP_ID = "wx3743a302c699ab6b";
     private IWXAPI api;
     Bitmap bitmap;
+    private IWXAPI wxApi;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.invite);
         ButterKnife.bind(this);
         //微信app注册
-        api= WXAPIFactory.createWXAPI(InviteActivity.this,APP_ID,true);
-        api.registerApp(APP_ID);
+//        api= WXAPIFactory.createWXAPI(InviteActivity.this,APP_ID,true);
+//        api.registerApp(APP_ID);
+        wxApi = WXAPIFactory.createWXAPI(this, APP_ID);
+        wxApi.registerApp(APP_ID);
         //----
         invitetext.setAlpha(0f);
         Map<String, String> map = new HashMap<>();
@@ -170,22 +176,49 @@ public class InviteActivity extends Activity {
                 overridePendingTransition(0, 0);
                 break;
             case R.id.QQ:
+                WXWebpageObject webpage3 = new WXWebpageObject();
+                webpage3.webpageUrl = "https://www.baidu.com";
+                WXMediaMessage msg3 = new WXMediaMessage(webpage3);
+                msg3.title = "这里填写标题";
+                msg3.description = "这里填写内容";
+                //这里替换一张自己工程里的图片资源
+                //  Bitmap thumb = BitmapFactory.decodeResource(getResources(),R.mipmap.pppppppp);
+                msg3.setThumbImage(bitmap);
+                SendMessageToWX.Req req3 = new SendMessageToWX.Req();
+                req3.transaction = String.valueOf(System.currentTimeMillis());
+                req3.message = msg3;
+                req3.scene = 0==0?SendMessageToWX.Req.WXSceneSession:SendMessageToWX.Req.WXSceneTimeline;
+                wxApi.sendReq(req3);
                 break;
             case R.id.wex:
-                WXImageObject wxImageObject=new WXImageObject(bitmap);
-                WXMediaMessage wxMediaMessage=new WXMediaMessage();
-                wxMediaMessage.mediaObject=wxImageObject;
-                Bitmap scaledBitmap = Bitmap.createScaledBitmap(bitmap, 120, 120, true);
-                bitmap.recycle();
-                wxMediaMessage.thumbData =bmpToByteArray(scaledBitmap,true);
-                SendMessageToWX.Req req=new SendMessageToWX.Req();
-                req.transaction= buildTransaction("img");
-                req.message=wxMediaMessage;
-                req.scene = SendMessageToWX.Req.WXSceneSession;
-                api.sendReq(req);
-
+                WXWebpageObject webpage = new WXWebpageObject();
+                webpage.webpageUrl = "https://www.baidu.com";
+                WXMediaMessage msg = new WXMediaMessage(webpage);
+                msg.title = "这里填写标题";
+                msg.description = "这里填写内容";
+                //这里替换一张自己工程里的图片资源
+              //  Bitmap thumb = BitmapFactory.decodeResource(getResources(),R.mipmap.pppppppp);
+                msg.setThumbImage(bitmap);
+                SendMessageToWX.Req req = new SendMessageToWX.Req();
+                req.transaction = String.valueOf(System.currentTimeMillis());
+                req.message = msg;
+                req.scene = 0==0?SendMessageToWX.Req.WXSceneSession:SendMessageToWX.Req.WXSceneTimeline;
+                wxApi.sendReq(req);
                 break;
             case R.id.wexfd:
+                WXWebpageObject webpage2 = new WXWebpageObject();
+                webpage2.webpageUrl = "https://www.baidu.com";
+                WXMediaMessage msg2 = new WXMediaMessage(webpage2);
+                msg2.title = "这里填写标题";
+                msg2.description = "这里填写内容";
+                //这里替换一张自己工程里的图片资源
+                //  Bitmap thumb = BitmapFactory.decodeResource(getResources(),R.mipmap.pppppppp);
+                msg2.setThumbImage(bitmap);
+                SendMessageToWX.Req req2 = new SendMessageToWX.Req();
+                req2.transaction = String.valueOf(System.currentTimeMillis());
+                req2.message = msg2;
+                req2.scene = 1==0?SendMessageToWX.Req.WXSceneSession:SendMessageToWX.Req.WXSceneTimeline;
+                wxApi.sendReq(req2);
                 break;
         }
     }

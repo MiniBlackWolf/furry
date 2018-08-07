@@ -177,10 +177,18 @@
             android:screenOrientation="behind"
             android:windowSoftInputMode="adjustResize|stateHidden" >
         </activity>
+        <activity
+            android:name=".WXEntryActivity"
+            android:exported="true"
+            android:screenOrientation="portrait"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+
         <service android:name="com.zhangke.websocket.WebSocketService"/>
         <receiver android:name="com.zhangke.websocket.NetworkChangedReceiver"/>
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <meta-data android:value="5b6910c3b27b0a1a090001a1" android:name="UMENG_APPKEY"/>
+        <meta-data android:value="fenxiang" android:name="UMENG_CHANNEL"/>
     </application>
 </manifest>

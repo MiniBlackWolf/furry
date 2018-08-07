@@ -2,13 +2,10 @@ package com.example.wolf;
 
 import android.app.Application;
 
-import com.zhangke.websocket.WebSocketSetting;
 
-import org.xutils.BuildConfig;
+
 import org.xutils.x;
 
-import javax.net.ssl.HostnameVerifier;
-import javax.net.ssl.SSLSession;
 
 public class MyApp extends Application {
 

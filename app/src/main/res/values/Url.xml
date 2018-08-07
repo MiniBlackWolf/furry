@@ -13,7 +13,7 @@
   <!--  <string name="buyFrame">http://www.cnepltd.com/net/seed/buyFrame</string>-->
     <string name="getFarmCount">http://www.cnepltd.com/net/seed/getFarmCount</string>
     <string name="getFarmLimit">http://www.cnepltd.com/net/seed/getFarmLimit</string>
-    <string name="buyseed">http://192.168.0.72:8080/user/buyseed</string>
+    <string name="buyseed">http://cnnc.cnepltd.com/user/buyseed</string>
     <string name="getUserFrame">http://www.cnepltd.com//net/seed/getUserFrame</string>
     <string name="getnouseseed">http://cnnc.cnepltd.com/user/nouserseed</string>
     <string name="getTickets">http://www.cnepltd.com/net/userBase/getTickets</string>
@@ -40,6 +40,8 @@
     <string name="harvest">http://cnnc.cnepltd.com/user/harvest</string>
     <string name="order">http://wecn.cnepltd.com/farm/open/order</string>
     <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
-    <string name="buyticket">http://192.168.0.72:8080/user/buyticket</string>
+    <string name="buyticket">http://cnnc.cnepltd.com/user/buyticket</string>
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
+    <string name="online">http://192.168.0.101:8080/Backstage/user/online.do</string>
+    <string name="ws">ws://192.168.0.103:8080/Backstage/ws.do</string>
 </resources>
