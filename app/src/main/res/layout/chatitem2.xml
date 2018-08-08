@@ -51,7 +51,7 @@
         app:layout_constraintVertical_bias="1.0" />
 
     <TextView
-        android:id="@+id/chatmsg"
+        android:id="@+id/chatmsg2"
         android:layout_width="191dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"

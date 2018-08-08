@@ -42,6 +42,6 @@
     <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
     <string name="buyticket">http://cnnc.cnepltd.com/user/buyticket</string>
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
-    <string name="online">http://192.168.0.101:8080/Backstage/user/online.do</string>
-    <string name="ws">ws://192.168.0.103:8080/Backstage/ws.do</string>
+    <string name="online">http://qwer.cnepltd.com/user/online.do</string>
+    <string name="ws">ws://qwer.cnepltd.com/ws.do</string>
 </resources>

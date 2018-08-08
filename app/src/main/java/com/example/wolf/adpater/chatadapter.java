@@ -31,19 +31,20 @@ public class chatadapter extends BaseMultiItemQuickAdapter<Msg, BaseViewHolder> 
 
     @Override
     protected void convert(BaseViewHolder helper, Msg item) {
+
         switch (helper.getItemViewType()) {
             case Msg.TYPE_RECEIVED:
-                helper.setText(R.id.chatmsg,item.getContent()+"");
-                TextView chatmsg=helper.getView(R.id.chatmsg);
-                ImageView chatimags=helper.getView(R.id.chatimags);
-                chatimags.getLayoutParams().height=chatmsg.getHeight();
+                helper.setText(R.id.chatmsg2,item.getContent()+"");
+//                TextView chatmsg=helper.getView(R.id.chatmsg2);
+//                ImageView chatimags=helper.getView(R.id.chatimags);
+//                chatimags.getLayoutParams().height=chatmsg.getHeight();
                 break;
             case Msg.TYPE_SENT:
                 helper.setText(R.id.chatname,new Getuserinfo(context).getusername());
-                helper.setText(R.id.chatmsg,item.getContent()+"");
-                TextView chatmsgs=helper.getView(R.id.chatmsg);
-                ImageView chatimagss=helper.getView(R.id.chatimags);
-                chatimagss.getLayoutParams().height=chatmsgs.getHeight();
+                helper.setText(R.id.chatmsg1,item.getContent()+"");
+//                TextView chatmsg2=helper.getView(R.id.chatmsg1);
+//                ImageView chatimags2=helper.getView(R.id.chatimags);
+//                chatimags2.getLayoutParams().height=chatmsg2.getHeight();
                 break;
         }
 

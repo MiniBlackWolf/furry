@@ -52,6 +52,7 @@ public class ChatitemActivity extends AbsWebSocketActivity {
     Response me;
     List<Customer> s;
     //0接收消息1发送
+    int i;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +78,12 @@ public class ChatitemActivity extends AbsWebSocketActivity {
                 GsonUtil gsonUtil=new GsonUtil();
                 s=gsonUtil.Gson(result,Customer.class);
                 Log.i("iiiiii",result);
+                Random random=new Random();
+                if(s.size()==0){
+                    i=0;
+                    return;
+                }
+                 i = random.nextInt(s.size());
             }
         });
 
@@ -101,8 +108,6 @@ private class Customer{
                 overridePendingTransition(0, 0);
                 break;
             case R.id.chatbutton:
-                Random random=new Random(s.size());
-                int i = random.nextInt();
                 if(s.isEmpty()){
                     ToastUtils.showToast(ChatitemActivity.this,"网络错误或没有在线客服!");
                     break;
