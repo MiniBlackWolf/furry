@@ -2,13 +2,16 @@ package com.example.wolf.atlas;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.ImageView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.wolf.R;
+import com.example.wolf.adpater.Atlasadapter;
 
 
+import java.util.LinkedList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,8 +30,13 @@ public class AtlasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.atlas);
         ButterKnife.bind(this);
-
-
+        Atlasadapter Atlasadapter=new Atlasadapter(R.layout.atlasitem,new LinkedList<Userseedimg>(),AtlasActivity.this);
+        Atlasadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
+        Atlasadapter.isFirstOnly(false);
+        atlasrecycler.setLayoutManager(new GridLayoutManager(AtlasActivity.this,2));
+        atlasrecycler.setAdapter(Atlasadapter);
+        Atlasadapter.bindToRecyclerView(atlasrecycler);
+        Atlasadapter.setEmptyView(R.layout.loading);
 
     }
 

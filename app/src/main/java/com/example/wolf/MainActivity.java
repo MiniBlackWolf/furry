@@ -44,13 +44,13 @@ public class MainActivity extends AppCompatActivity {
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
     Xutils xutils = new Xutils(this);
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
+        overridePendingTransition(0,0);
         getfragment();
-            denglu();
+        denglu();
 
     }
 
@@ -75,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
                         fragmentlist.remove(1);
                         fragmentlist.add(tab5_2);
                         fragmentPagerAdapter.notifyDataSetChanged();
-                        if (mySharePerferences.getBoolean("loginstatus",false)) {
-                            ToastUtils.showToast(MainActivity.this,"欢迎回来");
+                        if (mySharePerferences.getBoolean("loginstatus", false)) {
+                            ToastUtils.showToast(MainActivity.this, "欢迎回来");
                             SharedPreferences.Editor edit = mySharePerferences.edit();
-                            edit.putBoolean("loginstatus",true);
+                            edit.putBoolean("loginstatus", true);
                             edit.apply();
                         }
 
@@ -89,8 +89,8 @@ public class MainActivity extends AppCompatActivity {
         种子转跳！！2Page
         */
 
-        int se = getIntent().getIntExtra("seed",0);
-        if(se==2){
+        int se = getIntent().getIntExtra("seed", 0);
+        if (se == 2) {
             viewPager.setCurrentItem(0);
         }
         //登陆
@@ -120,13 +120,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void getfragment() {
-   //     tab1 tab1 = new tab1();
+        //     tab1 tab1 = new tab1();
         tab2 tab2 = new tab2();
- //       tab3 tab3 = new tab3();
- //       tab4 tab4 = new tab4();
+        //       tab3 tab3 = new tab3();
+        //       tab4 tab4 = new tab4();
         tab5 tab5 = new tab5();
         fragmentlist = new ArrayList<>();
- //       fragmentlist.add(tab1);
+        //       fragmentlist.add(tab1);
         fragmentlist.add(tab2);
 //        fragmentlist.add(tab3);
 //        fragmentlist.add(tab4);

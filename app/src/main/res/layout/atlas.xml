@@ -22,7 +22,7 @@
             android:layout_width="20dp"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
-            android:background="@mipmap/b2" />
+            android:background="@mipmap/fh" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -31,65 +31,9 @@
             android:gravity="left|center"
             android:paddingLeft="20dp"
             android:text="素材图集"
-            android:textColor="@android:color/black"
+            android:textColor="@android:color/background_light"
             android:textSize="18sp" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/fffffffff"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:background="@android:color/background_light"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ddddddd">
-
-        <LinearLayout
-            android:id="@+id/cugenyun"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="收集中"
-                android:textColor="@android:color/background_dark" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0.1"
-                android:background="@color/hong" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/culingping"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="已集齐"
-                android:textColor="@android:color/background_dark" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_weight="0.1" />
-        </LinearLayout>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -99,6 +43,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fffffffff" />
+        app:layout_constraintTop_toBottomOf="@+id/ddddddd" />
 
 </android.support.constraint.ConstraintLayout>

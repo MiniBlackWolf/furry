@@ -41,7 +41,7 @@
         android:id="@+id/textView73"
         android:layout_width="194dp"
         android:layout_height="119dp"
-        android:text="当购买面积达到25㎡优惠9.0% 当购买面积达到30㎡优惠8.5% 当购买面积达到35㎡优惠8.0% 当购买面积达到35㎡优惠7.5% 当购买面积达到40㎡优惠7.0% 购买面积超40㎡上限优惠7.0%"
+        android:text="当购买面积达到10㎡优惠9.0% 当购买面积达到15㎡优惠8.5% 当购买面积达到20㎡优惠8.0% 当购买面积达到25㎡优惠7.5% 当购买面积达到30㎡优惠7.0% 购买面积超30㎡上限优惠7.0%"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
