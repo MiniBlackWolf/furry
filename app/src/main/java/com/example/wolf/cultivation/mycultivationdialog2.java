@@ -103,15 +103,15 @@ public class mycultivationdialog2 extends DialogFragment {
 
                 }
                 Map<String, String> map = new HashMap<>();
+                map.put("count", mycultivationpopcount2.getText().toString());
                 map.put("uid", String.valueOf(new Getuserinfo(getActivity()).getuid()));
                 map.put("tid", String.valueOf(getTag()));
-                map.put("count", mycultivationpopcount2.getText().toString());
-                map.put("token", new Token().getToken(new Getuserinfo(getActivity()).getuid()));
+                map.put("fid",spinnerland2.getSelectedItem().toString().substring(0, spinnerland2.getSelectedItem().toString().indexOf("-")));
+          //      map.put("token", new Token().getToken(new Getuserinfo(getActivity()).getuid()));
                 xutils.get(getResources().getString(R.string.useTicket), map, new Xutils.XCallBack() {
                     @Override
                     public void onResponse(String result) {
-                        String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                        if (i.equals("success")) {
+                        if (result.equals("success")) {
                             ToastUtils.showToast(getActivity(), "使用成功！");
                             dialog.dismiss();
                         } else {

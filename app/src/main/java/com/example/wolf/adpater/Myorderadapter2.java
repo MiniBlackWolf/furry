@@ -100,6 +100,14 @@ public class Myorderadapter2 extends BaseQuickAdapter<orderbean.ItemBean, BaseVi
                 helper.setText(R.id.ordertime, item.getShijian() + "");
                 helper.setText(R.id.ordermoney2, item.getUnitprice() + "");
                 break;
+            case "-2":
+                helper.setImageResource(R.id.orderimage2, R.mipmap.money1);
+                helper.setText(R.id.ordername2, item.getName());
+                helper.setText(R.id.orderinfo, item.getDescription() + "");
+                helper.setText(R.id.ordertime, item.getShijian() + "");
+                helper.setText(R.id.ordermoney2, item.getUnitprice() + "");
+                Glide.with(context).load(item.getImgurl()).placeholder(R.mipmap.loading2).into((ImageView) helper.getView(R.id.orderimage2));
+                break;
             default:
                 Map<String,String> map=new HashMap<>();
                 map.put("sid",item.getManyid()+"");

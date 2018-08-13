@@ -53,10 +53,18 @@ public class StartActivity extends AppCompatActivity {
                 animatorSet.start();
 
             }
-        }, 3000);
+        }, 2000);
 
         //       startimg2.
 
+    }
+
+    @Override
+    protected void onRestart() {
+        Intent intent = new Intent(StartActivity.this, MainActivity.class);
+        startActivity(intent);
+        overridePendingTransition(0,0);
+        super.onRestart();
     }
 
     @Override

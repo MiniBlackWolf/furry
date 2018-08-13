@@ -21,7 +21,7 @@
             android:id="@+id/atlasfh"
             android:layout_width="20dp"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="40dp"
             android:background="@mipmap/fh" />
 
         <TextView
@@ -30,7 +30,7 @@
             android:layout_weight="5"
             android:gravity="left|center"
             android:paddingLeft="20dp"
-            android:text="素材图集"
+            android:text="蔬菜图集"
             android:textColor="@android:color/background_light"
             android:textSize="18sp" />
 

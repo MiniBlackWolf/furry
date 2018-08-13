@@ -126,6 +126,7 @@ public class mycultivationdialog extends DialogFragment {
                 List<userseed> userseed = gsonUtil.Gson(result, com.example.wolf.seed.userseed.class);
                 mycultivationadapterseed = new mycultivationadapterseed(R.layout.mycultivationitem2, userseed, getActivity(), okseedandland, spinnerland, mycultivationpopcount, dialog);
                 mycultivationadapterseed.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
+                    @SuppressLint("SetTextI18n")
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
 
@@ -139,7 +140,7 @@ public class mycultivationdialog extends DialogFragment {
                                     add2 = Integer.valueOf(mycultivationitem2count.getText().toString());
                                     if (total < Fcount) {
                                         if (add2 >= count) {
-                                            Toast.makeText(getActivity(), "种子不足请先购买", Toast.LENGTH_SHORT).show();
+                                            ToastUtils.showToast(getActivity(),"种子不足请先购买");
                                         } else {
                                             add2 += 1;
                                             total++;
@@ -148,8 +149,7 @@ public class mycultivationdialog extends DialogFragment {
 
                                         }
                                     } else {
-                                        Toast.makeText(getActivity(), "请选择更多的券", Toast.LENGTH_SHORT).show();
-
+                                        ToastUtils.showToast(getActivity(),"请选择更多的券");
                                     }
                                     break;
                                 }

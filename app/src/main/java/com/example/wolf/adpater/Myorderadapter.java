@@ -75,6 +75,14 @@ public class Myorderadapter extends BaseQuickAdapter<orderbean, BaseViewHolder> 
              //   orderrecyclerview.setAdapter(myorderadapter2);
                 setadpadter(helper, item);
                 break;
+            case 7:
+                helper.setText(R.id.ordername, "积分");
+                helper.setImageResource(R.id.orderimage, R.mipmap.scores);
+                helper.setText(R.id.ordermoney2, item.getPrice() + "");
+                helper.setText(R.id.ordercount, item.getZong() + "");
+                //   orderrecyclerview.setAdapter(myorderadapter2);
+                setadpadter(helper, item);
+                break;
 
 
         }

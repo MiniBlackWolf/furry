@@ -26,11 +26,10 @@
     <string name="change">http://www.cnepltd.com/net/userBase/change</string>
     <string name="getSeedIdByName">http://www.cnepltd.com/net/seed/getSeedIdByName</string>
     <string name="getUserRemainSeedWithoutDate">http://cnnc.cnepltd.com/user/getUserRemainSeedWithoutDate</string>
-    <string name="useTicket">http://www.cnepltd.com//net/userBase/useTicket</string>
     <string name="general">http://www.cnepltd.com/fileupload/general</string>
     <string name="clientMoney">http://www.cnepltd.com/net/userBase/clientMoney</string>
     <string name="getuserseed">http://cnnc.cnepltd.com/user/useseed</string>
-    <string name="sowing">http://cnnc.cnepltd.com/user/sowing</string>
+    <string name="sowing">http://192.168.0.105:8080/user/sowing</string>
     <string name="shovelview">http://cnnc.cnepltd.com/user/shovelview</string>
     <string name="shovel">http://cnnc.cnepltd.com/user/shovel</string>
     <string name="getlandinfo">http://cnnc.cnepltd.com/user/getlandinfo</string>
@@ -42,6 +41,7 @@
     <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
     <string name="buyticket">http://cnnc.cnepltd.com/user/buyticket</string>
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
+    <string name="useTicket">http://192.168.0.105:8080/user/useticket</string>
     <string name="online">http://qwer.cnepltd.com/user/online.do</string>
     <string name="ws">ws://qwer.cnepltd.com/ws.do</string>
 </resources>

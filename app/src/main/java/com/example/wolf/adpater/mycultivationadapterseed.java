@@ -25,9 +25,17 @@ import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.cultivation.mycultivationdialog;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.seed.userseed;
+import com.example.wolf.userbean.Userorder;
+import com.example.wolf.userbean.Userorderitem;
+import com.google.gson.Gson;
+
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
+import org.xutils.x;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -40,6 +48,8 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
     List<TextView> list = new ArrayList<>();
     List<userseed> list2 = new ArrayList<>();
     private Dialog dialog;
+    List<Userorder> Userorders=new ArrayList<>();
+    List<Userorderitem> Userorderitems=new ArrayList<>();
 
     public mycultivationadapterseed(int layoutResId, @Nullable List<userseed> data, Context context, Button okseedandland, Spinner spinnerland, TextView mycultivationpopcount,Dialog dialog) {
         super(layoutResId, data);
@@ -78,35 +88,64 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
             @Override
             public void onClick(View v) {
                 mycultivationpopcount.getText().toString();
+                if(Integer.valueOf(mycultivationpopcount.getText().toString())==0){
+                    ToastUtils.showToast(context,"请使用券");
+                    return;
+                }
                 for (int i = 0; i < list.size(); i++) {
                     if(Integer.valueOf(list.get(i).getText().toString())<=0){
                         continue;
                     }
-                    int sid = list2.get(i).getSid();
-                    Map<String, String> map = new HashMap<>();
-                    map.put("uid", String.valueOf(new Getuserinfo(context).getuid()));
-                    map.put("fid", spinnerland.getSelectedItem().toString().substring(0, spinnerland.getSelectedItem().toString().indexOf("-")));
-                    map.put("sid", String.valueOf(sid));
-                    map.put("count",list.get(i).getText().toString());
-                    map.put("voucher", mycultivationpopcount.getText().toString());
-      //              map.put("token", new Token().getToken(new Getuserinfo(context).getuid()));
-                    xutils.get(context.getResources().getString(R.string.sowing), map, new Xutils.XCallBack() {
-                        @Override
-                        public void onResponse(String result) {
-                            if (result.equals("success")) {
-                                ToastUtils.showToast(context,"播种成功！");
-                                dialog.dismiss();
-                            }
-                            else{
-
-                                ToastUtils.showToast(context,"播种失败！");
-                                dialog.dismiss();
-                            }
-
-                        }
-                    });
+                    Userorderitem userorderitem=new Userorderitem();
+                    userorderitem.setIid(list2.get(i).getSid().toString());
+                    userorderitem.setCount(Integer.valueOf(list.get(i).getText().toString()));
+                    userorderitem.setFid(null);
+                    Userorderitems.add(userorderitem);
                 }
+                Userorder userorder=new Userorder();
+                userorder.setUserorderitem(Userorderitems);
+                userorder.setUid(new Getuserinfo(context).getuid());
+                userorder.setName("使用播种券");
+                userorder.setType(1);
+                userorder.setStatus(0);
+                userorder.setOrderDate(String.valueOf(System.currentTimeMillis()/1000));
+                userorder.setDescription(spinnerland.getSelectedItem().toString().substring(0, spinnerland.getSelectedItem().toString().indexOf("-")));
+                Gson gson=new Gson();
+                String s = gson.toJson(userorder);
+                RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.sowing));
+                requestParams.setBodyContent(s);
+                requestParams.setAsJsonContent(true);
+                requestParams.addParameter("voucher",mycultivationpopcount.getText().toString());
+                x.http().post(requestParams, new Callback.CommonCallback<String>() {
 
+                    @Override
+                    public void onSuccess(String result) {
+                        if (result.equals("success")) {
+                            ToastUtils.showToast(context,"播种成功！");
+                            dialog.dismiss();
+                        }
+                        else{
+
+                            ToastUtils.showToast(context,"播种失败！");
+                            dialog.dismiss();
+                        }
+                    }
+
+                    @Override
+                    public void onError(Throwable ex, boolean isOnCallback) {
+
+                    }
+
+                    @Override
+                    public void onCancelled(CancelledException cex) {
+
+                    }
+
+                    @Override
+                    public void onFinished() {
+
+                    }
+                });
             }
         });
     }

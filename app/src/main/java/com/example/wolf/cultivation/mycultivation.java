@@ -95,55 +95,57 @@ public class mycultivation extends AppCompatActivity {
                 mycultivationadapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                        switch (position) {
-                            case 0: {
+                      TextView cuname= (TextView) adapter.getViewByPosition(curecyclerview,position,R.id.cuname);
+                      TextView cucount= (TextView) adapter.getViewByPosition(curecyclerview,position,R.id.cucount);
+                        switch (cuname.getText().toString()) {
+                            case "菜鸟环保|播种套餐券": {
                                 Bundle bundle = new Bundle();
-                                bundle.putInt("count", usercultivation.get(0).getCount());
+                                bundle.putInt("count", Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog mycultivationdialog2 = new mycultivationdialog();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "0");
                                 break;
                             }
-                            case 1: {
+                            case "菜鸟环保|灌溉券": {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("type", 1);
-                                bundle.putInt("count", usercultivation.get(1).getCount());
+                                bundle.putInt("count", Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "1");
                                 break;
                             }
-                            case 2: {
+                            case "菜鸟环保|农家肥券": {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("type", 2);
-                                bundle.putInt("count", usercultivation.get(2).getCount());
+                                bundle.putInt("count",Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "2");
                                 break;
                             }
-                            case 3: {
+                            case "菜鸟环保|除草券": {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("type", 3);
-                                bundle.putInt("count", usercultivation.get(3).getCount());
+                                bundle.putInt("count", Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "3");
                                 break;
                             }
-                            case 4: {
+                            case "菜鸟环保|灭虫券": {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("type", 4);
-                                bundle.putInt("count", usercultivation.get(4).getCount());
+                                bundle.putInt("count", Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "4");
                                 break;
                             }
-                            case 5: {
+                            case "菜鸟环保|有机肥券": {
                                 Bundle bundle = new Bundle();
                                 bundle.putInt("type", 5);
-                                bundle.putInt("count", usercultivation.get(5).getCount());
+                                bundle.putInt("count", Integer.parseInt(cucount.getText().toString().substring(0,1)));
                                 mycultivationdialog2 mycultivationdialog2 = new mycultivationdialog2();
                                 mycultivationdialog2.setArguments(bundle);
                                 mycultivationdialog2.show(getSupportFragmentManager(), "5");

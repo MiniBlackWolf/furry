@@ -43,12 +43,6 @@ public class tab5 extends Fragment {
     LinearLayout m64;
     @BindView(R.id.m7_4)
     LinearLayout m74;
-    @BindView(R.id.m1_4)
-    ImageView m14;
-    @BindView(R.id.m2_4)
-    ImageView m24;
-    @BindView(R.id.m3_4)
-    ImageView m34;
     Unbinder unbinder;
     @ViewInject(R.id.denglu)
     private Button denglu;
@@ -112,7 +106,7 @@ public class tab5 extends Fragment {
         unbinder.unbind();
     }
 
-    @OnClick({R.id.m4_4, R.id.m5_4, R.id.m6_4, R.id.m7_4, R.id.m1_4, R.id.m2_4, R.id.m3_4,R.id.m13_4,R.id.m14_4,R.id.myinfo})
+    @OnClick({R.id.m4_4, R.id.m5_4, R.id.m6_4, R.id.m7_4,R.id.m13_4,R.id.m14_4,R.id.myinfo})
     public void onViewClicked(View view) {
         if(view.getId()==R.id.myinfo){
             Intent intent = new Intent(getActivity(), Loginpage.class);
