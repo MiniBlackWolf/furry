@@ -1,5 +1,6 @@
 package com.example.wolf.cultivation;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -17,6 +18,7 @@ import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.Xutils;
 import com.example.wolf.adpater.Mycultivationadapter;
+import com.example.wolf.userbean.usersfarm;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -165,7 +167,8 @@ public class mycultivation extends AppCompatActivity {
 
     @OnClick(R.id.cufh)
     public void onViewClicked() {
-        finish();
+        Intent intent=new Intent(mycultivation.this,usersfarm.class);
+        startActivity(intent);
         overridePendingTransition(0, 0);
     }
 }

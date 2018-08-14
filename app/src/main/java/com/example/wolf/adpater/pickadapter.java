@@ -129,7 +129,7 @@ public class pickadapter extends BaseQuickAdapter<userseedandland, BaseViewHolde
 
                                 @Override
                                 public void onError(Throwable ex, boolean isOnCallback) {
-
+                                    ToastUtils.showToast(context, "采摘失败，请检查网络!");
                                 }
 
                                 @Override

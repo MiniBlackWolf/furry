@@ -99,7 +99,11 @@ public class myland extends AppCompatActivity {
 
 
     }
+    public void refresh() {
 
+        onCreate(null);
+
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();

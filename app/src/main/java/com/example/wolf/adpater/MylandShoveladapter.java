@@ -3,8 +3,8 @@ package com.example.wolf.adpater;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +18,7 @@ import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.OrderUtils;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.land.orderbeans;
@@ -26,6 +27,7 @@ import com.example.wolf.seed.Seedfarm;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.userbean.UserInfo;
 import com.google.gson.Gson;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -52,6 +54,7 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
     List<String> sfids = new ArrayList<>();
     List<orderbeans.payitem> payitem=new ArrayList<>();
     List<Long> swoingdates=new ArrayList<>();
+    Handler handler=new Handler();
     public MylandShoveladapter(int layoutResId, @Nullable List<userseedandland> data, Context context, Button Shovelbutton, Dialog dialog) {
         super(layoutResId, data);
         this.context = context;
@@ -79,6 +82,8 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
 
             @Override
             public void onClick(View view) {
+                ZloadingDiaLogkt zloadingDiaLogkt=new ZloadingDiaLogkt(context);
+                final ZLoadingDialog ssssss = zloadingDiaLogkt.show();
                 int count = 0;
                 for (ImageView imageView : chanzhi) {
                     if (imageView.getVisibility() == View.VISIBLE) {
@@ -87,9 +92,7 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                     }
                     chanzhi2.add(imageView);
                 }
-                for (userseedandland userseedandland : max) {
-                    max2.add(userseedandland);
-                }
+                max2.addAll(max);
                 for (int i = 0; i < max2.size(); i++) {
                     if (chanzhi2.get(i).getVisibility() == View.VISIBLE) {
                         Map<String, String> map2 = new HashMap<>();
@@ -114,7 +117,7 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                                     ToastUtils.showToast(context, "金额不足请充值");
 
                                 } else {
-                                    orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(max2.get(finalI).getSid()), "-1", finalCount, 10.0);
+                                    orderbeans.payitem addpayitem = OrderUtils.addpayitem(String.valueOf(max2.get(finalI).getSid()), "-1", 1, 10.0);
                                     payitem.add(addpayitem);
                                     fids.add(max2.get(finalI).getFid());
                                     sfids.add(max2.get(finalI).getSfid());
@@ -127,44 +130,57 @@ public class MylandShoveladapter extends BaseQuickAdapter<userseedandland, BaseV
                     }
 
                 }
-                orderbeans orderbeans = OrderUtils.addorder("锄种子", 4, count * 2, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
-                Gson gson=new Gson();
-                String s = gson.toJson(orderbeans);
-                RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.shovel));
-                requestParams.setBodyContent(s);
-                requestParams.setAsJsonContent(true);
-                requestParams.addParameter("fid",fids);
-                requestParams.addParameter("sfid",sfids);
-                requestParams.addParameter("swoingdate",swoingdates);
-                x.http().post(requestParams, new Callback.CommonCallback<String>() {
 
+                final int finalCount1 = count;
+                handler.postDelayed(new Runnable() {
                     @Override
-                    public void onSuccess(String result) {
-                        if(result.equals("success")){
-                            ToastUtils.showToast(context,"铲除成功！");
-                            dialog.dismiss();
+                    public void run() {
+                        if(swoingdates.isEmpty()){
+                            handler.postDelayed(this, 1000);
                         }
-                        else {
-                            ToastUtils.showToast(context,"铲除失败,请检查网络或数量！");
-                            dialog.dismiss();
-                        }
+                        orderbeans orderbeans = OrderUtils.addorder("锄种子", 4, finalCount1 * 2, new Getuserinfo(context).getuid(), System.currentTimeMillis() / 1000, payitem);
+                        Gson gson=new Gson();
+                        String s = gson.toJson(orderbeans);
+                        RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.shovel));
+                        requestParams.setBodyContent(s);
+                        requestParams.setAsJsonContent(true);
+                        requestParams.addParameter("fid",fids);
+                        requestParams.addParameter("sfid",sfids);
+                        requestParams.addParameter("swoingdate",swoingdates);
+                        x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
+                            @Override
+                            public void onSuccess(String result) {
+                                if(result.equals("success")){
+                                    ToastUtils.showToast(context,"铲除成功！");
+                                    ssssss.dismiss();
+                                    dialog.dismiss();
+                                }
+                                else {
+                                    ToastUtils.showToast(context,"铲除失败,请检查网络或数量！");
+                                    ssssss.dismiss();
+                                    dialog.dismiss();
+                                }
+                            }
+
+                            @Override
+                            public void onError(Throwable ex, boolean isOnCallback) {
+
+                            }
+
+                            @Override
+                            public void onCancelled(CancelledException cex) {
+
+                            }
+
+                            @Override
+                            public void onFinished() {
+
+                            }
+                        });
+
                     }
-
-                    @Override
-                    public void onError(Throwable ex, boolean isOnCallback) {
-
-                    }
-
-                    @Override
-                    public void onCancelled(CancelledException cex) {
-
-                    }
-
-                    @Override
-                    public void onFinished() {
-
-                    }
-                });
+                },1000);
 
 
             }

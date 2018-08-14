@@ -2,6 +2,7 @@ package com.example.wolf.adpater;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
@@ -21,13 +22,18 @@ import com.example.wolf.Utils.Getuserinfo;
 import com.example.wolf.Utils.GsonUtil.GsonUtil;
 import com.example.wolf.Utils.ToastUtils;
 import com.example.wolf.Utils.Xutils;
+import com.example.wolf.Utils.ZloadingDiaLogkt;
 import com.example.wolf.Utils.encryption_algorithm.Token;
+import com.example.wolf.cultivation.mycultivation;
 import com.example.wolf.cultivation.mycultivationdialog;
+import com.example.wolf.cultivation.mycultivationdialog2;
+import com.example.wolf.land.myland;
 import com.example.wolf.seed.seedbean;
 import com.example.wolf.seed.userseed;
 import com.example.wolf.userbean.Userorder;
 import com.example.wolf.userbean.Userorderitem;
 import com.google.gson.Gson;
+import com.zyao89.view.zloading.ZLoadingDialog;
 
 import org.xutils.common.Callback;
 import org.xutils.http.RequestParams;
@@ -87,6 +93,8 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
         okseedandland.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                ZloadingDiaLogkt zloadingDiaLogkt=new ZloadingDiaLogkt(context);
+                final ZLoadingDialog ssssss = zloadingDiaLogkt.show();
                 mycultivationpopcount.getText().toString();
                 if(Integer.valueOf(mycultivationpopcount.getText().toString())==0){
                     ToastUtils.showToast(context,"请使用券");
@@ -113,27 +121,37 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
                 Gson gson=new Gson();
                 String s = gson.toJson(userorder);
                 RequestParams requestParams=new RequestParams(context.getResources().getString(R.string.sowing));
+                requestParams.setConnectTimeout(50000);
                 requestParams.setBodyContent(s);
                 requestParams.setAsJsonContent(true);
                 requestParams.addParameter("voucher",mycultivationpopcount.getText().toString());
                 x.http().post(requestParams, new Callback.CommonCallback<String>() {
-
+                    String result;
                     @Override
                     public void onSuccess(String result) {
+                        this.result=result;
                         if (result.equals("success")) {
                             ToastUtils.showToast(context,"播种成功！");
+                            ssssss.dismiss();
+                            Intent intent=new Intent(context,mycultivation.class);
+                            context.startActivity(intent);
                             dialog.dismiss();
+
+
                         }
                         else{
 
                             ToastUtils.showToast(context,"播种失败！");
+                            ssssss.dismiss();
                             dialog.dismiss();
                         }
                     }
 
                     @Override
                     public void onError(Throwable ex, boolean isOnCallback) {
-
+                        ToastUtils.showToast(context,"播种失败！");
+                        ssssss.dismiss();
+                        dialog.dismiss();
                     }
 
                     @Override
@@ -143,7 +161,15 @@ public class mycultivationadapterseed extends BaseQuickAdapter<userseed, BaseVie
 
                     @Override
                     public void onFinished() {
+                        if (result.equals("success")) {
+                            ToastUtils.showToast(context,"播种成功！");
+                            ssssss.dismiss();
+                            Intent intent=new Intent(context,mycultivation.class);
+                            context.startActivity(intent);
+                            dialog.dismiss();
 
+
+                        }
                     }
                 });
             }

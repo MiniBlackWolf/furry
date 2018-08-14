@@ -79,7 +79,6 @@ public class mylandDiaLog extends DialogFragment {
                             chanzi.setVisibility(View.VISIBLE);
                         } else {
                             chanzi.setVisibility(View.GONE);
-
                         }
                     }
                 });
