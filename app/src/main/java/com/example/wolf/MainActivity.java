@@ -2,6 +2,7 @@ package com.example.wolf;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -44,13 +45,36 @@ public class MainActivity extends AppCompatActivity {
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
     Xutils xutils = new Xutils(this);
+    boolean fin=false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
-        overridePendingTransition(0,0);
+        overridePendingTransition(0, 0);
         getfragment();
         denglu();
+
+    }
+
+    private long time = 0;
+
+    @Override
+    public void onBackPressed() {
+        ToastUtils.showToast(this, "再点击一次退出程序");
+        if(fin){
+//            MyApp myApp = new MyApp();
+//            myApp.removeALLActivity_();
+            Runtime.getRuntime().exit(0);
+        }
+        fin=true;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fin=false;
+            }
+        }, 2000);
+
 
     }
 

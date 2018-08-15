@@ -12,6 +12,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -32,6 +33,8 @@ import org.xutils.view.annotation.ContentView;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -41,12 +44,6 @@ public class Xuandi extends AppCompatActivity {
     Xutils xutils = new Xutils(Xuandi.this);
     @BindView(R.id.xuandifanhui)
     ImageView xuandifanhui;
-    @BindView(R.id.buy)
-    Button buy;
-    @BindView(R.id.kuaishu)
-    TextView kuaishu;
-    @BindView(R.id.zhongjian)
-    TextView zhongjian;
     @BindView(R.id.xuandirecyclerview)
     RecyclerView xuandirecyclerview;
     @BindView(R.id.q)
@@ -60,6 +57,7 @@ public class Xuandi extends AppCompatActivity {
     private boolean isRiskMove;
     private int mRiskLastX;
     private int mRiskLastY;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -106,8 +104,8 @@ public class Xuandi extends AppCompatActivity {
         q.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(isRiskMove){
-                    isRiskMove=false;
+                if (isRiskMove) {
+                    isRiskMove = false;
                     return;
                 }
                 if (Visibility) {
@@ -154,7 +152,7 @@ public class Xuandi extends AppCompatActivity {
             public void onResponse(String result) {
                 GsonUtil gsonUtil = new GsonUtil();
                 List<Farminfo> Farminfo = gsonUtil.Gson(result, Farminfo.class);
-                xuandiadapter xuandiadapter = new xuandiadapter(R.layout.xuandiitem, Farminfo, Xuandi.this, buy);
+                xuandiadapter xuandiadapter = new xuandiadapter(R.layout.xuandiitem, Farminfo, Xuandi.this);
                 xuandiadapter.openLoadAnimation(BaseQuickAdapter.SLIDEIN_LEFT);
                 xuandiadapter.isFirstOnly(false);
                 xuandirecyclerview.setLayoutManager(new LinearLayoutManager(Xuandi.this));
@@ -164,117 +162,34 @@ public class Xuandi extends AppCompatActivity {
                     @SuppressLint("SetTextI18n")
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                        TextView shuliang = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang);
-                        TextView shuliang2 = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang2);
-                        TextView shuliang3 = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.shuliang3);
-                        switch (view.getId()) {
-
-                            case R.id.jia:
-                                String s = shuliang.getText().toString();
-                                Integer sl1 = Integer.valueOf(s);
-                                sl1++;
-                                allmoney += 120;
-                                allcount++;
-                                zhongjian.setText(allmoney + "");
-                                kuaishu.setText(allcount + "");
-                                shuliang.setText(sl1 + "");
-                                break;
-                            case R.id.jia2:
-                                String s2 = shuliang2.getText().toString();
-                                Integer sl2 = Integer.valueOf(s2);
-                                sl2++;
-                                allcount++;
-                                allmoney += 180;
-                                zhongjian.setText(allmoney + "");
-                                kuaishu.setText(allcount + "");
-                                shuliang2.setText(sl2 + "");
-                                break;
-                            case R.id.jia3:
-                                String s3 = shuliang3.getText().toString();
-                                Integer sl3 = Integer.valueOf(s3);
-                                sl3++;
-                                allmoney += 240;
-                                allcount++;
-                                zhongjian.setText(allmoney + "");
-                                kuaishu.setText(allcount + "");
-                                shuliang3.setText(sl3 + "");
-                                break;
-                            case R.id.jian:
-                                String ss = shuliang.getText().toString();
-                                Integer ssl = Integer.valueOf(ss);
-                                ssl--;
-                                if (ssl < 0) {
-                                    ssl = 0;
-                                    shuliang.setText(ssl + "");
-                                } else {
-                                    allmoney -= 120;
-                                    allcount--;
-                                    shuliang.setText(ssl + "");
-                                    zhongjian.setText(allmoney + "");
-                                    kuaishu.setText(allcount + "");
-
-                                }
-
-
-                                break;
-                            case R.id.jian2:
-                                String ss2 = shuliang2.getText().toString();
-                                Integer ssl2 = Integer.valueOf(ss2);
-                                ssl2--;
-                                if (ssl2 < 0) {
-                                    ssl2 = 0;
-                                    shuliang2.setText(ssl2 + "");
-                                } else {
-                                    allmoney -= 180;
-                                    allcount--;
-                                    shuliang2.setText(ssl2 + "");
-                                    zhongjian.setText(allmoney + "");
-                                    kuaishu.setText(allcount + "");
-
-                                }
-                                break;
-                            case R.id.jian3:
-                                String ss3 = shuliang3.getText().toString();
-                                Integer ssl3 = Integer.valueOf(ss3);
-                                ssl3--;
-                                if (ssl3 < 0) {
-                                    ssl3 = 0;
-                                    shuliang3.setText(ssl3 + "");
-                                } else {
-                                    allmoney -= 240;
-                                    allcount--;
-                                    shuliang3.setText(ssl3 + "");
-                                    zhongjian.setText(allmoney + "");
-                                    kuaishu.setText(allcount + "");
-                                }
-                                break;
-                            case R.id.imageland:
-                                View views = getLayoutInflater().inflate(R.layout.xuandiinfoitem, null);
-                                ImageView xuandiinfoimage = views.findViewById(R.id.xuandiinfoimage);
-                                TextView xuandiinfotext = views.findViewById(R.id.xuandiinfotext);
-                                AlertDialog.Builder alertDialog = new AlertDialog.Builder(Xuandi.this);
-                                alertDialog.setView(views);
-                                xuandiinfotext.setText("菜鸟农场的土地是以科学化管理为标准、“先废弃后开垦”为原则所培育的有机土地。现将土地分为多种规格，你可以根据自己的需求选择不同规格的土地进行种植。");
-                                switch (position) {
-                                    case 0:
-                                        xuandiinfoimage.setImageResource(R.mipmap.aa1);
-                                        alertDialog.setView(views);
-                                        aldia = alertDialog.show();
-                                        break;
-                                    case 1:
-                                        xuandiinfoimage.setImageResource(R.mipmap.aa2);
-                                        alertDialog.setView(views);
-                                        aldia = alertDialog.show();
-                                        break;
-                                    case 2:
-                                        xuandiinfoimage.setImageResource(R.mipmap.aa3);
-                                        alertDialog.setView(views);
-                                        aldia = alertDialog.show();
-                                        break;
-
-                                }
-                                break;
-
+                        TextView landname = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.landname);
+                        TextView landcount = (TextView) adapter.getViewByPosition(xuandirecyclerview, position, R.id.landcount);
+                        Pattern compile = Pattern.compile("A");
+                        Matcher matcher = compile.matcher(landname.getText().toString());
+                        if (matcher.find()) {
+                            xuandidailogfragment xuandidailogfragment = new xuandidailogfragment();
+                            Bundle bundle=new Bundle();
+                            bundle.putInt("lastcount", Integer.valueOf(landcount.getText().toString()));
+                            xuandidailogfragment.setArguments(bundle);
+                            xuandidailogfragment.show(getSupportFragmentManager(), "A");
+                        }
+                        Pattern compile2 = Pattern.compile("B");
+                        Matcher matcher2 = compile2.matcher(landname.getText().toString());
+                        if (matcher2.find()) {
+                            xuandidailogfragment xuandidailogfragment = new xuandidailogfragment();
+                            Bundle bundle=new Bundle();
+                            bundle.putInt("lastcount", Integer.valueOf(landcount.getText().toString()));
+                            xuandidailogfragment.setArguments(bundle);
+                            xuandidailogfragment.show(getSupportFragmentManager(), "B");
+                        }
+                        Pattern compile3 = Pattern.compile("C");
+                        Matcher matcher3 = compile3.matcher(landname.getText().toString());
+                        if (matcher3.find()) {
+                            xuandidailogfragment xuandidailogfragment = new xuandidailogfragment();
+                            Bundle bundle=new Bundle();
+                            bundle.putInt("lastcount", Integer.valueOf(landcount.getText().toString()));
+                            xuandidailogfragment.setArguments(bundle);
+                            xuandidailogfragment.show(getSupportFragmentManager(), "C");
                         }
 
                     }
@@ -293,5 +208,25 @@ public class Xuandi extends AppCompatActivity {
 
 
         });
+
+
+    }
+
+    @Override
+    protected void onResume() {
+        Log.i("iiiiiiiiiiiiiii","onResume");
+        super.onResume();
+    }
+
+    @Override
+    protected void onRestart() {
+        Log.i("iiiiiiiiiiiiiii","onRestart");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.i("iiiiiiiiiiiiiii","onPause");
+        super.onPause();
     }
 }

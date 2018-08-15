@@ -1,5 +1,6 @@
 package com.example.wolf;
 
+import android.app.Activity;
 import android.app.Application;
 import android.util.Log;
 
@@ -10,9 +11,12 @@ import com.tencent.android.tpush.XGPushManager;
 
 import org.xutils.x;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MyApp extends Application {
-
+    private List<Activity> oList;
     @Override
     public void onCreate() {
         x.Ext.init(MyApp.this);
@@ -30,6 +34,36 @@ public class MyApp extends Application {
                 Log.i("TPush", "注册失败，错误码：" + errCode + ",错误信息：" + msg);
             }
         });
+        oList = new ArrayList<Activity>();
         super.onCreate();
     }
+    public void addActivity_(Activity activity) {
+// 判断当前集合中不存在该Activity
+        if (!oList.contains(activity)) {
+            oList.add(activity);//把当前Activity添加到集合中
+        }
+    }
+
+    /**
+     * 销毁单个Activity
+     */
+    public void removeActivity_(Activity activity) {
+//判断当前集合中存在该Activity
+        if (oList.contains(activity)) {
+            oList.remove(activity);//从集合中移除
+            activity.finish();//销毁当前Activity
+        }
+    }
+
+    /**
+     * 销毁所有的Activity
+     */
+    public void removeALLActivity_() {
+        //通过循环，把集合中的所有Activity销毁
+        for (Activity activity : oList) {
+            activity.finish();
+        }
+    }
+
+
 }

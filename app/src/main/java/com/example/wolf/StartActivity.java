@@ -47,6 +47,7 @@ public class StartActivity extends AppCompatActivity {
                     public void onAnimationEnd(Animator animation) {
                         Intent intent = new Intent(StartActivity.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                         overridePendingTransition(0,0);
                     }
                 });
@@ -63,6 +64,7 @@ public class StartActivity extends AppCompatActivity {
     protected void onRestart() {
         Intent intent = new Intent(StartActivity.this, MainActivity.class);
         startActivity(intent);
+        finish();
         overridePendingTransition(0,0);
         super.onRestart();
     }
