@@ -296,6 +296,7 @@ public class genyun extends AppCompatActivity {
 
                                         @Override
                                         public void onError(Throwable ex, boolean isOnCallback) {
+                                            Toast.makeText(genyun.this, "购买失败", Toast.LENGTH_LONG).show();
 
                                         }
 

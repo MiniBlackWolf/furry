@@ -43,5 +43,6 @@
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
     <string name="useTicket">http://192.168.0.107:8080/user/useticket</string>
     <string name="online">http://qwer.cnepltd.com/user/online.do</string>
+    <string name="butscore">http://wecn.cnepltd.com/farm/open/butscore</string>
     <string name="ws">ws://qwer.cnepltd.com/ws.do</string>
 </resources>

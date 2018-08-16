@@ -26,6 +26,7 @@ import com.example.wolf.Utils.encryption_algorithm.Token;
 import com.example.wolf.Utils.encryption_algorithm.algorithm;
 import com.example.wolf.land.orderbeans;
 import com.example.wolf.seed.ProdctBean;
+import com.example.wolf.seed.seedActivity;
 import com.example.wolf.userbean.UserInfo;
 import com.google.gson.Gson;
 import com.zyao89.view.zloading.ZLoadingDialog;
@@ -147,13 +148,17 @@ public class Seedadapter extends BaseQuickAdapter<ProdctBean, BaseViewHolder> {
                                                 Intent intent = new Intent(context, MainActivity.class);
                                                 context.startActivity(intent);
                                             } else {
+                                                Intent intent = new Intent(context, seedActivity.class);
+                                                context.startActivity(intent);
                                                 Toast.makeText(context, "购买失败", Toast.LENGTH_LONG).show();
                                             }
                                         }
 
                                         @Override
                                         public void onError(Throwable ex, boolean isOnCallback) {
-
+                                            Intent intent = new Intent(context, seedActivity.class);
+                                            context.startActivity(intent);
+                                            Toast.makeText(context, "购买失败,请检查网络!", Toast.LENGTH_LONG).show();
                                         }
 
                                         @Override

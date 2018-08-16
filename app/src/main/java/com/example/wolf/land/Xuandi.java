@@ -200,6 +200,7 @@ public class Xuandi extends AppCompatActivity {
                     public void onClick(View v) {
                         Intent intent = new Intent(Xuandi.this, MainActivity.class);
                         startActivity(intent);
+                        finish();
                     }
                 });
 
@@ -213,20 +214,14 @@ public class Xuandi extends AppCompatActivity {
     }
 
     @Override
-    protected void onResume() {
-        Log.i("iiiiiiiiiiiiiii","onResume");
-        super.onResume();
-    }
-
-    @Override
-    protected void onRestart() {
-        Log.i("iiiiiiiiiiiiiii","onRestart");
-        super.onRestart();
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
     }
 
     @Override
     protected void onPause() {
-        Log.i("iiiiiiiiiiiiiii","onPause");
+        finish();
         super.onPause();
     }
 }

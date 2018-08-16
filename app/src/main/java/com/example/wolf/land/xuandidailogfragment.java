@@ -201,7 +201,7 @@ public class xuandidailogfragment extends DialogFragment {
                         return;
 
                     }
-                } else if(Integer.valueOf(count10.getText().toString())!=0){
+                } else if(userfarms10.isEmpty() &&Integer.valueOf(count10.getText().toString())!=0){
                     ToastUtils.showToast(getActivity(), "10平方米土地不足，购买失败!");
                     return;
 
@@ -219,7 +219,7 @@ public class xuandidailogfragment extends DialogFragment {
 
                     }
                 }
-                else if(Integer.valueOf(count15.getText().toString())!=0){
+                else if(userfarms10.isEmpty() &&Integer.valueOf(count15.getText().toString())!=0){
                     ToastUtils.showToast(getActivity(), "15平方米土地不足，购买失败!");
                     return;
 
@@ -236,7 +236,7 @@ public class xuandidailogfragment extends DialogFragment {
                         return;
                     }
                 }
-                else if(Integer.valueOf(count20.getText().toString())!=0){
+                else if(userfarms10.isEmpty() &&Integer.valueOf(count20.getText().toString())!=0){
                     ToastUtils.showToast(getActivity(), "20平方米土地不足，购买失败!");
                     return;
 
@@ -257,6 +257,7 @@ public class xuandidailogfragment extends DialogFragment {
                             Intent intent=new Intent(getActivity(),Xuandi.class);
                             startActivity(intent);
                             dismiss();
+
                         } else {
                             ToastUtils.showToast(getActivity(), "购买失败，请检查网络");
                             Intent intent=new Intent(getActivity(),Xuandi.class);

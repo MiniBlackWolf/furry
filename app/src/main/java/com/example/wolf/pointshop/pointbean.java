@@ -1,7 +1,5 @@
 package com.example.wolf.pointshop;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.io.Serializable;
 
 public class pointbean implements Serializable{
@@ -13,9 +11,10 @@ public class pointbean implements Serializable{
      * sprice : 3000.00
      * scontent : 营养价值高水分足
      * snum : 30
-     * stype : 3
+     * stype : 7
      * simgui : http://www.cnepltd.com:80/res/seed/45cf2e7b09d74455902feafcb986e7ac20180622110515.png
-     * super : 1
+     * shelf : 1
+     * sid : 2
      */
 
     private int id;
@@ -25,8 +24,8 @@ public class pointbean implements Serializable{
     private int snum;
     private int stype;
     private String simgui;
-    @SerializedName("super")
-    private int superX;
+    private int shelf;
+    private int sid;
 
     public int getId() {
         return id;
@@ -84,11 +83,19 @@ public class pointbean implements Serializable{
         this.simgui = simgui;
     }
 
-    public int getSuperX() {
-        return superX;
+    public int getShelf() {
+        return shelf;
     }
 
-    public void setSuperX(int superX) {
-        this.superX = superX;
+    public void setShelf(int shelf) {
+        this.shelf = shelf;
+    }
+
+    public int getSid() {
+        return sid;
+    }
+
+    public void setSid(int sid) {
+        this.sid = sid;
     }
 }

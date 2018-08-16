@@ -97,6 +97,19 @@ public class seedActivity extends AppCompatActivity {
     private boolean isRiskMove;
     private int mRiskLastX;
     private int mRiskLastY;
+
+    @Override
+    public void onBackPressed() {
+        finish();
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        finish();
+        super.onPause();
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
