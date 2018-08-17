@@ -17,7 +17,7 @@ android {
             // 还可以添加 'x86', 'x86_64', 'mips', 'mips64'
         }
         manifestPlaceholders = [
-
+                PACKAGE_NAME:"com.example.wolf",
                 XG_ACCESS_ID:"2100302454",
                 XG_ACCESS_KEY : "AB9A26V8IS1U",
         ]
@@ -93,5 +93,6 @@ dependencies {
     implementation 'com.tencent.wup:wup:1.0.0.E-release'
     //mid包
     implementation 'com.tencent.mid:mid:4.0.6-release'
+    implementation 'com.tencent.xinge:mipush:3.2.5-release'
 
 }
