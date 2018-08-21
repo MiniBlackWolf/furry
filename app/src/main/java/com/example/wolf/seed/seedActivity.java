@@ -119,8 +119,7 @@ public class seedActivity extends AppCompatActivity {
         seedxuandifanhui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(seedActivity.this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
         });
         q3.setOnTouchListener(new View.OnTouchListener() {

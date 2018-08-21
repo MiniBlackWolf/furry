@@ -4,6 +4,7 @@ package com.example.wolf.land;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -31,6 +32,7 @@ import java.util.Map;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import cn.jzvd.JZVideoPlayerStandard;
 
 
 public class myland extends AppCompatActivity {
@@ -87,8 +89,26 @@ public class myland extends AppCompatActivity {
                 mylandadapter.setOnItemChildClickListener(new BaseQuickAdapter.OnItemChildClickListener() {
                     @Override
                     public void onItemChildClick(BaseQuickAdapter adapter, View view, int position) {
-                        TextView fid = (TextView) mylandadapter.getViewByPosition(mylandrecyclerview, position, R.id.fid);
-                        new mylandDiaLog().show(getSupportFragmentManager(),fid.getText().toString());
+                        switch (view.getId()){
+                            case R.id.sid:
+                                TextView fid = (TextView) mylandadapter.getViewByPosition(mylandrecyclerview, position, R.id.fid);
+                                new mylandDiaLog().show(getSupportFragmentManager(),fid.getText().toString());
+                                break;
+                            case R.id.video:
+                                JZVideoPlayerStandard jzVideoPlayerStandard = new JZVideoPlayerStandard(myland.this);
+                                jzVideoPlayerStandard.setUp("http://hls.open.ys7.com/openlive/fcc87f428e3e4017a74267dd30273dfe.hd.m3u8",
+                                        JZVideoPlayerStandard.SCREEN_WINDOW_NORMAL,
+                                        "菜鸟农场监控设备");
+                                jzVideoPlayerStandard.thumbImageView.setImageResource(R.mipmap.vimg);
+                                jzVideoPlayerStandard.thumbImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+                                AlertDialog.Builder builder=new AlertDialog.Builder(myland.this);
+                                builder.setView(jzVideoPlayerStandard);
+                                builder.show();
+                                break;
+
+
+                        }
+
                     }
                 });
                 mylandrecyclerview.setAdapter(mylandadapter);

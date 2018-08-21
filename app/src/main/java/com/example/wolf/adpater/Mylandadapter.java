@@ -46,60 +46,60 @@ public class Mylandadapter extends BaseQuickAdapter<userland, BaseViewHolder> {
     protected void convert(final BaseViewHolder helper, final userland item) {
 
 
-                String fid = item.getFid().substring(0, 1);
-                long s = (item.getValidityperiod() - System.currentTimeMillis()) / (1000 * 3600 * 24);
-                if (s < 0) {
-                    item.getFid();
-                    ImageView imageView = helper.getView(R.id.xuzhu);
-                    list.add(item.getFid());
-                    list2.add(imageView);
-                }
-                if (fid.equals("A")) {
+        String fid = item.getFid().substring(0, 1);
+        long s = (item.getValidityperiod() - System.currentTimeMillis()) / (1000 * 3600 * 24);
+        if (s < 0) {
+            item.getFid();
+            ImageView imageView = helper.getView(R.id.xuzhu);
+            list.add(item.getFid());
+            list2.add(imageView);
+        }
+        if (fid.equals("A")) {
 
-                    helper.setText(R.id.mianji, "10/m²");
-                    helper.setImageResource(R.id.tud, R.mipmap.a_a);
-                    helper.setText(R.id.fid, item.getFid());
-                    if (item.getSfid()==null) {
-                        helper.setText(R.id.sid, "空");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
-                    } else {
-                        helper.setText(R.id.sid, "查看详情");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
-                        helper.addOnClickListener(R.id.sid);
-                    }
-                    helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
+            helper.setText(R.id.mianji, "10/m²");
+            helper.setImageResource(R.id.tud, R.mipmap.a_a);
+            helper.setText(R.id.fid, item.getFid());
+            if (item.getSfid() == null) {
+                helper.setText(R.id.sid, "空");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+            } else {
+                helper.setText(R.id.sid, "查看详情");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                helper.addOnClickListener(R.id.sid);
+            }
+            helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
 
 
-                }
-                if (fid.equals("B")) {
-                    helper.setText(R.id.mianji, "15/m²");
-                    helper.setImageResource(R.id.tud, R.mipmap.b_b);
-                    helper.setText(R.id.fid, item.getFid());
-                    if (item.getSfid()==null) {
-                        helper.setText(R.id.sid, "空");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
-                    } else {
-                        helper.setText(R.id.sid, "点击查看详情");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
-                        helper.addOnClickListener(R.id.sid);
-                    }
-                    helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
-                }
-                if (fid.equals("C")) {
-                    helper.setText(R.id.mianji, "20/m²");
-                    helper.setImageResource(R.id.tud, R.mipmap.c_c);
-                    helper.setText(R.id.fid, item.getFid());
-                    if (item.getSfid()==null) {
-                        helper.setText(R.id.sid, "空");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
-                    } else {
-                        helper.setText(R.id.sid, "点击查看详情");
-                        helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
-                        helper.addOnClickListener(R.id.sid);
-                    }
-                    helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
-                }
-
+        }
+        if (fid.equals("B")) {
+            helper.setText(R.id.mianji, "15/m²");
+            helper.setImageResource(R.id.tud, R.mipmap.b_b);
+            helper.setText(R.id.fid, item.getFid());
+            if (item.getSfid() == null) {
+                helper.setText(R.id.sid, "空");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+            } else {
+                helper.setText(R.id.sid, "查看详情");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                helper.addOnClickListener(R.id.sid);
+            }
+            helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
+        }
+        if (fid.equals("C")) {
+            helper.setText(R.id.mianji, "20/m²");
+            helper.setImageResource(R.id.tud, R.mipmap.c_c);
+            helper.setText(R.id.fid, item.getFid());
+            if (item.getSfid() == null) {
+                helper.setText(R.id.sid, "空");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.crop__button_text));
+            } else {
+                helper.setText(R.id.sid, "查看详情");
+                helper.setTextColor(R.id.sid, context.getResources().getColor(R.color.hong));
+                helper.addOnClickListener(R.id.sid);
+            }
+            helper.setText(R.id.time, s < 0 ? "已过期" : (s + "天"));
+        }
+        helper.addOnClickListener(R.id.video);
 
 
         xuzu.setOnClickListener(new View.OnClickListener() {

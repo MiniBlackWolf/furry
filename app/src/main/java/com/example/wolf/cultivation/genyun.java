@@ -447,8 +447,7 @@ public class genyun extends AppCompatActivity {
         genyunfanhui.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(genyun.this, MainActivity.class);
-                startActivity(intent);
+                finish();
 
             }
         });

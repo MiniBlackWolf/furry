@@ -17,8 +17,11 @@ import com.example.wolf.Utils.Xutils;
 import com.example.wolf.fragment.tab2;
 import com.example.wolf.fragment.tab5;
 import com.example.wolf.fragment.tab5_2;
+import com.squareup.leakcanary.RefWatcher;
 
 
+import org.xutils.common.Callback;
+import org.xutils.http.RequestParams;
 import org.xutils.view.annotation.ContentView;
 import org.xutils.view.annotation.ViewInject;
 import org.xutils.x;
@@ -45,71 +48,29 @@ public class MainActivity extends AppCompatActivity {
     private TextView wod;
     FragmentStatePagerAdapter fragmentPagerAdapter;
     Xutils xutils = new Xutils(this);
-    boolean fin=false;
+    boolean fin = false;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         x.view().inject(this);
         overridePendingTransition(0, 0);
+        SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
+        boolean loginstatus = mySharePerferences.getBoolean("loginstatus", false);
+        fin = loginstatus;
         getfragment();
-        denglu();
+        if (fin) {
+            tab5_2 tab5_2 = new tab5_2();
+            fragmentlist.remove(1);
+            fragmentlist.add(tab5_2);
+            fragmentPagerAdapter.notifyDataSetChanged();
+            ToastUtils.showToast(MainActivity.this, "欢迎回来");
 
-    }
-
-    private long time = 0;
-
-    @Override
-    public void onBackPressed() {
-        ToastUtils.showToast(this, "再点击一次退出程序");
-        if(fin){
-//            MyApp myApp = new MyApp();
-//            myApp.removeALLActivity_();
-            Runtime.getRuntime().exit(0);
+        }else {
+            this.denglu();
         }
-        fin=true;
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                fin=false;
-            }
-        }, 2000);
-
-
-    }
-
-    private void denglu() {
-
-        //实例化SharedPreferences对象
-        final SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
-        //用getString获取值
-        String name = mySharePerferences.getString("userName", "");
-        String password = mySharePerferences.getString("password", "");
-        Map<String, String> map = new HashMap<>();
-        map.put("userName", name);
-        map.put("password", password);
-        //本地验证登陆
-        xutils.post(getResources().getString(R.string.Login), map, new Xutils.XCallBack() {
-            @Override
-            public void onResponse(String result) {
-                if (result != null) {
-                    String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
-                    if (i.equals("success")) {
-                        tab5_2 tab5_2 = new tab5_2();
-                        fragmentlist.remove(1);
-                        fragmentlist.add(tab5_2);
-                        fragmentPagerAdapter.notifyDataSetChanged();
-                        if (mySharePerferences.getBoolean("loginstatus", false)) {
-                            ToastUtils.showToast(MainActivity.this, "欢迎回来");
-                            SharedPreferences.Editor edit = mySharePerferences.edit();
-                            edit.putBoolean("loginstatus", true);
-                            edit.apply();
-                        }
-
-                    }
-                }
-            }
-        });/*
+  /*
         种子转跳！！2Page
         */
 
@@ -141,6 +102,88 @@ public class MainActivity extends AppCompatActivity {
 
             }
         }
+
+    }
+
+    private long time = 0;
+
+    @Override
+    public void onBackPressed() {
+        ToastUtils.showToast(this, "再点击一次退出程序");
+        if (fin) {
+//            MyApp myApp = new MyApp();
+//            myApp.removeALLActivity_();
+            Runtime.getRuntime().exit(0);
+        }
+        fin = true;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                fin = false;
+            }
+        }, 2000);
+
+
+    }
+
+    private void denglu() {
+
+        //实例化SharedPreferences对象
+        final SharedPreferences mySharePerferences = getSharedPreferences("user", Activity.MODE_PRIVATE);
+        //用getString获取值
+        String name = mySharePerferences.getString("userName", "");
+        String password = mySharePerferences.getString("password", "");
+
+        Map<String, String> map = new HashMap<>();
+        map.put("userName", name);
+        map.put("password", password);
+        //本地验证登陆
+        RequestParams requestParams = new RequestParams(getResources().getString(R.string.Login));
+        requestParams.addParameter("userName", name);
+        requestParams.addParameter("password", password);
+        x.http().post(requestParams, new Callback.CommonCallback<String>() {
+
+            @Override
+            public void onSuccess(String result) {
+                if (result != null) {
+                    String i = result.substring(result.indexOf("\"", 9) + 1, result.lastIndexOf("\""));
+                    if (i.equals("success")) {
+                        tab5_2 tab5_2 = new tab5_2();
+                        fragmentlist.remove(1);
+                        fragmentlist.add(tab5_2);
+                        fragmentPagerAdapter.notifyDataSetChanged();
+                        ToastUtils.showToast(MainActivity.this, "欢迎回来");
+                        SharedPreferences.Editor edit = mySharePerferences.edit();
+                        edit.putBoolean("loginstatus", true);
+                        edit.apply();
+
+
+                    }
+                }
+            }
+
+            @Override
+            public void onError(Throwable ex, boolean isOnCallback) {
+                SharedPreferences.Editor edit = mySharePerferences.edit();
+                edit.putBoolean("loginstatus", false);
+                edit.apply();
+                denglu();
+            }
+
+            @Override
+            public void onCancelled(CancelledException cex) {
+
+            }
+
+            @Override
+            public void onFinished() {
+
+            }
+        });
+
+
+
     }
 
     private void getfragment() {

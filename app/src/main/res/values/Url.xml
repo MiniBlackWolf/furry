@@ -29,9 +29,9 @@
     <string name="general">http://www.cnepltd.com/fileupload/general</string>
     <string name="clientMoney">http://www.cnepltd.com/net/userBase/clientMoney</string>
     <string name="getuserseed">http://cnnc.cnepltd.com/user/useseed</string>
-    <string name="sowing">http://192.168.0.107:8080/user/sowing</string>
+    <string name="sowing">http://cnnc.cnepltd.com/user/sowing</string>
     <string name="shovelview">http://cnnc.cnepltd.com/user/shovelview</string>
-    <string name="shovel">http://192.168.0.107:8080/user/shovel</string>
+    <string name="shovel">http://cnnc.cnepltd.com/user/shovel</string>
     <string name="getlandinfo">http://cnnc.cnepltd.com/user/getlandinfo</string>
     <string name="getcultivation">http://cnnc.cnepltd.com/user/getcultivation</string>
     <string name="getAllfarm">http://cnnc.cnepltd.com/user/getAllfarm</string>
@@ -41,7 +41,7 @@
     <string name="scoreshop">http://wecn.cnepltd.com/farm/open/scoreshop</string>
     <string name="buyticket">http://cnnc.cnepltd.com/user/buyticket</string>
     <string name="addorder">http://cnnc.cnepltd.com/user/addorder</string>
-    <string name="useTicket">http://192.168.0.107:8080/user/useticket</string>
+    <string name="useTicket">http://cnnc.cnepltd.com/user/useticket</string>
     <string name="online">http://qwer.cnepltd.com/user/online.do</string>
     <string name="butscore">http://wecn.cnepltd.com/farm/open/butscore</string>
     <string name="ws">ws://qwer.cnepltd.com/ws.do</string>

@@ -198,8 +198,6 @@ public class Xuandi extends AppCompatActivity {
                 xuandifanhui.setOnClickListener(new OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent(Xuandi.this, MainActivity.class);
-                        startActivity(intent);
                         finish();
                     }
                 });

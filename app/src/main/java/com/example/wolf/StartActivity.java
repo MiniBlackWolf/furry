@@ -23,7 +23,7 @@ public class StartActivity extends AppCompatActivity {
     ImageView startimg2;
     @BindView(R.id.startview)
     ConstraintLayout startview;
-
+    AnimatorSet animatorSet;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +39,7 @@ public class StartActivity extends AppCompatActivity {
                ObjectAnimator o3 = ObjectAnimator.ofFloat(startimg2, "rotation", 0f, 360f);
 //                ObjectAnimator o4 = ObjectAnimator.ofFloat(startimg2, "translationX", 1000f);
 //                ObjectAnimator o5 = ObjectAnimator.ofFloat(startimg2, "translationY", -1000f);
-                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet = new AnimatorSet();
                 animatorSet.setDuration(1500);
                 animatorSet.playTogether(o1, o2,o3);
                 animatorSet.addListener(new AnimatorListenerAdapter() {
@@ -52,6 +52,7 @@ public class StartActivity extends AppCompatActivity {
                     }
                 });
                 animatorSet.start();
+
 
             }
         }, 2000);
@@ -78,4 +79,9 @@ public class StartActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onDestroy() {
+        animatorSet.cancel();
+        super.onDestroy();
+    }
 }
